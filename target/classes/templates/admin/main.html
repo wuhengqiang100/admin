@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>首页--SAAS后台管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_974748_wjk5z1f6gsl.css" media="all"/>
+    <!--<link rel="stylesheet" th:href="@{/static/admin/css/main.css}" media="all" />-->
+    <link rel="stylesheet" th:href="@{/static/admin/css/admin.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
+</head>
+<body class="childrenBody">
+<!--<div class="panel_box row"  style="text-align: center;margin-top: 10em;">
+    <h1>欢迎<shiro:principal property = "nickName"/>使用后台管理！</h1>
+</div>-->
+<div class="wrap-container welcome-container">
+    <div class="row">
+        <div class="welcome-left-container col-lg-9">
+            <div class="data-show">
+                <ul class="clearfix">
+                    <shiro:hasPermission name="farm:temper:list">
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-org f-l">
+                                    <span class="iconfont">&#xe6a2;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">温度</p>
+                                    <p><span class="color-org">89</span>数据<span class="iconfont">&#xe628;</span></p>
+                                </div>
+                            </a>
+                        </li>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="farm:hum:list">
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-blue f-l">
+                                    <span class="iconfont">&#xe63b;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">湿度</p>
+                                    <p><span class="color-blue">189</span>数据<span class="iconfont">&#xe628;</span></p>
+                                </div>
+                            </a>
+                        </li>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="farm:sun:list">
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-green f-l">
+                                    <span class="iconfont">&#xe609;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">光照</p>
+                                    <p><span class="color-green">221</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                </div>
+                            </a>
+                        </li>
+                    </shiro:hasPermission>
+                </ul>
+            </div>
+            <!--图表-->
+            <div class="chart-panel panel panel-default">
+                <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger allSee">全屏图表</button>
+                <div class="panel-body" id="chart" style="height: 376px;">
+                </div>
+            </div>
+            <!--服务器信息-->
+            <!-- <div class="server-panel panel panel-default">
+                 <div class="panel-header">服务器信息</div>
+                 <div class="panel-body clearfix">
+                     <div class="col-md-2">
+                         <p class="title">服务器环境</p>
+                         <span class="info">Apache/2.4.4 (Win32) PHP/5.4.16</span>
+                     </div>
+                     <div class="col-md-2">
+                         <p class="title">服务器IP地址</p>
+                         <span class="info">127.0.0.1   </span>
+                     </div>
+                     <div class="col-md-2">
+                         <p class="title">服务器域名</p>
+                         <span class="info">localhost </span>
+                     </div>
+                     <div class="col-md-2">
+                         <p class="title"> PHP版本</p>
+                         <span class="info">5.4.16</span>
+                     </div>
+                     <div class="col-md-2">
+                         <p class="title">数据库信息</p>
+                         <span class="info">5.6.12-log </span>
+                     </div>
+                     <div class="col-md-2">
+                         <p class="title">服务器当前时间</p>
+                         <span class="info">2016-06-22 11:37:35</span>
+                     </div>
+                 </div>
+             </div>-->
+        </div>
+        <div class="welcome-edge col-lg-3">
+            <!--最新留言-->
+            <div class="panel panel-default comment-panel">
+                <div class="panel-header">最新消息</div>
+                <div class="panel-body">
+                    <div class="commentbox">
+                        <ul class="commentList" th:each="message:${messageList}">
+                            <li class="item cl"><a href="#"><i class="avatar size-L radius"><img alt=""
+                                                                                                 src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
+                                <div class="comment-main">
+                                    <header class="comment-header">
+                                        <div class="comment-meta"><a class="comment-author" style="font-style: inherit;font-weight: 700;" href="#"
+                                                                     th:text="${message.fromUser.nickName}"></a> 评论于
+                                            <time th:text="${#dates.format(message.createDate,'yyyy-MM-dd HH:mm:ss')}"></time>
+                                        </div>
+                                    </header>
+                                    <div class="comment-body">
+                                        <p>标题:<a href="#" th:text="${message.title}"></p>
+                                        <p>内容:<a href="#" th:text="${message.content}"></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="pagesbox" style="text-align: center;padding-top: 5px;">
+
+                    </div>
+                </div>
+            </div>
+            <!--联系-->
+            <div class="panel panel-default contact-panel">
+                <div class="panel-header">联系:<span th:text="${currentUser.nickName}">110</span></div>
+                <div class="panel-body">
+                    <p>tel：<span th:text="${currentUser.tel}">110</span></p>
+                    <p>E-mail<span th:text="${currentUser.email}">110</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/static/echarts/echarts.common.min.js}"></script>
+</body>
+</html>

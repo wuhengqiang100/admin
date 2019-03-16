@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>新增策略--系统策略管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <style type="text/css">
+        .layui-form-item .layui-inline {
+            min-width: 15%;
+            float: left;
+            margin-right: 0;
+        }
+
+        .layui-form-item .role-box {
+            position: relative;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #d2d2d2;
+        }
+
+        .layui-card {
+            margin-top: 10px;
+        }
+        .nameTitle{
+            font-size: large;
+            font-style: inherit;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-container">
+    <form class="layui-form">
+        <div class="layui-row">
+            <div class="layui-row layui-col-space12">
+                <div class="layui-col-md5 layui-col-md-offset1">
+                    <div class="layui-card">
+                        <div class="layui-card-header nameTitle">策略权限</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">分配权限:</label>
+                                    <div class="layui-input-block">
+                                        <div class="layui-collapse" lay-accordion >
+                                            <div class="layui-colla-item" th:each="menu : ${menuList}">
+                                                <h2 class="layui-colla-title"> <input type="checkbox" th:title="${menu.name}" th:value="${menu.id}"
+                                                                                      lay-filter="roleMenu" th:data-parentIds="${menu.parentIds}"/>
+                                                </h2>
+                                                <div class="layui-colla-content"
+                                                     th:include="/admin/role/menu::addMenuLi(${menu.children})"></div>
+                                            </div>
+                                        </div>
+                                        <!--<div class="layui-inline" th:each="menu : ${menuList}">
+                                            <fieldset class="layui-elem-field">
+                                                <legend style="font-size: small">
+                                                    <input type="checkbox" th:title="${menu.name}" th:value="${menu.id}"
+                                                           lay-filter="roleMenu" th:data-parentIds="${menu.parentIds}"/>
+                                                </legend>
+                                                <div class="layui-field-box" style="font-size: small"  th:include="/admin/role/menu::addMenuLi(${menu.children})">
+                                                </div>
+                                            </fieldset>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md5 layui-col-md-offset0.1">
+                    <div class="layui-card">
+                        <div class="layui-card-header nameTitle">策略属性</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">策略名称:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">策略身份:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" name="identity" style="margin-top: 30px;" placeholder="请输入身份">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">请求地点:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" name="requestPlace" style="margin-top: 30px;" placeholder="请输入请求地点">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">电话号码:</label>
+                                    <div class="layui-input-block">
+                                        <input type="tel" class="layui-input" name="tel"  style="margin-top: 30px;"
+                                               placeholder="请输入电话号码">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮件地址:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" name="email"  style="margin-top: 30px;"
+                                               placeholder="请想一个策略名称">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">年纪要求:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" name="age"  style="margin-top: 30px;"
+                                               placeholder="请输入年龄">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">备注说明:</label>
+                                    <div class="layui-input-block" style="margin-top: 30px;">
+                                        <textarea placeholder="一些可有可无的备注罢了.." name="remarks" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <shiro:hasPermission name="sys:role:add">
+                    <div class="layui-form-item" style="padding-left: 30%;">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="addRole">立即提交</button>
+                        </div>
+                    </div>
+                </shiro:hasPermission>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/role/roleAdd.js}"></script>
+</body>
+</html>
