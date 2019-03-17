@@ -20,7 +20,6 @@ import com.xiaoshu.common.util.ResponseEntity;
 import com.xiaoshu.common.util.RoleUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,7 +29,6 @@ import org.springframework.web.util.WebUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -292,6 +290,13 @@ public class UserController {
                 }
             }
         }*/
+        User currentUser=userService.findUserById(MySysUser.id());
+        user.setIdentity(currentUser.getIdentity());
+        user.setCredit(currentUser.getCredit());
+        user.setAge(currentUser.getAge());
+        user.setEmail(currentUser.getEmail());
+        user.setRequestPlace(currentUser.getRequestPlace());
+        user.setTel(currentUser.getTel());
         userService.updateById(user);
         return ResponseEntity.success("操作成功");
     }

@@ -181,6 +181,12 @@ layui.config({
     $('.login').mouseleave(function(){
         $(".login").fadeOut();
     });
+    $(' .leftItem').mouseover(function(){
+        $(".login").hide();
+    });
+    $(' .rightItem').mouseover(function(){
+        $(".login").hide();
+    });
 
 
 
