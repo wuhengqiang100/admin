@@ -1,66 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/3/18">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/css/farmdataList.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmAdd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmEdit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/FarmController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/FarmController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/FarmDataController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/FarmDataController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/LonginController$LoginTypeEnum.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/LonginController$LoginTypeEnum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/LonginController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/LonginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/MenuController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/MenuController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/MessageController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/MessageController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/RoleController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/RoleController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Farm.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Farm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Menu.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Message.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Message.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Rescource.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Rescource.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Role.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/Role.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/User.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/UserRegist.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/entity/UserRegist.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/FarmMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/FarmMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/MenuMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/MenuMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/MessageMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/MessageMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/RoleMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/RoleMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/FarmService.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/FarmService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/MenuService.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/MenuService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/MessageService.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/MessageService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/RoleService.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/RoleService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/FarmServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/FarmServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/MenuServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/MenuServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/MessageServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/MessageServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/RoleServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/RoleServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/UploadServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/UploadServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/aspect/LogAspect.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/aspect/LogAspect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/base/BaseEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/base/BaseEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/base/DataEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/base/DataEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/base/TreeEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/base/TreeEntity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/config/ShiroConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/config/ShiroConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/realm/AuthRealm$ShiroUser.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/realm/AuthRealm$ShiroUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/realm/AuthRealm.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/realm/AuthRealm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/Encodes.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/Encodes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/FileUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/FileUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/MessageUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/MessageUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/RoleUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/RoleUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/xiaoshu/admin/AdminApplicationTests.class" afterPath="$PROJECT_DIR$/target/test-classes/com/xiaoshu/admin/AdminApplicationTests.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmDataController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmDataController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/entity/Farm.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/entity/Farm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/FarmMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/FarmMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/FarmService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/FarmService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/FarmServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/FarmServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin/FarmMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin/FarmMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/admin/FarmMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/admin/FarmMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/list.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/list.html" />
-    </list>
+    <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/3/18" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -642,12 +583,12 @@
       <updated>1552811628944</updated>
       <workItem from="1552811635700" duration="5847000" />
       <workItem from="1552821800676" duration="4692000" />
-      <workItem from="1552884372301" duration="11206000" />
+      <workItem from="1552884372301" duration="11290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21745000" />
+    <option name="totallyTimeSpent" value="21829000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -676,13 +617,13 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.333713" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Run Dashboard" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.333713" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46355352" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28701594" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26152197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24115756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
