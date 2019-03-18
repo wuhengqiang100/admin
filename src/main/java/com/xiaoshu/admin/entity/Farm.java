@@ -147,4 +147,8 @@ public class Farm extends DataEntity<Farm>{
     public void setUser(User user) {
         this.user = user;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 }

@@ -4,7 +4,7 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.xiaoshu.admin.entity.Farm">
-    <id column="id" property="id" />
+    <!--<id column="id" property="id" />-->
     <result column="name" property="name" />
     <result column="location" property="location" />
     <result column="size" property="size" />
@@ -30,7 +30,7 @@
 
 
   <resultMap type="com.xiaoshu.admin.entity.Farm" id="FarmMap">
-    <id column="id" property="id" />
+    <!--<id column="id" property="id" />-->
     <result column="name" property="name" />
     <result column="location" property="location" />
     <result column="size" property="size" />
@@ -48,6 +48,29 @@
     </collection>
   </resultMap>
 
+  <select id="getFarmByUserId" resultMap="FarmMap" parameterType="java.lang.String">
+    SELECT
+    tf.id,
+    tf.name,
+    tf.location,
+    tf.size,
+    tf.create_date,
+    tf.create_by,
+    tf.update_date,
+    tf.update_by,
+    tf.remarks,
+    tf.del_flag,
+    su.id,
+    su.nick_name
+    from
+    t_farm tf
+    left join sys_user  su 	on 	    su.id = tf.userId
+    where
+    su.del_flag = FALSE
+    <if test="userId != '' and userId != null">
+      and tf.userId = #{userId}
+    </if>
+  </select>
   <select id="selectFarmById" resultMap="FarmMap"  parameterType="java.lang.String">
     SELECT
     tf.id,
@@ -67,7 +90,7 @@
     left join sys_user  su 	on 	    su.id = tf.userId
     where
     su.del_flag = FALSE
-    <if test="id != null and id != ''">
+    <if test="id != '' and id != null">
       and tf.id = #{id}
     </if>
   </select>

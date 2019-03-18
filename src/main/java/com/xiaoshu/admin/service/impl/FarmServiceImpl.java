@@ -62,4 +62,9 @@ public class FarmServiceImpl extends ServiceImpl<FarmMapper,Farm> implements Far
 //        wrapper.eq("del_flag",false);
         return baseMapper.selectList(wrapper);
     }
+
+    @Override
+    public List<Farm> getFarmByUserId(String userId) {
+        return baseMapper.getFarmByUserId(userId);
+    }
 }

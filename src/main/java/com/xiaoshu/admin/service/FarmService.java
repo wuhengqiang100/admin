@@ -22,4 +22,6 @@ public interface FarmService extends IService<Farm> {
     void deleteFarm(Farm farm);
 
     List<Farm> selectAll();
+
+    List<Farm> getFarmByUserId(String userId);
 }
