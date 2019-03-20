@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaoshu.admin.entity.Farm;
 
 import com.xiaoshu.admin.service.FarmService;
+import com.xiaoshu.admin.service.UserService;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.base.PageData;
 import com.xiaoshu.common.config.MySysUser;
@@ -32,6 +33,9 @@ public class FarmController {
     @Autowired
     FarmService farmService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping(value = "list")
     public String list(){
         return "admin/farm/list";
@@ -49,7 +53,14 @@ public class FarmController {
         QueryWrapper<Farm> farmWrapper = new QueryWrapper<>();
         //加条件
         farmWrapper.eq("del_flag",false);
-        farmWrapper.eq("userId",MySysUser.id());
+        String userId=MySysUser.id();
+        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        if (StringUtils.isNotBlank(farmOwnId)){
+            farmWrapper.eq("userId",farmOwnId);
+        }else{
+            farmWrapper.eq("userId",MySysUser.id());
+        }
+//        farmWrapper.eq("userId",MySysUser.id());
         if(!map.isEmpty()){
             String keys = (String) map.get("key");
             if(StringUtils.isNotBlank(keys)) {

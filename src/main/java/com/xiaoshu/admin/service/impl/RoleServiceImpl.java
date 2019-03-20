@@ -68,4 +68,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper,Role> implements Rol
     public List<Role> selectUserInRole(String id) {
         return baseMapper.selectUserInRole(id);
     }
+
+    @Override
+    public Role findRoleProByRoleId(String roleId) {
+        return baseMapper.findRoleProByRoleId(roleId);
+    }
 }

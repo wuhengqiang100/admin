@@ -20,6 +20,12 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         maximum-pool-size: 30
 
+    #声明thymeleaf使用非严格的html。
+    thymeleaf:
+      mode: LEGACYHTML5
+      cache: false
+      servlet:
+        content-type: text/html
 
 #mybatisPlu
 mybatis-plus:

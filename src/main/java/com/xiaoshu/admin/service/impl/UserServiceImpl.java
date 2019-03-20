@@ -21,6 +21,10 @@ import java.util.Set;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
 
+    @Override
+    public String findFarmOwnManagerIdById(String id) {
+        return baseMapper.findFarmOwnManagerIdById(id);
+    }
 
     @Override
     public User findUserByLoginName(String name) {

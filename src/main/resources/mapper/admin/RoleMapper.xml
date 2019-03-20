@@ -24,6 +24,8 @@
       id, name, create_date, create_by, update_date, update_by, remarks, del_flag,identity,request_place,age,tel,email
    </sql>
 
+
+
   <insert id="saveRoleMenus">
     insert into sys_role_menu(role_id,menu_id)
     values
@@ -78,7 +80,18 @@
     </collection>
   </resultMap>
 
+  <resultMap id="ResultMapPro" type="com.xiaoshu.admin.entity.Role">
+    <id column="id" property="id" />
+    <result column="identity" property="identity"/>
+    <result column="request_place" property="requestPlace"/>
+    <result column="age" property="age"/>
+    <result column="tel" property="tel"/>
+    <result column="email" property="email"/>
+  </resultMap>
 
+  <select id="findRoleProByRoleId" resultMap="ResultMapPro" parameterType="java.lang.String">
+    SELECT id,identity,request_place,age,tel,email  FROM sys_role WHERE id=#{roleId};
+  </select>
   <select id="selectUserInRole" resultMap="RoleMap01"  parameterType="java.lang.String">
     SELECT
     r.id,

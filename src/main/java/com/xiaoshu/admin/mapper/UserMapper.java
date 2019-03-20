@@ -24,4 +24,11 @@ public interface UserMapper extends BaseMapper<User> {
     void insertUserRegist(UserRegist user);
 
     List<User> findAllUser();
+
+    /**
+     * 通过当前id查询管理的农田主id
+     * @param id
+     * @return
+     */
+    String findFarmOwnManagerIdById(String id);
 }

@@ -21,4 +21,11 @@ public interface RoleMapper extends BaseMapper<Role> {
     void dropRoleUsers(@Param("roleId") String roleId);
 
     List<Role> selectUserInRole(@Param("roleId") String roleId);
+
+    /**
+     * 根据角色id查需要的属性值
+     * @param roleId
+     * @return
+     */
+    Role findRoleProByRoleId(@Param("roleId") String roleId);
 }

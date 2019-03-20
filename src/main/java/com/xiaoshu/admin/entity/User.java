@@ -58,6 +58,11 @@ public class User extends DataEntity<User> {
     @TableField("credit")
     private Float credit;
     /**
+     * 农田主和农田温度\湿度\光照管理员的关系id
+     */
+    @TableField("own_manager_id")
+    private String ownManagerId;
+    /**
      * 账户是否锁定
      */
     private Boolean locked;
@@ -67,6 +72,14 @@ public class User extends DataEntity<User> {
      */
     @TableField(value = "is_admin")
     private Boolean adminUser;
+
+    public String getOwnManagerId() {
+        return ownManagerId;
+    }
+
+    public void setOwnManagerId(String ownManagerId) {
+        this.ownManagerId = ownManagerId;
+    }
 
     @TableField(strategy= FieldStrategy.IGNORED)
     private String icon;

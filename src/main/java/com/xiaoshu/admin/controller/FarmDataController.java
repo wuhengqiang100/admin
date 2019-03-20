@@ -8,6 +8,7 @@ import com.xiaoshu.admin.service.MessageService;
 import com.xiaoshu.admin.service.UserService;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.config.MySysUser;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,7 +48,15 @@ public class FarmDataController {
     @GetMapping(value = "list")
     public String list(ModelMap modelMap){
         String userId=MySysUser.id();
-        List<Farm> farmList=farmService.getFarmByUserId(userId);
+        List<Farm> farmList=new ArrayList<>();
+        //判断是不是农田主
+        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        if (StringUtils.isBlank(farmOwnId)){//是数据管理员
+            farmList=farmService.getFarmByUserId(userId);
+        }else{//是农田主
+            farmList=farmService.getFarmByUserId(farmOwnId);
+        }
+
         modelMap.put("farmList",farmList);
         return "admin/farmdata/list";
     }
@@ -77,7 +87,14 @@ public class FarmDataController {
     @GetMapping(value = "temper")
     public String temper(ModelMap modelMap){
         String userId=MySysUser.id();
-        List<Farm> farmList=farmService.getFarmByUserId(userId);
+        List<Farm> farmList=new ArrayList<>();
+        //判断是不是农田主
+        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        if (StringUtils.isBlank(farmOwnId)){//是数据管理员
+            farmList=farmService.getFarmByUserId(userId);
+        }else{//是农田主
+            farmList=farmService.getFarmByUserId(farmOwnId);
+        }
         modelMap.put("farmList",farmList);
         return "admin/farmdata/temper";
     }
@@ -106,7 +123,14 @@ public class FarmDataController {
     @GetMapping(value = "hum")
     public String hum(ModelMap modelMap){
         String userId=MySysUser.id();
-        List<Farm> farmList=farmService.getFarmByUserId(userId);
+        List<Farm> farmList=new ArrayList<>();
+        //判断是不是农田主
+        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        if (StringUtils.isBlank(farmOwnId)){//是数据管理员
+            farmList=farmService.getFarmByUserId(userId);
+        }else{//是农田主
+            farmList=farmService.getFarmByUserId(farmOwnId);
+        }
         modelMap.put("farmList",farmList);
         return "admin/farmdata/hum";
     }
@@ -136,7 +160,14 @@ public class FarmDataController {
     @GetMapping(value = "sun")
     public String sun(ModelMap modelMap){
         String userId=MySysUser.id();
-        List<Farm> farmList=farmService.getFarmByUserId(userId);
+        List<Farm> farmList=new ArrayList<>();
+        //判断是不是农田主
+        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        if (StringUtils.isBlank(farmOwnId)){//是数据管理员
+            farmList=farmService.getFarmByUserId(userId);
+        }else{//是农田主
+            farmList=farmService.getFarmByUserId(farmOwnId);
+        }
         modelMap.put("farmList",farmList);
         return "admin/farmdata/sun";
     }

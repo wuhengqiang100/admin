@@ -207,7 +207,7 @@ public class LonginController {
         if (StringUtils.isBlank(id)) {
             return ResponseEntity.failure("角色ID不能为空");
         }
-        Role role = roleService.getRoleById(id);
+        Role role = roleService.findRoleProByRoleId(id);
         if (null == role) {
             responseEntity.setSuccess(false);
             responseEntity.setMessage("没有这个请求!");
@@ -216,7 +216,7 @@ public class LonginController {
         responseEntity.setSuccess(true);
         responseEntity.setMessage("请求成功!");
         responseEntity.setAny("role", role);
-        modelMap.put("role", role);
+        modelMap.put("role", RoleUtil.checkPropertiesMd(role));
         return responseEntity;
     }
 

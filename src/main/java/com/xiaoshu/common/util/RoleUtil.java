@@ -65,5 +65,23 @@ public class RoleUtil{
         return isTrue;
     }
 
+    /**
+     * 简单加密属性值
+     */
+    public static Role checkPropertiesMd(Role role){
+        if (StringUtils.isNotEmpty(role.getIdentity())){
+            role.setIdentity("true");
+        }if (StringUtils.isNotEmpty(role.getRequestPlace())){
+            role.setRequestPlace("true");
+        }if (StringUtils.isNotEmpty(role.getTel())){
+            role.setTel("true");
+        }if (StringUtils.isNotEmpty(role.getEmail())){
+            role.setEmail("true");
+        }if (StringUtils.isNotEmpty(role.getAge())){
+            role.setAge("true");
+        }
+        return role;
+    }
+
 
 }

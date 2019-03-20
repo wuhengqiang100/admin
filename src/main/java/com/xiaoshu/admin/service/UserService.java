@@ -9,6 +9,13 @@ import java.util.Set;
 
 public interface UserService extends IService<User> {
 
+    /**
+     * 通过当前id查询管理的农田主id
+     * @param id
+     * @return
+     */
+    String findFarmOwnManagerIdById(String id);
+
     User findUserByLoginName(String name);
 
     User findUserById(String id);

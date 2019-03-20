@@ -129,6 +129,9 @@
                     <div class="formholder">
                         <div class="randompad">
                                 <ul class="layui-timeline" th:each="message,status:${messageListTop}">
+                                    <li class="layui-timeline-item" th:if="${messageListCount}==0">
+                                        <p><span>当前没有未读消息</span></p>
+                                    </li>
                                     <li class="layui-timeline-item" th:unless="${status.count}<3">
                                         <i class="layui-icon layui-timeline-axis"></i>
                                         <div class="layui-timeline-content layui-text">
@@ -180,9 +183,9 @@
     <div  class=" layui-input-inline showLogout" style="display: none">
         <div>
             <div style="text-align: center;align-self: center">
-            <p th:if="${currentUser.credit} ge '10'">当前信誉值为：<span th:text="${currentUser.credit}"></span><hr>没有任何违规操作</p>
-            <p th:if="${currentUser.credit} lt '10'"> 当前信誉值为：<span th:text="${currentUser.credit}"></span>请注意您的操作，已经有违规行为</p>
-            <p th:if="${currentUser.credit} lt  '5'"> 当前信誉值为：<span th:text="${currentUser.credit}"></span>信誉值太低，请联系管理员，否则下次不能访问</p>
+            <p th:if="${currentUser.credit} ge '1'">当前信誉值为：<span th:text="${currentUser.credit}"></span><hr>没有任何违规操作</p>
+            <p th:if="${currentUser.credit} lt '1'"> 当前信誉值为：<span th:text="${currentUser.credit}"></span>请注意您的操作，已经有违规行为</p>
+            <p th:if="${currentUser.credit} lt  '0.3'"> 当前信誉值为：<span th:text="${currentUser.credit}"></span>信誉值太低，请联系管理员，否则下次不能访问</p>
             </div>
         </div>
 
