@@ -80,10 +80,10 @@
                     <a href="javascript:" data-url="" class="leftItem"><i class="layui-icon layui-icon-speaker"></i><cite>信誉值</cite><span
                             class="layui-badge" style="font-size: xx-small;" th:text="${currentUser.credit}">10</span></a>
                 </li>
-                <li class="layui-nav-item" pc style="display: none">
+                <!--<li class="layui-nav-item" pc style="display: none">
                     <a href="javascript:" data-url="/admin/system/user/list" class="returnEditUser"><i class="layui-icon layui-icon-speaker"></i><cite>我的消息</cite><span
                             class="layui-badge" style="font-size: xx-small;"></span></a>
-                </li>
+                </li>-->
                 <li class="layui-nav-item" pc style="display: none">
                     <a href="javascript:" data-url="/admin/user/message/list" class="returnMes"><i class="layui-icon layui-icon-speaker"></i><cite>我的消息</cite><span
                             class="layui-badge" style="font-size: xx-small;" th:text="${currentUser.credit}"></span></a>
@@ -96,7 +96,7 @@
                             style="display:none;">我的消息</cite><span
                             class="layui-badge" style="font-size: xx-small;" th:text="${messageListCount}">0</span></a>
                 </li>
-                <li class="layui-nav-item rightItem" pc>
+                <li class="layui-nav-item rightItem" style="width: 160px"  pc>
 
                     <a href="javascript:">
 
@@ -132,22 +132,36 @@
                     <div class="arrow-up"></div>
                     <div class="formholder">
                         <div class="randompad">
-                                <ul class="layui-timeline" th:each="message,status:${messageListTop}">
-                                    <li class="layui-timeline-item" th:if="${messageListCount}==0">
-                                        <p><span>当前没有未读消息</span></p>
-                                    </li>
-                                    <li class="layui-timeline-item" th:unless="${status.count}<3">
-                                        <i class="layui-icon layui-timeline-axis"></i>
-                                        <div class="layui-timeline-content layui-text">
-                                            <h3 class="layui-timeline-title"  th:text="${#dates.format(message.createDate,'yyyy-MM-dd HH:mm:ss')}"></h3>
+                            <ul class="layui-timeline" style="text-align: center"  th:if="${messageListCount eq 0}  ">
+                                <li class="layui-timeline-item">
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </li>
+                                <li class="layui-timeline-item">
+                                    <p><span style="font-size: large;color: #bd2c00;align-items: center;">当前没有未读消息</span></p>
+                                </li>
+                            </ul>
 
-                                            <p>发件人:<span th:text="${message.fromUser.nickName}"></span></p>
-                                            <p>标题:<span th:text="${message.title}"></span></p>
-                                            <p>内容:<span th:text="${message.content}"></span></p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <input type="submit" value="我的消息" />
+                            <ul class="layui-timeline"  th:each="message,status:${messageListTop}">
+                                <!--<li class="layui-timeline-item" th:if="${messageListCount eq 0}  ">
+                                    <p><span>当前没有未读消息</span></p>
+                                </li>-->
+                             <!--   <li class="layui-timeline-item" th:unless="${status.count lt 1}" th:if="${messageListCount lt 1}">
+                                    <p><span>当前没有未读消息</span></p>
+                                </li>-->
+                                <li class="layui-timeline-item" th:unless="${status.count gt 2}">
+                                    <i class="layui-icon layui-timeline-axis"></i>
+                                    <div class="layui-timeline-content layui-text">
+                                        <h3 class="layui-timeline-title"  th:text="${#dates.format(message.createDate,'yyyy-MM-dd HH:mm:ss')}"></h3>
+
+                                        <p>发件人:<span th:text="${message.fromUser.nickName}"></span></p>
+                                        <p>标题:<span th:text="${message.title}"></span></p>
+                                        <p>内容:<span th:text="${message.content}"></span></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <input type="submit" value="我的消息" />
                         </div>
                     </div>
 

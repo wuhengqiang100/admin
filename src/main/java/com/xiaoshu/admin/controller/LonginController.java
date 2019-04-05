@@ -231,7 +231,7 @@ public class LonginController {
         if (null==roleId){
             return ResponseEntity.failure("请选择您的请求!");
         }
-        if (RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
+        if (!RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
             return ResponseEntity.failure("您输入的请求或属性不正确!");
         }
 

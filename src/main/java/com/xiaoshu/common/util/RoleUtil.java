@@ -39,54 +39,87 @@ public class RoleUtil{
      * @return
      */
     public static Boolean contrastRoleAndProperties(Role role,User user){
-        Boolean isTrue=true;
+        Boolean finalResult=true;//最终返回结果
+        Boolean identityTrue=true;
+        Boolean rePlaceTrue=true;
+        Boolean telTrue=true;
+        Boolean emailTrue=true;
+        Boolean ageTrue=true;
         if (StringUtils.isNotBlank(role.getIdentity())){
-            if(StringUtils.equals(role.getIdentity(),user.getIdentity())){
-                isTrue=false;
-            }else{
-                return isTrue=true;
+            String [] roleArry01=role.getIdentity().split(",");
+            for (int i=0;i<roleArry01.length;i++){
+                if (StringUtils.equals(roleArry01[i],user.getIdentity())){
+                    identityTrue=true;
+                    break;
+                }else{
+                    identityTrue=false;
+                }
+            }
+            if (!identityTrue){
+                return finalResult=false;
             }
         }
         if (StringUtils.isNotBlank(role.getRequestPlace())){
-            if(StringUtils.equals(role.getRequestPlace(),user.getRequestPlace())){
-                isTrue=false;
-            }else{
-                return isTrue=true;
+            String [] roleArry02=role.getRequestPlace().split(",");
+            for (int i=0;i<roleArry02.length;i++){
+                if (StringUtils.equals(roleArry02[i],user.getRequestPlace())){
+                    rePlaceTrue=true;
+                    break;
+                }else{
+                    rePlaceTrue=false;
+                }
+            }
+            if (!rePlaceTrue){
+                return finalResult=false;
             }
         } if (StringUtils.isNotBlank(role.getTel())){
-            if(StringUtils.equals(role.getTel(),user.getTel())){
-                isTrue=false;
-            }else{
-                return isTrue=true;
+            String [] roleArry03=role.getTel().split(",");
+            for (int i=0;i<roleArry03.length;i++){
+                if (StringUtils.equals(roleArry03[i],user.getTel())){
+                    telTrue=true;
+                    break;
+                }else{
+                    telTrue=false;
+                }
             }
-        } if (StringUtils.isNotBlank(role.getEmail())){
-            if(StringUtils.equals(role.getEmail(),user.getEmail())){
-                isTrue=false;
-            }else{
-                return isTrue=true;
+            if (!telTrue){
+                return finalResult=false;
+            }
+        }
+        if (StringUtils.isNotBlank(role.getEmail())){
+            String [] roleArry04=role.getEmail().split(",");
+            for (int i=0;i<roleArry04.length;i++){
+                if (StringUtils.equals(roleArry04[i],user.getEmail())){
+                    emailTrue=true;
+                    break;
+                }else{
+                    emailTrue=false;
+                }
+            }
+            if (!emailTrue){
+                return finalResult=false;
             }
         } if (StringUtils.isNotBlank(role.getAge())){
-            String roleAge=role.getAge();
-            /*String []ageAttr=roleAge.split(",");
-            for (String str:ageAttr){
-                if (StringUtils.equals(str,user.getAge())){
-                    isTrue=true;
-                    continue;
+            String [] roleArry05=role.getAge().split(",");
+            for (int i=0;i<roleArry05.length;i++){
+                if (StringUtils.equals(roleArry05[i],user.getAge())){
+                    ageTrue=true;
+                    break;
+                }else{
+                    ageTrue=false;
                 }
-                else{
-                    isTrue=false;
-                }
-            }*/
-            if (roleAge.indexOf(user.getAge())!=-1){//包涵该字符串
-                isTrue=false;
-            }else{//不包涵该字符串
-                return isTrue=true;
             }
-//            if(!StringUtils.equals(role.getAge(),user.getAge())){
-//                isTrue=false;
-//            }
+            if (!ageTrue){
+                return finalResult=false;
+            }
         }
-        return isTrue;
+        if (identityTrue && rePlaceTrue && telTrue && emailTrue && ageTrue){
+            finalResult=true;
+
+        }else{
+            finalResult=false;
+        }
+        return finalResult;
     }
 
     /**
