@@ -41,26 +41,50 @@ public class RoleUtil{
     public static Boolean contrastRoleAndProperties(Role role,User user){
         Boolean isTrue=true;
         if (StringUtils.isNotBlank(role.getIdentity())){
-            if(!StringUtils.equals(role.getIdentity(),user.getIdentity())){
+            if(StringUtils.equals(role.getIdentity(),user.getIdentity())){
                 isTrue=false;
+            }else{
+                return isTrue=true;
             }
         }
         if (StringUtils.isNotBlank(role.getRequestPlace())){
-            if(!StringUtils.equals(role.getRequestPlace(),user.getRequestPlace())){
+            if(StringUtils.equals(role.getRequestPlace(),user.getRequestPlace())){
                 isTrue=false;
+            }else{
+                return isTrue=true;
             }
         } if (StringUtils.isNotBlank(role.getTel())){
-            if(!StringUtils.equals(role.getTel(),user.getTel())){
+            if(StringUtils.equals(role.getTel(),user.getTel())){
                 isTrue=false;
+            }else{
+                return isTrue=true;
             }
         } if (StringUtils.isNotBlank(role.getEmail())){
-            if(!StringUtils.equals(role.getEmail(),user.getEmail())){
+            if(StringUtils.equals(role.getEmail(),user.getEmail())){
                 isTrue=false;
+            }else{
+                return isTrue=true;
             }
         } if (StringUtils.isNotBlank(role.getAge())){
-            if(!StringUtils.equals(role.getAge(),user.getAge())){
+            String roleAge=role.getAge();
+            /*String []ageAttr=roleAge.split(",");
+            for (String str:ageAttr){
+                if (StringUtils.equals(str,user.getAge())){
+                    isTrue=true;
+                    continue;
+                }
+                else{
+                    isTrue=false;
+                }
+            }*/
+            if (roleAge.indexOf(user.getAge())!=-1){//包涵该字符串
                 isTrue=false;
+            }else{//不包涵该字符串
+                return isTrue=true;
             }
+//            if(!StringUtils.equals(role.getAge(),user.getAge())){
+//                isTrue=false;
+//            }
         }
         return isTrue;
     }
@@ -82,6 +106,5 @@ public class RoleUtil{
         }
         return role;
     }
-
 
 }

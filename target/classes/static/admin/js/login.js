@@ -43,7 +43,11 @@ layui.use(['form', 'layer'], function () {
     });
 
     $(document).ready(function () {
-        getRequestAll();
+        var loadIndex = layer.load(2, {shade: [0.3, '#333']});
+        $.post("/admin/requestAll", {}, function (res) {
+            layer.close(loadIndex);
+        }, 'json');
+        // getRequestAll();
     });
     $(document).on('keydown', function () {
         if (event.keyCode == 13) {
@@ -80,15 +84,15 @@ layui.use(['form', 'layer'], function () {
                     }
                     //年纪输入框
                     if (res.role.age != null &&res.role.age!="") {
-                        $("#insertForm").append("<div class=\"layui-form-item\"><input class=\"layui-input\" name=\"age\" placeholder=\"年纪\" lay-verify=\"required\" type=\"text\" autocomplete=\"off\"></div>");
+                        $("#insertForm").append("<div class=\"layui-form-item\"><input class=\"layui-input\" name=\"age\" placeholder=\"年纪\" lay-verify=\"required\" type=\"password\" autocomplete=\"off\"></div>");
                     }
                     //电话输入框
                     if (null!=res.role.tel && ''!=res.role.tel) {
-                        $("#insertForm").append("<div class=\"layui-form-item\"><input class=\"layui-input\" name=\"tel\" placeholder=\"电话号码\" lay-verify=\"required\" type=\"text\" autocomplete=\"off\"></div>");
+                        $("#insertForm").append("<div class=\"layui-form-item\"><input class=\"layui-input\" name=\"tel\" placeholder=\"电话号码\" lay-verify=\"required\" type=\"password\" autocomplete=\"off\"></div>");
                     }
                     //电话输入框
                     if (res.role.email != null && res.role.email!="") {
-                        $("#insertForm").append("<div class=\"layui-form-item\"><input class=\"layui-input\" name=\"email\" placeholder=\"邮件地址\" lay-verify=\"required\" type=\"text\" autocomplete=\"off\"></div>");
+                        $("#insertForm").append("<div class=\"layui-form-item\"><input class=\"layui-input\" name=\"email\" placeholder=\"邮件地址\" lay-verify=\"required\" type=\"password\" autocomplete=\"off\"></div>");
                     }
                     //layer.close(loadIndex);
 

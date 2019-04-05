@@ -63,14 +63,19 @@ layui.use(['form','jquery','element','layer'],function(){
             success:function(res){
                 layer.close(loadIndex);
                 if(res.success){
-                    parent.layer.confirm(res.message, {
+                    var indexConfirm=parent.layer.confirm(res.message, {
                             skin: 'layui-layer-molv'
                             ,closeBtn: 1,
-                            icon: 3, title: '提示',btn:['好的']},
+                            icon: 3, title: '提示',btn:['前去更改','好的']},
                         function(){
-                            parent.location.reload();
+                            window.parent.location.href="/admin/system/user/list";
+                            // $(".returnEditUser").click();
+                            // parent.layer.closeAll(); //疯狂模式，关闭所有层
+                            parent.layer.close(indexConfirm);
                         },function(){
-
+                            parent.location.reload();
+                        },function () {
+                            // window.location.href="/admin/system/user/list";
                         });
                  /*   parent.layer.msg(res.message,{time:1000},function(){
                         //刷新父页面

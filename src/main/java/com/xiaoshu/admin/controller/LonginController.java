@@ -231,7 +231,7 @@ public class LonginController {
         if (null==roleId){
             return ResponseEntity.failure("请选择您的请求!");
         }
-        if (!RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
+        if (RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
             return ResponseEntity.failure("您输入的请求或属性不正确!");
         }
 
@@ -262,7 +262,7 @@ public class LonginController {
                 return ResponseEntity.failure("您输入的请求或属性不正确!");
             }*/
             if (null==secutityUser){
-                return ResponseEntity.failure("属性值不正确!");
+                return ResponseEntity.failure("属性值不正确,没有该用户!");
             }
             if (secutityUser.getCredit()<0.3){
                 return ResponseEntity.failure("信誉值不足，不能访问!");
