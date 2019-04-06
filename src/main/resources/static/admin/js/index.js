@@ -144,7 +144,7 @@ layui.config({
             skin: 'layui-layer-molv' //样式类名
             ,type:1
             ,closeBtn: 1
-            ,area: ['250px', '200px']
+            ,area: ['350px', '250px']
             , btn: ['退出系统','我再想想']
         }, function(){
             window.sessionStorage.removeItem("menu");
