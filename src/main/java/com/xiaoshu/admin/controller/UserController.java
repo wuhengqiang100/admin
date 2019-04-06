@@ -191,7 +191,7 @@ public class UserController {
         for (Role roleS:roleSetFrom){
             Role role=roleService.getRoleById(roleS.getId());
             allContrast=RoleUtil.contrastRoleAndProperties(role,user);
-            if (allContrast){
+            if (!allContrast){
                 return ResponseEntity.failure("该用户属性不满足"+role.getName()+"令牌的属性值,请确认后再分配令牌!");
             }
         }
