@@ -114,11 +114,7 @@ public class UserController {
                 return ResponseEntity.failure("该手机号已被绑定");
             }
         }
-        user.setPassword(Constants.DEFAULT_PASSWORD);
-        userService.saveUser(user);
-        if(StringUtils.isBlank(user.getId())){
-            return ResponseEntity.failure("保存用户信息出错");
-        }
+
 //        Set<Role> roleSet=user.getRoleLists();
         Boolean allContrast=true;
         Set<Role> roleSetFrom=user.getRoleLists();
@@ -128,6 +124,11 @@ public class UserController {
             if (!allContrast){
                 return ResponseEntity.failure("该用户属性不满足"+role.getName()+"令牌的属性值,请确认后再分配令牌!");
             }
+        }
+        user.setPassword(Constants.DEFAULT_PASSWORD);
+        userService.saveUser(user);
+        if(StringUtils.isBlank(user.getId())){
+            return ResponseEntity.failure("保存用户信息出错");
         }
         //保存用户角色关系
         userService.saveUserRoles(user.getId(),user.getRoleLists());

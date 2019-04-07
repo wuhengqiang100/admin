@@ -107,6 +107,12 @@ public class RoleController {
         if(roleService.getRoleNameCount(role.getName())>0){
             return ResponseEntity.failure("令牌名称已存在");
         }
+        if (!RoleUtil.threeRoleProperties(role)) {
+            return ResponseEntity.failure("令牌属性最少为3个!");
+        }
+        if (!RoleUtil.existEmailOrTell(role)) {
+            return ResponseEntity.failure("令牌属性中至少含有tell或者email!");
+        }
         roleService.saveRole(role);
         return ResponseEntity.success("操作成功");
     }
@@ -141,8 +147,12 @@ public class RoleController {
             return ResponseEntity.failure("令牌名称不能为空");
         }
         if (!RoleUtil.threeRoleProperties(role)) {
-            return ResponseEntity.failure("令牌属性最少为2个!");
+            return ResponseEntity.failure("令牌属性最少为3个!");
         }
+        if (!RoleUtil.existEmailOrTell(role)) {
+            return ResponseEntity.failure("令牌属性中至少含有tell或者email!");
+        }
+
         Role oldRole = roleService.getRoleById(role.getId());
         if (!oldRole.getName().equals(role.getName())) {
             if (roleService.getRoleNameCount(role.getName()) > 0) {

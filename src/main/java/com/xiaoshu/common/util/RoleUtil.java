@@ -4,6 +4,9 @@ import com.xiaoshu.admin.entity.Role;
 import com.xiaoshu.admin.entity.User;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * 令牌工具类
+ */
 public class RoleUtil{
     /**
      * 判断角色属性的数目
@@ -24,10 +27,30 @@ public class RoleUtil{
         }if (StringUtils.isNotEmpty(role.getAge())){
             count++;
         }
-        if (count>=2){
+        if (count>2){
             isTrue=true;
         }else{
             isTrue=false;
+        }
+        return isTrue;
+    }
+
+    /**
+     * 属性至少存在Tell 或者 email中的一个
+     * @param role
+     * @return
+     */
+    public static Boolean existEmailOrTell(Role role){
+        Boolean isTrue=false;
+        int num=0;
+        if (StringUtils.isNotBlank(role.getTel())){
+            num=num+1;
+        }
+        if (StringUtils.isNotBlank(role.getEmail())){
+            num=num+1;
+        }
+        if (num>=1 && num<3){
+            isTrue=true;
         }
         return isTrue;
     }
