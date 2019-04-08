@@ -20,6 +20,7 @@ layui.config({
         ,css: {right: 10, bottom: 42 }
         ,bgcolor: '#393D49'
         ,click: function(type){
+            console.log(type);
             if(type === 'bar1'){
                 layer.msg('icon是可以随便换的')
             } else if(type === 'bar2') {
@@ -158,7 +159,7 @@ layui.config({
 
     //退出
     $(".signOut").click(function(){
-        layer.alert($('.showLogout'), {
+        var indexLogout=layer.alert($('.showLogout'), {
             skin: 'layui-layer-molv' //样式类名
             ,type:1
             ,closeBtn: 1
@@ -168,13 +169,15 @@ layui.config({
             window.sessionStorage.removeItem("menu");
             menu = [];
             window.sessionStorage.removeItem("curmenu");
+            sessionStorage.clear();
+            window.sessionStorage.removeItem("countRefresh");
             location.href = "/systemLogout";
-            var index = layer.alert();
-            layer.close(index);
+            // var index = layer.alert();
+            layer.close(indexLogout);
             return true;
         },function(){
-            var index = layer.alert();
-            layer.close(index);
+            // var index = layer.alert();
+            layer.close(indexLogout);
         });
     })
 
@@ -290,6 +293,47 @@ layui.config({
     shadeMobile.on('click', function(){
         $('body').removeClass('site-mobile');
     });
+
+    //文档加载完后执行的方法
+    $(document).ready(function(){
+        var countRefresh=sessionStorage.getItem("countRefresh");
+        if(countRefresh===null){//第一次进入系统
+            var countRefresh=1;
+            var indexLog=layer.open({
+                content : $('.showLastLoginData'),
+                skin: 'layui-layer-molv' //样式类名
+                ,type:1
+                ,closeBtn: 1
+                ,title : '见面礼'
+                ,shade : 0.7
+                ,area: ['350px', '250px']
+                , btn: ['好的']
+            }, function(){
+                layer.close(indexLog);
+                return true;
+            })
+            sessionStorage.setItem("countRefresh",countRefresh);
+        }else if(countRefresh>=1){//非第一次刷新系统
+            countRefresh++;
+           /* $.post("/admin/user/loginData/edit", {}, function (res) {
+
+            });*/
+          /*  $.post("/admin/user/loginData/edit",{repeatedRefresh:countRefresh},function(data,status){
+                alert("数据: " + data + "\n状态: " + status);
+            });*/
+            $.post("/admin/user/data/edit", {repeatedRefresh:countRefresh}, function () {
+            }, 'json');
+
+           sessionStorage.setItem("countRefresh",countRefresh);
+        }
+
+    });
+
+    function updateLoginData(countRefresh){
+        $.post("/admin/user/loginData/edit",{repeatedRefresh:countRefresh},function(data,status){
+            alert("数据: " + data + "\n状态: " + status);
+        });
+    }
 
     // 添加新窗口
     $("body").on("click",".layui-nav .layui-nav-item a",function(){

@@ -1,6 +1,5 @@
 package com.xiaoshu.admin.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.LoginData;
 import com.xiaoshu.admin.mapper.LoginDataMapper;
@@ -34,7 +33,7 @@ public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData>
      * @param loginData
      */
     @Override
-    public void updateLoginData(LoginData loginData) {
+    public void updateLoginDataOnlyIsSafeLogout(LoginData loginData) {
 //        QueryWrapper<LoginData> wrapper = new QueryWrapper<>();
 //        wrapper.eq("is_unsafe_logout",true);
         loginData.setUnsafeLogout(true);
@@ -55,6 +54,16 @@ public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData>
     @Override
     public LoginData getLastDataByUserId(String userId) {
         return baseMapper.getLastDataByUserId(userId);
+    }
+
+    /**
+     * 更新这一次登录的数据,重复登录次数,重复刷新次数,越权访问次数,未安全退出次数
+     * @param loginData
+     * @return
+     */
+    @Override
+    public int updateLoginData(LoginData loginData) {
+        return baseMapper.updateLoginData(loginData);
     }
 
 //    /**

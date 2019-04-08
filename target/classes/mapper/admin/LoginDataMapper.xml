@@ -60,6 +60,16 @@
         </collection>
     </resultMap>
 
+    <update id="updateLoginData" parameterType="com.xiaoshu.admin.entity.LoginData">
+        update login_data
+        <set>
+            <if test="unlogin != null">unlogin=#{unlogin},</if>
+            <if test="unauthorizedAccess != null">unauthorized_access=#{unauthorizedAccess},</if>
+            <if test="repeatedRefresh != null">repeated_refresh=#{repeatedRefresh},</if>
+        </set>
+        where id=#{id}
+    </update>
+
 <!--  <resultMap type="com.xiaoshu.admin.entity.LoginData" id="LoginDataMap">
     &lt;!&ndash;<id column="id" property="id" />&ndash;&gt;
     <result column="name" property="name" />

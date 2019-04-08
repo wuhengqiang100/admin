@@ -82,6 +82,11 @@ public class MessageController {
         return modelMap;
     }
 
+    /**
+     * 单发消息
+     * @param modelMap
+     * @return
+     */
     @GetMapping("add")
     public String add(ModelMap modelMap){
         List<User> userList=userService.findAllUser();
@@ -118,6 +123,49 @@ public class MessageController {
         messageService.saveMessage(message);
         return ResponseEntity.success("消息发送成功");
     }
+
+    /**
+     * 群发消息
+     * @param modelMap
+     * @return
+     */
+    @GetMapping("addMore")
+    public String addMore(ModelMap modelMap,@RequestParam(value = "roleId",required = false) String roleId){
+        List<User> userList=userService.findAllUser();
+        List<Message> messsageList= messageService.selectAll();
+        modelMap.put("userList",userList);
+        modelMap.put("messsageList",messsageList);
+        return "admin/message/addMore";
+    }
+
+    @RequiresPermissions("user:message:add")
+    @PostMapping("addMore")
+    @ResponseBody
+    @SysLog("保存新增消息数据")
+    public ResponseEntity addMore(@RequestBody Message message){
+        User toUserEn=userService.findUserById(message.getToUser());
+        if(null==toUserEn){
+            return ResponseEntity.failure("该用户不存在,不能发送消息!");
+        }
+        message.setCreateId(MySysUser.id());
+        message.setCreateDate(new Date());
+        message.setUpdateDate(new Date());
+        message.setUpdateId(MySysUser.id());
+        message.setCreateName(toUserEn.getNickName());
+        message.setToUser(toUserEn.getId());
+        if(StringUtils.isBlank(message.getTitle())){
+            return ResponseEntity.failure("消息标题不能为空");
+        }
+        if(StringUtils.isBlank(message.getMessageType())){
+            return ResponseEntity.failure("消息类型不能为空");
+        }
+        if(StringUtils.isBlank(message.getToUser())){
+            return ResponseEntity.failure("接收人不能为空");
+        }
+        messageService.saveMessage(message);
+        return ResponseEntity.success("消息发送成功");
+    }
+
 
     @RequiresPermissions("user:message:add")
     @GetMapping("read")

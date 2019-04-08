@@ -36,7 +36,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.sql.Wrapper;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -144,6 +143,9 @@ public class LonginController {
             modelMap.put("messageListTop",messageListTop);
             modelMap.put("messageListCount",messageListCount);
             modelMap.put("currentUser",currentUser);
+            //查看上一次登录后操作的数据
+            LoginData lastLoginData=loginDataService.getLastDataByUserId(MySysUser.id());
+            modelMap.put("lastLoginData",lastLoginData);
             session.setAttribute("icon", StringUtils.isBlank(principal.getIcon()) ? "/static/admin/img/face.jpg" : principal.getIcon());
             return "admin/index";
         } else {
@@ -290,8 +292,7 @@ public class LonginController {
                 String loginDataId=loginData.getId();
                 session.setAttribute("loginDataId",loginDataId);//存入session 中
 
-                //查看上一次登录后操作的数据
-                LoginData lastLoginData=loginDataService.getLastDataByUserId(secutityUser.getId());
+
                 return responseEntity;
             } else {
                 return ResponseEntity.failure(errorMsg);
@@ -462,7 +463,7 @@ public class LonginController {
 //        loginDataService.updateLoginData(loginDataService.getLoginDataById(loginDataId));
 //        loginDataService.saveLoginData();
         LoginData loginDataLogOut=loginDataService.getLoginDataById(loginDataId);
-        loginDataService.updateLoginData(loginDataLogOut);
+        loginDataService.updateLoginDataOnlyIsSafeLogout(loginDataLogOut);
         SecurityUtils.getSubject().logout();
         return "redirect:admin";
     }
