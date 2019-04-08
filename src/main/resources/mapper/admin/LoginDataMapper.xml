@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.admin.mapper.LoginDataMapper">
+
+  <!-- 通用查询映射结果 -->
+  <resultMap id="BaseResultMap" type="com.xiaoshu.admin.entity.LoginData">
+    <id column="id" property="id" />
+    <result column="unlogin" property="unlogin" />
+    <result column="unauthorized_access" property="unauthorizedAccess" />
+    <result column="repeated_refresh" property="repeatedRefresh" />
+    <result column="is_unsafe_logout" property="isUnsafeLogout" />
+    <result column="is_account" property="isAccount" />
+    <result column="create_by" property="createId" />
+    <result column="create_date" property="createDate" />
+    <result column="update_by" property="updateId" />
+    <result column="update_date" property="updateDate" />
+    <result column="remarks" property="remarks" />
+    <result column="del_flag" property="delFlag" />
+    <result column="userId" property="userId" />
+    <collection property="user"  ofType="com.xiaoshu.admin.entity.User">
+      <result property="id" column="user.id"/>
+      <result property="loginName" column="login_name"/>
+      <result property="nickName" column="nick_name"/>
+    </collection>
+  </resultMap>
+
+  <!-- 通用查询结果列 -->
+  <sql id="Base_Column_List">
+      id, unlogin, unauthorized_access,repeated_refresh,is_unsafe_logout,is_account, create_by, create_date, update_by, update_date,remarks,del_flag,userId
+   </sql>
+  
+  <insert  id="insertLoginDataWithResult" parameterType="com.xiaoshu.admin.entity.LoginData" keyProperty="id" keyColumn="id"  useGeneratedKeys="true">
+
+      INSERT INTO login_data
+      (id,unlogin,unauthorized_access,repeated_refresh,is_unsafe_logout,is_account,userId,create_by,create_date,update_by,update_date,del_flag,remarks)
+      VALUES
+      (#{id},#{unlogin},#{unauthorizedAccess},#{repeatedRefresh},#{isUnsafeLogout},#{isAccount},#{userId},#{createId},#{createDate},#{updateId},#{updateDate},#{delFlag},#{remarks});
+  </insert>
+
+    <select id="getLastDataByUserId" resultMap="LoginDataMap" parameterType="java.lang.String">
+          SELECT id,unlogin,unauthorized_access,repeated_refresh,is_unsafe_logout, is_account
+          FROM login_data la
+
+          WHERE la.userId = #{userId} OR la.create_by=#{userId}
+          ORDER BY update_date DESC LIMIT 1;
+    </select>
+
+    <resultMap id="LoginDataMap" type="com.xiaoshu.admin.entity.LoginData">
+        <id column="id" property="id" />
+        <result column="unlogin" property="unlogin" />
+        <result column="unauthorized_access" property="unauthorizedAccess" />
+        <result column="repeated_refresh" property="repeatedRefresh" />
+        <result column="is_unsafe_logout" property="isUnsafeLogout" />
+        <result column="is_account" property="isAccount" />
+        <result column="userId" property="userId" />
+        <collection property="user"  ofType="com.xiaoshu.admin.entity.User">
+            <result property="id" column="user.id"/>
+            <result property="loginName" column="login_name"/>
+            <result property="nickName" column="nick_name"/>
+        </collection>
+    </resultMap>
+
+<!--  <resultMap type="com.xiaoshu.admin.entity.LoginData" id="LoginDataMap">
+    &lt;!&ndash;<id column="id" property="id" />&ndash;&gt;
+    <result column="name" property="name" />
+    <result column="location" property="location" />
+    <result column="size" property="size" />
+    <result column="create_by" property="createId" />
+    <result column="create_date" property="createDate" />
+    <result column="update_by" property="updateId" />
+    <result column="update_date" property="updateDate" />
+    <result column="remarks" property="remarks" />
+    <result column="del_flag" property="delFlag" />
+    <result column="userId" property="userId" />
+    <collection property="user"  ofType="com.xiaoshu.admin.entity.User">
+      <result property="id" column="user.id"/>
+      <result property="loginName" column="login_name"/>
+      <result property="nickName" column="nick_name"/>
+    </collection>
+  </resultMap>-->
+<!--
+  <select id="getLoginDataByUserId" resultMap="LoginDataMap" parameterType="java.lang.String">
+    SELECT
+    tf.id,
+    tf.name,
+    tf.location,
+    tf.size,
+    tf.create_date,
+    tf.create_by,
+    tf.update_date,
+    tf.update_by,
+    tf.remarks,
+    tf.del_flag,
+    su.id,
+    su.nick_name
+    from
+    t_LoginData tf
+    left join sys_user  su 	on 	    su.id = tf.userId
+    where
+    su.del_flag = FALSE
+    <if test="userId != '' and userId != null">
+      and tf.userId = #{userId}
+    </if>
+  </select>
+  <select id="selectLoginDataById" resultMap="LoginDataMap"  parameterType="java.lang.String">
+    SELECT
+    tf.id,
+    tf.name,
+    tf.location,
+    tf.size,
+    tf.create_date,
+    tf.create_by,
+    tf.update_date,
+    tf.update_by,
+    tf.remarks,
+    tf.del_flag,
+    su.id,
+    su.nick_name
+    from
+    t_LoginData tf
+    left join sys_user  su 	on 	    su.id = tf.userId
+    where
+    su.del_flag = FALSE
+    <if test="id != '' and id != null">
+      and tf.id = #{id}
+    </if>
+  </select>-->
+
+
+</mapper>

@@ -1,6 +1,7 @@
 package com.xiaoshu.admin.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.xiaoshu.common.base.DataEntity;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 /**
  * 用户信誉度实体类
  */
+@TableName("user_credit")
 public class Credit extends DataEntity<Farm> {
 
     private static final long serialVersionUID = 1L;
@@ -15,19 +17,19 @@ public class Credit extends DataEntity<Farm> {
     private Integer id;*/
 
     @TableField("unlogin")
-    private int unlogin;
+    private int unlogin;//没有成功登录的次数
 
     @TableField("unauthorized_access")
-    private int unauthorizedAccess;
+    private int unauthorizedAccess;//越权访问的次数
 
     @TableField("repeated_refresh")
-    private int repeatedRefresh;
+    private int repeatedRefresh;//重复属性的次数
 
     @TableField("unsafe_logout")
-    private int unsafeLogout;
+    private int unsafeLogout;//不安全退出次数
 
     @TableField("is_account")
-    private Boolean isAccount;
+    private Boolean isAccount;//是否已经计算
 
 
 

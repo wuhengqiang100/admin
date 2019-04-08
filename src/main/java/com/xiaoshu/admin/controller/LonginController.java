@@ -1,17 +1,11 @@
 package com.xiaoshu.admin.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
-import com.xiaoshu.admin.entity.Message;
-import com.xiaoshu.admin.entity.Role;
-import com.xiaoshu.admin.entity.User;
-import com.xiaoshu.admin.entity.UserRegist;
+import com.xiaoshu.admin.entity.*;
 import com.xiaoshu.admin.entity.vo.ShowMenuVo;
 import com.xiaoshu.admin.mapper.MessageMapper;
 import com.xiaoshu.admin.mapper.UserMapper;
-import com.xiaoshu.admin.service.MenuService;
-import com.xiaoshu.admin.service.MessageService;
-import com.xiaoshu.admin.service.RoleService;
-import com.xiaoshu.admin.service.UserService;
+import com.xiaoshu.admin.service.*;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.exception.UserTypeAccountException;
@@ -74,6 +68,9 @@ public class LonginController {
 
     @Autowired
     MessageService messageService;
+
+    @Autowired
+    LoginDataService loginDataService;
 
     public enum LoginTypeEnum {
         PAGE, ADMIN
@@ -287,6 +284,14 @@ public class LonginController {
                 ResponseEntity responseEntity = new ResponseEntity();
                 responseEntity.setSuccess(Boolean.TRUE);
                 responseEntity.setAny("url", "index");
+                //保存本次操作的记录数据
+                LoginData loginData=new LoginData();
+                int count=loginDataService.saveLoginData(loginData);//保存登录时的数据
+                String loginDataId=loginData.getId();
+                session.setAttribute("loginDataId",loginDataId);//存入session 中
+
+                //查看上一次登录后操作的数据
+                LoginData lastLoginData=loginDataService.getLastDataByUserId(secutityUser.getId());
                 return responseEntity;
             } else {
                 return ResponseEntity.failure(errorMsg);
@@ -452,7 +457,12 @@ public class LonginController {
 
     @GetMapping("systemLogout")
     @SysLog("退出系统")
-    public String logOut() {
+    public String logOut(HttpSession session) {
+        String loginDataId= (String) session.getAttribute("loginDataId");
+//        loginDataService.updateLoginData(loginDataService.getLoginDataById(loginDataId));
+//        loginDataService.saveLoginData();
+        LoginData loginDataLogOut=loginDataService.getLoginDataById(loginDataId);
+        loginDataService.updateLoginData(loginDataLogOut);
         SecurityUtils.getSubject().logout();
         return "redirect:admin";
     }

@@ -1,8 +1,9 @@
 var $,tab,skyconsWeather;
 layui.config({
     base : "static/admin/js/"
-}).use(['bodyTab','form','element','layer','jquery'],function(){
-    var form = layui.form,
+}).use(['util','bodyTab','form','element','layer','jquery'],function(){
+    var  util = layui.util,
+        form = layui.form,
         layer = layui.layer,
         element = layui.element;
     $ = layui.jquery;
@@ -10,6 +11,23 @@ layui.config({
         openTabNum : "50",  //最大可打开窗口数量
         url : "/admin/user/getUserMenu" //获取菜单json地址
     });
+
+    //固定块
+    util.fixbar({
+        bar1:'&#xe607'
+        ,bar2: '&#xe604'
+        ,showHeight:800
+        ,css: {right: 10, bottom: 42 }
+        ,bgcolor: '#393D49'
+        ,click: function(type){
+            if(type === 'bar1'){
+                layer.msg('icon是可以随便换的')
+            } else if(type === 'bar2') {
+                layer.msg('两个bar都可以设定是否开启')
+            }
+        }
+    });
+
 
 
     //更换皮肤
