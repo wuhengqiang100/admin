@@ -2,12 +2,13 @@ package com.xiaoshu.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaoshu.admin.entity.Credit;
-import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
-
+/**
+ * 用户信誉度计算mapper层
+ */
 public interface CreditMapper extends BaseMapper<Credit> {
+
+    
 
 //    void saveCreditMenus(@Param("roleId") String roleId, @Param("menus") Set<Menu> menuSet);
 

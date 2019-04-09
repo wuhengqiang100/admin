@@ -250,6 +250,7 @@ public class LonginController{
         String rememberMe = request.getParameter("rememberMe");
         String tel = request.getParameter("tel");
         String email = request.getParameter("email");
+        //根据电话号码或者邮箱获取用户信息
         User loginDataUser=userService.selectUserByTellOrEmail(tel,email);
         if(null==loginDataUser){
             return ResponseEntity.failure("没有这个用户,请重新输入!");
@@ -262,7 +263,6 @@ public class LonginController{
             return ResponseEntity.failure("请选择您的请求!");
         }
 
-
         if (StringUtils.isBlank(code)) {
             return ResponseEntity.failure("验证码不能为空");
         }
@@ -274,8 +274,9 @@ public class LonginController{
         if (StringUtils.isBlank(trueCode)) {
             return ResponseEntity.failure("验证码超时");
         }
+        //获取上一次该用户登录信息
+        LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
         if (!RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
-            LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
             loginData.setUnlogin(loginData.getUnlogin()+1);
             loginData.setUserId(loginDataUser.getId());
             loginDataService.updateLoginDataBeforeLogin(loginData);
@@ -291,18 +292,18 @@ public class LonginController{
             try {
                 secutityUser = userMapper.selectUserByUser(loginUser);
             } catch (Exception e) {
-                LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
                 loginData.setUnlogin(loginData.getUnlogin()+1);
-                loginDataService.updateLoginData(loginData);
+                loginData.setUserId(loginDataUser.getId());
+                loginDataService.updateLoginDataBeforeLogin(loginData);
                 return ResponseEntity.failure("没有用户拥有这个请求权限,请联系管理员!");
             }
            /* if (StringUtils.isBlank(secutityUser.getIdentity())){
                 return ResponseEntity.failure("您输入的请求或属性不正确!");
             }*/
             if (null==secutityUser){
-                LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
                 loginData.setUnlogin(loginData.getUnlogin()+1);
-                loginDataService.updateLoginData(loginData);
+                loginData.setUserId(loginDataUser.getId());
+                loginDataService.updateLoginDataBeforeLogin(loginData);
                 return ResponseEntity.failure("属性值不正确,没有该用户!");
             }
             if (secutityUser.getCredit()<0.3){
@@ -329,17 +330,17 @@ public class LonginController{
                 responseEntity.setSuccess(Boolean.TRUE);
                 responseEntity.setAny("url", "index");
                 //保存本次操作的记录数据
-                LoginData loginData=new LoginData();
-                int count=loginDataService.saveLoginData(loginData);//保存登录时的数据
+                LoginData loginDataNew=new LoginData();
+                int count=loginDataService.saveLoginData(loginDataNew);//保存登录时的数据
                 String loginDataId=loginData.getId();
                 session.setAttribute("loginDataId",loginDataId);//存入session 中
 
 
                 return responseEntity;
             } else {
-                LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
                 loginData.setUnlogin(loginData.getUnlogin()+1);
-                loginDataService.updateLoginData(loginData);
+                loginData.setUserId(loginDataUser.getId());
+                loginDataService.updateLoginDataBeforeLogin(loginData);
                 return ResponseEntity.failure(errorMsg);
             }
         }
@@ -504,12 +505,13 @@ public class LonginController{
     @GetMapping("systemLogout")
     @SysLog("退出系统")
     public String logOut(HttpSession session) {
+        //保存安全退出数据
         String loginDataId= (String) session.getAttribute("loginDataId");
-//        loginDataService.updateLoginData(loginDataService.getLoginDataById(loginDataId));
-//        loginDataService.saveLoginData();
         LoginData loginDataLogOut=loginDataService.getLoginDataById(loginDataId);
-//        loginDataLogOut.setUnsafeLogout(true);//正常退出登录
         loginDataService.updateLoginDataOnlyIsSafeLogout(loginDataLogOut);
+
+
+
         SecurityUtils.getSubject().logout();
         return "redirect:admin";
     }
