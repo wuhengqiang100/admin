@@ -28,4 +28,18 @@ public interface RoleService extends IService<Role> {
      * @return
      */
     Role findRoleProByRoleId(String roleId);
+
+    /**
+     * 登录界面的获取请求分页懒加载
+     * @param page
+     * @param size
+     * @return
+     */
+    List<Role> loginPageRequest(@Param("page") int page,@Param("size") int size);
+
+    /**
+     * 登录界面的获取请求
+     * @return
+     */
+    List<Role> loginPageRequestWithOutPage();
 }

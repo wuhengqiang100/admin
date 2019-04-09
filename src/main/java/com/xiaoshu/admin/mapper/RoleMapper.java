@@ -3,12 +3,10 @@ package com.xiaoshu.admin.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaoshu.admin.entity.Menu;
 import com.xiaoshu.admin.entity.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Set;
-
-import com.xiaoshu.admin.entity.User;
-import org.apache.ibatis.annotations.Param;
 
 public interface RoleMapper extends BaseMapper<Role> {
 
@@ -28,4 +26,18 @@ public interface RoleMapper extends BaseMapper<Role> {
      * @return
      */
     Role findRoleProByRoleId(@Param("roleId") String roleId);
+
+    /**
+     * 登录界面的获取请求分页懒加载
+     * @param page
+     * @param size
+     * @return
+     */
+    List<Role> loginPageRequest(@Param("page") int page,@Param("size") int size);
+
+    /**
+     * 登录界面的获取请求
+     * @return
+     */
+    List<Role> loginPageRequestWithOutPage();
 }

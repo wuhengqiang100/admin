@@ -24,6 +24,20 @@
       id, name, create_date, create_by, update_date, update_by, remarks, del_flag,identity,request_place,age,tel,email
    </sql>
 
+  <select id="loginPageRequest" parameterType="java.lang.Integer" resultMap="ResultMapLoginPro">
+      SELECT id,name FROM sys_role limit #{page},#{size};
+  </select>
+
+  <select id="loginPageRequestWithOutPage" resultMap="ResultMapLoginPro">
+    SELECT id,name FROM sys_role;
+  </select>
+
+
+  <resultMap id="ResultMapLoginPro" type="com.xiaoshu.admin.entity.Role">
+    <id column="id" property="id" />
+    <result column="name" property="name"/>
+  </resultMap>
+
 
 
   <insert id="saveRoleMenus">

@@ -7,18 +7,22 @@ import com.xiaoshu.admin.mapper.MessageMapper;
 import com.xiaoshu.admin.mapper.UserMapper;
 import com.xiaoshu.admin.service.*;
 import com.xiaoshu.common.annotation.SysLog;
+import com.xiaoshu.common.config.MyMetaObjectHandler;
 import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.exception.UserTypeAccountException;
 import com.xiaoshu.common.realm.AuthRealm;
 import com.xiaoshu.common.util.Constants;
 import com.xiaoshu.common.util.ResponseEntity;
 import com.xiaoshu.common.util.RoleUtil;
+import com.xiaoshu.common.util.UserUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.reflection.MetaObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +30,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import org.apache.shiro.subject.Subject;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.imageio.ImageIO;
@@ -37,10 +39,12 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Controller
-public class LonginController {
+public class LonginController{
 
     private final static Logger LOGGER = LoggerFactory.getLogger(LonginController.class);
 
@@ -117,7 +121,8 @@ public class LonginController {
             LoginTypeEnum attribute = (LoginTypeEnum) session.getAttribute(LOGIN_TYPE);
             loginType = attribute == null ? loginType : attribute.name();
         }
-        List<Role> roleList = roleService.selectAll();
+//        List<Role> roleList = roleService.selectAll();
+        List<Role> roleList = roleService.loginPageRequestWithOutPage();
         session.setAttribute("roleList",roleList);
         if (LoginTypeEnum.ADMIN.name().equals(loginType)) {
             session.setAttribute(LOGIN_TYPE, LoginTypeEnum.ADMIN);
@@ -174,10 +179,10 @@ public class LonginController {
     @PostMapping("admin/requestAll")
     @SysLog("根据选择获取所有请求,返回请求信息")
     @ResponseBody
-    public ResponseEntity adminRequestAll(ModelMap modelMap) {
-        ResponseEntity responseEntity = new ResponseEntity();
+    public ResponseEntity adminRequestAll(@RequestParam(value = "page",required = false) String page) {
 
-        List<Role> roleList = roleService.selectAll();
+
+      /*  List<Role> roleList = roleService.selectAll();
         if (null == roleList) {
             responseEntity.setSuccess(false);
             responseEntity.setMessage("没有任何请求!");
@@ -194,7 +199,21 @@ public class LonginController {
         responseEntity.setAny("idList", idList);
         responseEntity.setAny("nameList", nameList);
         modelMap.put("idList", idList);
-        modelMap.put("nameList", nameList);
+        modelMap.put("nameList", nameList);*/
+//        List<Role> roleList = roleService.selectAll();
+        int size=4;
+        Integer pag=0;
+        if (null==page){
+            page="0";
+            pag=Integer.parseInt(page);
+        }else{
+            pag=Integer.parseInt(page);
+        }
+
+        List<Role> roleList = roleService.loginPageRequest(pag,size);
+//        session.setAttribute("roleList",roleList);
+        ResponseEntity responseEntity = new ResponseEntity();
+        responseEntity.setAny("roleList",roleList);
         return responseEntity;
     }
 
@@ -219,6 +238,9 @@ public class LonginController {
         return responseEntity;
     }
 
+
+
+
     @PostMapping(value = "admin/login")
     @SysLog("用户登录")
     @ResponseBody
@@ -226,13 +248,20 @@ public class LonginController {
         Role loginRole=roleService.getRoleById(roleId);
         String code = request.getParameter("code");
         String rememberMe = request.getParameter("rememberMe");
-
+        String tel = request.getParameter("tel");
+        String email = request.getParameter("email");
+        User loginDataUser=userService.selectUserByTellOrEmail(tel,email);
+        if(null==loginDataUser){
+            return ResponseEntity.failure("没有这个用户,请重新输入!");
+        }
+//        UserUtil.userCoverEmailOrTell(loginUser);
+        if (!UserUtil.userCoverEmailOrTell(loginUser)){
+            return ResponseEntity.failure("你输入的属性中没有电话号码或者邮箱,请重新输入!");
+        }
         if (null==roleId){
             return ResponseEntity.failure("请选择您的请求!");
         }
-        if (!RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
-            return ResponseEntity.failure("您输入的请求或属性不正确!");
-        }
+
 
         if (StringUtils.isBlank(code)) {
             return ResponseEntity.failure("验证码不能为空");
@@ -245,6 +274,13 @@ public class LonginController {
         if (StringUtils.isBlank(trueCode)) {
             return ResponseEntity.failure("验证码超时");
         }
+        if (!RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
+            LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
+            loginData.setUnlogin(loginData.getUnlogin()+1);
+            loginData.setUserId(loginDataUser.getId());
+            loginDataService.updateLoginDataBeforeLogin(loginData);
+            return ResponseEntity.failure("您输入的请求或属性不正确!");
+        }
         if (StringUtils.isBlank(code) || !trueCode.toLowerCase().equals(code.toLowerCase())) {
             return ResponseEntity.failure("验证码错误");
         } else {
@@ -255,12 +291,18 @@ public class LonginController {
             try {
                 secutityUser = userMapper.selectUserByUser(loginUser);
             } catch (Exception e) {
+                LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
+                loginData.setUnlogin(loginData.getUnlogin()+1);
+                loginDataService.updateLoginData(loginData);
                 return ResponseEntity.failure("没有用户拥有这个请求权限,请联系管理员!");
             }
            /* if (StringUtils.isBlank(secutityUser.getIdentity())){
                 return ResponseEntity.failure("您输入的请求或属性不正确!");
             }*/
             if (null==secutityUser){
+                LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
+                loginData.setUnlogin(loginData.getUnlogin()+1);
+                loginDataService.updateLoginData(loginData);
                 return ResponseEntity.failure("属性值不正确,没有该用户!");
             }
             if (secutityUser.getCredit()<0.3){
@@ -295,6 +337,9 @@ public class LonginController {
 
                 return responseEntity;
             } else {
+                LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
+                loginData.setUnlogin(loginData.getUnlogin()+1);
+                loginDataService.updateLoginData(loginData);
                 return ResponseEntity.failure(errorMsg);
             }
         }
@@ -463,6 +508,7 @@ public class LonginController {
 //        loginDataService.updateLoginData(loginDataService.getLoginDataById(loginDataId));
 //        loginDataService.saveLoginData();
         LoginData loginDataLogOut=loginDataService.getLoginDataById(loginDataId);
+//        loginDataLogOut.setUnsafeLogout(true);//正常退出登录
         loginDataService.updateLoginDataOnlyIsSafeLogout(loginDataLogOut);
         SecurityUtils.getSubject().logout();
         return "redirect:admin";

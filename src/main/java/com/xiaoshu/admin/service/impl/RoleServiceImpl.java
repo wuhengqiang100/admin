@@ -3,7 +3,6 @@ package com.xiaoshu.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.Role;
-import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.mapper.RoleMapper;
 import com.xiaoshu.admin.service.RoleService;
 import org.springframework.stereotype.Service;
@@ -73,4 +72,20 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper,Role> implements Rol
     public Role findRoleProByRoleId(String roleId) {
         return baseMapper.findRoleProByRoleId(roleId);
     }
+
+    @Override
+    public List<Role> loginPageRequest(int page, int size) {
+        if (0==page){
+            return baseMapper.loginPageRequest(page*size,size);
+        }else {
+            return baseMapper.loginPageRequest(page*size-1,size);
+        }
+
+    }
+
+    @Override
+    public List<Role> loginPageRequestWithOutPage() {
+        return baseMapper.loginPageRequestWithOutPage();
+    }
+
 }

@@ -25,6 +25,8 @@ public interface UserMapper extends BaseMapper<User> {
 
     List<User> findAllUser();
 
+    User selectUserByTellOrEmail(@Param("tel")String tel, @Param("email")String email);
+
     /**
      * 通过当前id查询管理的农田主id
      * @param id

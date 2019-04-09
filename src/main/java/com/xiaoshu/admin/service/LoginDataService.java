@@ -44,6 +44,12 @@ public interface LoginDataService extends IService<LoginData> {
      * @return
      */
     int updateLoginData(LoginData loginData);
+    /**
+     * 更新登录前的登录数据,这一次登录的数据,重复登录次数,重复刷新次数,越权访问次数,未安全退出次数
+     * @param loginData
+     * @return
+     */
+    int updateLoginDataBeforeLogin(LoginData loginData);
 
 //
 //    void deleteLoginData(LoginData LoginData);

@@ -66,6 +66,11 @@ public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData>
         return baseMapper.updateLoginData(loginData);
     }
 
+    @Override
+    public int updateLoginDataBeforeLogin(LoginData loginData) {
+        return baseMapper.updateLoginDataBeforeLogin(loginData);
+    }
+
 //    /**
 //     * 获得同一农田名字的数目
 //     * @param name

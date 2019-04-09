@@ -66,6 +66,18 @@
             <if test="unlogin != null">unlogin=#{unlogin},</if>
             <if test="unauthorizedAccess != null">unauthorized_access=#{unauthorizedAccess},</if>
             <if test="repeatedRefresh != null">repeated_refresh=#{repeatedRefresh},</if>
+            userId=#{userId},update_by=#{userId}
+        </set>
+        where id=#{id}
+    </update>
+
+    <update id="updateLoginDataBeforeLogin" parameterType="com.xiaoshu.admin.entity.LoginData">
+        update login_data
+        <set>
+            <if test="unlogin != null">unlogin=#{unlogin},</if>
+            <if test="unauthorizedAccess != null">unauthorized_access=#{unauthorizedAccess},</if>
+            <if test="repeatedRefresh != null">repeated_refresh=#{repeatedRefresh},</if>
+            userId=#{userId},update_by=#{userId}
         </set>
         where id=#{id}
     </update>

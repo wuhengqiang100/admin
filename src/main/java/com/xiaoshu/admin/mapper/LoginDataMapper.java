@@ -34,6 +34,15 @@ public interface LoginDataMapper extends BaseMapper<LoginData> {
      */
      int updateLoginData(LoginData loginData);
 
+    /**
+     * 更新这一次登录的数据,重复登录次数,重复刷新次数,越权访问次数,未安全退出次数
+     * @param loginData
+     * @return
+     */
+     int updateLoginDataBeforeLogin(LoginData loginData);
+
+
+
 //    void dropLoginDataMenus(@Param("roleId") String roleId);
 
 //    void dropLoginDataUsers(@Param("roleId") String roleId);

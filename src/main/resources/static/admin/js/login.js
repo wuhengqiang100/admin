@@ -1,7 +1,36 @@
-layui.use(['form', 'layer'], function () {
-    var form = layui.form,
+layui.use(['flow','form', 'layer'], function () {
+    var flow = layui.flow,
+        form = layui.form,
         layer = parent.layer === undefined ? layui.layer : parent.layer;
     $ = layui.jquery;
+
+
+    flow.load({
+        elem: '#requestLoad' //指定列表容器
+        ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+            var lis = [];
+            //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+            $.post('/admin/requestAll?page='+page, function(res){
+                //假设你的列表返回在data集合中
+                layui.each(res.roleList, function(index, item){
+                    // lis.push('<li>'+ item.title +'</li>');
+                    lis.push('<option id="item.id">'+ item.name +'</option>');
+                });
+
+                //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                next(lis.join(''), page < res.pages);
+            });
+        }
+    });
+
+/*    $(document).ready(function () {
+        var loadIndex = layer.load(2, {shade: [0.3, '#333']});
+        $.post("/admin/requestAll", {}, function (res) {
+            layer.close(loadIndex);
+        }, 'json');
+        // getRequestAll();
+    });*/
 
     //登录按钮事件
     form.on("submit(login)", function (data) {
@@ -42,25 +71,19 @@ layui.use(['form', 'layer'], function () {
         location.href = "/toRegist";
     });
 
-    $(document).ready(function () {
-        var loadIndex = layer.load(2, {shade: [0.3, '#333']});
-        $.post("/admin/requestAll", {}, function (res) {
-            layer.close(loadIndex);
-        }, 'json');
-        // getRequestAll();
-    });
+
     $(document).on('keydown', function () {
         if (event.keyCode == 13) {
             $(".login_btn").click();
         }
     });
 
-    var getRequestAll = function () {
+  /*  var getRequestAll = function () {
         var loadIndex = layer.load(2, {shade: [0.3, '#333']});
         $.post("/admin/requestAll", {}, function (res) {
             layer.close(loadIndex);
         }, 'json');
-    };
+    };*/
 
     form.on('select(selected)', function (data) {
        var valiTrue=true;

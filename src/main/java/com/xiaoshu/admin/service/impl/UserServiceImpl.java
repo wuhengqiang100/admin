@@ -3,11 +3,10 @@ package com.xiaoshu.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.Role;
-import com.xiaoshu.admin.mapper.UserMapper;
 import com.xiaoshu.admin.entity.User;
+import com.xiaoshu.admin.mapper.UserMapper;
 import com.xiaoshu.admin.service.UserService;
 import com.xiaoshu.common.util.Encodes;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -88,6 +87,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public List<User> findAllUser() {
         return baseMapper.findAllUser();
+    }
+
+    @Override
+    public User selectUserByTellOrEmail(String tell, String email) {
+        return baseMapper.selectUserByTellOrEmail(tell,email);
     }
 
     @Transactional(rollbackFor = Exception.class)

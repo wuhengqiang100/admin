@@ -28,6 +28,6 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         setFieldValByName("updateDate", new Date(), metaObject);
-        setFieldValByName("updateId", MySysUser.id(), metaObject);
+//        setFieldValByName("updateId", MySysUser.id(), metaObject);
     }
 }

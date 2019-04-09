@@ -68,22 +68,36 @@
 
     <select id="selectUserByUser" parameterType="com.xiaoshu.admin.entity.User" resultMap="UserMap01">
         SELECT * from sys_user s
-        WHERE
-        <if test="identity != null and identity != ''">
-            s.identity=#{identity}
-        </if>
-        <if test="requestPlace != null and requestPlace != ''">
-            AND s.request_place=#{requestPlace }
-        </if>
-        <if test="age != null and age!=''">
-            AND s.age=#{age }
-        </if>
-        <if test="tel != null and age!=''">
-            AND s.tel=#{tel }
-        </if>
-        <if test="email != null and email != ''">
-            AND s.email=#{email }
-        </if>
+        <where>
+            <if test="identity != null and identity != ''">
+                s.identity=#{identity}
+            </if>
+            <if test="requestPlace != null and requestPlace != ''">
+                AND s.request_place=#{requestPlace }
+            </if>
+            <if test="age != null and age!=''">
+                AND s.age=#{age }
+            </if>
+            <if test="tel != null and tel!=''">
+                AND s.tel=#{tel }
+            </if>
+            <if test="email != null and email != ''">
+                AND s.email=#{email }
+            </if>
+        </where>
+
+    </select>
+
+    <select id="selectUserByTellOrEmail" parameterType="java.lang.String" resultMap="UserMap01">
+        SELECT * from sys_user s
+        <where>
+            <if test="tel != null and tel!=''">
+                s.tel=#{tel }
+            </if>
+            <if test="email != null and email != ''">
+                AND s.email=#{email }
+            </if>
+        </where>
 
     </select>
 

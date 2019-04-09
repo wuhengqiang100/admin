@@ -3,6 +3,7 @@ package com.xiaoshu.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoshu.admin.entity.Role;
 import com.xiaoshu.admin.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Set;
@@ -33,4 +34,6 @@ public interface UserService extends IService<User> {
     void lockUser(User user);
 
     List<User> findAllUser();
+
+    User selectUserByTellOrEmail(@Param("tel")String tel, @Param("email")String email);
 }
