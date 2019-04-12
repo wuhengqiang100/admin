@@ -250,15 +250,16 @@ public class LonginController{
         String rememberMe = request.getParameter("rememberMe");
         String tel = request.getParameter("tel");
         String email = request.getParameter("email");
+        if (!UserUtil.userCoverEmailOrTell(loginUser)){
+            return ResponseEntity.failure("你输入的属性中没有电话号码或者邮箱,请重新输入!");
+        }
         //根据电话号码或者邮箱获取用户信息
         User loginDataUser=userService.selectUserByTellOrEmail(tel,email);
         if(null==loginDataUser){
             return ResponseEntity.failure("没有这个用户,请重新输入!");
         }
 //        UserUtil.userCoverEmailOrTell(loginUser);
-        if (!UserUtil.userCoverEmailOrTell(loginUser)){
-            return ResponseEntity.failure("你输入的属性中没有电话号码或者邮箱,请重新输入!");
-        }
+
         if (null==roleId){
             return ResponseEntity.failure("请选择您的请求!");
         }
