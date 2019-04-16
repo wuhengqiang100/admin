@@ -2,6 +2,7 @@ package com.xiaoshu.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.LoginData;
+import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.mapper.LoginDataMapper;
 import com.xiaoshu.admin.service.LoginDataService;
 import com.xiaoshu.common.config.MySysUser;
@@ -23,6 +24,21 @@ public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData>
     @Override
     public int saveLoginData(LoginData loginData) {
         loginData.setUserId(MySysUser.id());
+        loginData.setCreateId(MySysUser.id());
+        loginData.setUpdateId(MySysUser.id());
+        loginData.setUnsafeLogout(false);//正常登录,未安全退出
+        loginData.setAccount(false);
+        return baseMapper.insertLoginDataWithResult(loginData);
+    }
+
+    @Override
+    public int saveLoginDataWithOutLastLogin(LoginData loginData,User user) {
+        if (null==loginData){
+            loginData=new LoginData();
+        }
+        loginData.setUserId(user.getId());
+        loginData.setCreateId(user.getId());
+        loginData.setUpdateId(user.getId());
         loginData.setUnsafeLogout(false);//正常登录,未安全退出
         loginData.setAccount(false);
         return baseMapper.insertLoginDataWithResult(loginData);
@@ -39,6 +55,18 @@ public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData>
         loginData.setUnsafeLogout(true);
         baseMapper.updateById(loginData);
 //        /baseMapper.updateById(loginData);
+    }
+
+    @Override
+    public void updateLoginDataOnlyRepeatRefresh(LoginData loginData) {
+        loginData.setRepeatedRefresh(loginData.getRepeatedRefresh()+1);
+        baseMapper.updateById(loginData);
+    }
+
+    @Override
+    public void updateLoginDataOnlyUnLogin(LoginData loginData) {
+        loginData.setUnlogin(loginData.getUnlogin()+1);
+        baseMapper.updateById(loginData);
     }
 
     @Override
@@ -63,7 +91,7 @@ public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData>
      */
     @Override
     public int updateLoginData(LoginData loginData) {
-        return baseMapper.updateLoginData(loginData);
+        return baseMapper.updateLoginDataNew(loginData);
     }
 
     @Override

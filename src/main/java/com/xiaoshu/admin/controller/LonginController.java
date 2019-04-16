@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionUsageException;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -49,6 +50,15 @@ public class LonginController{
     private final static Logger LOGGER = LoggerFactory.getLogger(LonginController.class);
 
     public final static String LOGIN_TYPE = "loginType";
+
+    private  static int REPEAT_REFRESH = 0;//重复刷新次数
+    private  static int UN_LOGIN = 0;//登录失败次数
+//    private static boolean IS_UNSAFE_LOGOUT= false;//是否安全退出
+
+    private  LoginData loginDataNew=new LoginData();//登录成功后的数据
+
+    private  LoginData  loginDataLast=new LoginData();//登录没成功，上一次登录成功的数据
+
 
     @Autowired
     @Qualifier("captchaProducer")
@@ -85,7 +95,8 @@ public class LonginController{
     }
 
     @GetMapping(value = {"admin", "admin/index"})
-    public String adminIndex(RedirectAttributes attributes, ModelMap map) {
+    public String adminIndex(HttpSession session,RedirectAttributes attributes, ModelMap map) {
+
         Subject s = SecurityUtils.getSubject();
         attributes.addFlashAttribute(LOGIN_TYPE, LoginTypeEnum.ADMIN);
         if (s.isAuthenticated()) {
@@ -133,9 +144,13 @@ public class LonginController{
         }
     }
 
-    @GetMapping(value = "index")
-    public String index(HttpSession session, @ModelAttribute(LOGIN_TYPE) String loginType,ModelMap modelMap) {
 
+
+    @GetMapping(value = "index")
+    public String index(HttpSession session,
+                        @ModelAttribute(LOGIN_TYPE) String loginType,
+                        ModelMap modelMap) {
+        loginDataService.updateLoginDataOnlyRepeatRefresh(loginDataNew);//更新重复刷新次数+1
         if (StringUtils.isBlank(loginType)) {
             LoginTypeEnum attribute = (LoginTypeEnum) session.getAttribute(LOGIN_TYPE);
             loginType = attribute == null ? loginType : attribute.name();
@@ -276,11 +291,12 @@ public class LonginController{
             return ResponseEntity.failure("验证码超时");
         }
         //获取上一次该用户登录信息
-        LoginData loginData=loginDataService.getLastDataByUserId(loginDataUser.getId());
+        loginDataLast=loginDataService.getLastDataByUserId(loginDataUser.getId());
+        if(null==loginDataLast){//没有上一次成功登录数据时，新增数据
+            loginDataService.saveLoginDataWithOutLastLogin(loginDataLast,loginDataUser);
+        }
         if (!RoleUtil.contrastRoleAndProperties(loginRole,loginUser)){
-            loginData.setUnlogin(loginData.getUnlogin()+1);
-            loginData.setUserId(loginDataUser.getId());
-            loginDataService.updateLoginDataBeforeLogin(loginData);
+            loginDataService.updateLoginDataOnlyUnLogin(loginDataLast);//电话号码或者邮箱匹配的账户，未成功登录次数+1
             return ResponseEntity.failure("您输入的请求或属性不正确!");
         }
         if (StringUtils.isBlank(code) || !trueCode.toLowerCase().equals(code.toLowerCase())) {
@@ -293,25 +309,19 @@ public class LonginController{
             try {
                 secutityUser = userMapper.selectUserByUser(loginUser);
             } catch (Exception e) {
-                loginData.setUnlogin(loginData.getUnlogin()+1);
-                loginData.setUserId(loginDataUser.getId());
-                loginDataService.updateLoginDataBeforeLogin(loginData);
+                loginDataService.updateLoginDataOnlyUnLogin(loginDataLast);//电话号码或者邮箱匹配的账户，未成功登录次数+1
                 return ResponseEntity.failure("没有用户拥有这个请求权限,请联系管理员!");
             }
-           /* if (StringUtils.isBlank(secutityUser.getIdentity())){
-                return ResponseEntity.failure("您输入的请求或属性不正确!");
-            }*/
+
             if (null==secutityUser){
-                loginData.setUnlogin(loginData.getUnlogin()+1);
-                loginData.setUserId(loginDataUser.getId());
-                loginDataService.updateLoginDataBeforeLogin(loginData);
+                loginDataService.updateLoginDataOnlyUnLogin(loginDataLast);//电话号码或者邮箱匹配的账户，未成功登录次数+1
                 return ResponseEntity.failure("属性值不正确,没有该用户!");
             }
             if (secutityUser.getCredit()<0.3){
                 return ResponseEntity.failure("信誉值不足，不能访问!");
             }
 
-            UsernamePasswordToken token = new UsernamePasswordToken(secutityUser.getLoginName(), "123456", Boolean.valueOf(rememberMe));
+            UsernamePasswordToken token = new UsernamePasswordToken(secutityUser.getLoginName(), loginUser.getPassword(), Boolean.valueOf(rememberMe));
             try {
                 user.login(token);
                 session.setAttribute("secutityUser",secutityUser);
@@ -331,17 +341,14 @@ public class LonginController{
                 responseEntity.setSuccess(Boolean.TRUE);
                 responseEntity.setAny("url", "index");
                 //保存本次操作的记录数据
-                LoginData loginDataNew=new LoginData();
+//                LoginData loginDataNew=new LoginData();
                 int count=loginDataService.saveLoginData(loginDataNew);//保存登录时的数据
-                String loginDataId=loginData.getId();
-                session.setAttribute("loginDataId",loginDataId);//存入session 中
-
+                String loginDataNewId=loginDataNew.getId();//保存新增登录数据的id
+                session.setAttribute("loginDataNewId",loginDataNewId);//存入session 中
 
                 return responseEntity;
             } else {
-                loginData.setUnlogin(loginData.getUnlogin()+1);
-                loginData.setUserId(loginDataUser.getId());
-                loginDataService.updateLoginDataBeforeLogin(loginData);
+                loginDataService.updateLoginDataOnlyUnLogin(loginDataLast);//电话号码或者邮箱匹配的账户，未成功登录次数+1
                 return ResponseEntity.failure(errorMsg);
             }
         }
@@ -506,14 +513,9 @@ public class LonginController{
     @GetMapping("systemLogout")
     @SysLog("退出系统")
     public String logOut(HttpSession session) {
-        //保存安全退出数据
-        String loginDataId= (String) session.getAttribute("loginDataId");
-        LoginData loginDataLogOut=loginDataService.getLoginDataById(loginDataId);
-        loginDataService.updateLoginDataOnlyIsSafeLogout(loginDataLogOut);
-
-
-
+        loginDataService.updateLoginDataOnlyIsSafeLogout(loginDataNew);//更新用户安全退出
         SecurityUtils.getSubject().logout();
+        session.isNew();
         return "redirect:admin";
     }
 

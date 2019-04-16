@@ -32,7 +32,7 @@ public interface LoginDataMapper extends BaseMapper<LoginData> {
      * @param loginData
      * @return
      */
-     int updateLoginData(LoginData loginData);
+     int updateLoginDataNew(LoginData loginData);
 
     /**
      * 更新这一次登录的数据,重复登录次数,重复刷新次数,越权访问次数,未安全退出次数
