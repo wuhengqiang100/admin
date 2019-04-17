@@ -157,6 +157,32 @@ layui.config({
         });
     })*/
 
+  $(".accountCredit").click(function(){
+      var loadIndex = layer.load(2, {
+          shade: [0.3, '#333']
+      });
+      $.ajax({
+          type:"POST",
+          url:"admin/user/data/calculate",
+          dataType:"json",
+          contentType:"application/json;charset=utf-8",
+          data:"",
+          success:function(res){
+              layer.close(loadIndex);
+              if(res.success){
+                  layer.msg(res.message,{time:1000},function(){
+                      //刷新页面
+                      location.href = "/index";
+                  });
+              }else{
+                  layer.msg(res.message,{time:1000});
+              }
+              return true;
+          }
+      });
+      return false;
+  });
+
     //退出
     $(".signOut").click(function(){
         var indexLogout=layer.alert($('.showLogout'), {

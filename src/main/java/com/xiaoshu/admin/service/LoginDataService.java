@@ -5,6 +5,8 @@ import com.xiaoshu.admin.entity.LoginData;
 import com.xiaoshu.admin.entity.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 
 /**
  * 信誉度计算service接口层
@@ -13,6 +15,20 @@ public interface LoginDataService extends IService<LoginData> {
 
 //    long getLoginDataNameCount(String name);
 //
+
+    /**
+     * 计算数据完后，更新is_account
+     * @param loginData
+     * @return
+     */
+    int updateLoginDataOnlyIsAccount(LoginData loginData);
+
+    /**
+     * 根据用户id获取该用户前几次操作的数据，计算信誉度
+     * @param id
+     * @return
+     */
+    List<LoginData> getLoginDataWthOutCount(String userId);
 
     /**
      * 保存登录时的数据

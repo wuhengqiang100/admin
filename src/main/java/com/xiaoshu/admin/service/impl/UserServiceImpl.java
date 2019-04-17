@@ -21,6 +21,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
     @Override
+    public void updateUserOnlyCredit(User user) {
+        baseMapper.updateUserOnlyCredit(user);
+    }
+
+    @Override
     public String findFarmOwnManagerIdById(String id) {
         return baseMapper.findFarmOwnManagerIdById(id);
     }

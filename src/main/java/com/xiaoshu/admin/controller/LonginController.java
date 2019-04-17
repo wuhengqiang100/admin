@@ -84,6 +84,9 @@ public class LonginController{
 
     @Autowired
     LoginDataService loginDataService;
+/*
+    @Autowired
+    CreditService creditService;*/
 
     public enum LoginTypeEnum {
         PAGE, ADMIN

@@ -45,6 +45,13 @@
           ORDER BY update_date DESC LIMIT 1;
     </select>
 
+    <select id="getLoginDataWthOutCount" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT id,unlogin,unauthorized_access,repeated_refresh,is_unsafe_logout, is_account,userId,update_date
+        FROM login_data la
+        WHERE (la.userId = #{userId} OR la.create_by=#{userId}) AND la.is_account=0
+        ORDER BY update_date DESC limit 1,90;
+    </select>
+
     <resultMap id="LoginDataMap" type="com.xiaoshu.admin.entity.LoginData">
         <id column="id" property="id" />
         <result column="unlogin" property="unlogin" />
@@ -68,6 +75,11 @@
             <if test="repeatedRefresh != null">repeated_refresh=#{repeatedRefresh},</if>
         </set>
         where  id=#{id} AND  (userId=#{userId} OR  update_by=#{userId})
+    </update>
+    <update id="updateLoginDataOnlyIsAccount" parameterType="com.xiaoshu.admin.entity.LoginData">
+        update login_data
+        SET is_account=#{isAccount}
+        where  id=#{id} AND  is_account=0;
     </update>
 
     <update id="updateLoginDataBeforeLogin" parameterType="com.xiaoshu.admin.entity.LoginData">

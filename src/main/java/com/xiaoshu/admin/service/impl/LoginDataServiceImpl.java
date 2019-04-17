@@ -9,6 +9,8 @@ import com.xiaoshu.common.config.MySysUser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 /**
  * 信誉度计算service实现层
@@ -16,6 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData> implements LoginDataService {
+
+    @Override
+    public int updateLoginDataOnlyIsAccount(LoginData loginData) {
+        loginData.setAccount(true);
+        return baseMapper.updateLoginDataOnlyIsAccount(loginData);
+    }
+
+    @Override
+    public List<LoginData> getLoginDataWthOutCount(String userId) {
+        return baseMapper.getLoginDataWthOutCount(userId);
+    }
 
     /**
      * 登录时保存访问的数据

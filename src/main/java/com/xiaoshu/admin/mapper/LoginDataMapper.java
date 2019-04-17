@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaoshu.admin.entity.LoginData;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 
 public interface LoginDataMapper extends BaseMapper<LoginData> {
 
@@ -12,6 +14,13 @@ public interface LoginDataMapper extends BaseMapper<LoginData> {
 //      LoginData selectLoginDataById(@Param("id") String id);
 //
 //      List<LoginData> getLoginDataByUserId(@Param("userId") String userId);
+
+    /**
+     * 根据用户id获取该用户前几次操作的数据，计算信誉度
+     * @param id
+     * @return
+     */
+    List<LoginData> getLoginDataWthOutCount(String userId);
 
     /**
      * 第一次插入登录后的数据,返回数据id
@@ -41,7 +50,12 @@ public interface LoginDataMapper extends BaseMapper<LoginData> {
      */
      int updateLoginDataBeforeLogin(LoginData loginData);
 
-
+    /**
+     * 计算数据完后，更新is_account
+     * @param loginData
+     * @return
+     */
+     int updateLoginDataOnlyIsAccount(LoginData loginData);
 
 //    void dropLoginDataMenus(@Param("roleId") String roleId);
 

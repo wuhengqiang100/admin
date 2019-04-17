@@ -66,6 +66,12 @@
         </collection>
     </resultMap>
 
+    <update id="updateUserOnlyCredit" parameterType="com.xiaoshu.admin.entity.User">
+        UPDATE sys_user
+        SET credit=#{credit}
+        WHERE id=#{id}
+    </update>
+
     <select id="selectUserByUser" parameterType="com.xiaoshu.admin.entity.User" resultMap="UserMap01">
         SELECT * from sys_user s
         <where>

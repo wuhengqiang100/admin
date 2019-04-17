@@ -11,6 +11,12 @@ import java.util.Set;
 public interface UserService extends IService<User> {
 
     /**
+     * 更新用户的信誉度
+     * @param user
+     */
+    void updateUserOnlyCredit(User user);
+
+    /**
      * 通过当前id查询管理的农田主id
      * @param id
      * @return

@@ -13,6 +13,13 @@ import java.util.Set;
 
 public interface UserMapper extends BaseMapper<User> {
 
+
+    /**
+     * 更新用户的信誉度
+     * @param user
+     */
+    void updateUserOnlyCredit(User user);
+
     User selectUserByUser(User user);
 
     User selectUserByMap(Map<String,Object> map);

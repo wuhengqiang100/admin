@@ -31,7 +31,11 @@ public class Credit extends DataEntity<Farm> {
     @TableField("is_account")
     private Boolean isAccount;//是否已经计算
 
+    @TableField("account_login")
+    private int accountLogin;//登录数据量，多少条
 
+    @TableField("result")
+    private Double result;//最终计算结果
 
     @TableField("create_date")
     private Date createDate;
@@ -65,6 +69,21 @@ public class Credit extends DataEntity<Farm> {
     @TableField(exist=false)
     private User user;
 
+    public int getAccountLogin() {
+        return accountLogin;
+    }
+
+    public void setAccountLogin(int accountLogin) {
+        this.accountLogin = accountLogin;
+    }
+
+    public Double getResult() {
+        return result;
+    }
+
+    public void setResult(Double result) {
+        this.result = result;
+    }
 
     @Override
     public Date getCreateDate() {

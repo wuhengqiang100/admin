@@ -9,6 +9,8 @@
     <result column="unauthorized_access" property="unauthorizedAccess" />
     <result column="repeated_refresh" property="repeatedRefresh" />
     <result column="unsafe_logout" property="unsafeLogout" />
+    <result column="account_login" property="accountLogin" />
+    <result column="result" property="result" />
     <result column="is_account" property="isAccount" />
     <result column="create_by" property="createId" />
     <result column="create_date" property="createDate" />

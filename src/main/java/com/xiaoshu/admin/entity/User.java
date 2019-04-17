@@ -56,7 +56,7 @@ public class User extends DataEntity<User> {
     private String age;
 
     @TableField("credit")
-    private Float credit;
+    private Double credit;
     /**
      * 农田主和农田温度\湿度\光照管理员的关系id
      */
@@ -208,11 +208,11 @@ public class User extends DataEntity<User> {
         return serialVersionUID;
     }
 
-    public Float getCredit() {
+    public Double getCredit() {
         return credit;
     }
 
-    public void setCredit(Float credit) {
+    public void setCredit(Double credit) {
         this.credit = credit;
     }
 }

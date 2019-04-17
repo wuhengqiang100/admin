@@ -77,11 +77,11 @@
                 <li class="layui-nav-item" mobile>
                     <a th:href="@{/systemLogout}" class="signOut"><i class="iconfont icon-loginout"></i> 退出</a>
                 </li>
-                <li class="layui-nav-item" pc>
-                    <a href="javascript:" data-url="" class="leftItem"><i
+                <li class="layui-nav-item accountCredit" pc>
+                    <a href="javascript:"  class="leftItem"><i
                             class="layui-icon layui-icon-speaker"></i><cite>信誉值</cite><span
                             class="layui-badge" style="font-size: xx-small;"
-                            th:text="${currentUser.credit}">10</span></a>
+                            th:text="${#strings.substring(currentUser.credit,0,4)}">1.0</span></a>
                 </li>
                 <!--<li class="layui-nav-item" pc style="display: none">
                     <a href="javascript:" data-url="/admin/system/user/list" class="returnEditUser"><i class="layui-icon layui-icon-speaker"></i><cite>我的消息</cite><span
