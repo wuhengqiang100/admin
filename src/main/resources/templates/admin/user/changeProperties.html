@@ -10,91 +10,99 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all" />
+    <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
+    <style type="text/css">
+        .layui-form-item .layui-inline {
+            min-width: 15%;
+            float: left;
+            margin-right: 0;
+        }
+
+        .layui-form-item .role-box {
+            position: relative;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #d2d2d2;
+        }
+
+        .layui-card {
+            margin-top: 10px;
+        }
+        .nameTitle{
+            font-size: large;
+            font-style: inherit;
+        }
+    </style>
 </head>
-<body class="childrenBody">
+<body>
 <div class="layui-container">
-    <div class="layui-row">
-        <div class="layui-card">
-            <!--<div class="layui-card-header">卡片面板</div>-->
-            <div class="layui-card-body" style="margin-top: 20px">
-                <div class="layui-col-md4 layui-col-md-offset3">
-                    <form class="layui-form changePwd">
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">用户名:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <div class="layui-input-block">
-                                <input type="text" th:value="(${#strings.isEmpty(currentUser.nickName)}) ? ${currentUser.loginName} : ${currentUser.nickName}" disabled class="layui-input layui-disabled">
+    <form class="layui-form changePwd" th:method="post" enctype="multipart/form-data;charset=UTF-8">
+        <div class="layui-row">
+            <div class="layui-row layui-col-space12">
+                <div class="layui-col-md6 layui-col-md-offset3">
+                    <div class="layui-card">
+                        <div class="layui-card-header nameTitle">查看属性</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" th:value="(${#strings.isEmpty(currentUser.nickName)}) ? ${currentUser.loginName} : ${currentUser.nickName}" disabled class="layui-input layui-disabled">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">常用身份:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="identity" th:value="${currentUser.identity}" disabled class="layui-input layui-disabled">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">请求地址:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="requestPlace" th:value="${currentUser.requestPlace}" disabled class="layui-input layui-disabled">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">手机号码:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="tel" th:value="${currentUser.tel}" disabled class="layui-input layui-disabled">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱地址:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="email" th:value="${currentUser.email}" disabled class="layui-input layui-disabled">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">年龄:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="age" th:value="${currentUser.age}" disabled class="layui-input layui-disabled">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <!--<button type="text" class="layui-btn layui-btn-primary returnClass">返回</button>-->
+                                        <button class="layui-btn" lay-submit="" lay-filter="changePwd" style="text-align: center">修改属性</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">常用身份:</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="identity" th:value="${currentUser.identity}" disabled class="layui-input layui-disabled">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">请求地址:</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="requestPlace" th:value="${currentUser.requestPlace}" disabled class="layui-input layui-disabled">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">手机号码:</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="tel" th:value="${currentUser.tel}" disabled class="layui-input layui-disabled">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">邮箱地址:</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="email" th:value="${currentUser.email}" disabled class="layui-input layui-disabled">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">年龄:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="age" th:value="${currentUser.age}" disabled class="layui-input layui-disabled">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <!--<button type="text" class="layui-btn layui-btn-primary returnClass">返回</button>-->
-                                <button class="layui-btn" lay-submit="" lay-filter="changePwd" style="text-align: center">修改属性</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-
+    </form>
 </div>
-
-
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script>
     layui.use(['form','jquery','layer'],function(){
         var form = layui.form,
             $    = layui.jquery,
             layer = layui.layer;
-
-        //添加验证规则
-   /*     form.verify({
-            newPwd : function(value, item){
-                if(value.length < 6){
-                    return "密码长度不能小于6位";
-                }
-            },
-            confirmPwd : function(value, item){
-                if(!new RegExp($("#oldPwd").val()).test(value)){
-                    return "两次输入密码不一致，请重新输入！";
-                }
-            }
-        });*/
-
-       /* $(".returnClass").click(function(){
-            location.reload();
-        });*/
 
         form.on("submit(changePwd)",function(data){
             layer.confirm('修改个人属性,请联系管理员？', {
@@ -106,9 +114,10 @@
                 layer.closeAll('dialog'); //关闭信息框
             }, function(){
                 $.post("/admin/system/user/changeProperties","",function(res){
-                    if(res.success){
-                        layer.msg("已联系管理员")
-                    }else{
+                    if (res.success) {
+                        this.src = "/" + res.url;
+//                        location.href = "/" + res.url;//重定向到发消息页面
+                    } else{
                         layer.msg(res.message);
                     }
                 });

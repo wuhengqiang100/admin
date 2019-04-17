@@ -318,7 +318,7 @@ public class UserController {
     @PostMapping("changeProperties")
     @ResponseBody
     public ResponseEntity changeProperties(){
-        User rootUser=userService.findUserByLoginName("java");
+      /*  User rootUser=userService.findUserByLoginName("java");
         String fromUserId = MySysUser.id();
         User messageUser=userService.getById(fromUserId);
         Message message=new Message();
@@ -330,13 +330,16 @@ public class UserController {
         message.setCreateDate(new Date());
         message.setUpdateId(fromUserId);
         message.setUpdateDate(new Date());
-        message.setToUser(rootUser.getId());
-        if (StringUtils.isBlank(message.getTitle())){
+        message.setToUser(rootUser.getId());*/
+      /*  if (StringUtils.isBlank(message.getTitle())){
             return ResponseEntity.failure("标题不能为空!");
-        }
-        messageService.saveMessage(message);
-        return ResponseEntity.success("消息发送成功");
+        }*/
+        ResponseEntity responseEntity = new ResponseEntity();
+        responseEntity.setSuccess(Boolean.TRUE);
+        responseEntity.setAny("url", "admin/user/message/add");
+        return responseEntity;
     }
+
 
 
     @SysLog("用户修改密码")

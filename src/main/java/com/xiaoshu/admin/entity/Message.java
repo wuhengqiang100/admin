@@ -54,8 +54,6 @@ public class Message extends DataEntity<Message> {
         return toUser;
     }
 
-
-
     public void setToUser(String toUser) {
         this.toUser = toUser;
     }

@@ -38,7 +38,7 @@
 </head>
 <body>
 <div class="layui-container">
-    <form class="layui-form" th:method="post" enctype="multipart/form-data;charset=UTF-8">
+    <form class="layui-form" th:method="post">
         <div class="layui-row">
             <div class="layui-row layui-col-space12">
                 <div class="layui-col-md6 layui-col-md-offset3">
@@ -55,8 +55,6 @@
                                                 <option th:value="${user.id}" th:text="${user.nickName}"></option>
                                             </div>
                                         </select>
-                                       <!-- <input type="text" name="toUser" required lay-verify="required" placeholder="请输入接收人" autocomplete="off"
-                                               class="layui-input">-->
                                     </div>
                                 </div>
                                 <div class="layui-form-item">

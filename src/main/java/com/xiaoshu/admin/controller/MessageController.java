@@ -97,7 +97,7 @@ public class MessageController {
     }
 
     @RequiresPermissions("user:message:add")
-    @PostMapping("add")
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     @SysLog("保存新增消息数据")
     public ResponseEntity add(@RequestBody Message message){
