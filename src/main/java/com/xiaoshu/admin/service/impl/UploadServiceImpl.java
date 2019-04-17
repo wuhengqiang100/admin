@@ -1,8 +1,11 @@
 package com.xiaoshu.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.Rescource;
+import com.xiaoshu.admin.mapper.RescourceMapper;
 import com.xiaoshu.admin.service.UploadService;
+import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.util.FileUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -15,7 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 @Service
-public class UploadServiceImpl implements UploadService {
+public class UploadServiceImpl extends ServiceImpl<RescourceMapper,Rescource> implements UploadService {
 
     @Override
     public String upload(MultipartFile file) throws IOException, NoSuchAlgorithmException {
@@ -26,9 +29,10 @@ public class UploadServiceImpl implements UploadService {
         wrapper.eq("hash",hash);
         wrapper.eq("source","local");
         rescource = rescource.selectOne(wrapper);
-        if( rescource!= null){
+//        rescource = baseMapper.selectOne(wrapper);
+      /*  if( rescource!= null){
             return rescource.getWebUrl();
-        }
+        }*/
         String extName = file.getOriginalFilename().substring(
                 file.getOriginalFilename().lastIndexOf("."));
         String fileName = UUID.randomUUID() + extName;
@@ -51,6 +55,8 @@ public class UploadServiceImpl implements UploadService {
         rescource.setFileType(contentType);
         rescource.setWebUrl(webUrl);
         rescource.setSource("local");
+        rescource.setCreateId(MySysUser.id());
+        rescource.setUpdateId(MySysUser.id());
         rescource.insert();
         return webUrl;
     }

@@ -4,13 +4,11 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.xiaoshu.common.base.DataEntity;
 
-import java.util.Date;
-
 /**
  * 用户信誉度实体类,用户登录后记录数据的实体
  */
 @TableName("login_data")
-public class LoginData extends DataEntity<Farm> {
+public class LoginData extends DataEntity<LoginData> {
 
     private static final long serialVersionUID = 1L;
     /*@TableField("id")

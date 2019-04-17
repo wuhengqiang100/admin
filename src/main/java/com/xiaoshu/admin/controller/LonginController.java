@@ -341,7 +341,8 @@ public class LonginController{
                 responseEntity.setSuccess(Boolean.TRUE);
                 responseEntity.setAny("url", "index");
                 //保存本次操作的记录数据
-//                LoginData loginDataNew=new LoginData();
+                loginDataNew=new LoginData();
+
                 int count=loginDataService.saveLoginData(loginDataNew);//保存登录时的数据
                 String loginDataNewId=loginDataNew.getId();//保存新增登录数据的id
                 session.setAttribute("loginDataNewId",loginDataNewId);//存入session 中
