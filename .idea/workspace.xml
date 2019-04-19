@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/4/6 修复编辑器的第一创建 credit实体类">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/LoginDataController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/LoginDataController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/LonginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/LonginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/entity/Credit.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/entity/Credit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/entity/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/LoginDataMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/LoginDataMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/CreditService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/CreditService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/LoginDataService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/LoginDataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/CreditServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/CreditServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/LoginDataServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/LoginDataServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin/CreditMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin/CreditMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin/LoginDataMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin/LoginDataMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/index.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/edit.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/edit.html" />
-    </list>
+    <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/4/6 修复编辑器的第一创建 credit实体类" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -135,8 +116,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="173" column="28" lean-forward="true" selection-start-line="173" selection-start-column="28" selection-end-line="173" selection-end-column="28" />
+            <state relative-caret-position="202">
+              <caret line="169" column="32" lean-forward="true" selection-start-line="169" selection-start-column="32" selection-end-line="169" selection-end-column="32" />
               <folding>
                 <marker date="1555499874751" expanded="true" signature="15242:15250" ph="&amp;##x1006;" />
               </folding>
@@ -740,12 +721,12 @@
       <workItem from="1555052895115" duration="7000" />
       <workItem from="1555383052036" duration="2111000" />
       <workItem from="1555415476107" duration="6819000" />
-      <workItem from="1555468436578" duration="24338000" />
+      <workItem from="1555468436578" duration="24978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156021000" />
+    <option name="totallyTimeSpent" value="156661000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1317,8 +1298,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="173" column="28" lean-forward="true" selection-start-line="173" selection-start-column="28" selection-end-line="173" selection-end-column="28" />
+        <state relative-caret-position="202">
+          <caret line="169" column="32" lean-forward="true" selection-start-line="169" selection-start-column="32" selection-end-line="169" selection-end-column="32" />
           <folding>
             <marker date="1555499874751" expanded="true" signature="15242:15250" ph="&amp;##x1006;" />
           </folding>
