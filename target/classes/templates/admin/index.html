@@ -212,7 +212,7 @@
                 <div th:if="${currentUser.credit} ge '1'">
                     <div class="">
                         <p style="margin-top: 10px;"><i class="layui-icon" style="font-size: 50px; color: #009688;">&#xe60c;</i>
-                            当前信誉值为：<span th:text="${currentUser.credit}"></span>
+                            当前信誉值为：<span th:text="${#strings.substring(currentUser.credit,0,4)}"></span>
                         </p>
                         <p style="margin-left: 50px;margin-top: 30px">没有任何违规操作</p>
                     </div>
@@ -220,7 +220,7 @@
                 <div th:if="${currentUser.credit} lt '1'">
                     <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
                                                                   style="font-size: 50px; color: #FFB800;">&#xe60c;</i>当前信誉值为：<span
-                            th:text="${currentUser.credit}"></span></p>
+                            th:text="${#strings.substring(currentUser.credit,0,4)}"></span></p>
                         <p style="margin-left: 50px;margin-top: 30px">请注意您的操作，已经有违规行为
                         </p>
                     </div>
@@ -228,7 +228,7 @@
                 <div th:if="${currentUser.credit} lt  '0.3'">
                     <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
                                                                   style="font-size: 50px; color: #FF5722;">&#xe60c;</i>
-                        当前信誉值为：<span th:text="${currentUser.credit}"></span></p>
+                        当前信誉值为：<span th:text="${#strings.substring(currentUser.credit,0,4)}"></span></p>
                         <p style="margin-left: 50px;margin-top: 30px">信誉值太低，请联系管理员，否则下次不能访问
                         </p>
                     </div>
@@ -243,7 +243,7 @@
                 <div>
                     <div class="">
                         <p style="margin-top: 10px;"><i class="layui-icon" style="font-size: 50px; color: #009688;">&#xe60c;</i>
-                            当前信誉值为：<span th:text="${currentUser.credit}"></span>
+                            当前信誉值为：<span th:text="${#strings.substring(currentUser.credit,0,4)}"></span>
                         </p>
                         <p style="margin-left: 50px;margin-top: 30px">上一次您没有安全退出!</p>
                        <!-- <p style="margin-left: 50px;margin-top: 30px" th:if="${lastLoginData.unlogin}">上一次登录错误次数太多</p>
