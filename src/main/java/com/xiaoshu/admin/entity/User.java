@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.xiaoshu.common.base.DataEntity;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,7 +57,7 @@ public class User extends DataEntity<User> {
     private String age;
 
     @TableField("credit")
-    private Double credit;
+    private BigDecimal credit;
     /**
      * 农田主和农田温度\湿度\光照管理员的关系id
      */
@@ -208,11 +209,11 @@ public class User extends DataEntity<User> {
         return serialVersionUID;
     }
 
-    public Double getCredit() {
+    public BigDecimal getCredit() {
         return credit;
     }
 
-    public void setCredit(Double credit) {
+    public void setCredit(BigDecimal credit) {
         this.credit = credit;
     }
 }

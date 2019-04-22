@@ -47,11 +47,12 @@
 <div class="layui-form users_list">
     <table class="layui-table" id="message-table" lay-filter="messageList"></table>
     <script type="text/html" id="formatLock">
-        {{#  if(d.isLook == false){ }}
-        <span class="layui-badge layui-bg-gray">未读</span>
+        {{#  if( d.looked == "已读"){ }}
+        <span class="layui-badge layui-bg-gray">已读</span>
         {{#  } else { }}
-        <span class="layui-badge layui-bg-green">已读</span>
+        <span class="layui-badge layui-bg-green">未读</span>
         {{#  } }}
+
     </script>
     <script type="text/html" id="messageBar">
         <shiro:hasPermission name="user:message:edit">

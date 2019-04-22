@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.Role;
 import com.xiaoshu.admin.mapper.RoleMapper;
 import com.xiaoshu.admin.service.RoleService;
+import com.xiaoshu.common.config.MySysUser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper,Role> implements Rol
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Role saveRole(Role role) {
+        role.setUpdateId(MySysUser.id());
         baseMapper.insert(role);
         if(role.getMenuSet() != null && role.getMenuSet().size() > 0) {
             baseMapper.saveRoleMenus(role.getId(),role.getMenuSet());
@@ -40,6 +42,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper,Role> implements Rol
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateRole(Role role) {
+        role.setUpdateId(MySysUser.id());
         baseMapper.updateById(role);
         baseMapper.dropRoleMenus(role.getId());
         if(role.getMenuSet() != null && role.getMenuSet().size() > 0) {
@@ -51,6 +54,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper,Role> implements Rol
     @Transactional(rollbackFor = Exception.class)
     public void deleteRole(Role role) {
         role.setDelFlag(true);
+        role.setUpdateId(MySysUser.id());
         baseMapper.updateById(role);
         baseMapper.dropRoleMenus(role.getId());
         baseMapper.dropRoleUsers(role.getId());

@@ -47,7 +47,6 @@
 </fieldset>
 <div class="layui-form users_list">
     <table class="layui-table" id="userTable" lay-filter="userList"></table>
-
     <script type="text/html" id="userStatus">
         {{#  if(d.delFlag == false){ }}
         <span class="layui-badge layui-bg-green">正常</span>
@@ -61,6 +60,7 @@
         <span class="layui-badge layui-bg-gray">锁定</span>
         {{#  } }}
     </script>
+
 
     <script type="text/html" id="userType">
         {{#  if(d.adminUser){ }}

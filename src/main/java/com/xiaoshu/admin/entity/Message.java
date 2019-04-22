@@ -34,17 +34,18 @@ public class Message extends DataEntity<Message> {
 
     @TableField("update_by")
     private String updateId;
+    @TableField("is_look")
+    private String looked;
+
     @TableField("del_flag")
     private Boolean delFlag;
-    @TableField("is_look")
-    private Boolean isLook;
 
-    public Boolean getLook() {
-        return isLook;
+    public String getLooked() {
+        return looked;
     }
 
-    public void setLook(Boolean look) {
-        isLook = look;
+    public void setLooked(String looked) {
+        this.looked = looked;
     }
 
     @TableField(exist=false)

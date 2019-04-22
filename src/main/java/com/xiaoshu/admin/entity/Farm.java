@@ -12,8 +12,8 @@ import java.util.Date;
 @TableName("t_farm")
 public class Farm extends DataEntity<Farm>{
     private static final long serialVersionUID = 1L;
-    /*@TableField("id")
-    private Integer id;*/
+//    @TableField(strategy= FieldStrategy.IGNORED)
+    private String sId;
 
     @TableField("name")
     private String name;
@@ -44,6 +44,14 @@ public class Farm extends DataEntity<Farm>{
 
     @TableField("userId")
     private String userId;
+
+    public String getsId() {
+        return sId;
+    }
+
+    public void setsId(String sId) {
+        this.sId = sId;
+    }
 
     public String getUserId() {
         return userId;
@@ -148,7 +156,4 @@ public class Farm extends DataEntity<Farm>{
         this.user = user;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 }

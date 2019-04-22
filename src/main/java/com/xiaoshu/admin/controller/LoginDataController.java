@@ -86,10 +86,10 @@ public class LoginDataController {
 
 
         User user= userService.findUserById(userId);
-        user.setCredit(user.getCredit()-credit.getResult());
+        user.setCredit(user.getCredit().subtract(credit.getResult()));
         userService.updateUserOnlyCredit(user);//更新用户的信誉度
 
-        return ResponseEntity.success("操作成功");
+        return ResponseEntity.success("信誉度更新成功");
 
     }
 

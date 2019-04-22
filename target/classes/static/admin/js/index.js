@@ -150,12 +150,12 @@ layui.config({
     })
 
 
-  /*  $(".getMessage").mouseover(function(){
-        layer.tips('有新消息', '.getMessage', {
-            tips: [3, '#3595CC'],
-            time:1000
-        });
-    })*/
+  $(".accountCredit").mouseover(function () {
+      layer.tips('点击计算信誉度', '.accountCredit', {
+          tips: [1, '#3595CC'],
+          time: 500
+      });
+  });
 
   $(".accountCredit").click(function(){
       var loadIndex = layer.load(2, {
@@ -182,6 +182,7 @@ layui.config({
       });
       return false;
   });
+
 
     //退出
     $(".signOut").click(function(){
@@ -237,17 +238,6 @@ layui.config({
 
 
 
-    /*   $(document).mouseup(function (e)
-       {
-           var container = $(".login");
-
-           if (!container.is(e.target) // if the target of the click isn't the container...
-               && container.has(e.target).length === 0) // ... nor a descendant of the container
-           {
-               container.hide();
-               $('#loginform').removeClass('green');
-           }
-       });*/
 
     //隐藏左侧导航
     $(".hideMenu").click(function(){

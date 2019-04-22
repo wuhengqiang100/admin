@@ -14,7 +14,7 @@
         <result property="createId" column="create_by"/>
         <result property="updateId" column="update_by"/>
         <result property="delFlag" column="del_flag"/>
-        <result property="isLook" column="is_look"/>
+        <result property="looked" column="is_look"/>
         <collection property="fromUser" ofType="com.xiaoshu.admin.entity.User">
             <result property="id" column="fromUser.id"></result>
             <result column="nick_name" property="nickName"></result>
@@ -27,7 +27,7 @@
         <result property="toUser" column="to_user"/>
         <result property="createName" column="create_name"/>
         <result property="remarks" column="remarks"/>
-        <result property="isLook" column="is_look"/>
+        <result property="looked" column="is_look"/>
         <collection property="toUser" ofType="com.xiaoshu.admin.entity.User">
             <result property="id" column="fromUser.id"></result>
             <result column="nick_name" property="nickName"></result>
@@ -43,7 +43,7 @@
             <result property="content" column="content"/>
             <result property="messageType" column="messageType"/>
             <result property="toUser" column="toUser"/>
-            <result property="isLook" column="isLook"/>
+            <result property="looked" column="looked"/>
             <result property="sendTime" column="sendTime"/>
             <collection property="fromUser"  ofType="com.xiaoshu.admin.entity.User">
                 <result property="id" column="fromUser.id"/>
@@ -66,18 +66,18 @@
            INSERT INTO t_message
            (id,title,content,message_type,to_user,remarks,create_by,create_name,create_date,update_by,update_date,del_flag,is_look)
            VALUES
-           (NULL ,#{title},#{content},#{messageType},#{toUser},#{remarks},#{createId},#{createName},#{createDate},#{updateId},now(),#{delFlag},#{isLook});
+           (NULL ,#{title},#{content},#{messageType},#{toUser},#{remarks},#{createId},#{createName},#{createDate},#{updateId},now(),#{delFlag},#{looked});
        </insert>
 
     <select id="selectMessageList" resultMap="BaseResultMap" parameterType="String">
         select tm.*,su.id,su.nick_name from t_message tm
         left join sys_user su on su.id=tm.create_by
-        where tm.to_user=#{toUser} AND tm.del_flag=0 AND tm.is_look=0;
+        where tm.to_user=#{toUser} AND tm.del_flag=0 AND tm.is_look="未读";
     </select>
 
     <select id="selectMessageListCount" resultType="int"  parameterType="String">
         select count(*) from t_message tm
         left join sys_user su on su.id=tm.create_by
-        where tm.to_user=#{toUser} AND tm.del_flag=0 AND tm.is_look=0;
+        where tm.to_user=#{toUser} AND tm.del_flag=0 AND tm.is_look="未读";
     </select>
 </mapper>

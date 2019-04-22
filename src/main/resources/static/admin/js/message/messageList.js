@@ -37,7 +37,8 @@ layui.use(['layer', 'form', 'laytpl', 'table'], function () {
                     $.get("/admin/user/message/read", {"id": data.id}, function (res) {
                         if (res.success) {
                             layer.msg("该消息已查看", {time: 1000}, function () {
-                                table.reload('message-table', t);
+                                // table.reload('message-table', t);
+                                parent.location.reload();
                             });
                         } else {
                             layer.msg(res.message);
@@ -93,7 +94,7 @@ layui.use(['layer', 'form', 'laytpl', 'table'], function () {
             {field: 'createDate', title: '创建时间', width: '16%', templet: '<div>{{ layui.laytpl.toDateString(d.createDate) }}</div>', unresize: true},
             {field: 'createName', title: '发送人', width: '8%'},
             {field: 'remarks', title: '备注', width: '8%'},
-            {field: 'isLook', title: '状态', width: '10%', templet: '#formatLock'},
+            {field: 'looked', title: '状态', width: '10%', templet: '#formatLock'},
             {title: '操作', fixed: 'right', align: 'center', toolbar: '#messageBar'}
         ]]/*,
         done: function () {

@@ -9,6 +9,7 @@ import com.xiaoshu.common.config.MySysUser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -44,19 +45,27 @@ public class CreditServiceImpl extends ServiceImpl<CreditMapper,Credit> implemen
         credit.setRepeatedRefresh(countRepeatedRefresh[0]);//重复刷新次数
         credit.setUnlogin(countUnLogin[0]);//未成功登录次数
         credit.setAccountLogin(countLength);//数据量，多少条
-        Double accountResult=0.0;
-
+//        Double accountResult=0.0;
+        BigDecimal accountResult=new BigDecimal("0.0");
         if ((countUnSafeLogOut[0]/countLength)>0.9){
-            accountResult=accountResult+0.05;
+            BigDecimal unsafeCut=new BigDecimal("0.05");
+            accountResult.add(unsafeCut);
+//            accountResult=accountResult+0.05;
         }
         if ((countUnauthorizedAccess[0]/countLength)>0){
-            accountResult=accountResult+0.5;//不允许越权发生
+            BigDecimal unauthorizedAccessCut=new BigDecimal("0.5");
+            accountResult.add(unauthorizedAccessCut);
+//            accountResult=accountResult+0.5;//不允许越权发生
         }
         if((countRepeatedRefresh[0]/countLength)>10){
-            accountResult=accountResult+0.05;//平均每次重复刷新超过三次，信誉度-0.1
+            BigDecimal repeatedRefreshCut=new BigDecimal("0.05");
+            accountResult.add(repeatedRefreshCut);
+//            accountResult=accountResult+0.05;//平均每次重复刷新超过三次，信誉度-0.1
         }
         if ((countUnLogin[0]/countLength)>3){
-            accountResult=accountResult+0.1;//用户平均每次失败登录为3次，信誉度-0.1
+            BigDecimal unLoginCut=new BigDecimal("0.05");
+            accountResult.add(unLoginCut);
+//            accountResult=accountResult+0.1;//用户平均每次失败登录为3次，信誉度-0.1
         }
         credit.setResult(accountResult);//计算出应该减的信誉度
         return credit;

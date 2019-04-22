@@ -6,6 +6,7 @@ import com.xiaoshu.admin.entity.Role;
 import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.mapper.UserMapper;
 import com.xiaoshu.admin.service.UserService;
+import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.util.Encodes;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
     @Override
-    public void updateUserOnlyCredit(User user) {
+    public void updateUserOnlyCredit(User user)  {
+        user.setUpdateId(MySysUser.id());
         baseMapper.updateUserOnlyCredit(user);
     }
 
@@ -65,12 +67,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public void saveUser(User user) {
         Encodes.entryptPassword(user);
         user.setLocked(false);
+        user.setCreateId(MySysUser.id());
         baseMapper.insert(user);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateUser(User user) {
+        user.setUpdateId(MySysUser.id());
         dropUserRolesByUserId(user.getId());
         baseMapper.updateById(user);
     }
@@ -85,6 +89,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void lockUser(User user) {
+        user.setUpdateId(MySysUser.id());
         user.setLocked(!user.getLocked());
         user.updateById();
     }

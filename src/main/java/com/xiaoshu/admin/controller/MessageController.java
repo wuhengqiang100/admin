@@ -75,7 +75,9 @@ public class MessageController {
     public ModelMap getNew(){
         ModelMap modelMap=new ModelMap();
         List<Message> messageListTop= messageService.selectMessageList(MySysUser.id());
-        int messageListCount=messageService.selectMessageListCount(MySysUser.id());
+
+//        int messageListCount=messageService.selectMessageListCount(MySysUser.id());
+        int messageListCount=messageListTop.size();
 
         modelMap.put("messageListTop",messageListTop);
         modelMap.put("messageListCount",messageListCount);
@@ -147,6 +149,7 @@ public class MessageController {
         if(null==toUserEn){
             return ResponseEntity.failure("该用户不存在,不能发送消息!");
         }
+        message.setLooked("未读");
         message.setCreateId(MySysUser.id());
         message.setCreateDate(new Date());
         message.setUpdateDate(new Date());
@@ -172,7 +175,7 @@ public class MessageController {
     @ResponseBody
     public ResponseEntity read(String id){
         Message message = messageService.getMessageById(id);
-        message.setLook(true);
+        message.setLooked("已读");
         message.setId(id);
         messageService.updateMessage(message);
         return ResponseEntity.success("消息已读");
@@ -183,7 +186,7 @@ public class MessageController {
     @ResponseBody
     public ResponseEntity readSome(@RequestBody List<Message> messages){
         for (Message message:messages){
-            message.setLook(true);
+            message.setLooked("已读");
             messageService.updateMessage(message);
         }
 

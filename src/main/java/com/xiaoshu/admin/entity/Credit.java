@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.xiaoshu.common.base.DataEntity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -35,7 +36,7 @@ public class Credit extends DataEntity<Farm> {
     private int accountLogin;//登录数据量，多少条
 
     @TableField("result")
-    private Double result;//最终计算结果
+    private BigDecimal result;//最终计算结果
 
     @TableField("create_date")
     private Date createDate;
@@ -77,11 +78,11 @@ public class Credit extends DataEntity<Farm> {
         this.accountLogin = accountLogin;
     }
 
-    public Double getResult() {
+    public BigDecimal getResult() {
         return result;
     }
 
-    public void setResult(Double result) {
+    public void setResult(BigDecimal result) {
         this.result = result;
     }
 

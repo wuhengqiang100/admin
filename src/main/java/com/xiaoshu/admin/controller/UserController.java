@@ -3,7 +3,6 @@ package com.xiaoshu.admin.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xiaoshu.admin.entity.Message;
 import com.xiaoshu.admin.entity.Role;
 import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.mapper.MessageMapper;
@@ -29,7 +28,11 @@ import org.springframework.web.util.WebUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -78,6 +81,11 @@ public class UserController {
             }
         }
         IPage<User> userPage = userService.page(new Page<>(page,limit),userWrapper);
+      /*  List<User> userList=userPage.getRecords();
+        DecimalFormat df = new DecimalFormat( "0.00");
+        userList.forEach(user->{
+            user.setCredit(df.format(user.getCredit()));
+        });*/
         userPageData.setCount(userPage.getTotal());
         userPageData.setData(userPage.getRecords());
         return userPageData;

@@ -2,12 +2,8 @@ package com.xiaoshu.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoshu.admin.entity.Message;
-import com.xiaoshu.admin.entity.Message;
-import com.xiaoshu.admin.entity.Role;
-import com.xiaoshu.admin.entity.User;
 
 import java.util.List;
-import java.util.Set;
 
 public interface MessageService extends IService<Message> {
 
@@ -15,7 +11,7 @@ public interface MessageService extends IService<Message> {
 
     long getMessageNameCount(String name);
 
-    Message saveMessage(Message message);
+    Message  saveMessage(Message message);
 
     Message getMessageById(String id);
 

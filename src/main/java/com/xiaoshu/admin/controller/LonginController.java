@@ -39,6 +39,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -161,7 +162,8 @@ public class LonginController{
         if (LoginTypeEnum.ADMIN.name().equals(loginType)) {
             AuthRealm.ShiroUser principal = (AuthRealm.ShiroUser) SecurityUtils.getSubject().getPrincipal();
             List<Message> messageListTop= messageService.selectMessageList(MySysUser.id());
-            int messageListCount=messageService.selectMessageListCount(MySysUser.id());
+//            int messageListCount=messageService.selectMessageListCount(MySysUser.id());
+            int messageListCount=messageListTop.size();
             User currentUser=userService.findUserById(MySysUser.id());
             modelMap.put("messageListTop",messageListTop);
             modelMap.put("messageListCount",messageListCount);
@@ -320,7 +322,8 @@ public class LonginController{
                 loginDataService.updateLoginDataOnlyUnLogin(loginDataLast);//电话号码或者邮箱匹配的账户，未成功登录次数+1
                 return ResponseEntity.failure("属性值不正确,没有该用户!");
             }
-            if (secutityUser.getCredit()<0.3){
+            BigDecimal lowCredit=new BigDecimal("0.3");
+            if ((secutityUser.getCredit().subtract(lowCredit)).doubleValue()<0){
                 return ResponseEntity.failure("信誉值不足，不能访问!");
             }
 
