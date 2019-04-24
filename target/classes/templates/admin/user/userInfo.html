@@ -51,7 +51,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">信誉值</label>
                                 <div class="layui-input-block inputWidth">
-                                    <input type="text" th:value="${#strings.substring(userinfo.credit,0,4)}" name="credit" disabled class="layui-input layui-disabled">
+                                    <input type="text" th:value="${userinfo.credit}" name="credit" disabled class="layui-input layui-disabled">
                                 </div>
                             </div>
                             <div class="layui-form-item">

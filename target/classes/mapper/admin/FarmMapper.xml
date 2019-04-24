@@ -4,7 +4,7 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.xiaoshu.admin.entity.Farm">
-    <id column="id" property="sId" />
+    <result column="id" property="sId" />
     <result column="name" property="name" />
     <result column="location" property="location" />
     <result column="size" property="size" />
@@ -30,7 +30,7 @@
 
 
   <resultMap type="com.xiaoshu.admin.entity.Farm" id="FarmMap">
-    <id column="id" property="sId" />
+    <result column="id" property="sId" />
     <result column="name" property="name" />
     <result column="location" property="location" />
     <result column="size" property="size" />
