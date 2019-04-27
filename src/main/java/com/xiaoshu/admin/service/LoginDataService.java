@@ -3,6 +3,7 @@ package com.xiaoshu.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoshu.admin.entity.LoginData;
 import com.xiaoshu.admin.entity.User;
+import com.xiaoshu.admin.entity.vo.LoginEchats;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,6 +16,12 @@ public interface LoginDataService extends IService<LoginData> {
 
 //    long getLoginDataNameCount(String name);
 //
+
+    /**
+     * 获取最近的访问数据，访问时间＋访问次数
+     * @return
+     */
+    List<LoginEchats> getLoginDataEcharts();
 
     /**
      * 计算数据完后，更新is_account

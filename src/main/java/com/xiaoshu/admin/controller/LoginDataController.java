@@ -4,11 +4,13 @@ package com.xiaoshu.admin.controller;
 import com.xiaoshu.admin.entity.Credit;
 import com.xiaoshu.admin.entity.LoginData;
 import com.xiaoshu.admin.entity.User;
+import com.xiaoshu.admin.entity.vo.LoginEchats;
 import com.xiaoshu.admin.service.CreditService;
 import com.xiaoshu.admin.service.LoginDataService;
 import com.xiaoshu.admin.service.UserService;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.config.MySysUser;
+import com.xiaoshu.common.util.DateUtil;
 import com.xiaoshu.common.util.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -93,5 +95,25 @@ public class LoginDataController {
 
     }
 
+    @PostMapping("datacharts")
+    @ResponseBody
+    @SysLog("计算信誉度")
+    public ResponseEntity datacharts(){
+        ResponseEntity responseEntity=new ResponseEntity();
+        List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();
 
+        StringBuffer dataDate=new StringBuffer('[');
+        StringBuffer data=new StringBuffer('[');
+        String[] createDateArray=new String[6];
+        int[] dataArray=new int[6];
+        for (int i=0;i<loginEchatsList.size();i++){
+            createDateArray[i]=DateUtil.getStringDateShort(loginEchatsList.get(i).getCreateDate());
+            dataArray[i]=loginEchatsList.get(i).getCount();
+        }
+        responseEntity.setAny("dataDate",createDateArray);
+        responseEntity.setAny("data",dataArray);
+        responseEntity.setSuccess(true);
+        return responseEntity;
+
+    }
 }

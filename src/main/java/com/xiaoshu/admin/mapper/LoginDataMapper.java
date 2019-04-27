@@ -2,6 +2,7 @@ package com.xiaoshu.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaoshu.admin.entity.LoginData;
+import com.xiaoshu.admin.entity.vo.LoginEchats;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,6 +15,13 @@ public interface LoginDataMapper extends BaseMapper<LoginData> {
 //      LoginData selectLoginDataById(@Param("id") String id);
 //
 //      List<LoginData> getLoginDataByUserId(@Param("userId") String userId);
+
+    /**
+     * 获取最近的访问数据，访问时间＋访问次数
+     * @return
+     */
+    List<LoginEchats> getLoginDataEcharts();
+
 
     /**
      * 根据用户id获取该用户前几次操作的数据，计算信誉度

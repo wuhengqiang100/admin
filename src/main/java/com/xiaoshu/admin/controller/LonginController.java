@@ -2,12 +2,12 @@ package com.xiaoshu.admin.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.xiaoshu.admin.entity.*;
+import com.xiaoshu.admin.entity.vo.LoginEchats;
 import com.xiaoshu.admin.entity.vo.ShowMenuVo;
 import com.xiaoshu.admin.mapper.MessageMapper;
 import com.xiaoshu.admin.mapper.UserMapper;
 import com.xiaoshu.admin.service.*;
 import com.xiaoshu.common.annotation.SysLog;
-import com.xiaoshu.common.config.MyMetaObjectHandler;
 import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.exception.UserTypeAccountException;
 import com.xiaoshu.common.realm.AuthRealm;
@@ -16,19 +16,18 @@ import com.xiaoshu.common.util.ResponseEntity;
 import com.xiaoshu.common.util.RoleUtil;
 import com.xiaoshu.common.util.UserUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.reflection.MetaObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.velocity.runtime.directive.contrib.For;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionUsageException;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -41,7 +40,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -500,6 +498,33 @@ public class LonginController{
         List<Message>  messageList=messageService.selectAllByToUser(userId);
         User currentUser=userService.findUserById(userId);
 //        session.setAttribute("messageList",messageList);
+        List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();
+
+        StringBuffer dataDate=new StringBuffer('[');
+        StringBuffer data=new StringBuffer('[');
+        for (int i=0;i<loginEchatsList.size();i++) {
+            if (0==i){
+                dataDate.append("[");
+                data.append("[");
+            }
+            if ((loginEchatsList.size()-1)==i){
+                dataDate.append(loginEchatsList.get(i).getCreateDate());
+                dataDate.append("]");
+                data.append(loginEchatsList.get(i).getCount());
+                data.append("]");
+                break;
+            }
+            dataDate.append("'");
+            dataDate.append(loginEchatsList.get(i).getCreateDate());
+            dataDate.append("',");
+
+            data.append(loginEchatsList.get(i).getCount());
+            data.append(",");
+
+        }
+
+        modelMap.put("dataDate",dataDate);
+        modelMap.put("data",data);
         modelMap.put("messageList",messageList);
         modelMap.put("currentUser",currentUser);
         return "admin/main";

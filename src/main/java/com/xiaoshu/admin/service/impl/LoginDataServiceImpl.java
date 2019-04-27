@@ -3,6 +3,7 @@ package com.xiaoshu.admin.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.LoginData;
 import com.xiaoshu.admin.entity.User;
+import com.xiaoshu.admin.entity.vo.LoginEchats;
 import com.xiaoshu.admin.mapper.LoginDataMapper;
 import com.xiaoshu.admin.service.LoginDataService;
 import com.xiaoshu.common.config.MySysUser;
@@ -18,6 +19,11 @@ import java.util.List;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class LoginDataServiceImpl extends ServiceImpl<LoginDataMapper,LoginData> implements LoginDataService {
+
+    @Override
+    public List<LoginEchats> getLoginDataEcharts() {
+        return baseMapper.getLoginDataEcharts();
+    }
 
     @Override
     public int updateLoginDataOnlyIsAccount(LoginData loginData) {

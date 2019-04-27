@@ -67,6 +67,20 @@
         </collection>
     </resultMap>
 
+    <resultMap id="LoginDataEcharts" type="com.xiaoshu.admin.entity.vo.LoginEchats">
+        <result column="count" property="count" />
+        <result column="createDate" property="createDate" />
+
+    </resultMap>
+
+    <select id="getLoginDataEcharts" resultMap="LoginDataEcharts">
+        SELECT COUNT(*) count ,DATE_FORMAT(`create_date`,'%Y-%m-%d')  createDate
+        FROM login_data
+        WHERE  DATE_ADD(create_date, interval 1 WEEK) >= now()
+        GROUP BY  createDate;
+
+    </select>
+
     <update id="updateLoginDataNew" parameterType="com.xiaoshu.admin.entity.LoginData">
         update login_data
         <set>
