@@ -102,8 +102,7 @@ public class LoginDataController {
         ResponseEntity responseEntity=new ResponseEntity();
         List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();
 
-        StringBuffer dataDate=new StringBuffer('[');
-        StringBuffer data=new StringBuffer('[');
+        //取一周的数据
         String[] createDateArray=new String[6];
         int[] dataArray=new int[6];
         for (int i=0;i<loginEchatsList.size();i++){

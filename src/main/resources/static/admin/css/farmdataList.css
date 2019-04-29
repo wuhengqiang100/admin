@@ -1951,7 +1951,7 @@
   overflow: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 15px 0;
+  padding: 0 0;
 }
 /***********welcome***********/
 .welcome-left-container .data-show li {

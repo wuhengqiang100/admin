@@ -15,16 +15,6 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
         $.post("/admin/user/data/datacharts", {},
             function(data,status){
             if(data.success){
-               alert(data.dataDate+""+data.data);
-                // layer.alert(data.data);
-                //
-                // option.xAxis["data"] = data.dataDate;
-                // option.series["data"] = data.data;
-
-                // var dateDate=JSON.stringify(data.dataDate)
-                // var data=JSON.stringify(data.data)
-
-
                 option = {
                     title: {
                         text: '系统最近访问记录',

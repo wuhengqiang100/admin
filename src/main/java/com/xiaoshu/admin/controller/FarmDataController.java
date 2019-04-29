@@ -8,6 +8,7 @@ import com.xiaoshu.admin.service.MessageService;
 import com.xiaoshu.admin.service.UserService;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.config.MySysUser;
+import com.xiaoshu.common.util.ResponseEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,6 @@ public class FarmDataController {
         }else{//是农田主
             farmList=farmService.getFarmByUserId(farmOwnId);
         }
-
         modelMap.put("farmList",farmList);
         return "admin/farmdata/list";
     }
@@ -66,14 +66,13 @@ public class FarmDataController {
     @RequiresPermissions("farm:farmdata:list")
     @SysLog("查看农田具体数据")
     @PostMapping("list")
-    public ModelMap listAll(ModelMap modelMap) {
-        List<Message> messageListTop= messageService.selectMessageList(MySysUser.id());
-        int messageListCount=messageService.selectMessageListCount(MySysUser.id());
-        User currentUser=userService.findUserById(MySysUser.id());
-        modelMap.put("messageListTop",messageListTop);
-        modelMap.put("messageListCount",messageListCount);
-        modelMap.put("currentUser",currentUser);
-    return modelMap;
+    public ResponseEntity listAll(ModelMap modelMap) {
+        ResponseEntity responseEntity=new ResponseEntity();
+
+        String[] threeTitle={"温度","湿度","关照"};
+        responseEntity.setAny("threeTitle",threeTitle);
+        responseEntity.setSuccess(true);
+        return responseEntity;
     }
 
     /**

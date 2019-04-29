@@ -11,6 +11,13 @@ layui.use(['form','jquery','element','layer'],function(){
         element = layui.element,
         layer = layui.layer;
 
+    $(".tipSet").mouseover(function () {
+        layer.tips('多个属性以,隔开', '.tipSet', {
+            tips: [3, '#3595CC'],
+            time: 500
+        });
+    });
+
     form.on('checkbox(roleMenu)',function(data){
         var v = data.elem.getAttribute("data-parentIds");
         var myarr = v.split(",");

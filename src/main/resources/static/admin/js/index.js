@@ -175,11 +175,13 @@ layui.config({
                       location.href = "/index";
                   });
               }else{
+                  layer.close(loadIndex);
                   layer.msg(res.message,{time:1000});
               }
               return true;
           }
       });
+      layer.close(loadIndex);
       return false;
   });
 

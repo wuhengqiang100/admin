@@ -497,34 +497,6 @@ public class LonginController{
         String userId = MySysUser.id();
         List<Message>  messageList=messageService.selectAllByToUser(userId);
         User currentUser=userService.findUserById(userId);
-//        session.setAttribute("messageList",messageList);
-        List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();
-
-        StringBuffer dataDate=new StringBuffer('[');
-        StringBuffer data=new StringBuffer('[');
-        for (int i=0;i<loginEchatsList.size();i++) {
-            if (0==i){
-                dataDate.append("[");
-                data.append("[");
-            }
-            if ((loginEchatsList.size()-1)==i){
-                dataDate.append(loginEchatsList.get(i).getCreateDate());
-                dataDate.append("]");
-                data.append(loginEchatsList.get(i).getCount());
-                data.append("]");
-                break;
-            }
-            dataDate.append("'");
-            dataDate.append(loginEchatsList.get(i).getCreateDate());
-            dataDate.append("',");
-
-            data.append(loginEchatsList.get(i).getCount());
-            data.append(",");
-
-        }
-
-        modelMap.put("dataDate",dataDate);
-        modelMap.put("data",data);
         modelMap.put("messageList",messageList);
         modelMap.put("currentUser",currentUser);
         return "admin/main";
