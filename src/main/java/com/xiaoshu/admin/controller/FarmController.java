@@ -96,6 +96,15 @@ public class FarmController {
         if(StringUtils.isBlank(farm.getLocation())){
             return ResponseEntity.failure("农田地点不能为空");
         }
+        if(StringUtils.isBlank(farm.getTemperature())){
+            return ResponseEntity.failure("农田标准温度不能为空");
+        }
+        if(StringUtils.isBlank(farm.getHumidity())){
+            return ResponseEntity.failure("农田相对湿度不能为空");
+        }
+        if(StringUtils.isBlank(farm.getIllumination())){
+            return ResponseEntity.failure("农田光照强度不能为空");
+        }
 
         if(farmService.getFarmNameCount(farm.getName())>0){
             return ResponseEntity.failure("农田名称已存在");
@@ -115,9 +124,11 @@ public class FarmController {
     @PostMapping("edit")
     @ResponseBody
     @SysLog("保存编辑农田数据")
-    public ResponseEntity edit(@RequestBody Farm farm){
-        if(StringUtils.isBlank(farm.getId())){
+    public ResponseEntity edit(@RequestBody Farm farm,String id){
+        if(StringUtils.isBlank(id)){
             return ResponseEntity.failure("农田ID不能为空");
+        }else{
+            farm.setId(id);
         }
         if(StringUtils.isBlank(farm.getName())){
             return ResponseEntity.failure("农田名称不能为空");
@@ -127,6 +138,15 @@ public class FarmController {
         }
         if(StringUtils.isBlank(farm.getLocation())){
             return ResponseEntity.failure("农田位置不能为空");
+        }
+        if(StringUtils.isBlank(farm.getTemperature())){
+            return ResponseEntity.failure("农田标准温度不能为空");
+        }
+        if(StringUtils.isBlank(farm.getHumidity())){
+            return ResponseEntity.failure("农田相对湿度不能为空");
+        }
+        if(StringUtils.isBlank(farm.getIllumination())){
+            return ResponseEntity.failure("农田光照强度不能为空");
         }
         Farm oldFarm = farmService.getFarmById(farm.getId());
         if(!oldFarm.getName().equals(farm.getName())){

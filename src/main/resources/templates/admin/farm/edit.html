@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
     <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_6yktjtolb3l.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
     <style type="text/css">
         .layui-form-item .layui-inline {
@@ -39,14 +40,15 @@
 <body>
 <div class="layui-container">
     <form class="layui-form">
-        <input name="id" type="hidden" th:value="${farm.id}">
+        <!--<input name="id" type="hidden" th:value="${farm.id}">-->
         <div class="layui-row">
             <div class="layui-row layui-col-space12">
-                <div class="layui-col-md6 layui-col-md-offset3">
+                <div class="layui-col-md4 layui-col-md-offset2">
                     <div class="layui-card">
                         <div class="layui-card-header nameTitle">农田属性</div>
                         <div class="layui-card-body">
                             <div class="layui-row">
+                                <input type="hidden" name="id" th:value="${farm.id}" autocomplete="off" class="layui-input">
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">农田名称:</label>
                                     <div class="layui-input-block">
@@ -62,15 +64,59 @@
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">农田面积:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe620;</span>)</label>
-                                    <div class="layui-input-block">
+                                   <!-- <div class="layui-input-block">
                                         <input type="text" class="layui-input" lay-verify="number" th:value="${farm.size}" name="size" style="margin-top: 30px;" placeholder="请输入面积">
+                                    </div>-->
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="size" th:value="${farm.size}" required lay-verify="number"
+                                               autocomplete="off" placeholder="请输入面积"
+                                               class="layui-input">
                                     </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">㎡</div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">备注说明:</label>
                                     <div class="layui-input-block" style="margin-top: 30px;">
                                         <textarea placeholder="一些可有可无的备注罢了.." name="remarks" th:text="${farm.remarks}" class="layui-textarea"></textarea>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card"  style="height: 384px">
+                        <div class="layui-card-header nameTitle">农田标准数据</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">标准温度:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe6a2;</span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="temperature" th:value="${farm.temperature}" required lay-verify="required"
+                                               placeholder="请输入标准温度" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">℃</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">相对湿度:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe609;
+                                    </span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="humidity" th:value="${farm.humidity}" required lay-verify="required"
+                                               placeholder="请输入相对湿度" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">%RH</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">光照强度:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe63b;
+                                    </span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="illumination" th:value="${farm.illumination}" required lay-verify="number"
+                                               placeholder="请输入光照强度" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">lux</div>
                                 </div>
                             </div>
                         </div>
@@ -90,5 +136,6 @@
 </div>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/farm/farmEdit.js}"></script>
+<script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_6yktjtolb3l.js}"></script>
 </body>
 </html>

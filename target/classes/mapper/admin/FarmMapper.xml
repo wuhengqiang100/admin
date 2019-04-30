@@ -4,7 +4,7 @@
 
   <!-- 通用查询映射结果 -->
   <resultMap id="BaseResultMap" type="com.xiaoshu.admin.entity.Farm">
-    <!--<result column="id" property="sId" />-->
+    <result column="id" property="id" />
     <result column="name" property="name" />
     <result column="location" property="location" />
     <result column="size" property="size" />
@@ -14,6 +14,9 @@
     <result column="update_date" property="updateDate" />
     <result column="remarks" property="remarks" />
     <result column="del_flag" property="delFlag" />
+    <result column="temperature" property="temperature" />
+    <result column="humidity" property="humidity" />
+    <result column="illumination" property="illumination" />
     <result column="userId" property="userId" />
     <collection property="user"  ofType="com.xiaoshu.admin.entity.User">
       <result property="id" column="user.id"/>
@@ -21,6 +24,8 @@
       <result property="nickName" column="nick_name"/>
     </collection>
   </resultMap>
+
+
 
   <!-- 通用查询结果列 -->
   <sql id="Base_Column_List">
@@ -30,7 +35,7 @@
 
 
   <resultMap type="com.xiaoshu.admin.entity.Farm" id="FarmMap">
-    <!--<result column="id" property="sId" />-->
+    <result column="id" property="id" />
     <result column="name" property="name" />
     <result column="location" property="location" />
     <result column="size" property="size" />
@@ -41,6 +46,9 @@
     <result column="remarks" property="remarks" />
     <result column="del_flag" property="delFlag" />
     <result column="userId" property="userId" />
+    <result column="temperature" property="temperature" />
+    <result column="humidity" property="humidity" />
+    <result column="illumination" property="illumination" />
     <collection property="user"  ofType="com.xiaoshu.admin.entity.User">
       <result property="id" column="user.id"/>
       <result property="loginName" column="login_name"/>
@@ -60,6 +68,9 @@
     tf.update_by,
     tf.remarks,
     tf.del_flag,
+    tf.temperature,
+    tf.humidity,
+    tf.illumination,
     su.id,
     su.nick_name
     from
@@ -83,6 +94,9 @@
     tf.update_by,
     tf.remarks,
     tf.del_flag,
+    tf.temperature,
+    tf.humidity,
+    tf.illumination,
     su.id,
     su.nick_name
     from

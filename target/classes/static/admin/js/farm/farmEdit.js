@@ -25,7 +25,7 @@ layui.use(['form','jquery','layer'],function(){
         });
         $.ajax({
             type:"POST",
-            url:"/admin/farm/user/edit",
+            url:"/admin/farm/user/edit?id=" + data.field.id,
             dataType:"json",
             contentType:"application/json",
             data:JSON.stringify(data.field),

@@ -13,7 +13,7 @@ import java.util.Date;
 public class Farm extends DataEntity<Farm>{
     private static final long serialVersionUID = 1L;
 //    @TableField(strategy= FieldStrategy.IGNORED)
-//    private String sId;
+
 
     @TableField("name")
     private String name;
@@ -38,6 +38,12 @@ public class Farm extends DataEntity<Farm>{
 
     @TableField("remarks")
     private String remarks;
+    @TableField("temperature")
+    private String temperature;//温度
+    @TableField("humidity")
+    private String humidity;//湿度
+    @TableField("illumination")
+    private String illumination;//光照
 
     @TableField("del_flag")
     private Boolean delFlag;
@@ -45,6 +51,33 @@ public class Farm extends DataEntity<Farm>{
     @TableField("userId")
     private String userId;
 
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+    }
+
+    public String getIllumination() {
+        return illumination;
+    }
+
+    public void setIllumination(String illumination) {
+        this.illumination = illumination;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public String getUserId() {
         return userId;

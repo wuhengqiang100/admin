@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_974748_wjk5z1f6gsl.css" media="all"/>
     <link rel="stylesheet" th:href="@{/static/admin/css/farmdataList.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
 </head>
 <body class="">
 <div class="wrap-container welcome-container">
@@ -65,16 +66,17 @@
                 </ul>
             </div>
             <!--图表-->
-            <div class="chart-panel panel panel-default" style="width: 949.1px;height: 406px;position: fixed;z-index: 99;margin-top: 120px" >
+            <div class="chart-panel panel panel-default" style="width: 949.1px;height: 460px;position: fixed;z-index: 99;margin-top: 100px;padding:
+             0px" >
                 <!--<button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger allSee">全屏图表</button>-->
-                <div class="panel-body" id="chart" style="height: 376px;">
+                <div class="panel-body" id="chart" style="height: 480px;width:930px;padding: 0px">
                 </div>
             </div>
         </div>
         <div class="welcome-edge col-lg-3">
             <div class="" style="margin-top: 0;margin-bottom: 150px;width: 305.3px;position: fixed;z-index: 99;">
                 <div class="panel-header" style="padding: 2px;background-color: #393D49">
-                    <button  class="layui-btn layui-btn-fluid layui-btn-lg layui-btn-normal">我的农田</button>
+                    <button  class="layui-btn layui-btn-fluid layui-btn-lg layui-btn-normal" style="font-size: large;">我的农田</button>
                 </div>
             </div>
             <!--农田信息-->
@@ -85,12 +87,14 @@
 
                         <div class="panel-body" style="height: 50px">
                             <div class="layui-row">
-                                <div class="layui-col-md5 layui-col-md-offset1">
+                                <div class="layui-col-md7">
                                     <p>地址:<span th:text="${farm.location}"></span></p>
-                                    <p>面积：<span th:text="${farm.size}"></span></p>
+                                    <p>面积:<span th:text="${farm.size}"></span>&nbsp;<span class="iconfont" style="font-size: 25px;text-align:
+                                    center">
+                                        &#xe620;</span></p>
                                     <p>备注：<span th:text="${farm.remarks}"></span></p>
                                 </div>
-                                <div class="layui-col-md4 layui-col-md-offset2">
+                                <div class="layui-col-md4  layui-col-md-offset1">
                                     <div class="layui-row">  <button class="layui-btn layui-btn-radius layui-btn-normal">查看</button></div>
                                     <div class="layui-row" style="margin-top: 4px"><button class="layui-btn layui-btn-radius">详情</button></div>
                                 </div>

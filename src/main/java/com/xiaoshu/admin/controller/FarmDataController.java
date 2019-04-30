@@ -57,6 +57,7 @@ public class FarmDataController {
         }else{//是农田主
             farmList=farmService.getFarmByUserId(farmOwnId);
         }
+        String firstFarmId=farmList.get(0).getId();
         modelMap.put("farmList",farmList);
         return "admin/farmdata/list";
     }

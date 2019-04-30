@@ -68,9 +68,12 @@ layui.use(['layer', 'form', 'table'], function () {
             {field: 'name', title: '农田名称', width: '16%'},
             {field: 'location', title: '地点', width: '16%'},
             {field: 'size', title: '面积(m2)', width: '8%'},
+            {field: 'temperature', title: '温度(℃)', width: '8%'},
+            {field: 'humidity', title: '湿度(%RH)', width: '8%'},
+            {field: 'illumination', title: '光照(lux)', width: '8%'},
             {field: 'createDate', title: '创建时间', width: '14%'},
             /*{field: 'userId', title: '所属人', width: '10%',templet:'<div>{{d.user.nickName}}</div>'},*/
-            {field: 'remarks', title: '备注', width: '20%'},
+            // {field: 'remarks', title: '备注', width: '20%'},
             /*{field:'user',         title: '所属人',width:'6%'   ,templet:'<div>{{  d.user.nickName }}</div>'},*/
             {title: '操作', fixed: 'right', align: 'center', toolbar: '#farmBar'}
         ]]/*,

@@ -63,6 +63,7 @@ layui.use(['form', 'element', 'layer', 'jquery'], function () {
                 min: 0,
                 max: 25,
                 position: 'left',
+                offset: 3,
                 axisLine: {
                     lineStyle: {
                         color: colors[2]
@@ -78,6 +79,7 @@ layui.use(['form', 'element', 'layer', 'jquery'], function () {
                 min: 0,
                 max: 250,
                 position: 'right',
+                offset: 3,
                 axisLine: {
                     lineStyle: {
                         color: colors[0]
@@ -93,7 +95,7 @@ layui.use(['form', 'element', 'layer', 'jquery'], function () {
                 min: 0,
                 max: 250,
                 position: 'right',
-                offset: 80,
+                offset: 90,
                 axisLine: {
                     lineStyle: {
                         color: colors[1]

@@ -103,8 +103,8 @@ public class LoginDataController {
         List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();
 
         //取一周的数据
-        String[] createDateArray=new String[6];
-        int[] dataArray=new int[6];
+        String[] createDateArray=new String[7];
+        int[] dataArray=new int[7];
         for (int i=0;i<loginEchatsList.size();i++){
             createDateArray[i]=DateUtil.getStringDateShort(loginEchatsList.get(i).getCreateDate());
             dataArray[i]=loginEchatsList.get(i).getCount();
