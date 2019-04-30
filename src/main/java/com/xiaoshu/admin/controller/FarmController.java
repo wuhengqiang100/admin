@@ -124,7 +124,7 @@ public class FarmController {
     @PostMapping("edit")
     @ResponseBody
     @SysLog("保存编辑农田数据")
-    public ResponseEntity edit(@RequestBody Farm farm,String id){
+    public ResponseEntity edit(@RequestBody Farm farm, String id){
         if(StringUtils.isBlank(id)){
             return ResponseEntity.failure("农田ID不能为空");
         }else{

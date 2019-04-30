@@ -97,7 +97,7 @@ public class LoginDataController {
 
     @PostMapping("datacharts")
     @ResponseBody
-    @SysLog("计算信誉度")
+    @SysLog("最近系统访问量统计")
     public ResponseEntity datacharts(){
         ResponseEntity responseEntity=new ResponseEntity();
         List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();

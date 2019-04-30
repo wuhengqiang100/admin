@@ -3,6 +3,7 @@ package com.xiaoshu.admin.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.xiaoshu.common.base.DataEntity2;
 
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * 农田数据实体类
  */
 @TableName("nongtianmysqldata")
-public class FarmData {
+public class FarmData extends DataEntity2<FarmData> {
     private static final long serialVersionUID = 1L;
 
     @TableField("time")
@@ -49,6 +50,9 @@ public class FarmData {
     @TableField(exist=false)
     private Farm farm;
 
+    public FarmData() {
+    }
+
     public String getFarmId() {
         return farmId;
     }
@@ -57,9 +61,11 @@ public class FarmData {
         this.farmId = farmId;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public FarmData(String id) {
+        this.id=id;
     }
+
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getTime() {
         return time;
@@ -180,4 +186,6 @@ public class FarmData {
     public void setFarm(Farm farm) {
         this.farm = farm;
     }
+
+
 }

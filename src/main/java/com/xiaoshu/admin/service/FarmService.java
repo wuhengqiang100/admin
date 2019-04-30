@@ -2,7 +2,6 @@ package com.xiaoshu.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoshu.admin.entity.Farm;
-import com.xiaoshu.admin.entity.Role;
 
 import java.util.List;
 

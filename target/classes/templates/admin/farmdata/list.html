@@ -18,7 +18,7 @@
     <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
     <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
 </head>
-<body class="">
+<body>
 <div class="wrap-container welcome-container">
     <div class="row">
         <div class="welcome-left-container col-lg-9" style="padding-top: 15px">
@@ -27,12 +27,14 @@
                     <shiro:hasPermission name="farm:farmdata:temper">
                         <li class="col-sm-12 col-md-4 col-xs-12">
                             <a href="javascript:;" class="clearfix">
-                                <div class="icon-bg bg-org f-l layui-anim layui-anim-up">
+                                <div class="icon-bg bg-org f-l">
                                     <span class="iconfont">&#xe6a2;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name">温度</p>
-                                    <p><span class="color-org">89</span>数据<span class="iconfont">&#xe628;</span></p>
+                                    <p class="name"><span class="color-org" th:text="${firstFarm.temperature}"></span>标准
+                                        <span class="iconfont">&#xe628;</span></p>
+                                    <p><span class="color-org" th:text="${firstFarm.temperature}">89</span>当前
+                                        <span class="iconfont">&#xe628;</span></p>
                                 </div>
                             </a>
                         </li>
@@ -44,8 +46,9 @@
                                     <span class="iconfont">&#xe63b;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name">湿度</p>
-                                    <p><span class="color-blue">189</span>数据<span class="iconfont">&#xe628;</span></p>
+                                    <p class="name"><span class="color-blue" th:text="${firstFarm.humidity}"></span>标准<span class="iconfont">
+                                        &#xe628;</span></p>
+                                    <p><span class="color-blue" th:text="${firstFarm.humidity}">189</span>当前<span class="iconfont">&#xe628;</span></p>
                                 </div>
                             </a>
                         </li>
@@ -57,8 +60,10 @@
                                     <span class="iconfont">&#xe609;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name">光照</p>
-                                    <p><span class="color-green">221</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                    <p class="name"><span class="color-green" th:text="${firstFarm.illumination}"></span>标准<span
+                                            class="iconfont">&#xe60f;</span></p>
+                                    <p><span class="color-green" th:text="${firstFarm.illumination}">221</span>当前<span class="iconfont">&#xe60f;
+                                    </span></p>
                                 </div>
                             </a>
                         </li>
@@ -66,7 +71,7 @@
                 </ul>
             </div>
             <!--图表-->
-            <div class="chart-panel panel panel-default" style="width: 949.1px;height: 460px;position: fixed;z-index: 99;margin-top: 100px;padding:
+            <div class="chart-panel panel panel-default" style="width: 949.1px;height: 460px;position: fixed;margin-top: 100px;padding:
              0px" >
                 <!--<button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger allSee">全屏图表</button>-->
                 <div class="panel-body" id="chart" style="height: 480px;width:930px;padding: 0px">
@@ -88,10 +93,8 @@
                         <div class="panel-body" style="height: 50px">
                             <div class="layui-row">
                                 <div class="layui-col-md7">
-                                    <p>地址:<span th:text="${farm.location}"></span></p>
-                                    <p>面积:<span th:text="${farm.size}"></span>&nbsp;<span class="iconfont" style="font-size: 25px;text-align:
-                                    center">
-                                        &#xe620;</span></p>
+                                    <p>地址：<span th:text="${farm.location}"></span></p>
+                                    <p>面积：<span th:text="${farm.size}"></span>&nbsp;㎡</p>
                                     <p>备注：<span th:text="${farm.remarks}"></span></p>
                                 </div>
                                 <div class="layui-col-md4  layui-col-md-offset1">

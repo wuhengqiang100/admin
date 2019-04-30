@@ -250,37 +250,15 @@
                         <p style="margin-left: 50px;margin-top: 30px" th:if="${lastLoginData.unauthorized_access}">一次没有安全退出</p>-->
                     </div>
                 </div>
-              <!--  <div th:if="${lastLoginData.repeatedRefresh lt 3} ">
-                    <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
-                                                                  style="font-size: 50px; color: #FFB800;">&#xe60c;</i>当前信誉值为：<span
-                            th:text="${currentUser.credit}"></span></p>
-                        <p style="margin-left: 50px;margin-top: 30px">请注意您的操作，已经有违规行为
-                        </p>
-                    </div>
-                </div>
-                <div th:if="${lastLoginData.unlogin} lt '3'">
-                    <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
-                                                                  style="font-size: 50px; color: #FFB800;">&#xe60c;</i>当前信誉值为：<span
-                            th:text="${currentUser.credit}"></span></p>
-                        <p style="margin-left: 50px;margin-top: 30px">请注意您的操作，已经有违规行为
-                        </p>
-                    </div>
-                </div>
-                <div th:if="${lastLoginData.unauthorized_access} lt  '1'">
-                    <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
-                                                                  style="font-size: 50px; color: #FF5722;">&#xe60c;</i>
-                        当前信誉值为：<span th:text="${currentUser.credit}"></span></p>
-                        <p style="margin-left: 50px;margin-top: 30px">信誉值太低，请联系管理员，否则下次不能访问
-                        </p>
-                    </div>
-                </div>-->
+
             </div>
         </div>
 
     </div>
     <!-- 底部 -->
-    <div class="layui-footer footer">
-        <p>Copyright © 2018 SAAS云管理系统 Design By Cdu大数据研究院 <a href="#" target="_blank">ICP备案号 </a></p>
+    <div class="layui-footer footer" style="height:25px;line-height: 30px">
+        <p style="height: 0px;padding: 0px;margin-bottom: 5px;">Copyright © 2018 SAAS云管理系统 Design By Cdu大数据研究院 <a href="#" target="_blank">ICP备案号
+        </a></p>
         <div style="float: right">
             <fieldset class="layui-elem-field layui-field-title" style="width: 50%;height: 50%">
                 <legend>固定块</legend>
