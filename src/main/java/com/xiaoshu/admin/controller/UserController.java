@@ -104,10 +104,13 @@ public class UserController {
     @SysLog("保存新增系统用户数据")
     public ResponseEntity add(@RequestBody  User user){
         if(StringUtils.isBlank(user.getLoginName())){
-            return ResponseEntity.failure("登录名不能为空");
+            return ResponseEntity.failure("用户名不能为空");
+        }
+        if(StringUtils.isBlank(user.getNickName())){
+            return ResponseEntity.failure("昵称不能为空");
         }
         if(user.getRoleLists() == null || user.getRoleLists().size() == 0){
-            return  ResponseEntity.failure("用户令牌至少选择一个");
+            return  ResponseEntity.failure("访问令牌至少选择一个");
         }
         if(userService.userCount(user.getLoginName())>0){
             return ResponseEntity.failure("登录名称已经存在");
@@ -169,7 +172,7 @@ public class UserController {
             return ResponseEntity.failure("登录名不能为空");
         }
         if(user.getRoleLists() == null || user.getRoleLists().size() == 0){
-            return  ResponseEntity.failure("用户角色至少选择一个");
+            return  ResponseEntity.failure("访问令牌至少选择一个");
         }
         User oldUser = userService.findUserById(user.getId());
         if(StringUtils.isNotBlank(user.getEmail())){

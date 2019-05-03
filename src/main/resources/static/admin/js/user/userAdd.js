@@ -7,7 +7,7 @@ layui.use(['form','jquery','layer'],function(){
         var loadIndex = layer.load(2, {
             shade: [0.3, '#333']
         });
-        //给角色赋值
+        //给访问策略赋值
         delete data.field["roles"];
         var selectRole = [];
         $('input[name="roles"]:checked').each(function(){
