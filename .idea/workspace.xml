@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/4/6 修复编辑器的第一创建 credit实体类">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/4/6 修复编辑器的第一创建 credit实体类" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="568">
-              <caret line="31" column="38" lean-forward="true" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+              <caret line="31" column="38" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -39,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/role/edit.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="424">
-              <caret line="156" column="70" lean-forward="true" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
+              <caret line="156" column="70" lean-forward="false" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -79,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
-              <caret line="114" column="57" lean-forward="true" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
+              <caret line="114" column="57" lean-forward="false" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -88,8 +86,8 @@
       <file leaf-file-name="RoleController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/RoleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-270">
-              <caret line="153" column="9" lean-forward="true" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+            <state relative-caret-position="3132">
+              <caret line="141" column="61" lean-forward="true" selection-start-line="141" selection-start-column="61" selection-end-line="141" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -99,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/edit.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="164" column="70" lean-forward="true" selection-start-line="164" selection-start-column="70" selection-end-line="164" selection-end-column="70" />
+              <caret line="164" column="70" lean-forward="false" selection-start-line="164" selection-start-column="70" selection-end-line="164" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -109,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userEdit.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1395">
-              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -129,7 +127,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userAdd.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="172">
-              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -265,7 +263,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-33" />
+    <option name="x" value="335" />
+    <option name="y" value="72" />
     <option name="width" value="1186" />
     <option name="height" value="1038" />
   </component>
@@ -634,12 +633,12 @@
       <workItem from="1556601393616" duration="6753000" />
       <workItem from="1556609354003" duration="4943000" />
       <workItem from="1556625163301" duration="6239000" />
-      <workItem from="1556863777963" duration="3939000" />
+      <workItem from="1556863777963" duration="5219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240018000" />
+    <option name="totallyTimeSpent" value="241298000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -674,7 +673,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280543" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.285877" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20257235" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21114683" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15837105" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1134,15 +1133,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userAdd.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="31" column="38" lean-forward="true" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1150,7 +1141,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/role/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="424">
-          <caret line="156" column="70" lean-forward="true" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
+          <caret line="156" column="70" lean-forward="false" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -1182,7 +1173,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userEdit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1395">
-          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1190,7 +1181,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="164" column="70" lean-forward="true" selection-start-line="164" selection-start-column="70" selection-end-line="164" selection-end-column="70" />
+          <caret line="164" column="70" lean-forward="false" selection-start-line="164" selection-start-column="70" selection-end-line="164" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -1198,15 +1189,23 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="114" column="57" lean-forward="true" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
+          <caret line="114" column="57" lean-forward="false" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="31" column="38" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/RoleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="153" column="9" lean-forward="true" selection-start-line="153" selection-start-column="9" selection-end-line="153" selection-end-column="9" />
+        <state relative-caret-position="3132">
+          <caret line="141" column="61" lean-forward="true" selection-start-line="141" selection-start-column="61" selection-end-line="141" selection-end-column="61" />
           <folding />
         </state>
       </provider>
