@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/4/6 修复编辑器的第一创建 credit实体类">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/user/userAdd.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/user/userAdd.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -636,12 +634,12 @@
       <workItem from="1556601393616" duration="6753000" />
       <workItem from="1556609354003" duration="4943000" />
       <workItem from="1556625163301" duration="6239000" />
-      <workItem from="1556863777963" duration="2762000" />
+      <workItem from="1556863777963" duration="3939000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238841000" />
+    <option name="totallyTimeSpent" value="240018000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
