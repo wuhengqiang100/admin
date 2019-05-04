@@ -4,10 +4,7 @@ import com.xiaoshu.admin.entity.Farm;
 import com.xiaoshu.admin.entity.FarmData;
 import com.xiaoshu.admin.entity.Message;
 import com.xiaoshu.admin.entity.User;
-import com.xiaoshu.admin.service.FarmDataService;
-import com.xiaoshu.admin.service.FarmService;
-import com.xiaoshu.admin.service.MessageService;
-import com.xiaoshu.admin.service.UserService;
+import com.xiaoshu.admin.service.*;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.util.DateUtil;
@@ -45,6 +42,9 @@ public class FarmDataController {
     @Autowired
     FarmDataService farmDataService;
 
+    @Autowired
+    FarmManagerService farmManagerService;
+
     /**
      * 获取所有的农田数据
      * 包括温度,湿度,光照
@@ -59,7 +59,7 @@ public class FarmDataController {
         String userId=MySysUser.id();
         List<Farm> farmList=new ArrayList<>();
         //判断是不是农田主
-        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        String farmOwnId=farmManagerService.findFarmOwnIdByCurrentId(userId);
         if (StringUtils.isBlank(farmOwnId)){//是数据管理员
             farmList=farmService.getFarmByUserId(userId);
         }else{//是农田主
@@ -119,7 +119,7 @@ public class FarmDataController {
         String userId=MySysUser.id();
         List<Farm> farmList=new ArrayList<>();
         //判断是不是农田主
-        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        String farmOwnId=farmManagerService.findFarmOwnIdByCurrentId(userId);
         if (StringUtils.isBlank(farmOwnId)){//是数据管理员
             farmList=farmService.getFarmByUserId(userId);
         }else{//是农田主
@@ -168,7 +168,7 @@ public class FarmDataController {
         String userId=MySysUser.id();
         List<Farm> farmList=new ArrayList<>();
         //判断是不是农田主
-        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        String farmOwnId=farmManagerService.findFarmOwnIdByCurrentId(userId);
         if (StringUtils.isBlank(farmOwnId)){//是数据管理员
             farmList=farmService.getFarmByUserId(userId);
         }else{//是农田主
@@ -205,7 +205,7 @@ public class FarmDataController {
         String userId=MySysUser.id();
         List<Farm> farmList=new ArrayList<>();
         //判断是不是农田主
-        String farmOwnId=userService.findFarmOwnManagerIdById(userId);
+        String farmOwnId=farmManagerService.findFarmOwnIdByCurrentId(userId);
         if (StringUtils.isBlank(farmOwnId)){//是数据管理员
             farmList=farmService.getFarmByUserId(userId);
         }else{//是农田主

@@ -18,7 +18,7 @@
         <result property="requestPlace" column="request_place"/>
         <result property="age" column="age"/>
         <result property="credit" column="credit"/>
-        <result property="ownManagerId" column="own_manager_id"/>
+        <!--<result property="ownManagerId" column="own_manager_id"/>-->
         <result property="icon" column="icon"/>
     </resultMap>
 
@@ -38,7 +38,7 @@
         <result property="requestPlace" column="request_place"/>
         <result property="age" column="age"/>
         <result property="credit" column="credit"/>
-        <result property="ownManagerId" column="own_manager_id"/>
+        <!--<result property="ownManagerId" column="own_manager_id"/>-->
         <result property="icon" column="icon"/>
         <collection property="roleLists" ofType="com.xiaoshu.admin.entity.Role">
             <result property="id" column="role.id"/>
@@ -126,7 +126,7 @@
         u.is_admin,
         u.del_flag,
         u.credit,
-        u.own_manager_id,
+       /* u.own_manager_id,*/
         u.icon,
         r.id AS "role.id",
         r.name AS "role.name",
@@ -176,17 +176,18 @@
     </delete>
     <insert id="insertUserRegist" parameterType="com.xiaoshu.admin.entity.UserRegist">
         INSERT INTO sys_user
-        (id,login_name,nick_name,icon,password,salt,tel,email,identity,request_place,age,locked,create_date,create_by,update_date,update_by,remarks,del_flag,is_admin,credit,own_manager_id)
+        (id,login_name,nick_name,icon,password,salt,tel,email,identity,request_place,age,locked,create_date,create_by,update_date,update_by,remarks,del_flag,is_admin,credit)
         VALUES
-        (#{id},#{nickName},#{nickName},null,#{password},#{salt},#{tel},#{email},#{identity},#{requestPlace},#{age},#{locked},now(),NULL ,now(),NULL ,NULL ,0,#{adminUser},1.0,NULL);
+        (#{id},#{nickName},#{nickName},null,#{password},#{salt},#{tel},#{email},#{identity},#{requestPlace},#{age},#{locked},now(),NULL ,now(),NULL ,NULL ,0,#{adminUser},1.0);
     </insert>
 
     <select id="findAllUser" resultMap="UserMap01">
         SELECT * from sys_user ;
     </select>
 
+
     <select id="findFarmOwnManagerIdById" resultType="java.lang.String">
-        SELECT own_manager_id  FROM sys_user where id=#{id};
+        SELECT farm_own_id  FROM farm_own_manager  where farm_manager_id=#{id};
     </select>
 
 

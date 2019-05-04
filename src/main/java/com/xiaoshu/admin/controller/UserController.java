@@ -171,6 +171,12 @@ public class UserController {
         if(StringUtils.isBlank(user.getLoginName())){
             return ResponseEntity.failure("登录名不能为空");
         }
+        if(StringUtils.isBlank(user.getNickName())){
+            return ResponseEntity.failure("昵称不能为空");
+        }
+        if(StringUtils.isBlank(user.getIdentity())){
+            return ResponseEntity.failure("用户访问身份不能为空");
+        }
         if(user.getRoleLists() == null || user.getRoleLists().size() == 0){
             return  ResponseEntity.failure("访问令牌至少选择一个");
         }
@@ -186,7 +192,7 @@ public class UserController {
         if(StringUtils.isNotBlank(user.getLoginName())){
             if(!user.getLoginName().equals(oldUser.getLoginName())) {
                 if (userService.userCount(user.getLoginName()) > 0) {
-                    return ResponseEntity.failure("该登录名已存在");
+                    return ResponseEntity.failure("该用户名已存在");
                 }
             }
         }

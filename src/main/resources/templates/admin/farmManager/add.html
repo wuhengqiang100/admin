@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>新增农田管理员--系统农田管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
+    <style type="text/css">
+        .layui-form-item .layui-inline {
+            min-width: 15%;
+            float: left;
+            margin-right: 0;
+        }
+
+        .layui-form-item .role-box {
+            position: relative;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #d2d2d2;
+        }
+
+        .layui-card {
+            margin-top: 10px;
+        }
+        .nameTitle{
+            font-size: large;
+            font-style: inherit;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-container">
+    <form class="layui-form">
+        <div class="layui-row">
+            <div class="layui-row layui-col-space12">
+                <div class="layui-col-md4 layui-col-md-offset2">
+                    <div class="layui-card">
+                        <div class="layui-card-header nameTitle">农田管理员属性</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">农田管理员类别:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">农田名称:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入名称" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">农田位置:</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" lay-verify="required" name="location" style="margin-top: 30px;" placeholder="请输入位置">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">农田面积:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe620;</span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="size" required lay-verify="number"
+                                               autocomplete="off" placeholder="请输入面积"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">㎡</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">备注说明:</label>
+                                    <div class="layui-input-block" style="margin-top: 30px;">
+                                        <textarea placeholder="一些可有可无的备注罢了.." name="remarks" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card"  style="height: 384px">
+                        <div class="layui-card-header nameTitle">农田标准数据</div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">标准温度:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe6a2;</span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="temperature"  required lay-verify="required"
+                                               placeholder="请输入标准温度" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">℃</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">相对湿度:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe609;
+                                    </span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="humidity" required lay-verify="required"
+                                               placeholder="请输入相对湿度" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">%RH</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">光照强度:(<span class="iconfont" style="font-size: 25px;text-align: center">&#xe63b;
+                                    </span>)</label>
+                                    <div class="layui-inline" style="padding-right: 0px">
+                                        <input type="text" name="illumination" required lay-verify="number"
+                                               placeholder="请输入光照强度" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                    <div class="layui-inline" style="font-size: 16px;text-align: center;margin-top: 5px">lux</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <shiro:hasPermission name="farm:user:add">
+                    <div class="layui-form-item" style="padding-left: 30%;">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="addFarm">立即提交</button>
+                        </div>
+                    </div>
+                </shiro:hasPermission>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/farm/farmAdd.js}"></script>
+</body>
+</html>

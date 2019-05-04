@@ -3,7 +3,7 @@
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
-    <title>用户农田管理</title>
+    <title>农田主龙农田管理员管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,6 +12,14 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/static/admin/css/list.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
+    <style type="text/css">
+        .iconfontLogo{
+            font-size: 35px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body class="childrenBody">
 <fieldset class="layui-elem-field">
@@ -19,7 +27,7 @@
     <div class="layui-field-box">
         <form class="layui-form">
             <div class="layui-inline">
-                <input type="text" value="" name="s_key" placeholder="可以输入管理员名/管理员类型" class="layui-input search_input">
+                <input type="text" value="" name="s_key" placeholder="可以输入管理员昵称" class="layui-input search_input">
             </div>
             <div class="layui-input-inline">
                 <a class="layui-btn" lay-submit="" lay-filter="searchForm">查询</a>
@@ -35,18 +43,29 @@
                 </div>
             </shiro:hasPermission>
             <shiro:hasPermission name="farm:user:delete">
-                <div class="layui-inline">
-                    <a class="layui-btn layui-btn-danger" data-type="deleteSome">温度管理员</a>
+                <div class="layui-inline" style="margin-left: 400px">
+                    <a class="layui-btn" data-type="">管理员类别</a>
                 </div>
             </shiro:hasPermission>
             <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
-                    <a class="layui-btn layui-btn-danger" data-type="deleteSome">湿度管理员</a>
+                    <span class="iconfont iconfontLogo">&#xe6a2;</span>
+                    <span class="layui-badge layui-bg-green">1</span>
+                    <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">1</a>-->
                 </div>
             </shiro:hasPermission>
             <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
-                    <a class="layui-btn layui-btn-danger" data-type="deleteSome">光照管理员</a>
+                    <span class="iconfont iconfontLogo">&#xe609;</span>
+                    <span class="layui-badge layui-bg-green">3</span>
+                    <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">3</a>-->
+                </div>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="farm:user:delete">
+                <div class="layui-inline">
+                    <span class="iconfont iconfontLogo">&#xe63b;</span>
+                    <span class="layui-badge layui-bg-green">5</span>
+                    <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">5</a>-->
                 </div>
             </shiro:hasPermission>
         </form>
@@ -54,11 +73,11 @@
 </fieldset>
 
 <div class="layui-form users_list">
-    <table class="layui-table" id="farmmanager-table" lay-filter="farmmanagerList"></table>
-    <script type="text/html" id="farmmanagerBar">
-        <shiro:hasPermission name="farm:user:edit">
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        </shiro:hasPermission>
+    <table class="layui-table" id="farmManager-table" lay-filter="farmManagerList"></table>
+    <script type="text/html" id="farmManagerBar">
+        <!--<shiro:hasPermission name="farm:user:edit">-->
+            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+        <!--</shiro:hasPermission>-->
         <shiro:hasPermission name="farm:user:delete">
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </shiro:hasPermission>
@@ -66,8 +85,41 @@
 </div>
 <div id="page"></div>
 
+<!--<div class=" layui-input-inline showAddManager" style="display: none">
+    <div>
+        <div style="text-align: center;align-self: center">
+            <div th:if="${currentUser.credit} ge '1'">
+                <div class="">
+                    <p style="margin-top: 10px;"><i class="layui-icon" style="font-size: 50px; color: #009688;">&#xe60c;</i>
+                        当前信誉值为：<span th:text="${currentUser.credit}"></span>
+                    </p>
+                    <p style="margin-left: 50px;margin-top: 30px">没有任何违规操作</p>
+                </div>
+            </div>
+            <div th:if="${currentUser.credit} lt '1'">
+                <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
+                                                              style="font-size: 50px; color: #FFB800;">&#xe60c;</i>当前信誉值为：<span
+                        th:text="${currentUser.credit}"></span></p>
+                    <p style="margin-left: 50px;margin-top: 30px">请注意您的操作，已经有违规行为
+                    </p>
+                </div>
+            </div>
+            <div th:if="${currentUser.credit} lt  '0.3'">
+                <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
+                                                              style="font-size: 50px; color: #FF5722;">&#xe60c;</i>
+                    当前信誉值为：<span th:text="${currentUser.credit}"></span></p>
+                    <p style="margin-left: 50px;margin-top: 30px">信誉值太低，请联系管理员，否则下次不能访问
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>-->
+
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/tools.js}"></script>
-<script type="text/javascript" th:src="@{/static/admin/js/farmmanager/farmmanagerList.js}"></script>
+<script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/farmManager/farmmanagerList.js}"></script>
 </body>
 </html>

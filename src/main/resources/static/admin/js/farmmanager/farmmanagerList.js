@@ -5,7 +5,7 @@ layui.use(['layer', 'form', 'table'], function () {
         table = layui.table,
         t;              //表格变量
     //监听工具条
-    table.on('tool(farmmanagerList)', function (obj) {
+    table.on('tool(farmManagerList)', function (obj) {
         var data = obj.data;
         if (obj.event === 'edit') {
             var editIndex = layer.open({
@@ -36,7 +36,7 @@ layui.use(['layer', 'form', 'table'], function () {
                     $.post("/admin/farm/manager/delete", {"id": data.id}, function (res) {
                         if (res.success) {
                             layer.msg("删除成功", {time: 1000}, function () {
-                                table.reload('farmmanager-table', t);
+                                table.reload('farmManager-table', t);
                             });
                         } else {
                             layer.msg(res.message);
@@ -49,7 +49,7 @@ layui.use(['layer', 'form', 'table'], function () {
         }
     });
     t = {
-        elem: '#farmmanager-table',
+        elem: '#farmManager-table',
         even: true,
         url: '/admin/farm/manager/list',
         method: 'post',
@@ -65,17 +65,11 @@ layui.use(['layer', 'form', 'table'], function () {
         cols: [[
             {type: 'checkbox'},
             /* {field:'id',        title: 'ID'  ,width: '4%' },*/
-            {field: 'name', title: '农田名称', width: '16%'},
-            {field: 'location', title: '地点', width: '16%'},
-            {field: 'size', title: '面积(m2)', width: '8%'},
-            {field: 'temperature', title: '温度(℃)', width: '8%'},
-            {field: 'humidity', title: '湿度(%RH)', width: '8%'},
-            {field: 'illumination', title: '光照(lux)', width: '8%'},
-            {field: 'createDate', title: '创建时间', width: '14%'},
-            /*{field: 'userId', title: '所属人', width: '10%',templet:'<div>{{d.user.nickName}}</div>'},*/
-            // {field: 'remarks', title: '备注', width: '20%'},
-            /*{field:'user',         title: '所属人',width:'6%'   ,templet:'<div>{{  d.user.nickName }}</div>'},*/
-            {title: '操作', fixed: 'right', align: 'center', toolbar: '#farmmanagerBar'}
+            {field: 'farmOwnNickName', title: '农田主昵称', width: '16%'},
+            {field: 'farmManagerNickName', title: '农田管理员昵称', width: '16%'},
+            {field: 'farmManagerType', title: '管理员类别', width: '16%'},
+            {field: 'updateDate', title: '更新时间', width: '20%'},
+            {title: '操作', fixed: 'right', align: 'center', toolbar: '#farmManagerBar'}
         ]]/*,
         done: function () {
             $("[data-field='id']").css('display','none');
@@ -85,6 +79,7 @@ layui.use(['layer', 'form', 'table'], function () {
 
     var active = {
         addFarm: function () {
+
             addIndex = layer.open({
                 title: "添加农田管理员",
                 type: 2,
@@ -102,42 +97,6 @@ layui.use(['layer', 'form', 'table'], function () {
                 layer.full(addIndex);
             });
             layer.full(addIndex);
-        },
-        //批量删除
-        deleteSome: function () {
-            var checkStatus = table.checkStatus('farmmanager-table'),
-                data = checkStatus.data;
-            if (data.length > 0) {
-                console.log(JSON.stringify(data));
-                layer.confirm("你确定要删除这些农田管理员么？", {
-                        skin: 'layui-layer-molv'
-                        , closeBtn: 1,
-                        icon: 3, title: '提示', btn: ['是的,我确定', '我再想想']
-                    },
-                    function () {
-                        var deleteindex = layer.msg('删除中，请稍候', {icon: 16, time: false, shade: 0.8});
-                        $.ajax({
-                            type: "POST",
-                            url: "/admin/farm/manager/deleteSome",
-                            dataType: "json",
-                            contentType: "application/json",
-                            data: JSON.stringify(data),
-                            success: function (res) {
-                                layer.close(deleteindex);
-                                if (res.success) {
-                                    layer.msg("删除成功", {time: 1000}, function () {
-                                        table.reload('farmmanager-table', t);
-                                    });
-                                } else {
-                                    layer.msg(res.message);
-                                }
-                            }
-                        });
-                    }
-                )
-            } else {
-                layer.msg("请选择需要删除的农田管理员", {time: 1000});
-            }
         }
     };
     $('.layui-inline .layui-btn').on('click', function () {
@@ -146,7 +105,7 @@ layui.use(['layer', 'form', 'table'], function () {
     });
     //搜索
     form.on("submit(searchForm)", function (data) {
-        table.reload('farmmanager-table', {
+        table.reload('farmManager-table', {
             page: {curr: 1},
             where: data.field
         });
