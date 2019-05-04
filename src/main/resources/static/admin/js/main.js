@@ -35,7 +35,7 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                     xAxis : [
                         {
                             type : 'category',
-                            data : data.dataDate,
+                            data : data.createDateArray,
                             axisTick: {
                                 alignWithLabel: true
                             }
@@ -51,7 +51,7 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                             name:'最近访问数',
                             type:'bar',
                             barWidth: '60%',
-                            data: data.data
+                            data: data.dataArray
                         }
                     ]
                 };

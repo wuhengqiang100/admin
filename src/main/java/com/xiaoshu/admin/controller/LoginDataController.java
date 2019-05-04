@@ -2,6 +2,7 @@ package com.xiaoshu.admin.controller;
 
 
 import com.xiaoshu.admin.entity.Credit;
+import com.xiaoshu.admin.entity.Echarts.LastActivity;
 import com.xiaoshu.admin.entity.LoginData;
 import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.entity.vo.LoginEchats;
@@ -105,12 +106,19 @@ public class LoginDataController {
         //取一周的数据
         String[] createDateArray=new String[7];
         int[] dataArray=new int[7];
+        LastActivity lastActivity=new LastActivity();//存储最近访问数据的实体
+
         for (int i=0;i<loginEchatsList.size();i++){
-            createDateArray[i]=DateUtil.getStringDateShort(loginEchatsList.get(i).getCreateDate());
+            if(null==loginEchatsList.get(i).getCreateDate()){
+                createDateArray[i]="该日期没有访问";
+            }else{
+                createDateArray[i]= DateUtil.getStringDateShort(loginEchatsList.get(i).getCreateDate());
+            }
             dataArray[i]=loginEchatsList.get(i).getCount();
         }
-        responseEntity.setAny("dataDate",createDateArray);
-        responseEntity.setAny("data",dataArray);
+
+        responseEntity.setAny("createDateArray",createDateArray);
+        responseEntity.setAny("dataArray",dataArray);
         responseEntity.setSuccess(true);
         return responseEntity;
 
