@@ -3,6 +3,7 @@ layui.use(['form','jquery','layer'],function(){
         $    = layui.jquery,
         layer = layui.layer;   //默认启用用户
 
+
     form.on("submit(addUser)",function(data){
         var loadIndex = layer.load(2, {
             shade: [0.3, '#333']

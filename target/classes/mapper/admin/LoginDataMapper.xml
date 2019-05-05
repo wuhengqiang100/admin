@@ -70,7 +70,6 @@
     <resultMap id="LoginDataEcharts" type="com.xiaoshu.admin.entity.vo.LoginEchats">
         <result column="count" property="count" />
         <result column="createDate" property="createDate" />
-
     </resultMap>
 
     <select id="getLoginDataEcharts" resultMap="LoginDataEcharts">

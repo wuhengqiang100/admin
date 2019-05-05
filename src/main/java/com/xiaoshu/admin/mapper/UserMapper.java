@@ -40,4 +40,10 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     String findFarmOwnManagerIdById(String id);
+
+    /**
+     * 获得所有拥有农田管理员身份的用户
+     * @return
+     */
+    List<User> getAllHaveManagerIdentityUser();
 }

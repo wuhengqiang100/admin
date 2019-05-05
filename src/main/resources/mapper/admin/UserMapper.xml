@@ -190,5 +190,12 @@
         SELECT farm_own_id  FROM farm_own_manager  where farm_manager_id=#{id};
     </select>
 
+    <select id="getAllHaveManagerIdentityUser" resultMap="UserMap01">
+        SELECT su.* from sys_user su
+        LEFT JOIN sys_user_role sur ON su.id=sur.user_id
+        LEFT JOIN sys_role sr ON sur.role_id=sr.id
+        LEFT JOIN farm_own_manager fom ON fom.farm_manager_id=su.id
+        WHERE (sr.`name`  LIKE  "%温度%" OR sr.`name` LIKE  "%湿度%" OR sr.`name` LIKE  "%光照%");
+    </select>
 
 </mapper>

@@ -2,6 +2,9 @@ package com.xiaoshu.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoshu.admin.entity.FarmManager;
+import com.xiaoshu.admin.entity.FarmManagerCount;
+
+import java.util.List;
 
 /**
  * 农田管理service接口层
@@ -13,4 +16,44 @@ public interface FarmManagerService extends IService<FarmManager> {
      * @return
      */
     String findFarmOwnIdByCurrentId(String id);
+
+    /**
+     * 根据农田管理员id获取农田管理员信息
+     * @param id
+     * @return
+     */
+    FarmManager getFarmManagerById(String id);
+
+    /**
+     * 删除农田管理员信息
+     * @param farmManage
+     */
+    void deleteFarmManager(FarmManager farmManage);
+    /**
+     * 根据农田id获取管理员类型以及,管理员的数量
+     * @param id
+     * @return
+     */
+    List<FarmManagerCount> getCountManager(String id);
+
+    /**
+     * 获得所有的农田管理员数据
+     * @return
+     */
+    List<FarmManager> getAllFarmManager();
+
+/*
+    *//**
+     * 根据农田id获取湿度管理员的数量
+     * @param id
+     * @return
+     *//*
+    int getCountHumManager(String id);
+
+    *//**
+     * 根据农田id获取光照管理员的数量
+     * @param id
+     * @return
+     *//*
+    int getCountIlluManager(String id);*/
 }

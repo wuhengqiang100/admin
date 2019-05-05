@@ -104,6 +104,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return baseMapper.selectUserByTellOrEmail(tell,email);
     }
 
+    @Override
+    public List<User> getAllHaveManagerIdentityUser() {
+        return baseMapper.getAllHaveManagerIdentityUser();
+    }
+
     @Transactional(rollbackFor = Exception.class)
     public void dropUserRolesByUserId(String id) {
         baseMapper.dropUserRolesByUserId(id);

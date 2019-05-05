@@ -36,6 +36,17 @@ public class FarmManager extends DataEntity2<FarmManager> {
 
 
     @TableField(exist = false)
+    private int count;//管理员计数,表中没有字段
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    @TableField(exist = false)
     private User farmOwnUser;//农田主实体
 
     @TableField(exist = false)

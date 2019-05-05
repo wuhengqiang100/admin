@@ -42,4 +42,10 @@ public interface UserService extends IService<User> {
     List<User> findAllUser();
 
     User selectUserByTellOrEmail(@Param("tel")String tel, @Param("email")String email);
+
+    /**
+     * 获得所有拥有农田管理员身份的用户
+     * @return
+     */
+    List<User> getAllHaveManagerIdentityUser();
 }

@@ -53,7 +53,6 @@ public class FarmServiceImpl extends ServiceImpl<FarmMapper,Farm> implements Far
     public void deleteFarm(Farm farm) {
         farm.setDelFlag(true);
         baseMapper.updateById(farm);
-
     }
 
     @Override

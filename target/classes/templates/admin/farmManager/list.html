@@ -37,34 +37,32 @@
                     <a class="layui-btn layui-btn-normal" data-type="addFarm">添加管理员</a>
                 </div>
             </shiro:hasPermission>
-            <shiro:hasPermission name="farm:user:delete">
+          <!--  <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
                     <a class="layui-btn layui-btn-danger" data-type="deleteSome">批量删除</a>
                 </div>
-            </shiro:hasPermission>
-            <shiro:hasPermission name="farm:user:delete">
+            </shiro:hasPermission>-->
                 <div class="layui-inline" style="margin-left: 400px">
                     <a class="layui-btn" data-type="">管理员类别</a>
                 </div>
-            </shiro:hasPermission>
             <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
                     <span class="iconfont iconfontLogo">&#xe6a2;</span>
-                    <span class="layui-badge layui-bg-green">1</span>
+                    <span class="layui-badge layui-bg-green" th:text="${tepmerManagerCount}"></span>
                     <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">1</a>-->
                 </div>
             </shiro:hasPermission>
             <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
                     <span class="iconfont iconfontLogo">&#xe609;</span>
-                    <span class="layui-badge layui-bg-green">3</span>
+                    <span class="layui-badge layui-bg-green" th:text="${humManagerCount}"></span>
                     <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">3</a>-->
                 </div>
             </shiro:hasPermission>
             <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
                     <span class="iconfont iconfontLogo">&#xe63b;</span>
-                    <span class="layui-badge layui-bg-green">5</span>
+                    <span class="layui-badge layui-bg-green" th:text="${illManagerCount}"></span>
                     <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">5</a>-->
                 </div>
             </shiro:hasPermission>
@@ -120,6 +118,6 @@
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/tools.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>
-<script type="text/javascript" th:src="@{/static/admin/js/farmManager/farmmanagerList.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/farmmanager/farmmanagerList.js}"></script>
 </body>
 </html>
