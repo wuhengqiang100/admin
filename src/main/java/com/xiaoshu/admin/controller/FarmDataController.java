@@ -14,10 +14,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -75,10 +72,11 @@ public class FarmDataController {
 
 
 
-    @RequiresPermissions("farm:farmdata:list")
+//    @RequiresPermissions("farm:farmdata:list")
     @SysLog("根据条件查询农田的数据")
-    @PostMapping("first")
-    public ResponseEntity first(@RequestParam(value = "id",required = false) String farmId,HttpSession session) {
+    @PostMapping("list")
+    @ResponseBody
+    public ResponseEntity list(@RequestParam(value = "id",required = false) String farmId,HttpSession session) {
         ResponseEntity responseEntity=new ResponseEntity();
 
         if (StringUtils.isBlank(farmId)){

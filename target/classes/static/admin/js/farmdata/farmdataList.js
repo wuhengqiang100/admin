@@ -7,51 +7,100 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
         t;
 
 
+    $("animClick").click(function(){
+        $("#animClick").attr("id","newStyle");
+    });
+
+    //演示动画
+    $('.site-doc-icon .layui-anim').on('click', function(){
+        var othis = $(this), anim = othis.data('anim');
+
+        //停止循环
+        if(othis.hasClass('layui-anim-loop')){
+            return othis.removeClass(anim);
+        }
+
+        othis.removeClass(anim);
+
+        setTimeout(function(){
+            othis.addClass(anim);
+        });
+        //恢复渐隐
+        if(anim === 'layui-anim-fadeout'){
+            setTimeout(function(){
+                othis.removeClass(anim);
+            }, 1300);
+        }
+    });
     // 使用刚指定的配置项和数据显示图表。
 
     $(document).ready(function () {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
-        $.post("/admin/user/data/datacharts", {},
-            function(data,status){
+        $.post("/farm/farmdata/list", {},
+            function(data){
                 if(data.success){
+                    var colors = ['#5793f3', '#d14a61', '#675bba'];
+
                     option = {
+                        color: colors,
+
                         tooltip: {
                             trigger: 'axis',
                             axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
+                                type: 'cross'
                             }
+                        },
+                        grid: {
+                            right: '20%'
                         },
                         toolbox: {
                             feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
+                                dataView: {show: true},
                                 restore: {show: true},
                                 saveAsImage: {show: true}
                             }
                         },
                         legend: {
-                            data:['蒸发量','降水量','平均温度']
+                            data:['温度','湿度','光照']
                         },
                         xAxis: [
                             {
                                 type: 'category',
-                                data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-                                axisPointer: {
-                                    type: 'shadow'
-                                }
+                                axisTick: {
+                                    alignWithLabel: true
+                                },
+                                data:data.dateTimeArray
                             }
                         ],
                         yAxis: [
                             {
                                 type: 'value',
-                                name: '水量',
+                                name: '蒸发量',
                                 min: 0,
                                 max: 250,
-                                interval: 50,
+                                position: 'right',
+                                axisLine: {
+                                    lineStyle: {
+                                        color: colors[0]
+                                    }
+                                },
+                                axisLabel: {
+                                    formatter: '{value} ml'
+                                }
+                            },
+                            {
+                                type: 'value',
+                                name: '降水量',
+                                min: 0,
+                                max: 250,
+                                position: 'right',
+                                offset: 80,
+                                axisLine: {
+                                    lineStyle: {
+                                        color: colors[1]
+                                    }
+                                },
                                 axisLabel: {
                                     formatter: '{value} ml'
                                 }
@@ -61,7 +110,12 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                                 name: '温度',
                                 min: 0,
                                 max: 25,
-                                interval: 5,
+                                position: 'left',
+                                axisLine: {
+                                    lineStyle: {
+                                        color: colors[2]
+                                    }
+                                },
                                 axisLabel: {
                                     formatter: '{value} °C'
                                 }
@@ -69,23 +123,27 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                         ],
                         series: [
                             {
-                                name:'蒸发量',
+                                name:'温度',
                                 type:'bar',
-                                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                                yAxisIndex: 0,
+                                data:data.temperArray
                             },
                             {
-                                name:'降水量',
+                                name:'湿度',
                                 type:'bar',
-                                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-                            },
-                            {
-                                name:'平均温度',
-                                type:'line',
                                 yAxisIndex: 1,
-                                data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                                data:data.humidiArray
+                            },
+                            {
+                                name:'光照',
+                                type:'line',
+                                yAxisIndex: 2,
+                                data:data.illumiArray
                             }
                         ]
                     };
+
+
                     myChart.setOption(option);
                 }else{
                     alert("数据: \n" + data.data + "\n状态: " + status);

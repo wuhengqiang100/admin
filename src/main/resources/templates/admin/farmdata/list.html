@@ -17,6 +17,22 @@
     <link rel="stylesheet" th:href="@{/static/admin/css/farmdataList.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
     <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
+    <style>
+        #lastStyle{
+            border-style:inset;
+            border-width:3px;
+            border-radius: 10px;
+        }
+        #newStyle{
+            border-style:outset;
+            border-width:3px;
+            border-color: #bd2c00;
+            border-radius: 10px;
+            background-color: #bd2c00;
+        }
+        .site-doc-icon li{width: 222px;}
+        .site-doc-icon li .layui-anim{width: 150px; height: 150px; line-height: 150px; margin: 0 auto 10px; text-align: center; background-color: #009688; cursor: pointer; color: #fff; border-radius: 50%;}
+    </style>
 </head>
 <body>
 <div class="wrap-container welcome-container">
@@ -85,8 +101,9 @@
                 </div>
             </div>
             <!--农田信息-->
-            <div style="margin-top: 54px;position: relative">
-                <div class="panel panel-default contact-panel" th:each="farm:${farmList}">
+            <div style="margin-top: 54px;position: relative" class="site-doc-icon site-doc-anim">
+                <div id="lastStyle" class="panel panel-default contact-panel  animClick"
+                     th:each="farm:${farmList}">
                     <div class="panel-header" style="height: 10px">名称:<span th:text="${farm.name}">110</span></div>
                     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
 
@@ -97,9 +114,10 @@
                                     <p>面积：<span th:text="${farm.size}"></span>&nbsp;㎡</p>
                                     <p>备注：<span th:text="${farm.remarks}"></span></p>
                                 </div>
-                                <div class="layui-col-md4  layui-col-md-offset1">
-                                    <div class="layui-row">  <button class="layui-btn layui-btn-radius layui-btn-normal">查看</button></div>
-                                    <div class="layui-row" style="margin-top: 4px"><button class="layui-btn layui-btn-radius">详情</button></div>
+                                <div class="layui-col-md4  layui-col-md-offset1 " >
+                                    <div class="layui-row layui-anim" data-anim="layui-anim-scaleSpring">  <button class="layui-btn layui-btn-radius layui-btn-normal">查看</button></div>
+                                    <div class="layui-row layui-anim" style="margin-top: 4px" data-anim="layui-anim-scaleSpring"><button
+                                            class="layui-btn layui-btn-radius">详情</button></div>
                                 </div>
                             </div>
                         </div>
@@ -107,10 +125,28 @@
 
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                <legend>动画过程演示</legend>
+            </fieldset>
+            <ul class="site-doc-icon site-doc-anim">
+                <li>
+                    <div class="layui-anim" data-anim="layui-anim-scale">平滑放大</div>
+                    <div class="code">layui-anim-scale</div>
+                </li>
+                <li>
+                    <div class="layui-anim" data-anim="layui-anim-scaleSpring">弹簧式放大</div>
+                    <div class="code">layui-anim-scaleSpring</div>
+                </li>
+                <li>
+                    <div class="layui-anim" data-anim="layui-anim-upbit">弹簧式放大</div>
+                    <div class="code">layui-anim-upbit</div>
+                </li>
+            </ul>
 
         </div>
     </div>
 </div>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/farmdata/farmdataList.js}"></script>
