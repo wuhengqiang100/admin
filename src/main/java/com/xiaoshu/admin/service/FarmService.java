@@ -14,7 +14,7 @@ public interface FarmService extends IService<Farm> {
 
     Farm saveFarm(Farm farm);
 
-    Farm getFarmById(String id);
+    Farm getFarmById(int id);
 
     void updateFarm(Farm farm);
 

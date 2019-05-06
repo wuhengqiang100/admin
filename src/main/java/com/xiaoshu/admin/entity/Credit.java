@@ -11,7 +11,7 @@ import java.util.Date;
  * 用户信誉度实体类
  */
 @TableName("user_credit")
-public class Credit extends DataEntity<Farm> {
+public class Credit extends DataEntity<Credit> {
 
     private static final long serialVersionUID = 1L;
     /*@TableField("id")

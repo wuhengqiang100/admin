@@ -11,7 +11,7 @@ public interface FarmMapper extends BaseMapper<Farm> {
 
 //    void saveFarmMenus(@Param("roleId") String roleId, @Param("menus") Set<Menu> menuSet);
 
-      Farm selectFarmById(@Param("id") String id);
+      Farm selectFarmById(@Param("id") int id);
 
       List<Farm> getFarmByUserId(@Param("userId") String userId);
 

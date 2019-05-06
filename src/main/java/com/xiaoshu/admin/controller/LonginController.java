@@ -39,6 +39,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -82,6 +83,9 @@ public class LonginController{
 
     @Autowired
     LoginDataService loginDataService;
+
+    @Autowired
+    CreditService creditService;
 /*
     @Autowired
     CreditService creditService;*/
@@ -517,9 +521,42 @@ public class LonginController{
     @SysLog("退出系统")
     public String logOut(HttpSession session) {
         loginDataService.updateLoginDataOnlyIsSafeLogout(loginDataNew);//更新用户安全退出
+        if (!updateUserCreditWhenLogOut()){//退出系统时更新用户信誉度
+            SecurityUtils.getSubject().logout();
+            session.isNew();
+            return "redirect:admin";
+        }
         SecurityUtils.getSubject().logout();
         session.isNew();
         return "redirect:admin";
     }
+
+    /**
+     * 退出系统时,更新用户的信誉度
+     */
+    public Boolean updateUserCreditWhenLogOut(){
+        String userId= MySysUser.id();
+        List<LoginData> loginDataList=loginDataService.getLoginDataWthOutCount(userId);//根据用户id，获取前几次用户登录系统后的操作数据
+        //更新之前计算过的数据的状态is_account=1
+        if (0==loginDataList.size()){
+            return true;
+        }
+        if (loginDataList.size()>0){
+            loginDataList.forEach(loginData -> {
+                loginDataService.updateLoginDataOnlyIsAccount(loginData);
+            });
+        }
+
+        Credit credit=creditService.calculateCredit(loginDataList);//计算出用户这段时间的用户信誉值
+        credit.setCreateDate(new Date());
+        credit.setUpdateDate(new Date());
+        creditService.save(credit);//保存数据到user_credit表中
+
+        User user= userService.findUserById(userId);
+        user.setCredit(user.getCredit().subtract(credit.getResult()));
+        userService.updateUserOnlyCredit(user);//更新用户的信誉度
+        return true;
+    }
+
 
 }

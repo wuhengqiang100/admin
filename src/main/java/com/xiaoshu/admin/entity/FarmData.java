@@ -1,9 +1,10 @@
 package com.xiaoshu.admin.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.xiaoshu.common.base.DataEntity2;
 
 import java.util.Date;
 
@@ -11,8 +12,10 @@ import java.util.Date;
  * 农田数据实体类
  */
 @TableName("nongtianmysqldata")
-public class FarmData extends DataEntity2<FarmData> {
-    private static final long serialVersionUID = 1L;
+public class FarmData {
+
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
     @TableField("time")
     private Date time;
@@ -61,10 +64,13 @@ public class FarmData extends DataEntity2<FarmData> {
         this.farmId = farmId;
     }
 
-    public FarmData(String id) {
-        this.id=id;
+    public Integer getId() {
+        return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Date getTime() {

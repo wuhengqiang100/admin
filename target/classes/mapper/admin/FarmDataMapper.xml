@@ -38,7 +38,7 @@
     </collection>
   </resultMap>
 
-  <select id="getFarmDataByFarmId" resultMap="FarmDataMap" parameterType="java.lang.String">
+  <select id="getMostNewFarmData" resultMap="FarmDataMap" parameterType="java.lang.Integer">
     SELECT
     nt.id,
     nt.time,
@@ -60,8 +60,34 @@
     <if test="farmId != '' and farmId != null">
       and tf.id = #{farmId}
     </if>
+    ORDER BY  nt.time ASC  limit 1;
   </select>
-  <select id="selectFarmDataById" resultMap="FarmDataMap"  parameterType="java.lang.String">
+  
+  <select id="getFarmDataByFarmId" resultMap="FarmDataMap" parameterType="java.lang.Integer">
+    SELECT
+    nt.id,
+    nt.time,
+    nt.temperature,
+    nt.humidity,
+    nt.illumination,
+    nt.farm_id,
+    tf.id,
+    tf.name,
+    tf.location,
+    tf.temperature,
+    tf.humidity,
+    tf.illumination
+    from
+    nongtianmysqldata nt
+    left join t_farm  tf 	on 	    nt.farm_id = tf.id
+    where
+    tf.del_flag = FALSE
+    <if test="farmId != '' and farmId != null">
+      and tf.id = #{farmId}
+    </if>
+    ORDER BY  nt.time ASC ;
+  </select>
+  <select id="selectFarmDataById" resultMap="FarmDataMap"  parameterType="java.lang.Integer">
     SELECT
     nt.id,
     nt.time,
@@ -83,6 +109,7 @@
     <if test="id != '' and id != null">
       and nt.id = #{id}
     </if>
+    ORDER BY  nt.time ASC ;
   </select>
 
 

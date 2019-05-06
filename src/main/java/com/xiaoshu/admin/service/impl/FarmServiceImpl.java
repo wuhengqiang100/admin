@@ -38,7 +38,7 @@ public class FarmServiceImpl extends ServiceImpl<FarmMapper,Farm> implements Far
 
 
     @Override
-    public Farm getFarmById(String id) {
+    public Farm getFarmById(int id) {
         return baseMapper.selectFarmById(id);
     }
 

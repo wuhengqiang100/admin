@@ -31,7 +31,7 @@ public class CreditServiceImpl extends ServiceImpl<CreditMapper,Credit> implemen
         loginDataList.forEach( loginDataCount -> {
             countUnLogin[0] = countUnLogin[0] +loginDataCount.getUnlogin();
             countUnauthorizedAccess[0] = countUnauthorizedAccess[0] +loginDataCount.getUnauthorizedAccess();
-            if (!loginDataCount.getUnsafeLogout()){//没有安全退出，计数器+1
+            if (!loginDataCount.getUnsafeLogout()){//没有安全退出，计数器+1 isUnsafeLogout =false 没有安全退出
                 countUnSafeLogOut[0] = countUnSafeLogOut[0] +1;
             }
             countRepeatedRefresh[0] = countRepeatedRefresh[0] + loginDataCount.getRepeatedRefresh();
@@ -46,25 +46,25 @@ public class CreditServiceImpl extends ServiceImpl<CreditMapper,Credit> implemen
         credit.setUnlogin(countUnLogin[0]);//未成功登录次数
         credit.setAccountLogin(countLength);//数据量，多少条
 //        Double accountResult=0.0;
-        BigDecimal accountResult=new BigDecimal("0.0");
+        BigDecimal accountResult=new BigDecimal("0.00");
         if ((countUnSafeLogOut[0]/countLength)>0.9){
             BigDecimal unsafeCut=new BigDecimal("0.05");
-            accountResult.add(unsafeCut);
+            accountResult=accountResult.add(unsafeCut);
 //            accountResult=accountResult+0.05;
         }
         if ((countUnauthorizedAccess[0]/countLength)>0){
-            BigDecimal unauthorizedAccessCut=new BigDecimal("0.5");
-            accountResult.add(unauthorizedAccessCut);
+            BigDecimal unauthorizedAccessCut=new BigDecimal("0.50");
+            accountResult=accountResult.add(unauthorizedAccessCut);
 //            accountResult=accountResult+0.5;//不允许越权发生
         }
-        if((countRepeatedRefresh[0]/countLength)>10){
+        if((countRepeatedRefresh[0]/countLength)>3){
             BigDecimal repeatedRefreshCut=new BigDecimal("0.05");
-            accountResult.add(repeatedRefreshCut);
+            accountResult=accountResult.add(repeatedRefreshCut);
 //            accountResult=accountResult+0.05;//平均每次重复刷新超过三次，信誉度-0.1
         }
         if ((countUnLogin[0]/countLength)>3){
             BigDecimal unLoginCut=new BigDecimal("0.05");
-            accountResult.add(unLoginCut);
+            accountResult=accountResult.add(unLoginCut);
 //            accountResult=accountResult+0.1;//用户平均每次失败登录为3次，信誉度-0.1
         }
         credit.setResult(accountResult);//计算出应该减的信誉度

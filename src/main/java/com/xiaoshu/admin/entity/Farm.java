@@ -1,8 +1,9 @@
 package com.xiaoshu.admin.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.xiaoshu.common.base.DataEntity;
 
 import java.util.Date;
 
@@ -10,11 +11,10 @@ import java.util.Date;
  * 农田实体
  */
 @TableName("t_farm")
-public class Farm extends DataEntity<Farm>{
-    private static final long serialVersionUID = 1L;
-//    @TableField(strategy= FieldStrategy.IGNORED)
+public class Farm{
 
-
+    @TableId(type = IdType.AUTO)
+    private Integer id;
     @TableField("name")
     private String name;
 
@@ -75,9 +75,6 @@ public class Farm extends DataEntity<Farm>{
         this.illumination = illumination;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getUserId() {
         return userId;
@@ -114,62 +111,51 @@ public class Farm extends DataEntity<Farm>{
         this.size = size;
     }
 
-    @Override
     public Date getCreateDate() {
         return createDate;
     }
 
-    @Override
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
-    @Override
     public String getCreateId() {
         return createId;
     }
 
-    @Override
     public void setCreateId(String createId) {
         this.createId = createId;
     }
 
-    @Override
     public Date getUpdateDate() {
         return updateDate;
     }
 
-    @Override
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
 
-    @Override
     public String getUpdateId() {
         return updateId;
     }
 
-    @Override
+
     public void setUpdateId(String updateId) {
         this.updateId = updateId;
     }
 
-    @Override
     public String getRemarks() {
         return remarks;
     }
 
-    @Override
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
 
-    @Override
     public Boolean getDelFlag() {
         return delFlag;
     }
 
-    @Override
     public void setDelFlag(Boolean delFlag) {
         this.delFlag = delFlag;
     }
@@ -182,6 +168,11 @@ public class Farm extends DataEntity<Farm>{
         this.user = user;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
-
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

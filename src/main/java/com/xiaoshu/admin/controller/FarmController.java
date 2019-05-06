@@ -115,7 +115,7 @@ public class FarmController {
 
     @GetMapping("edit")
     public String edit(String id,ModelMap modelMap){
-        Farm farm = farmService.getFarmById(id);
+        Farm farm = farmService.getFarmById(Integer.parseInt(id));
         modelMap.put("farm",farm);
         return "admin/farm/edit";
     }
@@ -128,7 +128,7 @@ public class FarmController {
         if(StringUtils.isBlank(id)){
             return ResponseEntity.failure("农田ID不能为空");
         }else{
-            farm.setId(id);
+            farm.setId(Integer.parseInt(id));
         }
         if(StringUtils.isBlank(farm.getName())){
             return ResponseEntity.failure("农田名称不能为空");
@@ -166,7 +166,7 @@ public class FarmController {
         if(StringUtils.isBlank(id)){
             return ResponseEntity.failure("农田ID不能为空");
         }
-        Farm farm = farmService.getFarmById(id);
+        Farm farm = farmService.getFarmById(Integer.parseInt(id));
         farmService.deleteFarm(farm);
         return ResponseEntity.success("操作成功");
     }

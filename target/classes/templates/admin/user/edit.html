@@ -74,6 +74,14 @@
                                     <input type="text" class="layui-input" name="nickName" placeholder="请输入昵称" th:value="${localuser.nickName}">
                                 </div>
                             </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">信誉度</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="credit" class="layui-input" name="credit" placeholder="请输入信誉度"
+                                           th:value="${localuser.credit}">
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="layui-card">
@@ -161,6 +169,7 @@
         </div>
     </form>
 </div>
+
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/user/userEdit.js}"></script>
 </body>

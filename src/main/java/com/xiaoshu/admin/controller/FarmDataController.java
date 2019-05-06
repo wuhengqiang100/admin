@@ -62,7 +62,7 @@ public class FarmDataController {
         }else{//是农田主
             farmList=farmService.getFarmByUserId(farmOwnId);
         }
-        String firstFarmId=farmList.get(0).getId();
+        int firstFarmId=farmList.get(0).getId();
         session.setAttribute("firstFarmId",firstFarmId);
         Farm firstFarm=farmList.get(0);
         modelMap.put("farmList",farmList);
@@ -71,6 +71,14 @@ public class FarmDataController {
     }
 
 
+//    @RequiresPermissions("farm:farmdata:list")
+    @SysLog("查看农田数据所有数据")
+    @GetMapping(value = "detail")
+    public String detail(String id){
+
+        return "admin/farmdata/detail";
+    }
+
 
 //    @RequiresPermissions("farm:farmdata:list")
     @SysLog("根据条件查询农田的数据")
@@ -78,29 +86,39 @@ public class FarmDataController {
     @ResponseBody
     public ResponseEntity list(@RequestParam(value = "id",required = false) String farmId,HttpSession session) {
         ResponseEntity responseEntity=new ResponseEntity();
-
+        Integer farmIdInt=new Integer(00);
         if (StringUtils.isBlank(farmId)){
-            farmId= (String) session.getAttribute("firstFarmId");//没有id,就从session里面去第一个农田的id
+            farmIdInt= (int) session.getAttribute("firstFarmId");//没有id,就从session里面去第一个农田的id
+        }else{
+            farmIdInt=Integer.parseInt(farmId);
         }
-
-        List<FarmData> firstFarmDataList=farmDataService.getFarmDataByFarmId(farmId);//根据农田id获取各个区块的数据
+        List<FarmData> firstFarmDataList=farmDataService.getFarmDataByFarmId(farmIdInt);//根据农田id获取各个区块的数据
         //取一周的数据
-        String[] dateTimeArray=new String[firstFarmDataList.size()];
-        String[] temperArray=new String[firstFarmDataList.size()];
-        String[] humidiArray=new String[firstFarmDataList.size()];
-        String[] illumiArray=new String[firstFarmDataList.size()];
-        for (int i=0;i<firstFarmDataList.size();i++){
-            dateTimeArray[i]= DateUtil.getStringDateShort(firstFarmDataList.get(i).getTime());
-            temperArray[i]=firstFarmDataList.get(i).getTemperature();
-            humidiArray[i]=firstFarmDataList.get(i).getHumidity();
-            illumiArray[i]=firstFarmDataList.get(i).getIllumination();
+        if (firstFarmDataList.size()>0){
+            String[] dateTimeArray=new String[firstFarmDataList.size()];
+            String[] temperArray=new String[firstFarmDataList.size()];
+            String[] humidiArray=new String[firstFarmDataList.size()];
+            String[] illumiArray=new String[firstFarmDataList.size()];
+            for (int i=0;i<firstFarmDataList.size();i++){
+                dateTimeArray[i]= DateUtil.getStringDateShort(firstFarmDataList.get(i).getTime());
+                temperArray[i]=firstFarmDataList.get(i).getTemperature();
+                humidiArray[i]=firstFarmDataList.get(i).getHumidity();
+                illumiArray[i]=firstFarmDataList.get(i).getIllumination();
+            }
+            Farm farmTop=farmService.getFarmById(farmIdInt);
+            FarmData mostNewFarmData=farmDataService.getMostNewFarmData(farmIdInt);
+            responseEntity.setAny("dateTimeArray",dateTimeArray);
+            responseEntity.setAny("temperArray",temperArray);
+            responseEntity.setAny("humidiArray",humidiArray);
+            responseEntity.setAny("illumiArray",illumiArray);
+            responseEntity.setAny("farmTop",farmTop);
+            responseEntity.setAny("mostNewFarmData",mostNewFarmData);
+            responseEntity.setSuccess(true);
+        }else{
+            responseEntity.setMessage("当前农田还没有数据,请采集数据");
+            responseEntity.setSuccess(false);
         }
-        responseEntity.setAny("dateTimeArray",dateTimeArray);
-        responseEntity.setAny("temperArray",temperArray);
-        responseEntity.setAny("humidiArray",humidiArray);
-        responseEntity.setAny("illumiArray",illumiArray);
 
-        responseEntity.setSuccess(true);
         return responseEntity;
     }
 
@@ -123,7 +141,7 @@ public class FarmDataController {
         }else{//是农田主
             farmList=farmService.getFarmByUserId(farmOwnId);
         }
-        String firstFarmId=farmList.get(0).getId();
+        int firstFarmId=farmList.get(0).getId();
         session.setAttribute("firstFarmId",firstFarmId);
         Farm firstFarm=farmList.get(0);
         modelMap.put("farmList",farmList);
@@ -134,12 +152,17 @@ public class FarmDataController {
     @RequiresPermissions("farm:farmdata:temper")
     @SysLog("查看农田具体数据")
     @PostMapping("temper")
+    @ResponseBody
     public ResponseEntity temperAll(@RequestParam(value = "id",required = false) String farmId,HttpSession session) {
         ResponseEntity responseEntity=new ResponseEntity();
+        Integer farmIdInt=new Integer(00);
         if (StringUtils.isBlank(farmId)){
-            farmId= (String) session.getAttribute("firstFarmId");//没有id,就从session里面去第一个农田的id
+            farmIdInt= (int) session.getAttribute("firstFarmId");//没有id,就从session里面去第一个农田的id
+        }else{
+            farmIdInt=Integer.parseInt(farmId);
         }
-        List<FarmData> firstFarmDataList=farmDataService.getFarmDataByFarmId(farmId);//根据农田id获取各个区块的数据
+        List<FarmData> firstFarmDataList=farmDataService.getFarmDataByFarmId(farmIdInt);//根据农田id获取各个区块的数据
+
         //取一周的数据
         String[] dateTimeArray=new String[7];
         String[] temperArray=new String[7];
@@ -179,6 +202,7 @@ public class FarmDataController {
     @RequiresPermissions("farm:farmdata:hum")
     @SysLog("查看农田具体湿度数据")
     @PostMapping("hum")
+    @ResponseBody
     public ModelMap humAll(ModelMap modelMap) {
         List<Message> messageListTop= messageService.selectMessageList(MySysUser.id());
         int messageListCount=messageService.selectMessageListCount(MySysUser.id());

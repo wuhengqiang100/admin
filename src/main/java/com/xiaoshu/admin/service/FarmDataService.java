@@ -30,5 +30,12 @@ public interface FarmDataService extends IService<FarmData> {
      * @param farmId
      * @return
      */
-    List<FarmData> getFarmDataByFarmId(@Param("farmId") String farmId);
+    List<FarmData> getFarmDataByFarmId(@Param("farmId") int farmId);
+
+    /**
+     * 根据农田id获得最新的一条农田数据
+     * @param farmId
+     * @return
+     */
+    FarmData getMostNewFarmData(@Param("farmId") int farmId);
 }

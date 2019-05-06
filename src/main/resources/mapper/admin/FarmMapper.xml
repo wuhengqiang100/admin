@@ -78,6 +78,8 @@
     left join sys_user  su 	on 	    su.id = tf.userId
     where
     su.del_flag = FALSE
+    AND
+    tf.del_flag = FALSE
     <if test="userId != '' and userId != null">
       and tf.userId = #{userId}
     </if>
@@ -104,6 +106,8 @@
     left join sys_user  su 	on 	    su.id = tf.userId
     where
     su.del_flag = FALSE
+    AND
+    tf.del_flag = FALSE
     <if test="id != '' and id != null">
       and tf.id = #{id}
     </if>
