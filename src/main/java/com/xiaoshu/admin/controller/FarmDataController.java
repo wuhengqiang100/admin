@@ -85,10 +85,10 @@ public class FarmDataController {
 
         List<FarmData> firstFarmDataList=farmDataService.getFarmDataByFarmId(farmId);//根据农田id获取各个区块的数据
         //取一周的数据
-        String[] dateTimeArray=new String[7];
-        String[] temperArray=new String[7];
-        String[] humidiArray=new String[7];
-        String[] illumiArray=new String[7];
+        String[] dateTimeArray=new String[firstFarmDataList.size()];
+        String[] temperArray=new String[firstFarmDataList.size()];
+        String[] humidiArray=new String[firstFarmDataList.size()];
+        String[] illumiArray=new String[firstFarmDataList.size()];
         for (int i=0;i<firstFarmDataList.size();i++){
             dateTimeArray[i]= DateUtil.getStringDateShort(firstFarmDataList.get(i).getTime());
             temperArray[i]=firstFarmDataList.get(i).getTemperature();

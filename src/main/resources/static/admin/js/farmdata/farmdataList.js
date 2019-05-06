@@ -56,7 +56,7 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                         },
                         toolbox: {
                             feature: {
-                                dataView: {show: true},
+                                dataView: {show: true,readOnly:true},
                                 restore: {show: true},
                                 saveAsImage: {show: true}
                             }

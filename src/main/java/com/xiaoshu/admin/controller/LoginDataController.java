@@ -104,8 +104,8 @@ public class LoginDataController {
         List<LoginEchats> loginEchatsList=loginDataService.getLoginDataEcharts();
 
         //取一周的数据
-        String[] createDateArray=new String[7];
-        int[] dataArray=new int[7];
+        String[] createDateArray=new String[loginEchatsList.size()];
+        int[] dataArray=new int[loginEchatsList.size()];
         LastActivity lastActivity=new LastActivity();//存储最近访问数据的实体
 
         for (int i=0;i<loginEchatsList.size();i++){
