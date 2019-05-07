@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaoshu.admin.entity.Role;
 import com.xiaoshu.admin.entity.User;
-import com.xiaoshu.admin.mapper.MessageMapper;
 import com.xiaoshu.admin.service.MessageService;
 import com.xiaoshu.admin.service.RoleService;
 import com.xiaoshu.admin.service.UploadService;
@@ -28,7 +27,6 @@ import org.springframework.web.util.WebUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +49,8 @@ public class UserController {
     @Autowired
     MessageService messageService;
 
-    @Autowired
-    MessageMapper messageMapper;
+//    @Autowired
+//    MessageMapper messageMapper;
 
     @GetMapping("list")
     @SysLog("跳转系统用户列表页面")
@@ -260,6 +258,20 @@ public class UserController {
         return ResponseEntity.success("操作成功");
     }
 
+    @RequiresPermissions("sys:user:add")
+    @PostMapping("credit")
+    @ResponseBody
+    @SysLog("重置用户信誉度")
+    public ResponseEntity credit(@RequestBody List<User> users){
+        if(users == null || users.size()==0){
+            return ResponseEntity.failure("请选择需要重新信誉度的用户");
+        }
+        for (User u : users){
+                userService.resetCredit(u);//遍历重置用户信誉度
+        }
+        return ResponseEntity.success("操作成功");
+    }
+
     @RequiresPermissions("sys:user:delete")
     @PostMapping("deleteSome")
     @ResponseBody
@@ -269,7 +281,7 @@ public class UserController {
             return ResponseEntity.failure("请选择需要删除的用户");
         }
         for (User u : users){
-                userService.deleteUser(u);
+            userService.deleteUser(u);
         }
         return ResponseEntity.success("操作成功");
     }

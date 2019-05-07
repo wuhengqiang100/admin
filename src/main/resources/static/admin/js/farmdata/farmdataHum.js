@@ -1,91 +1,257 @@
-layui.use(['form', 'element', 'layer', 'jquery'], function () {
+layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : parent.layer,
         element = layui.element,
-        $ = layui.jquery;
+        $ = layui.jquery,
+        table = layui.table,
+        t;
 
-    /*    //文档加载完后执行
-        $(function(){
 
-        }*/
-    $(".allSee").click(function () {
-        //弹出即全屏
-        var index = layer.open({
-            type: 2,
-            content: 'http://layim.layui.com',
-            area: ['320px', '195px'],
-            maxmin: true
-        });
-        layer.full(index);
+    $("animClick").click(function(){
+        $("#animClick").attr("id","newStyle");
     });
 
+    //演示动画
+    $('.site-doc-icon .layui-anim').on('click', function(){
+        var othis = $(this), anim = othis.data('anim');
 
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('chart'));
+        //停止循环
+        if(othis.hasClass('layui-anim-loop')){
+            return othis.removeClass(anim);
+        }
 
-    var colors = ['#5793f3', '#d14a61', '#675bba'];
+        othis.removeClass(anim);
 
-    option = {
-        color: colors,
-
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross'
-            }
-        },
-        grid: {
-            right: '20%'
-        },
-        toolbox: {
-            feature: {
-                dataView: {show: true, readOnly: false},
-                restore: {show: true},
-                saveAsImage: {show: true}
-            }
-        },
-        legend: {
-            data:['湿度']
-        },
-        xAxis: [
-            {
-                type: 'category',
-                axisTick: {
-                    alignWithLabel: true
-                },
-                data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
-            }
-        ],
-        yAxis: [
-
-            {
-                type: 'value',
-                name: '湿度',
-                min: 0,
-                max: 250,
-                position: 'left',
-                axisLine: {
-                    lineStyle: {
-                        color: colors[0]
-                    }
-                },
-                axisLabel: {
-                    formatter: '{value} ml'
-                }
-            }
-        ],
-        series: [
-
-            {
-                name:'湿度',
-                type:'bar',
-                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-            }
-
-        ]
-    };
+        setTimeout(function(){
+            othis.addClass(anim);
+        });
+        //恢复渐隐
+        if(anim === 'layui-anim-fadeout'){
+            setTimeout(function(){
+                othis.removeClass(anim);
+            }, 1300);
+        }
+    });
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+
+    $(document).ready(function () {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+        $.post("/farm/farmdata/hum", {},
+            function(data){
+                if(data.success){
+                    // var colors = ['#5793f3', '#d14a61', '#675bba'];
+                    // app.title = '折柱混合';
+
+                    option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                crossStyle: {
+                                    color: '#999'
+                                }
+                            }
+                        },
+                        toolbox: {
+                            feature: {
+                                dataView: {show: true, readOnly: false},
+                                magicType: {show: true, type: ['line', 'bar']},
+                                restore: {show: true},
+                                saveAsImage: {show: true}
+                            }
+                        },
+                        legend: {
+                            // data:['温度','湿度','光照']
+                            data:['温度']
+                        },
+                        xAxis: [
+                            {
+                                type: 'category',
+                                data:data.dateTimeArray,
+                                axisPointer: {
+                                    type: 'shadow'
+                                }
+                            }
+                        ],
+                        yAxis: [
+                            /*{
+                                type: 'value',
+                                name: '温度',
+                                min: 0,
+                                max: 50,
+                                interval: 5,
+                                axisLabel: {
+                                    formatter: '{value} °C'
+                                }
+                            },*/
+                            {
+                                type: 'value',
+                                name: '湿度',
+                                min: 0,
+                                max: 100,
+                                position: 'left',
+                                offset:5,
+                                interval: 20,
+                                axisLabel: {
+                                    formatter: '{value}RH'
+                                }
+                               /* axisLabel: {
+                                    formatter: '{value}RH/lux'
+                                }*/
+                            }/*,
+                            {
+                                type: 'value',
+                                name: '光照',
+                                min: 0,
+                                max: 100,
+                                position: 'right',
+                                offset: 60,
+                                interval: 20,
+                                axisLabel: {
+                                    formatter: '{value}lux'
+                                }
+                            }*/
+                        ],
+                        series: [
+                          /*  {
+                                name:'温度',
+                                type:'line',
+                                yAxisIndex: 0,
+                                data:data.temperArray
+                            },*/
+                            {
+                                name:'湿度',
+                                type:'line',
+                                yAxisIndex: 0,
+                                data:data.humidiArray
+                            }/*,
+                            {
+                                name:'光照',
+                                type:'line',
+                                yAxisIndex: 1,
+                                data:data.illumiArray
+                            }*/
+                        ]
+                    };
+                    myChart.setOption(option);
+                }else{
+                    alert("数据: \n" + data.data + "\n状态: " + status);
+                }
+            });
+    });
+
+    /**
+     * 点击查看按钮刷新农田数据
+     */
+    /* function lookData(id){
+         // var id=$("#farmId").val();
+         var loadIndex = layer.load(2, {
+             shade: [0.3, '#333']
+         });
+         // 基于准备好的dom，初始化echarts实例
+         var myChart = echarts.init(document.getElementById('chart'));
+         $.post("/farm/farmdata/list?id="+id, {},
+             function(data){
+                 if(data.success){
+                     // var colors = ['#5793f3', '#d14a61', '#675bba'];
+                     // app.title = '折柱混合';
+
+                     option = {
+                         tooltip: {
+                             trigger: 'axis',
+                             axisPointer: {
+                                 type: 'cross',
+                                 crossStyle: {
+                                     color: '#999'
+                                 }
+                             }
+                         },
+                         toolbox: {
+                             feature: {
+                                 dataView: {show: true, readOnly: false},
+                                 magicType: {show: true, type: ['line', 'bar']},
+                                 restore: {show: true},
+                                 saveAsImage: {show: true}
+                             }
+                         },
+                         legend: {
+                             data:['温度','湿度','光照']
+                         },
+                         xAxis: [
+                             {
+                                 type: 'category',
+                                 data:data.dateTimeArray,
+                                 axisPointer: {
+                                     type: 'shadow'
+                                 }
+                             }
+                         ],
+                         yAxis: [
+                             {
+                                 type: 'value',
+                                 name: '温度',
+                                 min: 0,
+                                 max: 50,
+                                 interval: 5,
+                                 axisLabel: {
+                                     formatter: '{value} °C'
+                                 }
+                             },
+                             {
+                                 type: 'value',
+                                 name: '湿度/光照',
+                                 min: 0,
+                                 max: 100,
+                                 position: 'right',
+                                 interval: 20,
+                                 axisLabel: {
+                                     formatter: '{value}RH/lux'
+                                 }
+                             }/!*,
+                             {
+                                 type: 'value',
+                                 name: '光照',
+                                 min: 0,
+                                 max: 100,
+                                 position: 'right',
+                                 offset: 60,
+                                 interval: 20,
+                                 axisLabel: {
+                                     formatter: '{value}lux'
+                                 }
+                             }*!/
+                         ],
+                         series: [
+                             {
+                                 name:'温度',
+                                 type:'bar',
+                                 data:data.temperArray
+                             },
+                             {
+                                 name:'湿度',
+                                 type:'bar',
+                                 data:data.humidiArray
+                             },
+                             {
+                                 name:'光照',
+                                 type:'line',
+                                 yAxisIndex: 1,
+                                 data:data.illumiArray
+                             }
+                         ]
+                     };
+                     layer.close(loadIndex);
+                     myChart.setOption(option);
+
+                 }else{
+                     alert("数据: \n" + data.data + "\n状态: " + status);
+                 }
+             });
+     }*/
+    /* $(".lookDataBut").on("click",function(){
+
+     });*/
     $(".panel a").on("click", function () {
         window.parent.addTab($(this));
     });

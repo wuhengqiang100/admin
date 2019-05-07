@@ -20,7 +20,7 @@
     <div class="layui-field-box">
         <form class="layui-form">
             <div class="layui-inline" style="width: 15%">
-                <input type="text" value="" name="s_key" placeholder="可以输入登录名/邮箱/手机号" class="layui-input search_input">
+                <input type="text" value="" name="s_key" placeholder="可以输入昵称/邮箱/手机号" class="layui-input search_input">
             </div>
             <div class="layui-input-inline">
                 <select name="s_type">
@@ -40,6 +40,11 @@
             <shiro:hasPermission name="sys:user:delete">
                 <div class="layui-inline">
                     <a class="layui-btn layui-btn-danger" data-type="deleteSome">批量删除</a>
+                </div>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="sys:user:add">
+                <div class="layui-inline">
+                    <a class="layui-btn" data-type="resetCredit">重置信誉度</a>
                 </div>
             </shiro:hasPermission>
         </form>

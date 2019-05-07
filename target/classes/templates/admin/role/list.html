@@ -35,7 +35,11 @@
                 <a class="layui-btn layui-btn-danger" data-type="deleteSome">批量删除</a>
             </div>
             </shiro:hasPermission>
-
+            <shiro:hasPermission name="sys:role:add">
+                <div class="layui-inline">
+                    <a class="layui-btn" data-type="shareRole">分配令牌</a>
+                </div>
+            </shiro:hasPermission>
         </form>
     </div>
 </fieldset>

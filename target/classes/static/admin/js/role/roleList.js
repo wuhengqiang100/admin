@@ -37,7 +37,11 @@ layui.use(['layer','form','table'], function() {
                                 table.reload('role-table', t);
                             });
                         }else{
-                            layer.msg(res.message);
+                            layer.alert(res.message, {
+                                skin: 'layui-layer-molv' //样式类名
+                                , closeBtn: 0
+                            });
+
                         }
                     });
                 }
@@ -98,6 +102,25 @@ layui.use(['layer','form','table'], function() {
             });
             layer.full(addIndex);
         },
+        shareRole : function(){
+            addIndex = layer.open({
+                title : "分配令牌",
+                type : 2,
+                content : "/admin/system/role/share",
+                success : function(layero, addIndex){
+                    setTimeout(function(){
+                        layer.tips('点击此处返回策略列表', '.layui-layer-setwin .layui-layer-close', {
+                            tips: 3
+                        });
+                    },500);
+                }
+            });
+            //改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
+            $(window).resize(function(){
+                layer.full(addIndex);
+            });
+            layer.full(addIndex);
+        },
         //批量删除
         deleteSome : function(){
             var checkStatus = table.checkStatus('role-table'),
@@ -122,7 +145,17 @@ layui.use(['layer','form','table'], function() {
                                         table.reload('role-table', t);
                                     });
                                 }else{
-                                    layer.msg(res.message);
+                                    var alertindex=layer.alert(res.message, {
+                                        skin: 'layui-layer-molv' //样式类名
+                                        , closeBtn: 0
+                                    },function () {
+                                        table.reload('role-table', t);
+                                        layer.close(alertindex);
+                                    },function(){
+                                        layer.close(alertindex);
+
+                                    });
+
                                 }
                             }
                         });

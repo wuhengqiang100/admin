@@ -59,6 +59,7 @@ public class RoleUtil{
      * 分配令牌时判断用户属性值是否符合
      * @param role
      * @param user
+     * 返回true说明所有属性都满足,返回false说明有一条属性满足
      * @return
      */
     public static Boolean contrastRoleAndProperties(Role role,User user){

@@ -109,6 +109,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return baseMapper.getAllHaveManagerIdentityUser();
     }
 
+    @Override
+    public int resetCredit(User user) {
+        return baseMapper.resetCredit(user);
+    }
+
     @Transactional(rollbackFor = Exception.class)
     public void dropUserRolesByUserId(String id) {
         baseMapper.dropUserRolesByUserId(id);

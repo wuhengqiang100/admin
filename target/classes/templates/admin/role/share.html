@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>用户令牌分配--访问策略管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_0ivq0nqh8i9j.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/static/fonts/iconfont.css}" media="all"/>
+    <style type="text/css">
+        .layui-form-item .layui-inline {
+            min-width: 15%;
+            float: left;
+            margin-right: 0;
+        }
+
+        .layui-form-item .role-box {
+            position: relative;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #d2d2d2;
+        }
+
+        .layui-card {
+            margin-top: 10px;
+        }
+        .nameTitle{
+            font-size: large;
+            font-style: inherit;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-container">
+    <form class="layui-form">
+        <div class="layui-row">
+            <div class="layui-row layui-col-space12">
+                <div class="layui-col-md6 layui-col-md-offset3" style="height: 400px">
+                    <div class="layui-card" style="height: 350px">
+                        <div class="layui-card-header nameTitle">分配令牌</div>
+                        <div class="layui-row">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">选择令牌:</label>
+                                <div class="layui-input-block" lay-search style="width: 220px">
+                                    <select id="roleId" name="roleName" lay-verify="" lay-filter="selected" >
+                                        <option value="">直接选择或搜索选择</option>
+                                        <div  th:each="role : ${roleList}">
+                                            <option  th:value="${role.id}" th:text="${role.name}"></option>
+                                        </div>
+                                     </select>
+                                </div>
+                            </div>
+                           <!-- <div class="layui-form-item">
+                                <label class="layui-form-label">策略名称:</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="name" required lay-verify="required" th:value="${role.name}" placeholder="请输入名称"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="layui-row">
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col width="150">
+                                        <col width="200">
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>已拥有用户</th>
+                                        <th>用户名称</th>
+                                        <th>用户身份</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="ownUser">
+                                    </tr>
+                                    <thead>
+                                    <tr>
+                                        <th>未分配用户</th>
+                                        <th>用户名称</th>
+                                        <th>用户身份</th>
+                                    </tr>
+                                    </thead>
+                                    </tbody>
+                                    <tbody>
+                                    <tr id="notOwnUser">
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="layui-card-body" >
+                            <span style="font-size: larger;color: #bd2c00" th:text="${error}"></span>
+                        </div>
+                    </div>
+                </div>
+                <shiro:hasPermission name="farm:manager:list">
+                    <div class="layui-form-item" style="padding-left: 30%;">
+                        <div class="layui-input-block">
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="shareRole">立即提交</button>
+                        </div>
+                    </div>
+                </shiro:hasPermission>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/static/js/jquery.js"></script>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/role/roleShare.js}"></script>
+</body>
+</html>

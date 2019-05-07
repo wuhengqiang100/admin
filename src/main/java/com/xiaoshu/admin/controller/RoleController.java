@@ -189,6 +189,10 @@ public class RoleController {
         if(StringUtils.isBlank(id)){
             return ResponseEntity.failure("令牌ID不能为空");
         }
+        List<Role> roleList=roleService.selectUserInRole(id);//根据当前令牌id,查询令牌下的用户
+        if (roleList.size()>0){
+            return ResponseEntity.failure("当前令牌下面有用户,不能删除");
+        }
         Role role = roleService.getRoleById(id);
         roleService.deleteRole(role);
         return ResponseEntity.success("操作成功");
@@ -202,9 +206,63 @@ public class RoleController {
         if(roles == null || roles.size()==0){
             return ResponseEntity.failure("请选择需要删除的令牌");
         }
+        for (Role r :roles){
+            List<Role> roleList=roleService.selectUserInRole(r.getId());//根据当前令牌id,查询令牌下的用户
+            if (roleList.size()>0){
+                return ResponseEntity.failure("当前令牌下面有用户,不能删除");
+            }
+        }
         for (Role r : roles){
             roleService.deleteRole(r);
         }
         return ResponseEntity.success("操作成功");
+    }
+    @SysLog("智能分配令牌操作")
+    @GetMapping("share")
+    public String share(String id,ModelMap modelMap){
+       /* Role role = roleService.getRoleById(id);
+        String menuIds = null;
+        if(role != null) {
+            menuIds  = role.getMenuSet().stream().map(menu -> menu.getId()).collect(Collectors.joining(","));
+        }
+        Map<String,Object> map = new HashMap();
+        map.put("parentId",null);
+        map.put("isShow",Boolean.FALSE);
+        List<Menu> menuList = menuService.selectAllMenus(map);
+        modelMap.put("role",role);
+        modelMap.put("menuList",menuList);
+        modelMap.put("menuIds",menuIds);*/
+       List<Role> roleList=roleService.selectAll();
+        modelMap.put("roleList",roleList);
+        return "admin/role/share";
+    }
+
+//    @RequiresPermissions("sys:role:delete")
+    @SysLog("根据令牌获得用户改令牌下的用户以及符合该令牌的用户")
+    @PostMapping("share")
+    @ResponseBody
+    public ResponseEntity shareRole(@RequestParam (value="id" ,required = true) String id){
+        ResponseEntity responseEntity=new ResponseEntity();
+        if(StringUtils.isEmpty(id)){
+            return ResponseEntity.failure("令牌id不能为空");
+        }
+        Role role=roleService.getRoleById(id);//当前令牌,根据当前令牌判断为分配的用户,和已分配的用户的信息
+        List<Role> roleOwnUserList = roleService.selectUserInRole(id);
+        if(0==roleOwnUserList.size()){
+            responseEntity.setMessage("该令牌下没有用户请分配");
+        }
+        List<User> roleNotOwnUserList = new ArrayList<>();//满足令牌属性但没有分配令牌的用户
+        List<User> userlist=userService.findAllUser();
+        for(User user:userlist){
+            if(RoleUtil.contrastRoleAndProperties(role,user)){//返回true,说明所有属性都满足,可以分配给该用户令牌
+                roleNotOwnUserList.add(user);
+            }
+        }
+        responseEntity.setAny("roleOwnUserList",roleOwnUserList);//令牌下满足访问属性的所有用户
+        responseEntity.setAny("roleNotOwnUserList",roleNotOwnUserList);//满足令牌访问属性的未分配令牌的用户
+        responseEntity.setSuccess(true);
+
+
+        return responseEntity;
     }
 }

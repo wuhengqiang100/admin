@@ -66,6 +66,11 @@
         </collection>
     </resultMap>
 
+    <update id="resetCredit">
+        UPDATE sys_user
+        SET credit=1
+        WHERE id=#{id}
+    </update>
     <update id="updateUserOnlyCredit" parameterType="com.xiaoshu.admin.entity.User">
         UPDATE sys_user
         SET credit=#{credit}

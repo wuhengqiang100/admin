@@ -33,6 +33,15 @@
   url('//at.alicdn.com/t/font_974748_6xs2qg3yxbo.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_974748_6xs2qg3yxbo.svg#iconfont') format('svg');
 }
+@font-face {
+  font-family: 'iconfont';  /* project id 974748 */
+  src: url('//at.alicdn.com/t/font_974748_k07rh7lw6f.eot');
+  src: url('//at.alicdn.com/t/font_974748_k07rh7lw6f.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_974748_k07rh7lw6f.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_974748_k07rh7lw6f.woff') format('woff'),
+  url('//at.alicdn.com/t/font_974748_k07rh7lw6f.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_974748_k07rh7lw6f.svg#iconfont') format('svg');
+}
 .iconfont {
   font-family:"iconfont" !important;
   font-size:16px;

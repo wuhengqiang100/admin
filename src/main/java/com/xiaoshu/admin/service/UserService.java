@@ -48,4 +48,10 @@ public interface UserService extends IService<User> {
      * @return
      */
     List<User> getAllHaveManagerIdentityUser();
+    /**
+     * 重置用户信誉度
+     * @param user
+     * @return
+     */
+    int resetCredit(User user);
 }

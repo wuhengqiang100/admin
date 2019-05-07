@@ -23,14 +23,14 @@ layui.use(['layer','form','table'], function() {
             /*{field:'loginName', title: '登录名称', width:'10%'},*/
             {field:'nickName',  title: '昵称',    width:'8%'},
             {field:'identity',  title: '身份',    width:'8%'},
-            {field:'requestPlace',  title: '请求地址',    width:'6%'},
-            {field:'tel',       title: '电话',    width:'8%'},
+            {field:'requestPlace',  title: '请求地址',    width:'8%'},
+            {field:'tel',       title: '电话',    width:'10%'},
             {field:'email',     title: '邮箱',    width:'12%' },
-            {field:'age',     title: '年龄',    width:'4%' },
-            {field:'credit',    title: '信誉度',width:'3%'},
+            {field:'age',     title: '年龄',    width:'3%' },
+            {field:'credit',    title: '信誉度',width:'5%'},
             {field:'adminUser', title: '用户类型', width:'6%',templet:'#userType'},
             {field:'locked',    title: '状态',width:'10%',templet:'#userStatus'},
-            {field:'createDate',  title: '创建时间',width:'14%', templet:'<span>{{ layui.laytpl.toDateString(d.createDate) }}</span>'}, //单元格内容水平居中
+            {field:'createDate',  title: '创建时间',width:'12%', templet:'<span>{{ layui.laytpl.toDateString(d.createDate) }}</span>'}, //单元格内容水平居中
             {fixed: 'right', align: 'center', toolbar: '#userBar',title:'操作'}
         ]]
     };
@@ -120,6 +120,38 @@ layui.use(['layer','form','table'], function() {
                 layer.full(addIndex);
             });
             layer.full(addIndex);
+        },
+        resetCredit : function(){                        //重置信誉度
+            var checkStatus = table.checkStatus('userTable'),
+                data = checkStatus.data;
+            if(data.length > 0){
+                layer.confirm("你确定要要重置这些用户信誉度么？",{ skin: 'layui-layer-molv'
+                        ,closeBtn: 1,
+                        icon: 3, title: '提示',btn:['确定','我再想想']},
+                    function(){
+                        var resetindex = layer.msg('重置中，请稍候',{icon: 16,time:false,shade:0.8});
+                        $.ajax({
+                            type:"POST",
+                            url:"/admin/system/user/credit",
+                            dataType:"json",
+                            contentType:"application/json",
+                            data:JSON.stringify(data),
+                            success:function(res){
+                                layer.close(resetindex);
+                                if(res.success){
+                                    layer.msg("重置成功",{time: 1000},function(){
+                                        table.reload('userTable', t);
+                                    });
+                                }else{
+                                    layer.msg(res.message);
+                                }
+                            }
+                        });
+                    }
+                )
+            }else{
+                layer.msg("请选择需要重置信誉度的用户",{time:1000});
+            }
         },
         deleteSome : function(){                        //批量删除
             var checkStatus = table.checkStatus('userTable'),

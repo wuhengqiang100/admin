@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_974748_k07rh7lw6f.css}" media="all"/>
     <style type="text/css">
         .layui-form-item .layui-inline {
             min-width: 15%;
@@ -36,6 +37,9 @@
             font-size: large;
             font-style: inherit;
         }
+    /*    .layui-container{
+            width: 1250px;
+        }*/
     </style>
 </head>
 <body>
@@ -44,7 +48,7 @@
         <input name="id" type="hidden" th:value="${role.id}">
         <div class="layui-row">
             <div class="layui-row layui-col-space12">
-                <div class="layui-col-md5 layui-col-md-offset1">
+                <div class="layui-col-md5 layui-col-md-offset0.5">
                     <div class="layui-card">
                         <div class="layui-card-header nameTitle">策略权限</div>
                         <div class="layui-card-body">
@@ -62,17 +66,6 @@
                                                      th:include="/admin/role/menu::editMenuLi(${menu.children})"></div>
                                             </div>
                                         </div>
-                                       <!-- <div class="layui-inline" th:each="menu : ${menuList}">
-                                            <fieldset class="layui-elem-field">
-                                                <legend>
-                                                    <input type="checkbox" th:title="${menu.name}" th:value="${menu.id}"
-                                                           lay-filter="roleMenu" th:data-parentIds="${menu.parentIds}"
-                                                           th:checked="${#strings.contains(menuIds,menu.id)} ? checked "/>
-                                                </legend>
-                                                <div class="layui-field-box" th:include="/admin/role/menu::editMenuLi(${menu.children})">
-                                                </div>
-                                            </fieldset>
-                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +74,8 @@
                 </div>
                 <div class="layui-col-md5 layui-col-md-offset0.1">
                     <div class="layui-card">
-                        <div class="layui-card-header nameTitle">策略属性</div>
+                        <div class="layui-card-header nameTitle">策略属性 <span style="float:right;margin-right:10px;font-size: 16px">
+                            <i class="iconfont layui-bg-red" style="font-size: 22px">&#xe62d;</i>多个属性以逗号隔开(,)</span></div>
                         <div class="layui-card-body">
                             <div class="layui-row">
                                 <div class="layui-form-item">
@@ -154,6 +148,7 @@
     </form>
 </div>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_k07rh7lw6f.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/role/roleEdit.js}"></script>
 </body>
 </html>

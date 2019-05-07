@@ -46,4 +46,10 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     List<User> getAllHaveManagerIdentityUser();
+    /**
+     * 重置用户信誉度
+     * @param user
+     * @return
+     */
+    int resetCredit(User user);
 }
