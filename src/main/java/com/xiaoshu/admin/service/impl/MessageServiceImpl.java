@@ -3,11 +3,16 @@ package com.xiaoshu.admin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xiaoshu.admin.entity.Message;
+import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.mapper.MessageMapper;
 import com.xiaoshu.admin.service.MessageService;
+import com.xiaoshu.admin.service.UserService;
+import com.xiaoshu.common.config.MySysUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,10 +32,19 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
         return baseMapper.selectCount(wrapper);
     }
 
+    @Autowired
+    UserService userService;
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Message saveMessage(Message message) {
         message.setLooked("未读");
+        User toUserEn=userService.findUserById(message.getToUser());
+        message.setCreateId(MySysUser.id());
+        message.setCreateDate(new Date());
+        message.setUpdateDate(new Date());
+        message.setUpdateId(MySysUser.id());
+        message.setCreateName(toUserEn.getNickName());
+        message.setToUser(message.getToUser());
         baseMapper.insert(message);
         return message;
     }

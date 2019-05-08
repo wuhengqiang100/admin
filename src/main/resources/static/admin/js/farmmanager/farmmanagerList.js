@@ -36,7 +36,8 @@ layui.use(['layer', 'form', 'table'], function () {
                     $.post("/admin/farm/manager/delete", {"id": data.id}, function (res) {
                         if (res.success) {
                             layer.msg("删除成功", {time: 1000}, function () {
-                                table.reload('farmManager-table', t);
+                                location.reload();
+                                // table.reload('farmManager-table', t);
                             });
                         } else {
                             layer.msg(res.message);

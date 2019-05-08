@@ -8,9 +8,40 @@ layui.use(['form','layer','jquery'], function(){
     var form = layui.form,
         layer = layui.layer,
         $ = layui.jquery;
+    form.on('radio(addManager)', function(data){
 
+        // console.log(data.elem); //得到radio原始DOM对象
+        // console.log(data.value); //被点击的radio的value值
+        if(null==data.value){//开关未开启
+            layer.msg("请选择数据管理员");
+            return false;
+        }else{
+            var loadIndex = layer.load(2, {shade: [0.3, '#333']});
+            $.ajax({
+                type:"POST",
+                url:"/admin/farm/manager/add?id="+data.value,
+                dataType:"json",
+                contentType:"application/json",
+                data:"",
+                success:function(res){
+                    layer.close(loadIndex);
+                    if(res.success){
+                        parent.layer.msg("农田管理员添加成功！",{time:1000},function(){
+                            //刷新父页面
+                            parent.location.reload();
+                        });
+                    }else{
+                        layer.msg(res.message);
+                    }
+                }
 
-    form.on('submit(addFarmManager)',function(data){
+            });
+            return false;
+        }
+        return false;
+    });
+
+    /*form.on('submit(addFarmManager)',function(data){
         var loadIndex = layer.load(2, {
             shade: [0.3, '#333']
         });
@@ -43,7 +74,7 @@ layui.use(['form','layer','jquery'], function(){
         }
 
         return false;
-    });
+    });*/
 
    /* form.on('select(selected)', function(data){
         $("#more").empty();

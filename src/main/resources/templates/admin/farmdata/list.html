@@ -89,7 +89,7 @@
                                     <span class="iconfont">&#xe6a2;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-org" th:text="${firstFarm.temperature}"></span>标准
+                                    <p class="name"><span class="color-org" id="standardTemperature" th:text="${firstFarm.temperature}"></span>标准
                                         <span class="iconfont">&#xe628;</span></p>
                                     <p><span class="color-org" id="temperature" th:text="${firstFarm.temperature}">89</span>当前
                                         <span class="iconfont">&#xe628;</span></p>
@@ -104,7 +104,8 @@
                                     <span class="iconfont">&#xe63b;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-blue" th:text="${firstFarm.humidity}"></span>标准<span class="iconfont">
+                                    <p class="name"><span class="color-blue" id="standardHumidity" th:text="${firstFarm.humidity}"></span>标准<span
+                                            class="iconfont">
                                         &#xe628;</span></p>
                                     <p><span class="color-blue" id="humidity" th:text="${firstFarm.humidity}">189</span>当前
                                         <span class="iconfont">&#xe628;</span></p>
@@ -119,7 +120,8 @@
                                     <span class="iconfont">&#xe609;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-green" th:text="${firstFarm.illumination}"></span>标准<span
+                                    <p class="name"><span class="color-green" id="standardIllumination" th:text="${firstFarm.illumination}"></span>
+                                        标准<span
                                             class="iconfont">&#xe60f;</span></p>
                                     <p><span class="color-green" id="illumination" th:text="${firstFarm.illumination}">221</span>当前<span
                                             class="iconfont">&#xe60f;
@@ -188,9 +190,9 @@
 </div>
 <script>
 
-    function deepLookFarmData(id){
+  /*  function deepLookFarmData(id){
         alert(id);
-    }
+    }*/
     function lookFarmData(id) {
         var myChart = echarts.init(document.getElementById('chart'));
         $.post("/farm/farmdata/list", {id: id},
@@ -291,8 +293,11 @@
                     $("#name").text(data.farmTop.name);
                     $("#location").text(data.farmTop.location);
                     $("#temperature").text(data.mostNewFarmData.temperature);
+                    $("#standardTemperature").text(data.farmTop.temperature);
                     $("#humidity").text(data.mostNewFarmData.humidity);
+                    $("#standardHumidity").text(data.farmTop.humidity);
                     $("#illumination").text(data.mostNewFarmData.illumination);
+                    $("#standardIllumination").text(data.farmTop.illumination);
                 } else {
                     layer.alert(data.message, {
                         skin: 'layui-layer-molv' //样式类名

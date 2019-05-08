@@ -89,7 +89,7 @@
                                     <span class="iconfont">&#xe6a2;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-org" th:text="${firstFarm.temperature}"></span>标准
+                                    <p class="name"><span class="color-org" id="standardTemperature" th:text="${firstFarm.temperature}"></span>标准
                                         <span class="iconfont">&#xe628;</span></p>
                                     <p><span class="color-org" id="temperature" th:text="${firstFarm.temperature}">89</span>当前
                                         <span class="iconfont">&#xe628;</span></p>
@@ -97,7 +97,7 @@
                             </a>
                         </li>
                     </shiro:hasPermission>
-                    <shiro:hasPermission name="farm:farmdata:hum">
+                   <!-- <shiro:hasPermission name="farm:farmdata:hum">
                         <li class="col-sm-12 col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
                                 <div class="icon-bg bg-blue f-l">
@@ -127,7 +127,7 @@
                                 </div>
                             </a>
                         </li>
-                    </shiro:hasPermission>
+                    </shiro:hasPermission>-->
                 </ul>
             </div>
             <!--图表-->
@@ -291,6 +291,7 @@
                     $("#name").text(data.farmTop.name);
                     $("#location").text(data.farmTop.location);
                     $("#temperature").text(data.mostNewFarmData.temperature);
+                    $("#standardTemperature").text(data.farmTop.temperature);
 //                    $("#humidity").text(data.mostNewFarmData.humidity);
 //                    $("#illumination").text(data.mostNewFarmData.illumination);
                 } else {

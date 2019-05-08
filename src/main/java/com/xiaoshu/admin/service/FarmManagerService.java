@@ -42,6 +42,8 @@ public interface FarmManagerService extends IService<FarmManager> {
      */
     List<FarmManager> getAllFarmManager();
 
+//    int saveFarmOwnManager()
+
 /*
     *//**
      * 根据农田id获取湿度管理员的数量

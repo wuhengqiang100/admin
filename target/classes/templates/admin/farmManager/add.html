@@ -41,8 +41,8 @@
     <form class="layui-form">
         <div class="layui-row">
             <div class="layui-row layui-col-space12">
-                <div class="layui-col-md6 layui-col-md-offset3" style="height: 400px">
-                    <div class="layui-card" style="height: 350px">
+                <div class="layui-col-md6 layui-col-md-offset3" style="height: auto;min-height: 400px;">
+                    <div class="layui-card" style="height: auto;min-height: 350px;">
                         <div class="layui-card-header nameTitle">农田管理员属性</div>
 
                         <div class="layui-card-body">
@@ -62,10 +62,11 @@
                                     </thead>
                                     <tbody th:each="user : ${allHaveManagerIdeneityUserList}">
                                     <tr>
-                                        <input type="hidden" th:value="${user.id}" name="userId" id="userId" />
-                                        <td><input type="checkbox" id="switch" name="switch" lay-skin="switch" th:value="${user.id}"></td>
+                                        <!--<input type="hidden" th:value="${user.id}" name="userId" id="userId" />-->
+                                        <td><input type="radio" id="id" lay-filter="addManager" name="id" lay-skin="switch"
+                                                   th:value="${user.id}"></td>
                                         <td th:text="${user.nickName}"></td>
-                                        <td th:text="${user.identity}">人生就像是一场修行</td>
+                                        <td th:text="${user.identity}"></td>
                                     </tr>
 
                                     </tbody>
@@ -78,14 +79,14 @@
                         </div>
                     </div>
                 </div>
-                <shiro:hasPermission name="farm:manager:list">
+               <!-- <shiro:hasPermission name="farm:manager:list">
                     <div class="layui-form-item" style="padding-left: 30%;">
                         <div class="layui-input-block">
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                             <button class="layui-btn" lay-submit="" lay-filter="addFarmManager">立即提交</button>
                         </div>
                     </div>
-                </shiro:hasPermission>
+                </shiro:hasPermission>-->
             </div>
         </div>
     </form>

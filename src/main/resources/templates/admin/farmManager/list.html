@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>农田主龙农田管理员管理</title>
@@ -32,11 +32,11 @@
             <div class="layui-input-inline">
                 <a class="layui-btn" lay-submit="" lay-filter="searchForm">查询</a>
             </div>
-            <shiro:hasPermission name="farm:user:add">
+
                 <div class="layui-inline">
                     <a class="layui-btn layui-btn-normal" data-type="addFarm">添加管理员</a>
                 </div>
-            </shiro:hasPermission>
+
           <!--  <shiro:hasPermission name="farm:user:delete">
                 <div class="layui-inline">
                     <a class="layui-btn layui-btn-danger" data-type="deleteSome">批量删除</a>
@@ -45,27 +45,27 @@
                 <div class="layui-inline" style="margin-left: 400px">
                     <a class="layui-btn" data-type="">管理员类别</a>
                 </div>
-            <shiro:hasPermission name="farm:user:delete">
+
                 <div class="layui-inline">
                     <span class="iconfont iconfontLogo">&#xe6a2;</span>
                     <span class="layui-badge layui-bg-green" th:text="${tepmerManagerCount}"></span>
                     <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">1</a>-->
                 </div>
-            </shiro:hasPermission>
-            <shiro:hasPermission name="farm:user:delete">
+
+
                 <div class="layui-inline">
                     <span class="iconfont iconfontLogo">&#xe609;</span>
                     <span class="layui-badge layui-bg-green" th:text="${humManagerCount}"></span>
                     <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">3</a>-->
                 </div>
-            </shiro:hasPermission>
-            <shiro:hasPermission name="farm:user:delete">
+
+
                 <div class="layui-inline">
                     <span class="iconfont iconfontLogo">&#xe63b;</span>
                     <span class="layui-badge layui-bg-green" th:text="${illManagerCount}"></span>
                     <!--<a class="layui-btn layui-btn-normal" data-type="deleteSome">5</a>-->
                 </div>
-            </shiro:hasPermission>
+
         </form>
     </div>
 </fieldset>
@@ -73,48 +73,20 @@
 <div class="layui-form users_list">
     <table class="layui-table" id="farmManager-table" lay-filter="farmManagerList"></table>
     <script type="text/html" id="farmManagerBar">
-        <!--<shiro:hasPermission name="farm:user:edit">-->
-            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+
+        <!--<shiro:hasPermission name="farm:user:delete">-->
+            <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
         <!--</shiro:hasPermission>-->
-        <shiro:hasPermission name="farm:user:delete">
+
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        </shiro:hasPermission>
+
     </script>
 </div>
 <div id="page"></div>
 
-<!--<div class=" layui-input-inline showAddManager" style="display: none">
-    <div>
-        <div style="text-align: center;align-self: center">
-            <div th:if="${currentUser.credit} ge '1'">
-                <div class="">
-                    <p style="margin-top: 10px;"><i class="layui-icon" style="font-size: 50px; color: #009688;">&#xe60c;</i>
-                        当前信誉值为：<span th:text="${currentUser.credit}"></span>
-                    </p>
-                    <p style="margin-left: 50px;margin-top: 30px">没有任何违规操作</p>
-                </div>
-            </div>
-            <div th:if="${currentUser.credit} lt '1'">
-                <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
-                                                              style="font-size: 50px; color: #FFB800;">&#xe60c;</i>当前信誉值为：<span
-                        th:text="${currentUser.credit}"></span></p>
-                    <p style="margin-left: 50px;margin-top: 30px">请注意您的操作，已经有违规行为
-                    </p>
-                </div>
-            </div>
-            <div th:if="${currentUser.credit} lt  '0.3'">
-                <div class=""><p style="margin-top: 10px;"><i class="layui-icon"
-                                                              style="font-size: 50px; color: #FF5722;">&#xe60c;</i>
-                    当前信誉值为：<span th:text="${currentUser.credit}"></span></p>
-                    <p style="margin-left: 50px;margin-top: 30px">信誉值太低，请联系管理员，否则下次不能访问
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>-->
 
+<script type="text/javascript" th:src="@{/static/js/jquery.js}"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/tools.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>

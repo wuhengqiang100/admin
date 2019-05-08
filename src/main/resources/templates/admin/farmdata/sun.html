@@ -82,7 +82,7 @@
                             </div>
                         </a>
                     </li>
-                    <shiro:hasPermission name="farm:farmdata:temper">
+<!--                    <shiro:hasPermission name="farm:farmdata:temper">
                         <li class="col-sm-12 col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
                                 <div class="icon-bg bg-org f-l">
@@ -111,7 +111,7 @@
                                 </div>
                             </a>
                         </li>
-                    </shiro:hasPermission>
+                    </shiro:hasPermission>-->
                     <shiro:hasPermission name="farm:farmdata:sun">
                         <li class="col-sm-12  col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
@@ -119,7 +119,7 @@
                                     <span class="iconfont">&#xe609;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-green" th:text="${firstFarm.illumination}"></span>标准<span
+                                    <p class="name"><span class="color-green" id="standardIllumination" th:text="${firstFarm.illumination}"></span>标准<span
                                             class="iconfont">&#xe60f;</span></p>
                                     <p><span class="color-green" id="illumination" th:text="${firstFarm.illumination}">221</span>当前<span
                                             class="iconfont">&#xe60f;
@@ -289,9 +289,8 @@
                     myChart.setOption(option);
                     $("#name").text(data.farmTop.name);
                     $("#location").text(data.farmTop.location);
-                    $("#temperature").text(data.mostNewFarmData.temperature);
-                    $("#humidity").text(data.mostNewFarmData.humidity);
                     $("#illumination").text(data.mostNewFarmData.illumination);
+                    $("#standardIllumination").text(data.farmTop.illumination);
                 } else {
                     layer.alert(data.message, {
                         skin: 'layui-layer-molv' //样式类名

@@ -5,9 +5,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiaoshu.admin.entity.FarmManager;
 import com.xiaoshu.admin.entity.FarmManagerCount;
+import com.xiaoshu.admin.entity.Message;
 import com.xiaoshu.admin.entity.User;
 import com.xiaoshu.admin.service.FarmManagerService;
 import com.xiaoshu.admin.service.FarmService;
+import com.xiaoshu.admin.service.MessageService;
 import com.xiaoshu.admin.service.UserService;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.base.PageData;
@@ -15,7 +17,6 @@ import com.xiaoshu.common.config.MySysUser;
 import com.xiaoshu.common.util.FarmManagerUtil;
 import com.xiaoshu.common.util.ResponseEntity;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,28 +44,36 @@ public class FarmManagerController {
     @Autowired
     FarmManagerService farmManagerService;
 
+    @Autowired
+    MessageService messageService;
+
     @GetMapping(value = "list")
     public String list(ModelMap modelMap) {
         String userId = MySysUser.id();//农田主id
         List<FarmManagerCount> farmManagerCountList = farmManagerService.getCountManager(userId);
-        modelMap.put("tepmerManagerCount", 0);
-        modelMap.put("humManagerCount", 0);
-        modelMap.put("illManagerCount", 0);
+        int tepmerManagerCount=0;
+        int humManagerCount=0;
+        int illManagerCount=0;
         for (int i = 0; i < farmManagerCountList.size(); i++) {
-            if ("温度管理员".equals(farmManagerCountList.get(i).getFarmManagerType())) {
-                modelMap.put("tepmerManagerCount", farmManagerCountList.get(i).getCount());
+            //Str.contains
+            if ((farmManagerCountList.get(i).getFarmManagerType()).contains("温度")) {
+                tepmerManagerCount=tepmerManagerCount+1;
             }
-            if ("湿度管理员".equals(farmManagerCountList.get(i).getFarmManagerType())) {
-                modelMap.put("humManagerCount", farmManagerCountList.get(i).getCount());
+            if ((farmManagerCountList.get(i).getFarmManagerType()).contains("湿度")) {
+                humManagerCount=humManagerCount+1;
             }
-            if ("光照管理员".equals(farmManagerCountList.get(i).getFarmManagerType())) {
-                modelMap.put("illManagerCount", farmManagerCountList.get(i).getCount());
+            //str1.indexOf("RO")>=0
+            if ((farmManagerCountList.get(i).getFarmManagerType()).indexOf("光照")>=0) {
+                illManagerCount=illManagerCount+1;
             }
         }
+        modelMap.put("tepmerManagerCount",tepmerManagerCount);
+        modelMap.put("humManagerCount", humManagerCount);
+        modelMap.put("illManagerCount",illManagerCount );
         return "admin/farmManager/list";
     }
 
-    @RequiresPermissions("farm:manager:list")
+//    @RequiresPermissions("farm:manager:list")
     @PostMapping("list")
     @SysLog("查看农田管理员列表")
     @ResponseBody
@@ -129,18 +138,27 @@ public class FarmManagerController {
 //    @RequiresPermissions("farm:manager:add")
     @PostMapping("add")
     @ResponseBody
-    @SysLog("保存新增农田数据")
+    @SysLog("保存新增农田管理员数据")
     public ResponseEntity add(String id) {
         String farmOwnId=MySysUser.id();
         User farManagerUser=userService.findUserById(id);
-        User farmOwnUser=userService.findUserById(id);
+        User farmOwnUser=userService.findUserById(farmOwnId);
         FarmManager farmManager=new FarmManager();
         farmManager.setFarmOwnId(farmOwnId);//农田主id
         farmManager.setFarmManagerId(id);//农田管理员id
         farmManager.setFarmOwnNickName(farmOwnUser.getNickName());
-        farmManager.setFarmManagerType("温度管理员");
+        farmManager.setFarmManagerType(farManagerUser.getIdentity());
         farmManager.setUpdateDate(new Date());
+        farmManager.setFarmManagerNickName(farManagerUser.getNickName());
+
+        Message message=new Message();
+        message.setToUser(id);
+        message.setTitle("身份设置");
+        message.setMessageType("农田主设置");
+        message.setContent("您已被设置为"+farmOwnUser.getNickName()+"的农田数据管理员");
+        messageService.saveMessage(message);
         farmManagerService.save(farmManager);
+
         return ResponseEntity.success("操作成功");
     }
 
@@ -197,7 +215,15 @@ public class FarmManagerController {
         if (StringUtils.isBlank(id)) {
             return ResponseEntity.failure("农田管理员ID不能为空");
         }
-        FarmManager farmManager = farmManagerService.getFarmManagerById(id);
+        FarmManager farmManager=farmManagerService.getFarmManagerById(id);
+        User farmOwnUser=userService.findUserById(MySysUser.id());
+        Message message=new Message();
+        message.setToUser(farmManager.getFarmManagerId());
+        message.setTitle("身份设置");
+        message.setMessageType("农田主设置");
+        message.setContent("您已被"+farmOwnUser.getNickName()+"农田主移除农田数据管理员身份");
+        messageService.saveMessage(message);
+
         farmManagerService.deleteFarmManager(farmManager);
         return ResponseEntity.success("操作成功");
     }

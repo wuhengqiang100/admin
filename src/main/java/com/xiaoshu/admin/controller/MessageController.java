@@ -107,12 +107,6 @@ public class MessageController {
         if(null==toUserEn){
             return ResponseEntity.failure("该用户不存在,不能发送消息!");
         }
-        message.setCreateId(MySysUser.id());
-        message.setCreateDate(new Date());
-        message.setUpdateDate(new Date());
-        message.setUpdateId(MySysUser.id());
-        message.setCreateName(toUserEn.getNickName());
-        message.setToUser(toUserEn.getId());
         if(StringUtils.isBlank(message.getTitle())){
             return ResponseEntity.failure("消息标题不能为空");
         }

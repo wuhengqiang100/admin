@@ -82,7 +82,7 @@
                             </div>
                         </a>
                     </li>
-                    <shiro:hasPermission name="farm:farmdata:temper">
+                <!--    <shiro:hasPermission name="farm:farmdata:temper">
                         <li class="col-sm-12 col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
                                 <div class="icon-bg bg-org f-l">
@@ -96,7 +96,7 @@
                                 </div>
                             </a>
                         </li>
-                    </shiro:hasPermission>
+                    </shiro:hasPermission>-->
                     <shiro:hasPermission name="farm:farmdata:hum">
                         <li class="col-sm-12 col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
@@ -104,7 +104,8 @@
                                     <span class="iconfont">&#xe63b;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-blue" th:text="${firstFarm.humidity}"></span>标准<span class="iconfont">
+                                    <p class="name"><span class="color-blue" id="standardHumidity"  th:text="${firstFarm.humidity}"></span>标准<span
+                                            class="iconfont">
                                         &#xe628;</span></p>
                                     <p><span class="color-blue" id="humidity" th:text="${firstFarm.humidity}">189</span>当前
                                         <span class="iconfont">&#xe628;</span></p>
@@ -112,7 +113,7 @@
                             </a>
                         </li>
                     </shiro:hasPermission>
-                    <shiro:hasPermission name="farm:farmdata:sun">
+                  <!--  <shiro:hasPermission name="farm:farmdata:sun">
                         <li class="col-sm-12  col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
                                 <div class="icon-bg bg-green f-l">
@@ -127,7 +128,7 @@
                                 </div>
                             </a>
                         </li>
-                    </shiro:hasPermission>
+                    </shiro:hasPermission>-->
                 </ul>
             </div>
             <!--图表-->
@@ -295,9 +296,8 @@
                     myChart.setOption(option);
                     $("#name").text(data.farmTop.name);
                     $("#location").text(data.farmTop.location);
-//                    $("#temperature").text(data.mostNewFarmData.temperature);
                     $("#humidity").text(data.mostNewFarmData.humidity);
-//                    $("#illumination").text(data.mostNewFarmData.illumination);
+                    $("#standardHumidity").text(data.farmTop.humidity);
                 } else {
                     layer.alert(data.message, {
                         skin: 'layui-layer-molv' //样式类名

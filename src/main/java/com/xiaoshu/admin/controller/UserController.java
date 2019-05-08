@@ -157,6 +157,55 @@ public class UserController {
         modelMap.put("roleList",roleList);
         return "admin/user/edit";
     }
+/*    @RequiresPermissions("sys:user:edit")
+    @PostMapping("forcer")
+    @ResponseBody
+    @SysLog("强制修改用户令牌")
+    public ResponseEntity forceRequest(String id,@RequestParam (name = "userId",required = false) String userId){
+        if (StringUtils.isBlank(id)){
+            return ResponseEntity.failure("令牌id不能为空");
+        }
+        if (StringUtils.isBlank(userId)){
+            return ResponseEntity.failure("用户id不能为空");
+        }
+        User user=userService.findUserById(userId);
+        Boolean allContrast=true;
+        Set<Role> roleSetFrom=user.getRoleLists();
+        for (Role roleS:roleSetFrom){
+            Role role=roleService.getRoleById(roleS.getId());
+            allContrast=RoleUtil.contrastRoleAndProperties(role,user);
+            if (!allContrast){
+                return ResponseEntity.failure("该用户属性不满足"+role.getName()+"令牌的属性值,您可以强制分配!");
+            }
+        }
+        userService.updateUser(user);
+        if(StringUtils.isBlank(user.getId())){
+            return ResponseEntity.failure("保存用户信息出错");
+        }
+        userService.saveUserRoles(user.getId(),user.getRoleLists());
+        return ResponseEntity.success("令牌分配成功");
+    }
+
+    @RequiresPermissions("sys:user:edit")
+    @PostMapping("force")
+    @ResponseBody
+    @SysLog("强制修改用户令牌")
+    public ResponseEntity forceEdit(String id,@RequestParam (name = "userId",required = false) String userId){
+        if (StringUtils.isBlank(id)){
+            return ResponseEntity.failure("令牌id不能为空");
+        }
+        if (StringUtils.isBlank(userId)){
+            return ResponseEntity.failure("用户id不能为空");
+        }
+        User user=userService.findUserById(userId);
+        Role role=roleService.getRoleById(id);
+        userService.updateUser(user);
+        if(StringUtils.isBlank(user.getId())){
+            return ResponseEntity.failure("保存用户信息出错");
+        }
+        userService.saveUserRoles(user.getId(),user.getRoleLists());
+        return ResponseEntity.success("令牌分配成功");
+    }*/
 
     @RequiresPermissions("sys:user:edit")
     @PostMapping("edit")

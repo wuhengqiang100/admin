@@ -61,6 +61,9 @@ public class FarmDataController {
         }else{//是农田主
             farmList=farmService.getFarmByUserId(farmOwnId);
         }
+      /*  if (0==farmList.size()){
+
+        }*/
         int firstFarmId=farmList.get(0).getId();
         session.setAttribute("firstFarmId",firstFarmId);
         Farm firstFarm=farmList.get(0);

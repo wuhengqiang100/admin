@@ -65,16 +65,17 @@ layui.use(['layer','form','table'], function() {
         cols: [[
             {type:'checkbox'},
            /* {field:'id',        title: 'ID'   },*/
-            {field:'name',        title: '策略名称',width:'10%'   },
-            {field:'identity',    title: '请求身份',width:'8%'   },
-            {field:'requestPlace',title: '请求地点',width:'8%'   },
-            {field:'tel',         title: '手机号码',width:'10%'   },
-            {field:'email',       title: '邮件地址',width:'10%'   },
-            {field:'age',         title: '年龄',width:'6%'   },
+            {field:'name',        title: '策略名称',width:'8%'   },
+            {field:'identity',    title: '请求身份',width:'9%'   },
+            {field:'requestPlace',title: '请求地点',width:'7%'   },
+            {field:'tel',         title: '手机号码',width:'15%'   },
+            {field:'email',       title: '邮件地址',width:'15%'   },
+            {field:'age',         title: '年龄',width:'8%'   },
             /*{field:'createUser',  title: '创建人',width:'14%',templet:'<div>{{  d.createUser.nickName }}</div>'},*/
-            {field:'updateUser',  title: '修改人',width:'10%',templet:'<div>{{  d.updateUser.nickName }}</div>'},
-            /*{field:'createDate',  title: '创建时间',    width:'14%',templet:'<div>{{ layui.laytpl.toDateString(d.createDate) }}</div>',unresize: true}, //单元格内容水平居中*/
-            {field:'updateDate',  title: '修改时间',    width:'18%',templet:'<div>{{ layui.laytpl.toDateString(d.updateDate) }}</div>',unresize: true}, //单元格内容水平居中
+            {field:'updateUser',  title: '修改人',width:'8%',templet:'<div>{{  d.updateUser.nickName }}</div>'},
+            /*{field:'createDate',  title: '创建时间',    width:'10%',templet:'<div>{{ layui.laytpl.toDateString(d.createDate) }}</div>',unresize:
+             true}, //单元格内容水平居中*/
+            {field:'updateDate',  title: '修改时间',    width:'12%',templet:'<div>{{ layui.laytpl.toDateString(d.updateDate) }}</div>',unresize: true}, //单元格内容水平居中
             {title: '操作',fixed: 'right',    align: 'center',toolbar: '#roleBar'}
         ]]/*,
         done: function () {

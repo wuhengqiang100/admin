@@ -4,6 +4,7 @@ layui.use(['form','jquery','layer'],function(){
         $    = layui.jquery,
         layer = layui.layer;
 
+
     form.on("submit(editUser)",function(data){
         if(data.field.id == null){
             layer.msg("用户ID不存在");
@@ -64,6 +65,48 @@ layui.use(['form','jquery','layer'],function(){
         });
         return false;
     });
+
+    //判断访问属性是否满足令牌,且可以强制向令牌导入该用户的访问属性
+    form.on('checkbox(roleEdit)', function(data){
+        var userId=$("#id").val();
+        $.post("/admin/system/user/forcer",{"id":data.value,"userId":userId},function(result){
+            if(result.success){
+                parent.layer.msg("用户修改成功！",{time:1500},function(){
+                    parent.location.reload();
+                });
+            }else{
+                layer.confirm(res.message, {
+                    skin: 'layui-layer-molv'
+                    ,closeBtn: 1,
+                    icon: 3, title: '提示',
+                    btn: ['强制分配','确定'] //按钮
+                }, function(){
+
+                },function(){
+                    layer.closeAll('dialog'); //关闭信息框
+                    location.reload();
+                },function(){
+                    var flag="1";
+                    $.post("/admin/system/user/force",{"id":data.value,"userId":userId},function(res){
+                        if(res.success){
+                            layer.confirm(res.message, {
+                                skin: 'layui-layer-molv'
+                                ,closeBtn: 1,
+                                icon: 3, title: '提示',
+                                btn: ['确定'] //按钮
+                            }, function(){
+
+                            },function(){
+                                layer.closeAll('dialog'); //关闭信息框
+                                location.reload();
+                            });
+                        }
+                    })
+                });
+                // layer.msg(res.message);
+            }
+        });
+    });
     $(".dontEdit").click(function(){
         parent.location.reload();
     });
@@ -75,5 +118,9 @@ layui.use(['form','jquery','layer'],function(){
     form.on('switch(locked)', function(data){
         $("#locked").val(data.elem.checked);
     });
+
+
+
+
 
 });
