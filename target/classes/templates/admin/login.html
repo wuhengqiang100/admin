@@ -16,7 +16,7 @@
 
 <body>
 <div class="video_mask"></div>
-<div class="login">
+<div class="login" style="min-height: 350px;height: auto">
     <h1>SAAS-用户登录</h1>
     <form class="layui-form"  th:action="@{/admin/login}" th:method="post" enctype="multipart/form-data;charset=UTF-8">
         <div class="layui-inline">
@@ -42,15 +42,15 @@
             <input class="layui-input" name="code" placeholder="验证码" lay-verify="required" type="text" autocomplete="off">
             <div class="code"><img th:src="@{/getCaptcha}" width="116" height="36" th:id="randImage"></div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" hidden>
             <input type="checkbox" name="rememberMe" lay-skin="primary" title="记住帐号?">
         </div>
-        <div class="layui-form-item loginBut">
+        <div class="layui-form-item loginBut" style="margin-top: 10px">
             <button class="layui-btn login_btn" lay-submit lay-filter="login" >登录</button>
         </div>
 
     </form>
-    <div class="layui-input-inline registBut">
+    <div class="layui-input-inline registBut" style="margin-top: 10px">
         <button class="layui-btn" style="width:100%;" id="regist">注册</button>
     </div>
 </div>

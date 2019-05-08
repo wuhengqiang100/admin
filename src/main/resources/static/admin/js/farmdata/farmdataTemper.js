@@ -132,7 +132,16 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                     };
                     myChart.setOption(option);
                 }else{
-                    alert("数据: \n" + data.data + "\n状态: " + status);
+                    layer.confirm("当前农田还没有数据,请采集数据", {
+                        skin: 'layui-layer-molv'
+                        ,closeBtn: 1,
+                        icon: 3, title: '提示',
+                        btn: ['确定'] //按钮
+                    }, function(){
+                        layer.closeAll('dialog'); //关闭信息框
+                    },function(){
+
+                    });
                 }
             });
     });

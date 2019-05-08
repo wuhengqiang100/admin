@@ -193,68 +193,63 @@
     }*/
     function lookFarmData(id) {
         var myChart = echarts.init(document.getElementById('chart'));
-        $.post("/farm/farmdata/temper", {id: id},
-            function (data) {
-                if (data.success) {
-                    // var colors = ['#5793f3', '#d14a61', '#675bba'];
-                    // app.title = '折柱混合';
-
-                    option = {
-                        tooltip: {
-                            trigger: 'axis',
+        $.post("/farm/farmdata/temper",{id:id},function(data){
+            if(data.success){
+                option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        }
+                    },
+                    toolbox: {
+                        feature: {
+                            dataView: {show: true, readOnly: false},
+                            magicType: {show: true, type: ['line', 'bar']},
+                            restore: {show: true},
+                            saveAsImage: {show: true}
+                        }
+                    },
+                    legend: {
+                        data: ['温度']
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: data.dateTimeArray,
                             axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
+                                type: 'shadow'
                             }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '温度',
+                            min: 0,
+                            max: 50,
+                            position: 'left',
+                            offset: 10,
+                            interval: 5,
+                            axisLabel: {
+                                formatter: '{value} °C'
                             }
-                        },
-                        legend: {
-//                            data: ['温度', '湿度', '光照']
-                            data: ['温度']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data: data.dateTimeArray,
-                                axisPointer: {
-                                    type: 'shadow'
-                                }
+                        }/*,
+                        {
+                            type: 'value',
+                            name: '湿度/光照',
+                            min: 0,
+                            max: 100,
+                            position: 'right',
+                            offset: 10,
+                            interval: 20,
+                            axisLabel: {
+                                formatter: '{value}RH/lux'
                             }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '温度',
-                                min: 0,
-                                max: 50,
-                                position: 'left',
-                                offset: 10,
-                                interval: 5,
-                                axisLabel: {
-                                    formatter: '{value} °C'
-                                }
-                            }/*,
-                            {
-                                type: 'value',
-                                name: '湿度/光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                offset: 10,
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}RH/lux'
-                                }
-                            }*//*,
+                        }*//*,
                             {
                                 type: 'value',
                                 name: '光照',
@@ -267,45 +262,47 @@
                                     formatter: '{value}lux'
                                 }
                             }*/
-                        ],
-                        series: [
-                            {
-                                name: '温度',
-                                type: 'line',
-                                data: data.temperArray
-                            }/*,
-                            {
-                                name: '湿度',
-                                type: 'bar',
-                                data: data.humidiArray
-                            },
-                            {
-                                name: '光照',
-                                type: 'line',
-                                yAxisIndex: 1,
-                                data: data.illumiArray
-                            }*/
-                        ]
-                    };
-                    myChart.setOption(option);
-                    $("#name").text(data.farmTop.name);
-                    $("#location").text(data.farmTop.location);
-                    $("#temperature").text(data.mostNewFarmData.temperature);
-                    $("#standardTemperature").text(data.farmTop.temperature);
-//                    $("#humidity").text(data.mostNewFarmData.humidity);
-//                    $("#illumination").text(data.mostNewFarmData.illumination);
-                } else {
-                    layer.alert(data.message, {
-                        skin: 'layui-layer-molv' //样式类名
-                        , closeBtn: 0
-                    });
-                }
-            });
+                    ],
+                    series: [
+                        {
+                            name: '温度',
+                            type: 'line',
+                            data: data.temperArray
+                        }/*,
+                        {
+                            name: '湿度',
+                            type: 'bar',
+                            yAxisIndex: 1,
+                            data: data.humidiArray
+                        },
+                        {
+                            name: '光照',
+                            type: 'line',
+                            yAxisIndex: 1,
+                            data: data.illumiArray
+                        }*/
+                    ]
+                };
+                myChart.setOption(option);
+                $("#name").text(data.farmTop.name);
+                $("#location").text(data.farmTop.location);
+                $("#temperature").text(data.mostNewFarmData.temperature);
+                $("#standardTemperature").text(data.farmTop.temperature);
+//                $("#humidity").text(data.mostNewFarmData.humidity);
+//                $("#standardHumidity").text(data.farmTop.humidity);
+//                $("#illumination").text(data.mostNewFarmData.illumination);
+//                $("#standardIllumination").text(data.farmTop.illumination);
+            }else{
+                layer.alert(data.message, {
+                    skin: 'layui-layer-molv' //样式类名
+                    , closeBtn: 0
+                });
+            }
+        });
     }
-
-
 </script>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+<script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_6xs2qg3yxbo.js}"></script>

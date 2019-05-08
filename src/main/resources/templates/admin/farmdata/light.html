@@ -3,7 +3,7 @@
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="utf-8">
-    <title>农田数据管理-光照数据</title>
+    <title>农田数据管理-所有数据</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -82,14 +82,14 @@
                             </div>
                         </a>
                     </li>
-<!--                    <shiro:hasPermission name="farm:farmdata:temper">
+           <!--         <shiro:hasPermission name="farm:farmdata:temper">
                         <li class="col-sm-12 col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
                                 <div class="icon-bg bg-org f-l">
                                     <span class="iconfont">&#xe6a2;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-org" th:text="${firstFarm.temperature}"></span>标准
+                                    <p class="name"><span class="color-org" id="standardTemperature" th:text="${firstFarm.temperature}"></span>标准
                                         <span class="iconfont">&#xe628;</span></p>
                                     <p><span class="color-org" id="temperature" th:text="${firstFarm.temperature}">89</span>当前
                                         <span class="iconfont">&#xe628;</span></p>
@@ -104,7 +104,8 @@
                                     <span class="iconfont">&#xe63b;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-blue" th:text="${firstFarm.humidity}"></span>标准<span class="iconfont">
+                                    <p class="name"><span class="color-blue" id="standardHumidity" th:text="${firstFarm.humidity}"></span>标准<span
+                                            class="iconfont">
                                         &#xe628;</span></p>
                                     <p><span class="color-blue" id="humidity" th:text="${firstFarm.humidity}">189</span>当前
                                         <span class="iconfont">&#xe628;</span></p>
@@ -112,14 +113,15 @@
                             </a>
                         </li>
                     </shiro:hasPermission>-->
-                    <shiro:hasPermission name="farm:farmdata:sun">
+                    <shiro:hasPermission name="farm:farmdata:light">
                         <li class="col-sm-12  col-md-3 col-xs-12">
                             <a href="javascript:;" class="clearfix">
                                 <div class="icon-bg bg-green f-l">
                                     <span class="iconfont">&#xe609;</span>
                                 </div>
                                 <div class="right-text-con">
-                                    <p class="name"><span class="color-green" id="standardIllumination" th:text="${firstFarm.illumination}"></span>标准<span
+                                    <p class="name"><span class="color-green" id="standardIllumination" th:text="${firstFarm.illumination}"></span>
+                                        标准<span
                                             class="iconfont">&#xe60f;</span></p>
                                     <p><span class="color-green" id="illumination" th:text="${firstFarm.illumination}">221</span>当前<span
                                             class="iconfont">&#xe60f;
@@ -170,9 +172,9 @@
                                         </button>
                                     </div>
                                     <div class="layui-row layui-anim" style="margin-top: 4px" data-anim="layui-anim-scaleSpring">
-                                        <!--   <button class="layui-btn layui-btn-radius"
-                                                   th:onclick="|deepLookFarmData(${farm.id})|">详情
-                                           </button>-->
+                                     <!--   <button class="layui-btn layui-btn-radius"
+                                                th:onclick="|deepLookFarmData(${farm.id})|">详情
+                                        </button>-->
                                         <a class="layui-btn layui-btn-radius" th:href="@{/farm/farmdata/detail(id=${farm.id})}">详情</a>
                                     </div>
                                 </div>
@@ -188,12 +190,12 @@
 </div>
 <script>
 
-    /*function deepLookFarmData(id){
+  /*  function deepLookFarmData(id){
         alert(id);
     }*/
     function lookFarmData(id) {
         var myChart = echarts.init(document.getElementById('chart'));
-        $.post("/farm/farmdata/list", {id: id},
+        $.post("/farm/farmdata/light", {id: id},
             function (data) {
                 if (data.success) {
                     // var colors = ['#5793f3', '#d14a61', '#675bba'];
@@ -218,7 +220,7 @@
                             }
                         },
                         legend: {
-                            data: ['温度', '湿度', '光照']
+                            data: [ '光照']
                         },
                         xAxis: [
                             {
@@ -232,56 +234,21 @@
                         yAxis: [
                             {
                                 type: 'value',
-                                name: '温度',
-                                min: 0,
-                                max: 50,
-                                position: 'left',
-                                offset: 10,
-                                interval: 5,
-                                axisLabel: {
-                                    formatter: '{value} °C'
-                                }
-                            },
-                            {
-                                type: 'value',
-                                name: '湿度/光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                offset: 10,
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}RH/lux'
-                                }
-                            }/*,
-                            {
-                                type: 'value',
                                 name: '光照',
                                 min: 0,
                                 max: 100,
-                                position: 'right',
-                                offset: 60,
+                                position: 'left',
+                                offset: 10,
                                 interval: 20,
                                 axisLabel: {
-                                    formatter: '{value}lux'
+                                    formatter: 'lux'
                                 }
-                            }*/
+                            }
                         ],
                         series: [
                             {
-                                name: '温度',
-                                type: 'bar',
-                                data: data.temperArray
-                            },
-                            {
-                                name: '湿度',
-                                type: 'bar',
-                                data: data.humidiArray
-                            },
-                            {
                                 name: '光照',
                                 type: 'line',
-                                yAxisIndex: 1,
                                 data: data.illumiArray
                             }
                         ]
@@ -300,12 +267,12 @@
             });
     }
 </script>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<!--<script src="/static/js/jquery.js"></script>-->
+<!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+<script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_wjk5z1f6gsl.js}"></script>
 <script type="text/javascript" th:src="@{//at.alicdn.com/t/font_974748_6xs2qg3yxbo.js}"></script>
-<script type="text/javascript" th:src="@{/static/admin/js/farmdata/farmdataSun.js}"></script>
+<script type="text/javascript" th:src="@{/static/admin/js/farmdata/farmdataLight.js}"></script>
 <script type="text/javascript" th:src="@{/static/echarts/echarts.common.min.js}"></script>
 </body>
 </html>

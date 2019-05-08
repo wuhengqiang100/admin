@@ -37,7 +37,7 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
     $(document).ready(function () {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('chart'));
-        $.post("/farm/farmdata/sun", {},
+        $.post("/farm/farmdata/light", {},
             function(data){
                 if(data.success){
                     // var colors = ['#5793f3', '#d14a61', '#675bba'];
@@ -62,7 +62,6 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                             }
                         },
                         legend: {
-                            // data:['温度','湿度','光照']
                             data:['光照']
                         },
                         xAxis: [
@@ -75,71 +74,42 @@ layui.use(['form', 'element', 'layer', 'jquery','table'], function () {
                             }
                         ],
                         yAxis: [
-                            /*{
-                                type: 'value',
-                                name: '温度',
-                                min: 0,
-                                max: 50,
-                                interval: 5,
-                                axisLabel: {
-                                    formatter: '{value} °C'
-                                }
-                            },*/
                             {
                                 type: 'value',
                                 name: '光照',
                                 min: 0,
                                 max: 100,
                                 position: 'left',
-                                offset:5,
                                 interval: 20,
                                 axisLabel: {
-                                    formatter: '{value}lux'
+                                    formatter: 'lux'
                                 }
-                               /* axisLabel: {
-                                    formatter: '{value}RH/lux'
-                                }*/
-                            }/*,
-                            {
-                                type: 'value',
-                                name: '光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                offset: 60,
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}lux'
-                                }
-                            }*/
+                            }
                         ],
                         series: [
-                          /*  {
-                                name:'温度',
-                                type:'line',
-                                yAxisIndex: 0,
-                                data:data.temperArray
-                            },*/
-                           /* {
-                                name:'湿度',
-                                type:'line',
-                                yAxisIndex: 0,
-                                data:data.humidiArray
-                            }*/,
                             {
                                 name:'光照',
                                 type:'line',
-                                yAxisIndex: 0,
                                 data:data.illumiArray
                             }
                         ]
                     };
                     myChart.setOption(option);
                 }else{
-                    alert("数据: \n" + data.data + "\n状态: " + status);
+                    layer.confirm("当前农田还没有数据,请采集数据", {
+                        skin: 'layui-layer-molv'
+                        ,closeBtn: 1,
+                        icon: 3, title: '提示',
+                        btn: ['确定'] //按钮
+                    }, function(){
+                        layer.closeAll('dialog'); //关闭信息框
+                    },function(){
+
+                    });
                 }
             });
     });
+
     $(".panel a").on("click", function () {
         window.parent.addTab($(this));
     });
