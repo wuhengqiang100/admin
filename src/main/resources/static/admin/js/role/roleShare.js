@@ -21,7 +21,7 @@ layui.use(['form', 'layer', 'jquery'], function () {
                         '<td>value.nicakName</td>'+
                         '<td>value.identity</td>'
                 });
-                $("#ownUser").appendTo(htmlOwnUser);
+                $("#ownUser").appendTo("<td>value.nicakName</td>");
                /* $.each(result.roleNotOwnUserList,function(n,value){
                     var htmlOutOwnUser = "";
                     htmlOutOwnUser+='<td><input type="checkbox" id="switch" name="switch" lay-skin="switch" value="value.id"></td>'+

@@ -264,7 +264,7 @@ public class UserController {
     @SysLog("重置用户信誉度")
     public ResponseEntity credit(@RequestBody List<User> users){
         if(users == null || users.size()==0){
-            return ResponseEntity.failure("请选择需要重新信誉度的用户");
+            return ResponseEntity.failure("请选择需要重置信誉度的用户");
         }
         for (User u : users){
                 userService.resetCredit(u);//遍历重置用户信誉度
@@ -400,6 +400,28 @@ public class UserController {
         user.setPassword(newPwd);
         Encodes.entryptPassword(user);
         userService.updateById(user);
+        return ResponseEntity.success("操作成功");
+    }
+
+
+    @RequiresPermissions("sys:user:add")
+    @PostMapping("password")
+    @ResponseBody
+    @SysLog("重置用户密码")
+    public ResponseEntity resetPassword(@RequestBody List<User> users){
+        if(users == null || users.size()==0){
+            return ResponseEntity.failure("请选择需要重置密码的用户");
+        }
+        for (User user : users){
+            //解密
+//            byte[] hashPassword = Encodes.sha1(user.getPassword().getBytes(), Encodes.SHA1, Encodes.decodeHex(user.getSalt()), Constants.HASH_INTERATIONS);
+//            String password = Encodes.encodeHex(hashPassword);
+
+            user.setPassword("123456");
+            Encodes.entryptPassword(user);//加密
+            userService.updateById(user);
+        }
+
         return ResponseEntity.success("操作成功");
     }
 

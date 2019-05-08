@@ -47,6 +47,11 @@
                     <a class="layui-btn" data-type="resetCredit">重置信誉度</a>
                 </div>
             </shiro:hasPermission>
+            <shiro:hasPermission name="sys:user:add">
+                <div class="layui-inline">
+                    <a class="layui-btn layui-btn-normal" data-type="resetPassword">重置密码</a>
+                </div>
+            </shiro:hasPermission>
         </form>
     </div>
 </fieldset>

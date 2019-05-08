@@ -2,56 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b554c77-a2ec-4021-a72d-923e723670bd" name="Default" comment="2019/4/6 修复编辑器的第一创建 credit实体类">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/echarts.common.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/role/share.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/FarmDataController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/FarmDataController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/RoleController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/RoleController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/mapper/UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/admin/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/RoleUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/xiaoshu/common/util/RoleUtil.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mypaper/2015级软工2班巫恒强（中期检查）修改/表4：成都大学本科毕业设计（论文）指导教师评阅意见表（理工科用表）（已评审）.doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mypaper/2015级软工2班巫恒强（中期检查）修改/表2：成都大学本科毕业设计（论文）指导记录表(li).doc" afterPath="$PROJECT_DIR$/mypaper/2015级软工2班巫恒强（中期检查）修改/表2：成都大学本科毕业设计（论文）指导记录表(li).doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mypaper/毕业答辩文档5包括毕业最终论文/表4：成都大学本科毕业设计（论文）指导教师评阅意见表（理工科用表）（已评审）.doc" afterPath="$PROJECT_DIR$/mypaper/毕业答辩文档5包括毕业最终论文/表4：成都大学本科毕业设计（论文）指导教师评阅意见表（理工科用表）（已评审）.doc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmDataController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmDataController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/RoleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/RoleController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xiaoshu/common/util/RoleUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/xiaoshu/common/util/RoleUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataHum.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataHum.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataSun.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataSun.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataTemper.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataTemper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleEdit.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleList.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js" afterPath="$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/fonts/iconfont.css" afterPath="$PROJECT_DIR$/src/main/resources/static/fonts/iconfont.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/hum.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/hum.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/sun.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/sun.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/temper.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/temper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/role/edit.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/role/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/role/list.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/role/list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/admin/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/admin/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/farmdata/farmdataHum.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/farmdata/farmdataHum.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/farmdata/farmdataSun.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/farmdata/farmdataSun.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/farmdata/farmdataTemper.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/farmdata/farmdataTemper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/role/roleEdit.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/role/roleEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/role/roleList.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/role/roleList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/user/userList.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/user/userList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/fonts/iconfont.css" afterPath="$PROJECT_DIR$/target/classes/static/fonts/iconfont.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/hum.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/hum.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/list.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/sun.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/sun.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/temper.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/farmdata/temper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/role/edit.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/role/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/role/list.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/role/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/user/list.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/user/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/admin/js/role/roleShare.js" afterPath="$PROJECT_DIR$/target/classes/static/admin/js/role/roleShare.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,14 +33,14 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.84424245">
+    <splitter split-orientation="horizontal" split-proportion="0.84331477">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="roleEdit.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleEdit.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-108">
-                  <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+                <state relative-caret-position="0">
+                  <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -89,7 +49,7 @@
           <file leaf-file-name="roleList.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleList.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
+                <state relative-caret-position="2916">
                   <caret line="108" column="51" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="51" />
                   <folding />
                 </state>
@@ -99,8 +59,8 @@
           <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmManager/add.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="116">
-                  <caret line="52" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+                <state relative-caret-position="1404">
+                  <caret line="52" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
                   <folding />
                 </state>
               </provider>
@@ -109,8 +69,8 @@
           <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/login.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+                <state relative-caret-position="810">
+                  <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -119,8 +79,8 @@
           <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="379">
-                  <caret line="305" column="0" lean-forward="false" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="67" />
+                <state relative-caret-position="316">
+                  <caret line="310" column="76" lean-forward="false" selection-start-line="310" selection-start-column="76" selection-end-line="310" selection-end-column="76" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -140,10 +100,20 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="farmdataList.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataList.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="216">
+                  <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="sun.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/sun.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="471">
+                <state relative-caret-position="8181">
                   <caret line="304" column="0" lean-forward="false" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="51" />
                   <folding />
                 </state>
@@ -153,8 +123,8 @@
           <file leaf-file-name="RoleController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/RoleController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="227">
-                  <caret line="263" column="0" lean-forward="true" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
+                <state relative-caret-position="6426">
+                  <caret line="263" column="0" lean-forward="false" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -163,18 +133,18 @@
           <file leaf-file-name="RoleUtil.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/common/util/RoleUtil.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="406">
-                  <caret line="66" column="34" lean-forward="true" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+                <state relative-caret-position="1728">
+                  <caret line="66" column="34" lean-forward="false" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="roleShare.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="roleShare.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="235">
-                  <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+                <state relative-caret-position="486">
+                  <caret line="23" column="67" lean-forward="false" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -182,10 +152,57 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="FarmController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="236">
+                  <caret line="173" column="44" lean-forward="true" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="424" column="0" lean-forward="false" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
+                  <folding>
+                    <element signature="method#deleteSome#0;class#UserController#0" expanded="false" />
+                    <element signature="method#toEditMyInfo#0;class#UserController#0" expanded="false" />
+                    <element signature="method#saveUserInfo#0;class#UserController#0" expanded="false" />
+                    <element signature="method#changePassword#0;class#UserController#0" expanded="false" />
+                    <element signature="method#changeProperties#0;class#UserController#0" expanded="false" />
+                    <element signature="method#changeProperties#1;class#UserController#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="443">
+                  <caret line="51" column="82" lean-forward="false" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="82" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="userList.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="425">
+                  <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="share.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/role/share.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-161">
+                <state relative-caret-position="2538">
                   <caret line="94" column="54" lean-forward="false" selection-start-line="94" selection-start-column="44" selection-end-line="94" selection-end-column="54" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -198,8 +215,8 @@
           <file leaf-file-name="iconfont.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/fonts/iconfont.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="297">
-                  <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+                <state relative-caret-position="945">
+                  <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -208,12 +225,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file leaf-file-name="share.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/role/share.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
+                <state relative-caret-position="27">
+                  <caret line="85" column="43" lean-forward="false" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -330,18 +347,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/illu.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/illum.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/hum.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/temper.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataSun.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmDataController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/sun.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/admin/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/role/list.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleList.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleEdit.js" />
@@ -352,6 +365,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmManager/add.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/role/share.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html" />
       </list>
     </option>
   </component>
@@ -378,7 +395,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="187" />
+    <option name="x" value="513" />
+    <option name="y" value="17" />
     <option name="width" value="1186" />
     <option name="height" value="1038" />
   </component>
@@ -398,8 +416,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -407,226 +427,10 @@
               <item name="admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiaoshu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiaoshu" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiaoshu" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiaoshu" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiaoshu" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiaoshu" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="farmmanager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="role" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="echarts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="farmdata" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="farmManager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="role" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -642,16 +446,12 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="SearchEverywhereHistoryKey" value="RoleUt&#9;PSI&#9;JAVA://com.xiaoshu.common.util.RoleUtil&#10;login.html&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/login.html&#10;icon&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/fonts/iconfont.css&#10;list&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/user/list.html&#10;Role&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/RoleMapper.xml&#10;UserMapp&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/UserMapper.xml&#10;UserMapper&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java&#10;userService&#9;PSI&#9;JAVA://com.xiaoshu.admin.service.UserService&#10;user&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/user/userList.js&#10;index&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/index.html&#10;FarmDataMa&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmDataMapper.xml&#10;Farm&#9;PSI&#9;JAVA://com.xiaoshu.admin.entity.Farm&#10;edit.&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/user/edit.html&#10;FarmData&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmDataMapper.xml&#10;FarmDataMapp&#9;PSI&#9;JAVA://com.xiaoshu.admin.mapper.FarmDataMapper&#10;selectFarmById&#9;PSI&#9;JAVA://com.xiaoshu.admin.mapper.FarmMapper#selectFarmById&#10;FarmServ&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/java/com/xiaoshu/admin/service/impl/FarmServiceImpl.java&#10;UserMap&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/UserMapper.xml&#10;FarmMapper.&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;index.html&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/index.html&#10;login.ht&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/login.html&#10;far&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;roleLi&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/role/roleList.js&#10;farmManagerLi&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/farmmanager/farmmanagerList.js&#10;userMa&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java&#10;userM&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/UserMapper.xml&#10;farmMa&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;main&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/main.js&#10;main.js&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/main.js&#10;index.&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/index.html&#10;F&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;login.js&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/login.js" />
+    <property name="SearchEverywhereHistoryKey" value="list.html&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/user/list.html&#10;RoleUt&#9;PSI&#9;JAVA://com.xiaoshu.common.util.RoleUtil&#10;login.html&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/login.html&#10;icon&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/fonts/iconfont.css&#10;list&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/user/list.html&#10;Role&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/RoleMapper.xml&#10;UserMapp&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/UserMapper.xml&#10;UserMapper&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java&#10;userService&#9;PSI&#9;JAVA://com.xiaoshu.admin.service.UserService&#10;user&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/user/userList.js&#10;index&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/index.html&#10;FarmDataMa&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmDataMapper.xml&#10;Farm&#9;PSI&#9;JAVA://com.xiaoshu.admin.entity.Farm&#10;edit.&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/user/edit.html&#10;FarmData&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmDataMapper.xml&#10;FarmDataMapp&#9;PSI&#9;JAVA://com.xiaoshu.admin.mapper.FarmDataMapper&#10;selectFarmById&#9;PSI&#9;JAVA://com.xiaoshu.admin.mapper.FarmMapper#selectFarmById&#10;FarmServ&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/java/com/xiaoshu/admin/service/impl/FarmServiceImpl.java&#10;UserMap&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/UserMapper.xml&#10;FarmMapper.&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;index.html&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/index.html&#10;login.ht&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/login.html&#10;far&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;roleLi&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/role/roleList.js&#10;farmManagerLi&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/farmmanager/farmmanagerList.js&#10;userMa&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/java/com/xiaoshu/admin/mapper/UserMapper.java&#10;userM&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/UserMapper.xml&#10;farmMa&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;main&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/main.js&#10;main.js&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/main.js&#10;index.&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/templates/admin/index.html&#10;F&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/mapper/admin/FarmMapper.xml&#10;login.js&#9;FILE&#9;file://H:/JetBrains/javaEEspace/admin/src/main/resources/static/admin/js/login.js" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../workSpace/comadmin" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\static\admin\js\role" />
-      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\templates\admin\role" />
-      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\static\js" />
-      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\static\admin\js\farmdata" />
-      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\templates\admin\farmdata" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\templates\admin" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.xiaoshu.admin.mapper" />
@@ -660,8 +460,12 @@
       <recent name="com.xiaoshu.admin.service.impl" />
       <recent name="com.xiaoshu.admin.service" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\templates\admin" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\JetBrains\javaEEspace\admin\mypaper\毕业答辩文档5包括毕业最终论文" />
+      <recent name="H:\JetBrains\javaEEspace\admin\mypaper\2015级软工2班巫恒强（中期检查）修改" />
+      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\static\admin\js\role" />
+      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\templates\admin\role" />
+      <recent name="H:\JetBrains\javaEEspace\admin\src\main\resources\static\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -864,12 +668,15 @@
       <workItem from="1556936421810" duration="21857000" />
       <workItem from="1557025918034" duration="29069000" />
       <workItem from="1557113015668" duration="29601000" />
-      <workItem from="1557196328807" duration="25058000" />
+      <workItem from="1557196328807" duration="25372000" />
+      <workItem from="1557232231829" duration="168000" />
+      <workItem from="1557240113375" duration="852000" />
+      <workItem from="1557281971565" duration="3258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="346941000" />
+    <option name="totallyTimeSpent" value="351533000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -882,7 +689,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37927106" sideWeight="0.5021436" order="7" side_tool="true" content_ui="tabs" />
@@ -899,13 +705,13 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0523918" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18906605" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32915717" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6047836" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280543" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.285877" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14415863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15837105" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1002,36 +808,23 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="225" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java</url>
+          <line>421</line>
+          <properties />
+          <option name="timeStamp" value="228" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="229" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/service/impl/FarmServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="41" column="40" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="40" />
-          <folding>
-            <element signature="e#1107#1108#0" expanded="false" />
-            <element signature="e#1159#1160#0" expanded="false" />
-            <element signature="e#1751#1752#0" expanded="false" />
-            <element signature="e#1808#1809#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/mapper/FarmMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="161" column="26" lean-forward="true" selection-start-line="161" selection-start-column="26" selection-end-line="161" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,7 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,12 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-          <folding>
-            <element signature="e#1870#1871#0" expanded="false" />
-            <element signature="e#1895#1896#0" expanded="false" />
-            <element signature="e#1932#1933#0" expanded="false" />
-            <element signature="e#1960#1961#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1067,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1075,7 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1860">
           <caret line="168" column="14" lean-forward="true" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,7 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1091,7 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="39" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,10 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="24" column="53" lean-forward="false" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
-          <folding>
-            <element signature="e#775#776#0" expanded="false" />
-            <element signature="e#835#836#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1110,7 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,11 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1647">
           <caret line="61" column="9" lean-forward="false" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-          <folding>
-            <marker date="1557148547326" expanded="true" signature="1951:2395" ph="SELECT nt.id... nongtianmysqldata" />
-            <marker date="1557148547326" expanded="true" signature="2510:2945" ph="SELECT nt.id... nongtianmysqldata" />
-            <marker date="1557148547326" expanded="true" signature="3058:3481" ph="SELECT nt.id... nongtianmysqldata" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1130,15 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2565">
           <caret line="95" column="120" lean-forward="false" selection-start-line="93" selection-start-column="19" selection-end-line="95" selection-end-column="120" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#fieldset#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1557126403009" expanded="false" signature="4051:4071" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1146,57 +909,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="121" column="32" lean-forward="true" selection-start-line="121" selection-start-column="32" selection-end-line="121" selection-end-column="32" />
-          <folding>
-            <element signature="e#308#362#0" expanded="false" />
-            <element signature="e#435#893#0" expanded="false" />
-            <element signature="e#5294#9563#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/illu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="114" column="66" lean-forward="false" selection-start-line="114" selection-start-column="66" selection-end-line="114" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/illum.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2225">
-          <caret line="264" column="55" lean-forward="true" selection-start-line="264" selection-start-column="55" selection-end-line="264" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataIllu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="39" column="36" lean-forward="false" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/illu.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/illum.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataIllu.js" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/temper.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="100" column="65" lean-forward="true" selection-start-line="100" selection-start-column="65" selection-end-line="100" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#1;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#p#1;n#div#1;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#fieldset#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1204,12 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-879">
           <caret line="93" column="45" lean-forward="true" selection-start-line="93" selection-start-column="45" selection-end-line="93" selection-end-column="45" />
-          <folding>
-            <element signature="e#308#362#0" expanded="false" />
-            <element signature="e#435#893#0" expanded="false" />
-            <element signature="e#4117#4337#0" expanded="false" />
-            <element signature="e#5112#9381#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1217,9 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1227,7 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-43">
           <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1235,21 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
           <caret line="38" column="69" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="69" />
-          <folding>
-            <element signature="e#1129#5243#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="36" column="35" lean-forward="true" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-          <folding>
-            <element signature="e#308#362#0" expanded="false" />
-            <element signature="e#435#893#0" expanded="false" />
-            <element signature="e#5057#9224#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1257,13 +954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="319" column="14" lean-forward="true" selection-start-line="319" selection-start-column="14" selection-end-line="319" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#list#0;class#FarmDataController#0" expanded="false" />
-            <element signature="method#list#1;class#FarmDataController#0" expanded="false" />
-            <element signature="method#temper#0;class#FarmDataController#0" expanded="false" />
-            <element signature="method#temperAll#0;class#FarmDataController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1271,15 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="2022" column="24" lean-forward="true" selection-start-line="2022" selection-start-column="24" selection-end-line="2022" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="138" column="50" lean-forward="true" selection-start-line="138" selection-start-column="50" selection-end-line="138" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1287,7 +968,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
           <caret line="50" column="1" lean-forward="false" selection-start-line="50" selection-start-column="1" selection-end-line="55" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1295,9 +975,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
           <caret line="112" column="39" lean-forward="true" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
-          <folding>
-            <element signature="e#3300#3301#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1305,7 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
           <caret line="52" column="7" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1313,25 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
           <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
-          <folding>
-            <marker date="1557214274667" expanded="true" signature="3613:3672" ph="UPDATE sys_u... " />
-            <marker date="1557214274667" expanded="true" signature="3780:3847" ph="UPDATE sys_u... " />
-            <marker date="1557214274667" expanded="true" signature="5323:5340" ph="/*u.reputati... " />
-            <marker date="1557214274667" expanded="true" signature="5424:5446" ph="/* u.own_man... " />
-            <marker date="1557214274667" expanded="true" signature="6861:6912" ph="delete from " />
-            <marker date="1557214274667" expanded="true" signature="7022:7406" ph="INSERT INTO sys_user... " />
-            <marker date="1557214274667" expanded="true" signature="7483:7505" ph="SELECT * fro... sys_user" />
-            <marker date="1557214274667" expanded="true" signature="7605:7675" ph="SELECT farm_... farm_own_manager" />
-            <marker date="1557214274667" expanded="true" signature="7770:8066" ph="SELECT su.* sys_user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="375" column="17" lean-forward="true" selection-start-line="375" selection-start-column="17" selection-end-line="375" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1339,14 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-459">
           <caret line="112" column="14" lean-forward="true" selection-start-line="112" selection-start-column="14" selection-end-line="112" selection-end-column="14" />
-          <folding>
-            <marker date="1554790282749" expanded="true" signature="1245:1295" ph="SELECT id,na... sys_role" />
-            <marker date="1554790282749" expanded="true" signature="1388:1416" ph="SELECT id,na... sys_role" />
-            <marker date="1554790282749" expanded="true" signature="4444:4524" ph="SELECT id,id... " />
-            <marker date="1554790282749" expanded="true" signature="4631:5184" ph="SELECT r.id,... sys_role" />
-            <marker date="1554790282749" expanded="true" signature="5996:6047" ph="delete from " />
-            <marker date="1554790282749" expanded="true" signature="6128:6179" ph="delete from " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1354,22 +1003,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="70" column="38" lean-forward="false" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/fonts/iconfont.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        <state relative-caret-position="945">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1378,9 +1026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="118" column="74" lean-forward="true" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="74" />
-          <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1388,22 +1033,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-243">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-813">
-          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="810">
+          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1412,9 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1197">
           <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1422,22 +1055,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/common/util/RoleUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="66" column="34" lean-forward="true" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+        <state relative-caret-position="1728">
+          <caret line="66" column="34" lean-forward="false" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/RoleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="263" column="0" lean-forward="true" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
+        <state relative-caret-position="6426">
+          <caret line="263" column="0" lean-forward="false" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1446,16 +1078,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1099">
           <caret line="85" column="59" lean-forward="false" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="2916">
           <caret line="108" column="51" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="51" />
           <folding />
         </state>
@@ -1463,16 +1091,92 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmManager/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="52" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+        <state relative-caret-position="1404">
+          <caret line="52" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/sun.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8181">
+          <caret line="304" column="0" lean-forward="false" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="23" column="67" lean-forward="false" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/role/share.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2538">
+          <caret line="94" column="54" lean-forward="false" selection-start-line="94" selection-start-column="44" selection-end-line="94" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/FarmController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="173" column="44" lean-forward="true" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/common/util/Encodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="150" column="25" lean-forward="false" selection-start-line="150" selection-start-column="25" selection-end-line="150" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/user/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="51" column="82" lean-forward="false" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xiaoshu/admin/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="424" column="0" lean-forward="false" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
+          <folding>
+            <element signature="method#deleteSome#0;class#UserController#0" expanded="false" />
+            <element signature="method#toEditMyInfo#0;class#UserController#0" expanded="false" />
+            <element signature="method#saveUserInfo#0;class#UserController#0" expanded="false" />
+            <element signature="method#changePassword#0;class#UserController#0" expanded="false" />
+            <element signature="method#changeProperties#0;class#UserController#0" expanded="false" />
+            <element signature="method#changeProperties#1;class#UserController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/user/userList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="305" column="0" lean-forward="false" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="67" />
+        <state relative-caret-position="316">
+          <caret line="310" column="76" lean-forward="false" selection-start-line="310" selection-start-column="76" selection-end-line="310" selection-end-column="76" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1491,32 +1195,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/farmdata/sun.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/farmdata/farmdataList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="304" column="0" lean-forward="false" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="51" />
+        <state relative-caret-position="216">
+          <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/role/share.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="94" column="54" lean-forward="false" selection-start-line="94" selection-start-column="44" selection-end-line="94" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/admin/js/role/roleShare.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
