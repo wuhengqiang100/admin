@@ -1,6 +1,7 @@
 package com.xiaoshu.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.xiaoshu.admin.entity.FarmArea02;
 import com.xiaoshu.admin.entity.FarmData;
 import com.xiaoshu.admin.mapper.FarmDataMapper;
 import com.xiaoshu.admin.service.FarmDataService;
@@ -24,4 +25,12 @@ public class FarmDataServiceImpl extends ServiceImpl<FarmDataMapper,FarmData> im
     public FarmData getMostNewFarmData(int farmId) {
         return baseMapper.getMostNewFarmData(farmId);
     }
+
+    @Override
+    public List<FarmData> getFarmDataDetail(FarmArea02 farmArea02) {
+        return baseMapper.getFarmDataDetail(farmArea02);
+    }
+
+
+
 }

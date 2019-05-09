@@ -48,20 +48,43 @@ public class FarmData {
     private String node_Powerflag;
 
     @TableField("farm_id")
-    private String farmId;
+    private int farmId;
+
+    @TableField("area")
+    private int area;//农田的区块id
 
     @TableField(exist=false)
     private Farm farm;
+    @TableField(exist=false)
+    private FarmArea farmArea;
+
+
 
     public FarmData() {
     }
 
-    public String getFarmId() {
+    public FarmArea getFarmArea() {
+        return farmArea;
+    }
+
+    public void setFarmArea(FarmArea farmArea) {
+        this.farmArea = farmArea;
+    }
+
+    public int getFarmId() {
         return farmId;
     }
 
-    public void setFarmId(String farmId) {
+    public void setFarmId(int farmId) {
         this.farmId = farmId;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
     }
 
     public Integer getId() {

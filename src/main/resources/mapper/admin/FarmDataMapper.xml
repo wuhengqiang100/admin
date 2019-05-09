@@ -10,6 +10,7 @@
     <result column="humidity" property="humidity" />
     <result column="illumination" property="illumination" />
     <result column="farm_id" property="farmId" />
+    <result column="area" property="area" />
     <collection property="farm"  ofType="com.xiaoshu.admin.entity.Farm">
       <result property="id" column="farm.id"/>
       <result property="name" column="name"/>
@@ -28,15 +29,60 @@
     <result column="humidity" property="humidity" />
     <result column="illumination" property="illumination" />
     <result column="farm_id" property="farmId" />
+    <result column="area" property="area" />
     <collection property="farm"  ofType="com.xiaoshu.admin.entity.Farm">
-      <result property="id" column="farm.id"/>
+      <result property="id" column="farm_id"/>
       <result property="name" column="name"/>
       <result property="location" column="location"/>
       <result property="temperature" column="temperature"/>
       <result property="humidity" column="humidity"/>
       <result property="illumination" column="illumination"/>
     </collection>
+    <collection property="farmArea"  ofType="com.xiaoshu.admin.entity.FarmArea">
+      <result property="id" column="area"/>
+      <result property="farmId" column="farm_id"/>
+      <result property="areaName" column="area_name"/>
+    </collection>
   </resultMap>
+  
+  <select id="getFarmDataDetail" resultMap="FarmDataMap">
+    SELECT
+    fa.id,
+    fa.farm_id,
+    fa.area,
+    fa.area_name,
+    nt.id,
+    nt.time,
+    nt.temperature,
+    nt.humidity,
+    nt.illumination,
+    nt.farm_id,
+    nt.area,
+    tf.id,
+    tf.name,
+    tf.location,
+    tf.temperature,
+    tf.humidity,
+    tf.illumination
+    from
+    farm_area fa
+    LEFT JOIN
+    nongtianmysqldata nt ON fa.area=nt.area AND fa.farm_id=nt.farm_id
+    left join t_farm  tf 	on 	tf.id= fa.farm_id
+    <where>
+      tf.del_flag = FALSE
+      <if test="farmId != '' and farmId != null">
+        and fa.farm_id = #{farmId}
+      </if>
+      <if test="area != '' and area != null">
+        and fa.area = #{area}
+      </if>
+      <if test="lastTime != '' and lastTime != null and nextTime != '' and nextTime != null">
+        and nt.time between #{lastTime} and #{nextTime}
+      </if>
+    </where>
+    ORDER BY  nt.time ASC ;
+  </select>
 
   <select id="getMostNewFarmData" resultMap="FarmDataMap" parameterType="java.lang.Integer">
     SELECT
@@ -46,6 +92,7 @@
     nt.humidity,
     nt.illumination,
     nt.farm_id,
+    nt.area,
     tf.id,
     tf.name,
     tf.location,
@@ -71,6 +118,7 @@
     nt.humidity,
     nt.illumination,
     nt.farm_id,
+    nt.area,
     tf.id,
     tf.name,
     tf.location,

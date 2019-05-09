@@ -50,11 +50,51 @@
     <result column="humidity" property="humidity" />
     <result column="illumination" property="illumination" />
     <collection property="user"  ofType="com.xiaoshu.admin.entity.User">
-      <result property="id" column="user.id"/>
+      <result property="id" column="id"/>
       <result property="loginName" column="login_name"/>
       <result property="nickName" column="nick_name"/>
     </collection>
+    <collection property="areaList" ofType="com.xiaoshu.admin.entity.FarmArea">
+      <result column="id" property="id"/>
+      <result column="farm_id" property="farmId"/>
+      <result column="area" property="area"/>
+      <result column="area_name" property="areaName"/>
+    </collection>
   </resultMap>
+
+  <select id="selectFarmById" resultMap="FarmMap"  parameterType="java.lang.String">
+    SELECT
+    tf.id,
+    tf.name,
+    tf.location,
+    tf.size,
+    tf.create_date,
+    tf.create_by,
+    tf.update_date,
+    tf.update_by,
+    tf.remarks,
+    tf.del_flag,
+    tf.temperature,
+    tf.humidity,
+    tf.illumination,
+    su.id,
+    su.nick_name,
+    fa.id,
+    fa.farm_id,
+    fa.area,
+    fa.area_name
+    from
+    t_farm tf
+    left join sys_user  su 	on 	su.id = tf.userId
+    left join farm_area fa on  tf.id = fa.farm_id
+    where
+    su.del_flag = FALSE
+    AND
+    tf.del_flag = FALSE
+    <if test="id != '' and id != null">
+      and tf.id = #{id}
+    </if>
+  </select>
 
   <select id="getFarmByUserId" resultMap="FarmMap" parameterType="java.lang.String">
     SELECT
@@ -84,34 +124,7 @@
       and tf.userId = #{userId}
     </if>
   </select>
-  <select id="selectFarmById" resultMap="FarmMap"  parameterType="java.lang.String">
-    SELECT
-    tf.id,
-    tf.name,
-    tf.location,
-    tf.size,
-    tf.create_date,
-    tf.create_by,
-    tf.update_date,
-    tf.update_by,
-    tf.remarks,
-    tf.del_flag,
-    tf.temperature,
-    tf.humidity,
-    tf.illumination,
-    su.id,
-    su.nick_name
-    from
-    t_farm tf
-    left join sys_user  su 	on 	    su.id = tf.userId
-    where
-    su.del_flag = FALSE
-    AND
-    tf.del_flag = FALSE
-    <if test="id != '' and id != null">
-      and tf.id = #{id}
-    </if>
-  </select>
+
 
 
 </mapper>

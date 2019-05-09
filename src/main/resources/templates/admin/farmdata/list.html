@@ -190,9 +190,6 @@
 </div>
 <script>
 
-  /*  function deepLookFarmData(id){
-        alert(id);
-    }*/
     function lookFarmData(id) {
         var myChart = echarts.init(document.getElementById('chart'));
         $.post("/farm/farmdata/list", {id: id},

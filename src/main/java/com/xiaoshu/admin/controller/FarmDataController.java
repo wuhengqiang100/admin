@@ -1,7 +1,6 @@
 package com.xiaoshu.admin.controller;
 
-import com.xiaoshu.admin.entity.Farm;
-import com.xiaoshu.admin.entity.FarmData;
+import com.xiaoshu.admin.entity.*;
 import com.xiaoshu.admin.service.*;
 import com.xiaoshu.common.annotation.SysLog;
 import com.xiaoshu.common.config.MySysUser;
@@ -40,6 +39,78 @@ public class FarmDataController {
     @Autowired
     FarmManagerService farmManagerService;
 
+
+
+
+
+//    @RequiresPermissions("farm:farmdata:list")
+    @SysLog("查看农田数据所有数据")
+    @GetMapping(value = "detail")
+    public String detail(@RequestParam(name = "id", required = false) String farmId, ModelMap modelMap,HttpSession
+            session){//农田id
+        Farm farm=new Farm();
+        if (StringUtils.isBlank(farmId)){
+            farmId= (String) session.getAttribute("farmId");
+            farm=farmService.getFarmById(Integer.parseInt(farmId));
+        }else{
+            farm=farmService.getFarmById(Integer.parseInt(farmId));
+            session.setAttribute("farmId",farmId);
+        }
+        FarmArea firsFarmArea=farm.getAreaList().get(0);
+        List<FarmArea> areaList=farm.getAreaList();
+        modelMap.put("farm",farm);
+        modelMap.put("firsFarmArea",firsFarmArea);
+        modelMap.put("areaList",areaList);
+        return "admin/areadata/list";
+    }
+    @PostMapping("detail")
+    @ResponseBody
+    public ResponseEntity detailAll(@RequestBody FarmArea farmArea){//农田区块信息
+        ResponseEntity responseEntity=new ResponseEntity();
+        FarmArea02 farmArea02=new FarmArea02();
+        if (0==farmArea.getFarmId()){
+            return ResponseEntity.failure("农田id不能为空");
+        }
+        if (!(null==farmArea.getLastTime())){
+            farmArea02.setLastTime(DateUtil.getStringDate(farmArea.getLastTime()));
+        }
+        if (!(null==farmArea.getNextTime())){
+            farmArea02.setNextTime(DateUtil.getStringDate(farmArea.getNextTime()));
+        }
+        if(!(0==farmArea.getArea())){
+            farmArea02.setArea(farmArea.getArea());
+        }
+        farmArea02.setFarmId(farmArea.getFarmId());
+        List<FarmData> farmDataList=farmDataService.getFarmDataDetail(farmArea02);//根据条件获取农田具体区块数据
+        responseEntity.setAny("farmDataList",farmDataList);
+        //取一周的数据
+        if (farmDataList.size()>0){
+            String[] dateTimeArray=new String[farmDataList.size()];
+            String[] temperArray=new String[farmDataList.size()];
+            String[] humidiArray=new String[farmDataList.size()];
+            String[] illumiArray=new String[farmDataList.size()];
+            for (int i=0;i<farmDataList.size();i++){
+                dateTimeArray[i]= DateUtil.getStringDateShort(farmDataList.get(i).getTime());
+                temperArray[i]=farmDataList.get(i).getTemperature();
+                humidiArray[i]=farmDataList.get(i).getHumidity();
+                illumiArray[i]=farmDataList.get(i).getIllumination();
+            }
+            /*Farm farmTop=farmService.getFarmById();
+            FarmData mostNewFarmData=farmDataService.getMostNewFarmData();*/
+            responseEntity.setAny("dateTimeArray",dateTimeArray);
+            responseEntity.setAny("temperArray",temperArray);
+            responseEntity.setAny("humidiArray",humidiArray);
+            responseEntity.setAny("illumiArray",illumiArray);
+            /*responseEntity.setAny("farmTop",farmTop);
+            responseEntity.setAny("mostNewFarmData",mostNewFarmData);*/
+            responseEntity.setMessage("数据请求成功");
+            responseEntity.setSuccess(true);
+        }else{
+            responseEntity.setMessage("当前农田区块还没有数据,请采集数据");
+            responseEntity.setSuccess(false);
+        }
+        return responseEntity;
+    }
 
     /**
      * 获取所有的农田光照数据
@@ -137,17 +208,6 @@ public class FarmDataController {
         modelMap.put("firstFarm",firstFarm);
         return "admin/farmdata/list";
     }
-
-
-//    @RequiresPermissions("farm:farmdata:list")
-    @SysLog("查看农田数据所有数据")
-    @GetMapping(value = "detail")
-    public String detail(String id){
-
-        return "admin/farmdata/detail";
-    }
-
-
 
 //    @RequiresPermissions("farm:farmdata:list")
     @SysLog("根据条件查询农田的数据")

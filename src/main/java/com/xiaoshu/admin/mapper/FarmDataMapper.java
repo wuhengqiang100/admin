@@ -1,6 +1,7 @@
 package com.xiaoshu.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xiaoshu.admin.entity.FarmArea02;
 import com.xiaoshu.admin.entity.FarmData;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,6 +24,12 @@ public interface FarmDataMapper extends BaseMapper<FarmData> {
        * @return
        */
       FarmData getMostNewFarmData(@Param("farmId") int farmId);
-
+      /**
+       * 农田区块查询具体信息
+       * 根据条件查询农田的详细数据
+       * @param farmArea02
+       * @return
+       */
+      List<FarmData> getFarmDataDetail(FarmArea02 farmArea02);
 
 }

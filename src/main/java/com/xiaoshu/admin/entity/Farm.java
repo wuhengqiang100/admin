@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 农田实体
@@ -50,6 +52,18 @@ public class Farm{
 
     @TableField("userId")
     private String userId;
+
+
+    @TableField(exist=false)
+    private List<FarmArea> areaList = new ArrayList<>();
+
+    public List<FarmArea> getAreaList() {
+        return areaList;
+    }
+
+    public void setAreaList(List<FarmArea> areaList) {
+        this.areaList = areaList;
+    }
 
     public String getTemperature() {
         return temperature;

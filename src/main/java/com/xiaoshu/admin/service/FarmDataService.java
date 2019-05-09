@@ -1,6 +1,7 @@
 package com.xiaoshu.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xiaoshu.admin.entity.FarmArea02;
 import com.xiaoshu.admin.entity.FarmData;
 import org.apache.ibatis.annotations.Param;
 
@@ -38,4 +39,12 @@ public interface FarmDataService extends IService<FarmData> {
      * @return
      */
     FarmData getMostNewFarmData(@Param("farmId") int farmId);
+
+    /**
+     * 农田区块查询具体信息
+     * 根据条件查询农田的详细数据
+     * @param farmArea02
+     * @return
+     */
+    List<FarmData> getFarmDataDetail(FarmArea02 farmArea02);
 }

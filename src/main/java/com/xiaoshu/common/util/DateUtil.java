@@ -11,4 +11,11 @@ public class DateUtil {
         String dateString = formatter.format(date);
         return dateString;
     }
+
+    //日期转换为年月日字符串
+    public static String getStringDate(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(date);
+        return dateString;
+    }
 }
