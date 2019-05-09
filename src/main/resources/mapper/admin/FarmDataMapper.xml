@@ -20,6 +20,15 @@
       <result property="illumination" column="illumination"/>
     </collection>
   </resultMap>
+  <resultMap id="BaseResultMap01" type="com.xiaoshu.admin.entity.FarmData">
+    <result column="id" property="id" />
+    <result column="time" property="time" />
+    <result column="temperature" property="temperature" />
+    <result column="humidity" property="humidity" />
+    <result column="illumination" property="illumination" />
+    <result column="farm_id" property="farmId" />
+    <result column="area" property="area" />
+  </resultMap>
 
 
   <resultMap type="com.xiaoshu.admin.entity.FarmData" id="FarmDataMap">
@@ -45,7 +54,7 @@
     </collection>
   </resultMap>
   
-  <select id="getFarmDataDetail" resultMap="FarmDataMap">
+  <select id="getFarmDataDetail" resultMap="BaseResultMap01">
     SELECT
     fa.id,
     fa.farm_id,
