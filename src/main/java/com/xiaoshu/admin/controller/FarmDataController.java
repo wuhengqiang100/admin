@@ -108,7 +108,7 @@ public class FarmDataController {
         if (0==farmArea02.getFarmId()){
             return ResponseEntity.failure("农田id不能为空");
         }
-
+        FarmArea02 farmAreaNew=farmDataService.getFarmAreaByFarmArea(farmArea02);//根据农田区块area  和farmId区块的所有信息
         List<FarmData> farmDataList=farmDataService.getFarmDataDetail(farmArea02);//根据条件获取农田具体区块数据
         responseEntity.setAny("farmDataList",farmDataList);
         //取一周的数据
@@ -129,6 +129,7 @@ public class FarmDataController {
             responseEntity.setAny("temperArray",temperArray);
             responseEntity.setAny("humidiArray",humidiArray);
             responseEntity.setAny("illumiArray",illumiArray);
+            responseEntity.setAny("farmAreaNew",farmAreaNew);
             /*responseEntity.setAny("farmTop",farmTop);
             responseEntity.setAny("mostNewFarmData",mostNewFarmData);*/
             responseEntity.setSuccess(true);

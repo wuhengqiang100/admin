@@ -47,4 +47,10 @@ public interface FarmDataService extends IService<FarmData> {
      * @return
      */
     List<FarmData> getFarmDataDetail(FarmArea02 farmArea02);
+    /**
+     * 根据FarmArea02的farmId和area查FarmArea全部信息
+     * @param farmArea02
+     * @return
+     */
+    FarmArea02 getFarmAreaByFarmArea(FarmArea02 farmArea02);
 }

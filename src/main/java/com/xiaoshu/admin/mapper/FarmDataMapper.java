@@ -32,4 +32,11 @@ public interface FarmDataMapper extends BaseMapper<FarmData> {
        */
       List<FarmData> getFarmDataDetail(FarmArea02 farmArea02);
 
+      /**
+       * 根据FarmArea02的farmId和area查FarmArea全部信息
+       * @param farmArea02
+       * @return
+       */
+      FarmArea02 getFarmAreaByFarmArea(FarmArea02 farmArea02);
+
 }

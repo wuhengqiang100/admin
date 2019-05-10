@@ -31,6 +31,10 @@ public class FarmDataServiceImpl extends ServiceImpl<FarmDataMapper,FarmData> im
         return baseMapper.getFarmDataDetail(farmArea02);
     }
 
+    @Override
+    public FarmArea02 getFarmAreaByFarmArea(FarmArea02 farmArea02) {
+        return baseMapper.getFarmAreaByFarmArea(farmArea02);
+    }
 
 
 }

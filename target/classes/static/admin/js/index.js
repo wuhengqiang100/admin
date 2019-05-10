@@ -13,7 +13,7 @@ layui.config({
     });
 
     //固定块
-    util.fixbar({
+  /*  util.fixbar({
         bar1:'&#xe607'
         ,bar2: '&#xe604'
         ,showHeight:800
@@ -27,7 +27,7 @@ layui.config({
                 layer.msg('两个bar都可以设定是否开启')
             }
         }
-    });
+    });*/
 
 
 
