@@ -201,14 +201,35 @@ layui.config({
             sessionStorage.clear();
             window.sessionStorage.removeItem("countRefresh");
             location.href = "/systemLogout";
-            // var index = layer.alert();
             layer.close(indexLogout);
             return true;
         },function(){
-            // var index = layer.alert();
             layer.close(indexLogout);
         });
-    })
+    });
+    //文档加载完后执行的方法
+    $(document).ready(function(){
+        var countRefresh=sessionStorage.getItem("countRefresh");
+        if(countRefresh===null){//第一次进入系统
+            var countRefresh=1;
+            var indexIn=layer.alert($('.showLastLoginData'), {
+                skin: 'layui-layer-molv' //样式类名
+                ,type:1
+                ,title : '见面礼'
+                ,shade : 0.7
+                ,closeBtn: 2
+                ,area: ['350px', '300px']
+            });
+            sessionStorage.setItem("countRefresh",countRefresh);
+        }else if(countRefresh>=1){//非第一次刷新系统
+            countRefresh++;
+            $.post("/admin/user/data/edit", {repeatedRefresh:countRefresh}, function () {
+            }, 'json');
+
+            sessionStorage.setItem("countRefresh",countRefresh);
+        }
+
+    });
 
     $('input[type="submit"]').mousedown(function(){
         $(this).css('background', '#2ecc71');
@@ -312,40 +333,7 @@ layui.config({
         $('body').removeClass('site-mobile');
     });
 
-    //文档加载完后执行的方法
-    $(document).ready(function(){
-        var countRefresh=sessionStorage.getItem("countRefresh");
-        if(countRefresh===null){//第一次进入系统
-            var countRefresh=1;
-            var indexLog=layer.open({
-                content : $('.showLastLoginData'),
-                skin: 'layui-layer-molv' //样式类名
-                ,type:1
-                ,closeBtn: 1
-                ,title : '见面礼'
-                ,shade : 0.7
-                ,area: ['350px', '250px']
-                , btn: ['好的']
-            }, function(){
-                layer.close(indexLog);
-                return true;
-            })
-            sessionStorage.setItem("countRefresh",countRefresh);
-        }else if(countRefresh>=1){//非第一次刷新系统
-            countRefresh++;
-           /* $.post("/admin/user/loginData/edit", {}, function (res) {
 
-            });*/
-          /*  $.post("/admin/user/loginData/edit",{repeatedRefresh:countRefresh},function(data,status){
-                alert("数据: " + data + "\n状态: " + status);
-            });*/
-            $.post("/admin/user/data/edit", {repeatedRefresh:countRefresh}, function () {
-            }, 'json');
-
-           sessionStorage.setItem("countRefresh",countRefresh);
-        }
-
-    });
 
     function updateLoginData(countRefresh){
         $.post("/admin/user/loginData/edit",{repeatedRefresh:countRefresh},function(data,status){

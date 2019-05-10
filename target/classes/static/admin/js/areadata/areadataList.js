@@ -248,7 +248,7 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
                     };
                     optionTemper = {
                         title: {
-                            text: '温度',
+                            text: '温度 ℃',
                         },
                         color: ['#3398DB'],
                         tooltip : {
@@ -288,7 +288,7 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
                     };
                     optionHum = {
                         title: {
-                            text: '湿度',
+                            text: '湿度 %RH',
                         },
                         color: ['#3398DB'],
                         tooltip : {
@@ -326,181 +326,6 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
                             }
                         ]
                     };
-                   /* optionTemper = {
-                        title: {
-                            text: '温度'
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        /!*legend: {
-                            data:['温度','湿度','光照']
-                        },*!/
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data:data.dateTimeArray,
-                                axisPointer: {
-                                    type: 'shadow'
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '温度',
-                                min: 0,
-                                max: 50,
-                                interval: 5,
-                                axisLabel: {
-                                    formatter: '{value} °C'
-                                }
-                            }/!*,
-                            {
-                                type: 'value',
-                                name: '湿度/光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}RH/lux'
-                                }
-                            }*!//!*,
-                            {
-                                type: 'value',
-                                name: '光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                offset: 60,
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}lux'
-                                }
-                            }*!/
-                        ],
-                        series: [
-                            {
-                                name:'温度',
-                                type:'bar',
-                                yAxisIndex: 0,
-                                data:data.temperArray
-                            },
-                            {
-                                name:'湿度',
-                                type:'bar',
-                                yAxisIndex: 1,
-                                data:data.humidiArray
-                            },
-                            {
-                                name:'光照',
-                                type:'line',
-                                yAxisIndex: 1,
-                                data:data.illumiArray
-                            }
-                        ]
-                    };*/
-                   /* optionHum = {
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        legend: {
-                            data:['温度','湿度','光照']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data:data.dateTimeArray,
-                                axisPointer: {
-                                    type: 'shadow'
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '温度',
-                                min: 0,
-                                max: 50,
-                                interval: 5,
-                                axisLabel: {
-                                    formatter: '{value} °C'
-                                }
-                            },
-                            {
-                                type: 'value',
-                                name: '湿度/光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}RH/lux'
-                                }
-                            }/!*,
-                            {
-                                type: 'value',
-                                name: '光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                offset: 60,
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}lux'
-                                }
-                            }*!/
-                        ],
-                        series: [
-                            {
-                                name:'温度',
-                                type:'bar',
-                                yAxisIndex: 0,
-                                data:data.temperArray
-                            },
-                            {
-                                name:'湿度',
-                                type:'bar',
-                                yAxisIndex: 1,
-                                data:data.humidiArray
-                            },
-                            {
-                                name:'光照',
-                                type:'line',
-                                yAxisIndex: 1,
-                                data:data.illumiArray
-                            }
-                        ]
-                    };*/
                     optionIll = {
                         title: {
                             text: '光照 lux',
@@ -783,93 +608,6 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
                             }
                         ]
                     };
-                 /*   optionIll = {
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'cross',
-                                crossStyle: {
-                                    color: '#999'
-                                }
-                            }
-                        },
-                        toolbox: {
-                            feature: {
-                                dataView: {show: true, readOnly: false},
-                                magicType: {show: true, type: ['line', 'bar']},
-                                restore: {show: true},
-                                saveAsImage: {show: true}
-                            }
-                        },
-                        legend: {
-                            data:['温度','湿度','光照']
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data:data.dateTimeArray,
-                                axisPointer: {
-                                    type: 'shadow'
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                name: '温度',
-                                min: 0,
-                                max: 50,
-                                interval: 5,
-                                axisLabel: {
-                                    formatter: '{value} °C'
-                                }
-                            },
-                            {
-                                type: 'value',
-                                name: '湿度/光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}RH/lux'
-                                }
-                            }/!*,
-                            {
-                                type: 'value',
-                                name: '光照',
-                                min: 0,
-                                max: 100,
-                                position: 'right',
-                                offset: 60,
-                                interval: 20,
-                                axisLabel: {
-                                    formatter: '{value}lux'
-                                }
-                            }*!/
-                        ],
-                        series: [
-                            {
-                                name:'温度',
-                                type:'bar',
-                                yAxisIndex: 0,
-                                data:data.temperArray
-                            },
-                            {
-                                name:'湿度',
-                                type:'bar',
-                                yAxisIndex: 1,
-                                data:data.humidiArray
-                            },
-                            {
-                                name:'光照',
-                                type:'line',
-                                yAxisIndex: 1,
-                                data:data.illumiArray
-                            }
-                        ]
-                    };*/
-
                     myChart.setOption(option);
                     myChartTemper.setOption(optionTemper);
                     myChartHum.setOption(optionHum);

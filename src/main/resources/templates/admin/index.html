@@ -78,11 +78,11 @@
                     <a th:href="@{/systemLogout}" class="signOut"><i class="iconfont icon-loginout"></i> 退出</a>
                 </li>
                 <li class="layui-nav-item accountCredit" pc>
-                   <!-- <a href="javascript:"  class="leftItem"><i
-                            class="layui-icon layui-icon-speaker"></i><cite>信誉值</cite><span
-                            class="layui-badge" style="font-size: xx-small;"
-                            th:text="${currentUser.credit}">1.0</span></a>-->
-                    <a href="javascript:"  class="leftItem"><cite>信誉值</cite><span
+                    <!-- <a href="javascript:"  class="leftItem"><i
+                             class="layui-icon layui-icon-speaker"></i><cite>信誉值</cite><span
+                             class="layui-badge" style="font-size: xx-small;"
+                             th:text="${currentUser.credit}">1.0</span></a>-->
+                    <a href="javascript:" class="leftItem"><cite>信誉值</cite><span
                             class="layui-badge" style="font-size: xx-small;"
                             th:text="${currentUser.credit}">1.0</span></a>
                 </li>
@@ -120,7 +120,9 @@
                                     class="iconfont icon-zhanghu"
                                     data-icon="icon-zhanghu"></i><cite>个人资料</cite></a>
                             </dd>
-                            <dd><a href="javascript:" data-url="/admin/system/user/changePassword"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
+                            <dd><a href="javascript:" data-url="/admin/system/user/changePassword"><i class="iconfont icon-shezhi1"
+                                                                                                      data-icon="icon-shezhi1"></i><cite>修改密码</cite></a>
+                            </dd>
 
                             <!--<dd><a href="javascript:" data-url="/admin/system/user/changePassword"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>属性修改</cite></a></dd>-->
                             <dd><a href="javascript:" data-url="/admin/system/user/changeProperties"><i
@@ -260,7 +262,7 @@
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p style="height: 0px;padding: 0px;margin-bottom: 5px;">Copyright © 2018 SAAS云管理系统 Design By Cdu大数据研究院 <a href="#" target="_self" >ICP备案号
+        <p style="height: 0px;padding: 0px;margin-bottom: 5px;">Copyright © 2018 SAAS云管理系统 Design By Cdu大数据研究院 <a href="#" target="_self">ICP备案号
         </a></p>
         <div style="float: right">
             <fieldset class="layui-elem-field layui-field-title" style="width: 50%;height: 50%">
