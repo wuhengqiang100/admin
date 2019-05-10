@@ -73,7 +73,8 @@ layui.use(['form','jquery','element','layer'],function(){
                     var indexConfirm=parent.layer.confirm(res.message, {
                             skin: 'layui-layer-molv'
                             ,closeBtn: 1,
-                            icon: 3, title: '提示',btn:['前去更改','好的']},
+                            icon: 3, title: '提示',
+                            btn:['更改','好的']},
                         function(){
                             window.parent.location.href="/admin/system/user/list";
                             // $(".returnEditUser").click();

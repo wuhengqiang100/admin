@@ -35,20 +35,128 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
         ,theme: 'molv'//墨绿色背景
     });
     form.on('submit(dataDetail)',function(data){
-        var loadIndex = layer.load(2, {
+   /*     var loadIndex = layer.load(2, {
             shade: [0.3, '#333']
-        });
+        });*/
+       /* $.post("/farm/farmdata/detail", JSON.stringify(data.field),contentType="application/json",
+            function (data) {
+                if (data.success) {
+                    // var colors = ['#5793f3', '#d14a61', '#675bba'];
+                    // app.title = '折柱混合';
 
+                    option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                crossStyle: {
+                                    color: '#999'
+                                }
+                            }
+                        },
+                        toolbox: {
+                            feature: {
+                                dataView: {show: true, readOnly: false},
+                                magicType: {show: true, type: ['line', 'bar']},
+                                restore: {show: true},
+                                saveAsImage: {show: true}
+                            }
+                        },
+                        legend: {
+                            data: ['温度', '湿度', '光照']
+                        },
+                        xAxis: [
+                            {
+                                type: 'category',
+                                data: data.dateTimeArray,
+                                axisPointer: {
+                                    type: 'shadow'
+                                }
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value',
+                                name: '温度',
+                                min: 0,
+                                max: 50,
+                                position: 'left',
+                                offset: 10,
+                                interval: 5,
+                                axisLabel: {
+                                    formatter: '{value} °C'
+                                }
+                            },
+                            {
+                                type: 'value',
+                                name: '湿度/光照',
+                                min: 0,
+                                max: 100,
+                                position: 'right',
+                                offset: 10,
+                                interval: 20,
+                                axisLabel: {
+                                    formatter: '{value}RH/lux'
+                                }
+                            }/!*,
+                            {
+                                type: 'value',
+                                name: '光照',
+                                min: 0,
+                                max: 100,
+                                position: 'right',
+                                offset: 60,
+                                interval: 20,
+                                axisLabel: {
+                                    formatter: '{value}lux'
+                                }
+                            }*!/
+                        ],
+                        series: [
+                            {
+                                name: '温度',
+                                type: 'bar',
+                                data: data.temperArray
+                            },
+                            {
+                                name: '湿度',
+                                type: 'bar',
+                                yAxisIndex: 1,
+                                data: data.humidiArray
+                            },
+                            {
+                                name: '光照',
+                                type: 'line',
+                                yAxisIndex: 1,
+                                data: data.illumiArray
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                    $("#name").text(data.farmTop.name);
+                    $("#location").text(data.farmTop.location);
+                    $("#temperature").text(data.mostNewFarmData.temperature);
+                    $("#standardTemperature").text(data.farmTop.temperature);
+                    $("#humidity").text(data.mostNewFarmData.humidity);
+                    $("#standardHumidity").text(data.farmTop.humidity);
+                    $("#illumination").text(data.mostNewFarmData.illumination);
+                    $("#standardIllumination").text(data.farmTop.illumination);
+                } else {
+                    layer.alert(data.message, {
+                        skin: 'layui-layer-molv' //样式类名
+                        , closeBtn: 0
+                    });
+                }
+            });*/
         $.ajax({
             type:"POST",
             url:"/farm/farmdata/detail",
             dataType:"json",
             contentType:"application/json",
             data:JSON.stringify(data.field),
-            success:function(res){
+            success:function(data){
                 var myChart = echarts.init(document.getElementById('chart'));
-                layer.close(loadIndex);
-                if(res.success){
+                if(data.success){
 
                     option = {
                         tooltip: {
@@ -144,7 +252,7 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
                         icon: 3, title: '提示',
                         btn: ['确定'] //按钮
                     }, function(){
-                        layer.closeAll('dialog'); //关闭信息框
+
                     },function(){
 
                     });
@@ -220,10 +328,10 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
             dataType:"json",
             contentType:"application/json",
             data:"",
-            success:function(res){
+            success:function(data){
                 var myChart = echarts.init(document.getElementById('chart'));
-                layer.close(loadIndex);
-                if(res.success){
+                if(data.success){
+
                     option = {
                         tooltip: {
                             trigger: 'axis',
@@ -318,14 +426,13 @@ layui.use(['form', 'laydate','element', 'layer', 'jquery','table'], function () 
                         icon: 3, title: '提示',
                         btn: ['确定'] //按钮
                     }, function(){
-                        layer.closeAll('dialog'); //关闭信息框
+
                     },function(){
 
                     });
                 }
             }
         });
-        return false;
     });
     $(".panel a").on("click", function () {
         window.parent.addTab($(this));

@@ -70,9 +70,7 @@ public class FarmDataController {
         ResponseEntity responseEntity=new ResponseEntity();
         FarmArea02 farmArea02=new FarmArea02();
         String farmId= (String) session.getAttribute("farmIdFirst");
-        int areaFirstFarm= (int) session.getAttribute("areaFirstFarm");
         farmArea02.setFarmId(Integer.parseInt(farmId));
-        farmArea02.setArea(areaFirstFarm);
         List<FarmData> farmDataList=farmDataService.getFarmDataDetail(farmArea02);//根据条件获取农田具体区块数据
         responseEntity.setAny("farmDataList",farmDataList);
         //取一周的数据
@@ -105,22 +103,12 @@ public class FarmDataController {
 
     @PostMapping("detail")
     @ResponseBody
-    public ResponseEntity detailAll(@RequestBody FarmArea farmArea){//农田区块信息
+    public ResponseEntity detailAll(@RequestBody FarmArea02 farmArea02){//农田区块信息
         ResponseEntity responseEntity=new ResponseEntity();
-        FarmArea02 farmArea02=new FarmArea02();
-        if (0==farmArea.getFarmId()){
+        if (0==farmArea02.getFarmId()){
             return ResponseEntity.failure("农田id不能为空");
         }
-        if (!(null==farmArea.getLastTime())){
-            farmArea02.setLastTime(DateUtil.getStringDate(farmArea.getLastTime()));
-        }
-        if (!(null==farmArea.getNextTime())){
-            farmArea02.setNextTime(DateUtil.getStringDate(farmArea.getNextTime()));
-        }
-        if(!(0==farmArea.getArea())){
-            farmArea02.setArea(farmArea.getArea());
-        }
-        farmArea02.setFarmId(farmArea.getFarmId());
+
         List<FarmData> farmDataList=farmDataService.getFarmDataDetail(farmArea02);//根据条件获取农田具体区块数据
         responseEntity.setAny("farmDataList",farmDataList);
         //取一周的数据

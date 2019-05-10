@@ -244,7 +244,7 @@ public class LonginController{
     public ResponseEntity adminRequest(@RequestParam(value = "id", required = false) String id, ModelMap modelMap) {
         ResponseEntity responseEntity = new ResponseEntity();
         if (StringUtils.isBlank(id)) {
-            return ResponseEntity.failure("角色ID不能为空");
+            return ResponseEntity.failure("请求ID不能为空");
         }
         Role role = roleService.findRoleProByRoleId(id);
         if (null == role) {
@@ -334,7 +334,7 @@ public class LonginController{
                 session.setAttribute("secutityUser",secutityUser);
                 LOGGER.debug(secutityUser.getLoginName() + "用户" + LocalDate.now().toString() + ":======》登陆系统!");
             } catch (IncorrectCredentialsException e) {
-                errorMsg = "用户名密码错误!";
+                errorMsg = "密码错误!";
             } catch (UnknownAccountException e) {
                 errorMsg = "账户不存在!";
             } catch (LockedAccountException e) {

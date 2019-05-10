@@ -173,7 +173,7 @@ public class RoleController {
                 return ResponseEntity.success("令牌以及菜单权限修改成功");
             }else{
 
-                return ResponseEntity.success("令牌修改成功,请更改用户" + updateUser+ "的属性值");
+                return ResponseEntity.success("成功,请更改用户" + updateUser+ "的属性值");
             }
         } catch (Exception e) {
             return ResponseEntity.success("令牌修改成功,该令牌下没有用户");
