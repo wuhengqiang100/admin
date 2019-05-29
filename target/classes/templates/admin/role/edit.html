@@ -40,6 +40,15 @@
     /*    .layui-container{
             width: 1250px;
         }*/
+  /*      .fontSize{
+            font-size: 18px;
+        }
+        .fontSize2{
+             font-size: 24px;
+         }
+        .fontColor{
+            color: #0C0C0C;
+        }*/
     </style>
 </head>
 <body>
@@ -54,15 +63,16 @@
                         <div class="layui-card-body">
                             <div class="layui-row">
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">分配权限:</label>
+                                    <label class="layui-form-label fontSize">分配权限:</label>
                                     <div class="layui-input-block">
                                         <div class="layui-collapse" lay-accordion >
-                                            <div class="layui-colla-item" th:each="menu : ${menuList}">
-                                                <h2 class="layui-colla-title"><input type="checkbox" th:title="${menu.name}" th:value="${menu.id}"
+                                            <div class="layui-colla-item" style="color: black" th:each="menu : ${menuList}">
+                                                <h2 class="layui-colla-title fontColor"><input class="fontSize" type="checkbox" th:title="${menu.name}"
+                                                                                                th:value="${menu.id}"
                                                                                      lay-filter="roleMenu" th:data-parentIds="${menu.parentIds}"
                                                                                      th:checked="${#strings.contains(menuIds,menu.id)} ? checked "/>
                                                 </h2>
-                                                <div class="layui-colla-content"
+                                                <div class="layui-colla-content fontColor fontSize"
                                                      th:include="/admin/role/menu::editMenuLi(${menu.children})"></div>
                                             </div>
                                         </div>
@@ -74,63 +84,66 @@
                 </div>
                 <div class="layui-col-md5 layui-col-md-offset0.1">
                     <div class="layui-card">
-                        <div class="layui-card-header nameTitle">策略属性 <span style="float:right;margin-right:10px;font-size: 16px">
-                            <i class="iconfont layui-bg-red" style="font-size: 22px">&#xe62d;</i>多个属性以逗号隔开(,)</span></div>
+                        <div class="layui-card-header nameTitle">策略属性
+                            <span style="float:right;margin-right:10px;font-size: 16px">
+                            <i class="iconfont layui-bg-red" style="font-size: 22px">&#xe62d;</i>多个属性以逗号隔开(,)
+                            </span>
+                        </div>
                         <div class="layui-card-body">
                             <div class="layui-row">
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">策略名称:</label>
-                                    <div class="layui-input-block">
+                                    <label class="layui-form-label fontSize">策略名称:</label>
+                                    <div class="layui-input-block fontSize2">
                                         <input type="text" name="name" required lay-verify="required" th:value="${role.name}" placeholder="请输入名称"
                                                autocomplete="off"
                                                class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item tipSet" >
-                                    <label class="layui-form-label">策略身份:</label>
-                                    <div class="layui-input-block">
+                                    <label class="layui-form-label fontSize">策略身份:</label>
+                                    <div class="layui-input-block fontSize2">
                                         <input type="text" class="layui-input" name="identity" th:value="${role.identity}" style="margin-top: 30px;"
                                                placeholder="请输入身份">
                                     </div>
                                 </div>
                                 <div class="layui-form-item tipSet">
-                                    <label class="layui-form-label">请求地点:</label>
-                                    <div class="layui-input-block">
+                                    <label class="layui-form-label fontSize">请求地点:</label>
+                                    <div class="layui-input-block fontSize2">
                                         <input type="text" class="layui-input" name="requestPlace" th:value="${role.requestPlace}"
                                                style="margin-top: 30px;" placeholder="请输入请求地点">
                                     </div>
                                 </div>
                                 <div class="layui-form-item tipSet">
-                                    <label class="layui-form-label">电话号码:</label>
-                                    <div class="layui-input-block">
+                                    <label class="layui-form-label fontSize">电话号码:</label>
+                                    <div class="layui-input-block fontSize2">
                                         <input type="tel" class="layui-input" name="tel" th:value="${role.tel}"
                                                style="margin-top: 30px;"
                                                placeholder="请输入电话号码">
                                     </div>
                                 </div>
                                 <div class="layui-form-item tipSet">
-                                    <label class="layui-form-label">邮件地址:</label>
-                                    <div class="layui-input-block">
+                                    <label class="layui-form-label fontSize">邮件地址:</label>
+                                    <div class="layui-input-block fontSize2">
                                         <input type="text" class="layui-input" name="email" th:value="${role.email}"
                                                style="margin-top: 30px;"
                                                placeholder="请想一个邮件地址">
                                     </div>
                                 </div>
                                 <div class="layui-form-item tipSet">
-                                    <label class="layui-form-label">年纪要求:</label>
-                                    <div class="layui-input-block">
+                                    <label class="layui-form-label fontSize">年纪要求:</label>
+                                    <div class="layui-input-block fontSize2">
                                         <input type="text" class="layui-input" name="age" th:value="${role.age}"
                                                style="margin-top: 30px;"
                                                placeholder="请输入年龄">
                                     </div>
                                 </div>
-                                <div class="layui-form-item">
+                               <!-- <div class="layui-form-item">
                                     <label class="layui-form-label">备注说明:</label>
                                     <div class="layui-input-block " style="margin-top: 30px;">
                                         <textarea placeholder="一些可有可无的备注罢了.." name="remarks" th:value="${role.remarks}"
                                                   class="layui-textarea"></textarea>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>

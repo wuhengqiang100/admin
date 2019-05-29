@@ -224,15 +224,17 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
             int len = 0;
             while ((len = inputStream.read(readBuffer)) != -1) {
 
-//                test += new String(readBuffer, 0, len).trim();
+                test += new String(readBuffer, 0, len).trim();
+
                 break;
             }
-
+            System.out.println("接收的内容：" + test + new Date());
 //            System.out.println(test + " ");
             closeSerialPort();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void closeSerialPort() {

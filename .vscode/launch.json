@@ -1,0 +1,111 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Java",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ]
+        },
+        {
+            "name": "Java Console App",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AdminApplication<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.AdminApplication",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AdminApplicationTests<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.admin.AdminApplicationTests",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-BigDecimalTest<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.admin.BigDecimalTest",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MysqlGenerator<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.admin.MysqlGenerator",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ListPort<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.common.serialport.ListPort",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TestDemo<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.common.serialport.TestDemo",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Com11Writer<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.common.serialport02.Com11Writer",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Com21EventListener<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.common.serialport02.Com21EventListener",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Com21PollingListener<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.common.serialport02.Com21PollingListener",
+            "projectName": "comadmin"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OpenerAndCloser<comadmin>",
+            "request": "launch",
+            "mainClass": "com.xiaoshu.common.serialport02.OpenerAndCloser",
+            "projectName": "comadmin"
+        }
+    ]
+}

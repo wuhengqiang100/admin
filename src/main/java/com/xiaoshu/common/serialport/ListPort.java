@@ -14,11 +14,14 @@ public class ListPort {
      * @author:dengchaoqun
      * @date:2015-8-29 上午11:34:04
      */
-    public static void listPorts() {
+    public static Boolean listPorts() {
+        Boolean isListPosts=false;
         HashSet<CommPortIdentifier> portSet = getAvailableSerialPorts();
         for (CommPortIdentifier comm : portSet) {
             System.out.println(comm.getName() + " - " + getPortTypeName(comm.getPortType()));
+            isListPosts=true;
         }
+        return isListPosts;
     }
     /**
      * @Description:列出所有通信端口
@@ -26,7 +29,8 @@ public class ListPort {
      * @date:2015-8-29 下午2:06:17
      */
     @SuppressWarnings("unchecked")
-    public static void listCommPorts() {
+    public static Boolean listCommPorts() {
+        Boolean isListConnPorts=false;
         CommPortIdentifier.getPortIdentifiers();
         /*
          * 不带参数的getPortIdentifiers方法可以获得一个枚举对象，该对象包含了
@@ -39,7 +43,9 @@ public class ListPort {
         while (portEnum.hasMoreElements()) {
             CommPortIdentifier portIdentifier = portEnum.nextElement();
             System.out.println(portIdentifier.getName() + " - " + getPortTypeName(portIdentifier.getPortType()));
+            isListConnPorts=true;
         }
+        return  isListConnPorts;
     }
 
     /**
