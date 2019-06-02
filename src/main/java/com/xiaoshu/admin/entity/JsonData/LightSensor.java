@@ -5,16 +5,7 @@ package com.xiaoshu.admin.entity.JsonData;
  */
 public class LightSensor {
 
-    attribute attribute;
     status status;
-
-    public com.xiaoshu.admin.entity.JsonData.attribute getAttribute() {
-        return attribute;
-    }
-
-    public void setAttribute(com.xiaoshu.admin.entity.JsonData.attribute attribute) {
-        this.attribute = attribute;
-    }
 
     public com.xiaoshu.admin.entity.JsonData.status getStatus() {
         return status;
@@ -27,8 +18,7 @@ public class LightSensor {
     @Override
     public String toString() {
         return "LightSensor{" +
-                "attribute=" + attribute +
-                ", status=" + status +
+                "status=" + status +
                 '}';
     }
 }

@@ -10,15 +10,51 @@ import com.xiaoshu.admin.entity.JsonData.*;
 public class JsonParseUtil {
 
     /**
+     * 判断农田的传感器采集器是否有问题,没有问题返回true,有问题返回报错字符串
+     * @param farmData
+     * @return
+     */
+    public static StringBuffer parseFarmDataFlag(FarmData farmData){
+        StringBuffer str=new StringBuffer("farmData.getFarm()+'.'+farmData.getArea()"+"农田区块");
+        int errorCount=0;
+        if ("0"==farmData.getSensor1_temperature_flag()){
+            str.append("温度采集器");
+            errorCount++;
+        }
+        if ("0"== farmData.getSensor1_humidity_flag()){
+            str.append(",湿度采集器");
+            errorCount++;
+        }
+        if ("0"==farmData.getSensor1_illumination_flag()){
+            str.append(",光照采集器");
+            errorCount++;
+        }
+        str.append("有问题");
+        if (errorCount>0){
+            return str;
+        }else{
+            return new StringBuffer("true");
+        }
+    }
+
+
+    /**
      * 将FarmDataFromJson转化为farmData数据存储数据库
      * @param farmDataFromJson
      * @return
      */
     public static FarmData parseFarmDataFromJson(FarmDataFromJson farmDataFromJson){
         FarmData farmData=new FarmData();
+        //温度数据,以及温度传感器是否正常工作标志
         farmData.setTemperature(farmDataFromJson.getSoiltempature().getStatus().getValue());
+        farmData.setSensor1_temperature_flag(farmDataFromJson.getSoiltempature().getStatus().getWorkModel());
+
         farmData.setIllumination(farmDataFromJson.getLightSensor().getStatus().getValue());
+        farmData.setSensor1_illumination_flag(farmDataFromJson.getLightSensor().getStatus().getWorkModel());
+
         farmData.setHumidity(farmDataFromJson.getSoilmoisture().getStatus().getValue());
+        farmData.setSensor1_humidity_flag(farmDataFromJson.getSoilmoisture().getStatus().getWorkModel());
+
         farmData.setFarmId(Integer.parseInt(farmDataFromJson.getNet().getNetID()));
         farmData.setArea(Integer.parseInt(farmDataFromJson.getNet().getIDnode()));
         return  farmData;
@@ -36,26 +72,20 @@ public class JsonParseUtil {
         FarmDataFromJson farmDataFromJson=new FarmDataFromJson();
         Net net = new Net();//网络实体
         LightSensor lightSensor = new LightSensor();//光照数据实体
-        attribute lightAttribute=new attribute();
         status lightStatus=new status();
         Soiltempature soiltempature = new Soiltempature();//温度数据实体
-        attribute tempatureAttribute=new attribute();
         status tempatureStatus=new status();
         Soilmoisture soilmoisture = new Soilmoisture();//湿度数据实体
-        attribute soilAttribute=new attribute();
         status soilStatus=new status();
 
         JSONObject netObject=new JSONObject();
         JSONObject lightObject=new JSONObject();
-        JSONObject lightAttributeObject=new JSONObject();
         JSONObject lightStatusObject=new JSONObject();
 
         JSONObject tempatureObject=new JSONObject();
-        JSONObject tempatureAttributeObject=new JSONObject();
         JSONObject tempatureStatusObject=new JSONObject();
 
         JSONObject soilObject=new JSONObject();
-        JSONObject soilAttributeObject=new JSONObject();
         JSONObject soilStatusObject=new JSONObject();
         //解析net实体数据
         netObject= (JSONObject) jsonObject.get("Net");
@@ -64,43 +94,22 @@ public class JsonParseUtil {
         net.setNetaddr(netObject.getString("Netaddr"));
         //解析light光照实体数据
         lightObject= (JSONObject) jsonObject.get("LightSensor");
-        lightAttributeObject= (JSONObject) lightObject.get("attribute");
-        lightAttribute.setType(lightAttributeObject.getString("Type"));
-        lightAttribute.setModel(lightAttributeObject.getString("Model"));
-        lightAttribute.setPrecision(lightAttributeObject.getString("Precision"));
-        lightAttribute.setRange(lightAttributeObject.getString("Range"));
-        lightAttribute.setWorking_Voltage(lightAttributeObject.getString("Working_Voltage"));
         lightStatusObject= (JSONObject) lightObject.get("status");
         lightStatus.setWorkModel(lightStatusObject.getString("WorkModel"));
         lightStatus.setValue(lightStatusObject.getString("Value"));
-        lightSensor.setAttribute(lightAttribute);
         lightSensor.setStatus(lightStatus);
         //解析tempature温度实体数据
         tempatureObject= (JSONObject) jsonObject.get("Soiltempature");
-        tempatureAttributeObject= (JSONObject) tempatureObject.get("attribute");
-        tempatureAttribute.setType(tempatureAttributeObject.getString("Type"));
-        tempatureAttribute.setModel(tempatureAttributeObject.getString("Model"));
-        tempatureAttribute.setPrecision(tempatureAttributeObject.getString("Precision"));
-        tempatureAttribute.setRange(tempatureAttributeObject.getString("Range"));
-        tempatureAttribute.setWorking_Voltage(tempatureAttributeObject.getString("Working_Voltage"));
         tempatureStatusObject= (JSONObject) tempatureObject.get("status");
         tempatureStatus.setWorkModel(tempatureStatusObject.getString("WorkModel"));
         tempatureStatus.setValue(tempatureStatusObject.getString("Value"));
-        soiltempature.setAttribute(tempatureAttribute);
         soiltempature.setStatus(tempatureStatus);
 
         //解析soil湿度实体数据
         soilObject= (JSONObject) jsonObject.get("Soilmoisture");
-        soilAttributeObject= (JSONObject) soilObject.get("attribute");
-        soilAttribute.setType(soilAttributeObject.getString("Type"));
-        soilAttribute.setModel(soilAttributeObject.getString("Model"));
-        soilAttribute.setPrecision(soilAttributeObject.getString("Precision"));
-        soilAttribute.setRange(soilAttributeObject.getString("Range"));
-        soilAttribute.setWorking_Voltage(soilAttributeObject.getString("Working_Voltage"));
-        soilAttributeObject= (JSONObject) soilObject.get("status");
-        soilStatus.setWorkModel(soilAttributeObject.getString("WorkModel"));
-        soilStatus.setValue(soilAttributeObject.getString("Value"));
-        soilmoisture.setAttribute(soilAttribute);
+        soilStatusObject= (JSONObject) soilObject.get("status");
+        soilStatus.setWorkModel(soilStatusObject.getString("WorkModel"));
+        soilStatus.setValue(soilStatusObject.getString("Value"));
         soilmoisture.setStatus(soilStatus);
 
         //汇总总的数据

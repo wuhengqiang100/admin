@@ -5,39 +5,18 @@
 		"Netaddr":	"20"
 	},
 	"LightSensor":	{
-		"attribute":	{
-			"Type":	"Illumination_Sensor",
-			"Model":	"GY-30",
-			"Precision":	"+-5",
-			"Range":	"0-65535 lx",
-			"Working_Voltage":	"3.3V"
-		},
 		"status":	{
 			"WorkModel":	"1",
 			"Value":	"0.55 lx"
 		}
 	},
 	"Soiltempature":	{
-		"attribute":	{
-			"Type":	"Soiltemperature_sensor",
-			"Model":	"DS18B20",
-			"Precision":	"+-0.5",
-			"Range":	"0-120 ℃",
-			"Working_Voltage":	"3.3-5V"
-		},
 		"status":	{
 			"WorkModel":"1",
 			"Value":"15.41 ℃"
 		}
 	},
 	"Soilmoisture":	{
-		"attribute":	{
-			"Type":	"Soilmoisture_sensor",
-			"Model":	"DY-69",
-			"Precision":	"+-0.5",
-			"Range":	"0-99 %",
-			"Working_Voltage":	"3.3-5V"
-		},
 		"status":	{
 			"WorkModel":	"1",
 			"Value":	"0.04 %"

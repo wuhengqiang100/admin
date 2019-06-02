@@ -12,19 +12,20 @@ layui.config({
         url : "/admin/user/getUserMenu" //获取菜单json地址
     });
 
+//定时执 行，5秒后执行showalert()
+ /*   window.setTimeout(function(){
+        showalert("bbbbbb");
+    },2000);*/
     //固定块
-  /*  util.fixbar({
-        bar1:'&#xe607'
-        ,bar2: '&#xe604'
-        ,showHeight:800
-        ,css: {right: 10, bottom: 42 }
+/*    util.fixbar({
+        bar1:'&#xe670'
+        ,showHeight:200
+        ,css: {right: 5, bottom: 2 }
         ,bgcolor: '#393D49'
         ,click: function(type){
             console.log(type);
             if(type === 'bar1'){
                 layer.msg('icon是可以随便换的')
-            } else if(type === 'bar2') {
-                layer.msg('两个bar都可以设定是否开启')
             }
         }
     });*/
@@ -462,3 +463,5 @@ layui.config({
 function addTab(_this){
     tab.tabAdd(_this);
 }
+
+

@@ -9,7 +9,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class AdminApplication {
 
     public static void main(String[] args) {
+//        ConfigurableApplicationContext context= SpringApplication.run(AdminApplication.class, args);
         SpringApplication.run(AdminApplication.class, args);
+//        timingPortRead.run();//后台串口数据监控
+
+
+       /* context.addApplicationListener(new MySerialPortListener());
+        context.publishEvent(new MyEvent("测试事件."));*/
+//        RunPort.run();//串口监听
+       /* Thread thread=new Thread(new SerialPortTest1());
+        thread.start();*/
     }
 }
 

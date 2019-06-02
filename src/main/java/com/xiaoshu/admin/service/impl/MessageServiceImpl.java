@@ -32,6 +32,25 @@ public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> impl
         return baseMapper.selectCount(wrapper);
     }
 
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void saveMessageSystem(String errorFlag) {
+        Message message=new Message();
+        message.setLooked("未读");
+        message.setTitle("传感器故障");
+        message.setContent(errorFlag);
+        message.setMessageType("系统报警");
+        User currentUser=userService.findUserById(MySysUser.id());
+        message.setCreateId(MySysUser.id());
+        message.setCreateDate(new Date());
+        message.setUpdateDate(new Date());
+        message.setUpdateId(MySysUser.id());
+        message.setCreateName("农田检测系统");
+        message.setToUser(currentUser.getId());
+        baseMapper.insert(message);
+    }
+
     @Autowired
     UserService userService;
     @Override

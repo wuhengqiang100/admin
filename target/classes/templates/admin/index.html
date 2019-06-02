@@ -264,19 +264,74 @@
     <div class="layui-footer footer">
         <p style="height: 0px;padding: 0px;margin-bottom: 5px;">Copyright © 2018 SAAS云管理系统 Design By Cdu大数据研究院 <a href="#" target="_self">ICP备案号
         </a></p>
-        <div style="float: right">
-            <fieldset class="layui-elem-field layui-field-title" style="width: 50%;height: 50%">
-                <!--<legend>固定块</legend>-->
-            </fieldset>
+        <div style="float: right" class="portAnimal">
+            <i class="layui-icon portlistener layui-icon-find-fill" style="font-size: 34px;color: #009688;"></i>
+            <!--<fieldset class="layui-elem-field layui-field-title" style="width: 50%;height: 50%">
+                <legend>固定块</legend>
+            </fieldset>-->
         </div>
     </div>
 </div>
 <!-- 移动导航 -->
 <div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
 <div class="site-mobile-shade"></div>
+<script type="text/javascript">
+    //循环执行，每隔1秒钟执行一次 showalert（）
+    window.setInterval(function(){
+        portListener();
+    }, 3000);
+    function portListener() {
+        $.ajax({
+            type:"POST",
+            url:"farm/port/listener",
+            dataType:"json",
+            contentType:"application/json;charset=utf-8",
+            data:"",
+            success:function(res){
+                if(res.success){
+                    if(res.imageColor){
+                        $(".portlistener").css("color","#ff5722");
+                    }else{
+                        $(".portlistener").css("color","#009688");
+                    }
+                    if(res.sensorError!=null){
+                        var index=layer.alert(res.message, {
+                            skin: 'layui-layer-molv' //样式类名
+                            ,closeBtn: 1,
+                             btn: ['确定']
+                        }, function(){
+                            layer.close(index);
+                            location.href = "/index";
 
+                        });
+                    }else{
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000 ,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+                    }
+
+                }else{
+                    if(res.imageColor){
+                        $(".portlistener").css("color","#ff5722");
+                    }else{
+                        $(".portlistener").css("color","#009688");
+                    }
+                    return true;
+                }
+                return true;
+            }
+        });
+    }
+    //定时执 行，5秒后执行showalert()
+  /*  window.setTimeout(function(){
+        showalert("bbbb");
+    },5000);*/
+</script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/leftNav.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/index.js}"></script>
+
 </body>
 </html>
