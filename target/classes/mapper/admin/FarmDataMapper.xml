@@ -11,6 +11,7 @@
     <result column="illumination" property="illumination" />
     <result column="farm_id" property="farmId" />
     <result column="area" property="area" />
+    <result column="alert_flag" property="alertFlag" />
     <collection property="farm"  ofType="com.xiaoshu.admin.entity.Farm">
       <result property="id" column="farm.id"/>
       <result property="name" column="name"/>
@@ -28,6 +29,7 @@
     <result column="illumination" property="illumination" />
     <result column="farm_id" property="farmId" />
     <result column="area" property="area" />
+    <result column="alert_flag" property="alertFlag" />
   </resultMap>
 
 
@@ -39,6 +41,7 @@
     <result column="illumination" property="illumination" />
     <result column="farm_id" property="farmId" />
     <result column="area" property="area" />
+    <result column="alert_flag" property="alertFlag" />
     <collection property="farm"  ofType="com.xiaoshu.admin.entity.Farm">
       <result property="id" column="farm_id"/>
       <result property="name" column="name"/>
@@ -60,9 +63,55 @@
       <result property="farmId" column="farm_id"/>
       <result property="areaName" column="area_name"/>
   </resultMap>
+
+  <update id="updateOnlyAlertFlag" parameterType="com.xiaoshu.admin.entity.FarmData">
+    UPDATE nongtianmysqldata
+            SET alert_flag=#{alertFlag}
+            WHERE id=#{id}
+  </update>
+
+  <select id="getNotAlertFarmData" resultMap="FarmDataMap" resultType="java.lang.Integer">
+    SELECT
+    /*fa.id,*/
+    fa.farm_id,
+    fa.area,
+    fa.area_name,
+    nt.id,
+    nt.time,
+    nt.temperature,
+    nt.humidity,
+    nt.illumination,
+    nt.farm_id,
+    nt.area,
+    nt.alert_flag,
+    /*tf.id,*/
+    tf.name,
+    tf.location,
+    tf.temperature,
+    tf.humidity,
+    tf.illumination
+    from
+    farm_area fa
+    LEFT JOIN
+    nongtianmysqldata nt ON fa.area=nt.area AND fa.farm_id=nt.farm_id
+    left join t_farm  tf 	on 	tf.id= fa.farm_id
+    <where>
+      nt.alert_flag=0
+      AND
+      nt.farm_id=#{farmId}
+    </where>
+    ORDER BY  nt.time ASC ;
+  </select>
   <select id="getFarmAreaByFarmArea"  resultMap="FarmAreaDataMap">
     SELECT * FROM farm_area WHERE farm_id=#{farmId} AND  area=#{area};
   </select>
+  <insert  id="saveParseJsonData" parameterType="com.xiaoshu.admin.entity.FarmData">
+
+    INSERT INTO nongtianmysqldata
+    (time,temperature,humidity,illumination,farm_id,area,sensor1_temperature_flag,sensor1_humidity_flag,sensor1_illumination_flag,alert_flag)
+    VALUES
+    (#{time},#{temperature},#{humidity},#{illumination},#{farmId},#{area},#{sensor1_temperature_flag},#{sensor1_humidity_flag},#{sensor1_illumination_flag},0);
+  </insert>
  <!-- <select id="getFarmDataDetail" resultMap="FarmDataMap">
     SELECT
     fa.id,

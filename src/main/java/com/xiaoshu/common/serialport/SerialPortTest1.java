@@ -4,9 +4,10 @@ package com.xiaoshu.common.serialport;
 import com.xiaoshu.admin.entity.FarmData;
 import com.xiaoshu.admin.entity.JsonData.FarmDataFromJson;
 import com.xiaoshu.admin.service.FarmDataService;
+import com.xiaoshu.admin.service.impl.FarmDataServiceImpl;
 import com.xiaoshu.common.util.JsonParseUtil;
 import gnu.io.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -18,8 +19,8 @@ import java.util.TooManyListenersException;
 
 public class SerialPortTest1 implements Runnable, SerialPortEventListener {
 
-    @Autowired
-    FarmDataService farmDataService;
+   /* @Autowired
+    FarmDataService farmDataService;*/
     // 检测系统中可用的通讯端口类
     private CommPortIdentifier portId;
     // 枚举类型
@@ -470,7 +471,7 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
                     // 打开串口
                     try {
                         // open:（应用程序名【随意命名】，阻塞时等待的毫秒数）
-                        serialPort = (SerialPort) portId.open("0444", 2000);
+                        serialPort = (SerialPort) portId.open("0444", 5000);
 //                        serialPort = (SerialPort) portId.open(Object.class.getSimpleName(), 2000);
 //                        serialPort= (SerialPort) portId.open(FileDescriptor.in);
 //                        System.out.println("获取到串口对象,COM4");
@@ -503,7 +504,7 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
                     // 打开串口
                     try {
                         // open:（应用程序名【随意命名】，阻塞时等待的毫秒数）
-                        serialPort = (SerialPort) portId.open(Object.class.getSimpleName(), 2000);
+                        serialPort = (SerialPort) portId.open("0333", 2000);
 //                        System.out.println("获取到串口对象,COM3");
                         //实例化输入流
                         inputStream = serialPort.getInputStream();
@@ -647,10 +648,8 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
 */
                 System.out.println("接收的内容：" + test + new Date());
             }
-            System.out.println("接收的内容：" + test + new Date());
-
 //            System.out.println(test + " ");
-//            closeSerialPort();
+            closeSerialPort();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -686,21 +685,31 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
      * 如果有数据读取到
      * @param jsonData
      */
-    public void parseJsonData(String jsonData){
+    public void parseJsonDataAndSave(String jsonData){
+        FarmDataService farmDataService=new FarmDataServiceImpl();
         FarmDataFromJson farmDataFromJson = JsonParseUtil.parseFarmData(jsonData);
         FarmData farmData = JsonParseUtil.parseFarmDataFromJson(farmDataFromJson);
         farmData.setTime(new Date());
-        farmDataService.save(farmData);
+        Integer flag=farmDataService.saveParseJsonData(farmData);
+        serialPort.close();
+        System.out.println("串口已连接,数据传输已完成");
     }
 
     @Override
     public void run() {
         init();
 //        sendMsg();
-        String jsonData=readComm();
-        if (null!=jsonData){//有数据传输
-            parseJsonData(jsonData);
-            System.out.println("串口已连接,数据传输已完成");
+        String jsonData="";
+        jsonData=readComm();
+        if (StringUtils.isNotBlank(jsonData)){//有数据传输
+            try{
+                parseJsonDataAndSave(jsonData);
+            }catch (Exception e){
+                System.out.println("不是标准字符串");
+            }finally{
+                serialPort.close();
+            }
+
         }else{
             System.out.println("串口已连接,没有数据传输");
         }

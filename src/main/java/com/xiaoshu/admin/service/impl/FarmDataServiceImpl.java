@@ -16,6 +16,23 @@ import java.util.List;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class FarmDataServiceImpl extends ServiceImpl<FarmDataMapper,FarmData> implements FarmDataService {
+
+
+    @Override
+    public void updateOnlyAlertFlag(FarmData farmData) {
+        baseMapper.updateOnlyAlertFlag(farmData);
+    }
+
+    @Override
+    public List<FarmData> getNotAlertFarmData(int farmId) {
+        return baseMapper.getNotAlertFarmData(farmId);
+    }
+
+    @Override
+    public Integer saveParseJsonData(FarmData farmData) {
+        return baseMapper.saveParseJsonData(farmData);
+    }
+
     @Override
     public List<FarmData> getFarmDataByFarmId(int farmId) {
         return baseMapper.getFarmDataByFarmId(farmId);

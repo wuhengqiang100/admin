@@ -53,6 +53,12 @@ public class FarmData {
     @TableField("area")
     private int area;//农田的区块id
 
+    @TableField("alert_flag")
+    private int alertFlag;//农田的区块id
+
+
+
+
     @TableField(exist=false)
     private Farm farm;
     @TableField(exist=false)
@@ -61,6 +67,14 @@ public class FarmData {
 
 
     public FarmData() {
+    }
+
+    public int getAlertFlag() {
+        return alertFlag;
+    }
+
+    public void setAlertFlag(int alertFlag) {
+        this.alertFlag = alertFlag;
     }
 
     public FarmArea getFarmArea() {

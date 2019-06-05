@@ -13,6 +13,17 @@ import java.util.List;
 public interface FarmDataMapper extends BaseMapper<FarmData> {
 
 //    void saveFarmMenus(@Param("roleId") String roleId, @Param("menus") Set<Menu> menuSet);
+      /**
+       * 更新报警标志位0
+       * @param farmData
+       */
+      void updateOnlyAlertFlag(FarmData farmData);
+      /**
+       * 获取所有没有检查报警的农田数据
+       * @return
+       */
+      List<FarmData> getNotAlertFarmData(@Param("farmId") int farmId);
+      Integer saveParseJsonData(FarmData farmData);
 
       FarmData selectFarmDataById(@Param("id") String id);
 

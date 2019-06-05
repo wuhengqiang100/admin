@@ -27,6 +27,19 @@ public interface FarmDataService extends IService<FarmData> {
 //    List<FarmData> getFarmDataByUserId(String userId);
 
     /**
+     * 更新报警标志位0
+     * @param farmData
+     */
+    void updateOnlyAlertFlag(FarmData farmData);
+    /**
+     * 获取所有没有检查报警的农田数据
+     * @return
+     */
+    List<FarmData> getNotAlertFarmData(int farmId);
+
+    Integer saveParseJsonData(FarmData farmData);
+
+    /**
      * 根据农田id获取农田数据
      * @param farmId
      * @return
