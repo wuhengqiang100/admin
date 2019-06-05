@@ -1,7 +1,10 @@
 package com.xiaoshu.common.serialport;
 
 
+import com.xiaoshu.admin.entity.FarmData;
+import com.xiaoshu.admin.entity.JsonData.FarmDataFromJson;
 import com.xiaoshu.admin.service.FarmDataService;
+import com.xiaoshu.common.util.JsonParseUtil;
 import gnu.io.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -642,10 +645,12 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
               /*  }
 
 */
+                System.out.println("接收的内容：" + test + new Date());
             }
+            System.out.println("接收的内容：" + test + new Date());
 
 //            System.out.println(test + " ");
-            closeSerialPort();
+//            closeSerialPort();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -677,10 +682,24 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
         System.out.println("发送的内容：" + information.trim() + new Date());
     }
 
+    /**
+     * 如果有数据读取到
+     * @param jsonData
+     */
+    public void parseJsonData(String jsonData){
+        FarmDataFromJson farmDataFromJson = JsonParseUtil.parseFarmData(jsonData);
+        FarmData farmData = JsonParseUtil.parseFarmDataFromJson(farmDataFromJson);
+        StringBuffer errotFlag=JsonParseUtil.parseFarmDataFlag(farmData);
+        String strFlag = new String(errotFlag);//stringBuffer转为String
+    }
+
     @Override
     public void run() {
         init();
 //        sendMsg();
-        readComm();
+        String jsonData=readComm();
+        if (null!=jsonData){//有数据传输
+            parseJsonData(jsonData);
+        }
     }
 }

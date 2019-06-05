@@ -18,7 +18,7 @@ public class ListPort {
         Boolean isListPosts=false;
         HashSet<CommPortIdentifier> portSet = getAvailableSerialPorts();
         for (CommPortIdentifier comm : portSet) {
-//            System.out.println(comm.getName() + " - " + getPortTypeName(comm.getPortType()));
+            System.out.println(comm.getName() + " - " + getPortTypeName(comm.getPortType()));
             isListPosts=true;
         }
         return isListPosts;
@@ -42,7 +42,7 @@ public class ListPort {
         java.util.Enumeration<CommPortIdentifier> portEnum = CommPortIdentifier.getPortIdentifiers();
         while (portEnum.hasMoreElements()) {
             CommPortIdentifier portIdentifier = portEnum.nextElement();
-//            System.out.println(portIdentifier.getName() + " - " + getPortTypeName(portIdentifier.getPortType()));
+            System.out.println(portIdentifier.getName() + " - " + getPortTypeName(portIdentifier.getPortType()));
             isListConnPorts=true;
         }
         return  isListConnPorts;

@@ -1,5 +1,6 @@
 package com.xiaoshu;
 
+import com.xiaoshu.common.serialport.RunPort;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -11,6 +12,8 @@ public class AdminApplication {
     public static void main(String[] args) {
 //        ConfigurableApplicationContext context= SpringApplication.run(AdminApplication.class, args);
         SpringApplication.run(AdminApplication.class, args);
+
+        RunPort.run();//监听串口数据
 //        timingPortRead.run();//后台串口数据监控
 
 
