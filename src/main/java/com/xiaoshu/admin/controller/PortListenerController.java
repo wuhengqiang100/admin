@@ -43,7 +43,6 @@ public class PortListenerController {
                 try {
                     responseEntity.setAny("imageColor",true);
                     responseEntity.setSuccess(true);
-
                     serialPortTest1.init();
                     String jsonData = serialPortTest1.readComm();
                     if (StringUtils.isBlank(jsonData)) {

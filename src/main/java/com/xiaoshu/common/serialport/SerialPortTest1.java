@@ -689,8 +689,8 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
     public void parseJsonData(String jsonData){
         FarmDataFromJson farmDataFromJson = JsonParseUtil.parseFarmData(jsonData);
         FarmData farmData = JsonParseUtil.parseFarmDataFromJson(farmDataFromJson);
-        StringBuffer errotFlag=JsonParseUtil.parseFarmDataFlag(farmData);
-        String strFlag = new String(errotFlag);//stringBuffer转为String
+        farmData.setTime(new Date());
+        farmDataService.save(farmData);
     }
 
     @Override
@@ -700,6 +700,9 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
         String jsonData=readComm();
         if (null!=jsonData){//有数据传输
             parseJsonData(jsonData);
+            System.out.println("串口已连接,数据传输已完成");
+        }else{
+            System.out.println("串口已连接,没有数据传输");
         }
     }
 }
