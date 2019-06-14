@@ -251,8 +251,8 @@
                             当前信誉值为：<span th:text="${currentUser.credit}"></span>
                         </p>
                         <p style="margin-left: 50px;margin-top: 30px">我是一条鸡汤文章</p>
-                       <!-- <p style="margin-left: 50px;margin-top: 30px" th:if="${lastLoginData.unlogin}">上一次登录错误次数太多</p>
-                        <p style="margin-left: 50px;margin-top: 30px" th:if="${lastLoginData.unauthorized_access}">一次没有安全退出</p>-->
+                        <!-- <p style="margin-left: 50px;margin-top: 30px" th:if="${lastLoginData.unlogin}">上一次登录错误次数太多</p>
+                         <p style="margin-left: 50px;margin-top: 30px" th:if="${lastLoginData.unauthorized_access}">一次没有安全退出</p>-->
                     </div>
                 </div>
 
@@ -276,47 +276,51 @@
 <div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
 <div class="site-mobile-shade"></div>
 <script type="text/javascript">
+
+
+
     //循环执行，每隔1秒钟执行一次 showalert（）
-    window.setInterval(function(){
+    window.setInterval(function () {
         portListener();
     }, 3000);
+
     function portListener() {
         $.ajax({
-            type:"POST",
-            url:"farm/port/listener",
-            dataType:"json",
-            contentType:"application/json;charset=utf-8",
-            data:"",
-            success:function(res){
-                if(res.success){
-                    if(res.imageColor){
-                        $(".portlistener").css("color","#ff5722");
-                    }else{
-                        $(".portlistener").css("color","#009688");
+            type: "POST",
+            url: "farm/port/listener",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: "",
+            success: function (res) {
+                if (res.success) {
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                    } else {
+                        $(".portlistener").css("color", "#009688");
                     }
-                    if(res.sensorError!=null){
-                        var index=layer.alert(res.message, {
+                    if (res.sensorError != null) {
+                        var index = layer.alert(res.message, {
                             skin: 'layui-layer-molv' //样式类名
-                            ,closeBtn: 1,
-                             btn: ['确定']
-                        }, function(){
+                            , closeBtn: 1,
+                            btn: ['确定']
+                        }, function () {
                             layer.close(index);
                             location.href = "/index";
 
                         });
-                    }else{
+                    } else {
                         layer.tips(res.message, '.portlistener', {
-                            time: 4000 ,
+                            time: 4000,
                             tips: [1, '#3595CC'],
 //                        time: 4000
                         });
                     }
 
-                }else{
-                    if(res.imageColor){
-                        $(".portlistener").css("color","#ff5722");
-                    }else{
-                        $(".portlistener").css("color","#009688");
+                } else {
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                    } else {
+                        $(".portlistener").css("color", "#009688");
                     }
                     return true;
                 }
@@ -324,10 +328,11 @@
             }
         });
     }
+
     //定时执 行，5秒后执行showalert()
-  /*  window.setTimeout(function(){
-        showalert("bbbb");
-    },5000);*/
+    /*  window.setTimeout(function(){
+          showalert("bbbb");
+      },5000);*/
 </script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/static/admin/js/leftNav.js}"></script>

@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.xiaoshu.admin.entity.FarmData;
 import com.xiaoshu.admin.entity.JsonData.*;
 
+import java.util.Date;
+
 /**
  * 解析串口json数据工具类
  */
@@ -58,6 +60,8 @@ public class JsonParseUtil {
 
         farmData.setFarmId(Integer.parseInt(farmDataFromJson.getNet().getNetID()));
         farmData.setArea(Integer.parseInt(farmDataFromJson.getNet().getIDnode()));
+        farmData.setTime(new Date());//采集时间
+        farmData.setAlertFlag(0);//数据是否报警标志
         return  farmData;
     }
 

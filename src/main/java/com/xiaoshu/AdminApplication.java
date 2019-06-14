@@ -1,6 +1,5 @@
 package com.xiaoshu;
 
-import com.xiaoshu.common.timing.timingPortRead;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -14,7 +13,7 @@ public class AdminApplication {
         SpringApplication.run(AdminApplication.class, args);
 
 //        RunPort.run();//监听串口数据
-        timingPortRead.run();//后台串口数据监控
+//        timingPortRead.run();//后台串口数据监控
 
 
        /* context.addApplicationListener(new MySerialPortListener());

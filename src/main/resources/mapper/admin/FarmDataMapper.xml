@@ -106,12 +106,20 @@
     SELECT * FROM farm_area WHERE farm_id=#{farmId} AND  area=#{area};
   </select>
   <insert  id="saveParseJsonData" parameterType="com.xiaoshu.admin.entity.FarmData">
+    INSERT INTO nongtianmysqldata
+        (time,temperature,humidity,illumination,farm_id,area,sensor1_temperature_flag,sensor1_humidity_flag,sensor1_illumination_flag,alert_flag)
+        VALUES
+        (now(),"11","22","33",1,2,"1","1","1",0);
+  </insert>
+  <!--<insert  id="saveParseJsonData" parameterType="com.xiaoshu.admin.entity.FarmData">
+
 
     INSERT INTO nongtianmysqldata
-    (time,temperature,humidity,illumination,farm_id,area,sensor1_temperature_flag,sensor1_humidity_flag,sensor1_illumination_flag,alert_flag)
-    VALUES
-    (#{time},#{temperature},#{humidity},#{illumination},#{farmId},#{area},#{sensor1_temperature_flag},#{sensor1_humidity_flag},#{sensor1_illumination_flag},0);
-  </insert>
+        (time,temperature,humidity,illumination,farm_id,area,sensor1_temperature_flag,sensor1_humidity_flag,sensor1_illumination_flag,alert_flag)
+        VALUES
+        (now(),#{temperature},#{humidity},#{illumination},#{farmId},#{area},#{sensor1_temperature_flag},#{sensor1_humidity_flag},#{sensor1_illumination_flag},#{alertFlag});
+
+  </insert>-->
  <!-- <select id="getFarmDataDetail" resultMap="FarmDataMap">
     SELECT
     fa.id,

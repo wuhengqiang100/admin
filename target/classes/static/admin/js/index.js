@@ -11,6 +11,63 @@ layui.config({
         openTabNum : "50",  //最大可打开窗口数量
         url : "/admin/user/getUserMenu" //获取菜单json地址
     });
+    $(".portlistener").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "farm/port/first",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: "",
+            success: function (res) {
+                if (res.success) {
+                    var index = layer.alert(res.message, {
+                        skin: 'layui-layer-molv' //样式类名
+                        , closeBtn: 1,
+                        btn: ['确定']
+                    }, function () {
+                        layer.close(index);
+                    });
+                } else {
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                    } else {
+                        $(".portlistener").css("color", "#009688");
+                    }
+                    return true;
+                }
+                return true;
+            }
+        });
+    });
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "farm/port/first",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: "",
+            success: function (res) {
+                if (res.success) {
+                    var index = layer.alert(res.message, {
+                        skin: 'layui-layer-molv' //样式类名
+                        , closeBtn: 1,
+                        btn: ['确定']
+                    }, function () {
+                        layer.close(index);
+
+                    });
+                } else {
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                    } else {
+                        $(".portlistener").css("color", "#009688");
+                    }
+                    return true;
+                }
+                return true;
+            }
+        });
+    });
 
 //定时执 行，5秒后执行showalert()
  /*   window.setTimeout(function(){

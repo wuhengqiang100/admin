@@ -4,11 +4,11 @@ package com.xiaoshu.common.serialport;
 import com.xiaoshu.admin.entity.FarmData;
 import com.xiaoshu.admin.entity.JsonData.FarmDataFromJson;
 import com.xiaoshu.admin.service.FarmDataService;
-import com.xiaoshu.admin.service.impl.FarmDataServiceImpl;
 import com.xiaoshu.common.util.JsonParseUtil;
 import gnu.io.*;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.annotation.Resource;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,10 +17,20 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.TooManyListenersException;
 
+
 public class SerialPortTest1 implements Runnable, SerialPortEventListener {
 
-   /* @Autowired
-    FarmDataService farmDataService;*/
+  /*  @Autowired
+    FarmDataMapper farmDataMapper;*/
+
+
+    @Resource(name = "farmDataService")
+    FarmDataService farmDataService;
+
+
+
+    /* @Autowired
+            FarmDataService farmDataService;*/
     // 检测系统中可用的通讯端口类
     private CommPortIdentifier portId;
     // 枚举类型
@@ -647,9 +657,72 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
 
 */
                 System.out.println("接收的内容：" + test + new Date());
+                test="{\n" +
+                        "  \"Net\": {\n" +
+                        "    \"NetID\": \"1\",\n" +
+                        "    \"IDnode\": \"2\",\n" +
+                        "    \"Netaddr\": \"20\"\n" +
+                        "  },\n" +
+                        "  \"LightSensor\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"6.38 lx\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soiltempature\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"25.54 ��\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soilmoisture\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"0.04 %\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+                if (StringUtils.isNotBlank(test)){//有数据传输
+                    try{
+                        String json="{\n" +
+                                "  \"Net\": {\n" +
+                                "    \"NetID\": \"1\",\n" +
+                                "    \"IDnode\": \"2\",\n" +
+                                "    \"Netaddr\": \"20\"\n" +
+                                "  },\n" +
+                                "  \"LightSensor\": {\n" +
+                                "    \"status\": {\n" +
+                                "      \"WorkModel\": \"1\",\n" +
+                                "      \"Value\": \"6.38 lx\"\n" +
+                                "    }\n" +
+                                "  },\n" +
+                                "  \"Soiltempature\": {\n" +
+                                "    \"status\": {\n" +
+                                "      \"WorkModel\": \"1\",\n" +
+                                "      \"Value\": \"25.54 ��\"\n" +
+                                "    }\n" +
+                                "  },\n" +
+                                "  \"Soilmoisture\": {\n" +
+                                "    \"status\": {\n" +
+                                "      \"WorkModel\": \"1\",\n" +
+                                "      \"Value\": \"0.04 %\"\n" +
+                                "    }\n" +
+                                "  }\n" +
+                                "}";
+                        parseJsonDataAndSave(json);
+//                        parseJsonDataAndSave(test);
+                    }catch (Exception e){
+                        System.out.println("不是标准字符串");
+                    }finally{
+//                        serialPort.close();
+                    }
+
+                }else{
+                    System.out.println("串口已连接,没有数据传输");
+                }
             }
 //            System.out.println(test + " ");
-            closeSerialPort();
+//            closeSerialPort();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -685,23 +758,59 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
      * 如果有数据读取到
      * @param jsonData
      */
-    public void parseJsonDataAndSave(String jsonData){
-        FarmDataService farmDataService=new FarmDataServiceImpl();
+    public void parseJsonDataAndSave(String jsonData) throws Exception{
+      /*  String json="{\n" +
+                "  \"Net\": {\n" +
+                "    \"NetID\": \"1\",\n" +
+                "    \"IDnode\": \"2\",\n" +
+                "    \"Netaddr\": \"20\"\n" +
+                "  },\n" +
+                "  \"LightSensor\": {\n" +
+                "    \"status\": {\n" +
+                "      \"WorkModel\": \"1\",\n" +
+                "      \"Value\": \"6.38 lx\"\n" +
+                "    }\n" +
+                "  },\n" +
+                "  \"Soiltempature\": {\n" +
+                "    \"status\": {\n" +
+                "      \"WorkModel\": \"1\",\n" +
+                "      \"Value\": \"25.54 ��\"\n" +
+                "    }\n" +
+                "  },\n" +
+                "  \"Soilmoisture\": {\n" +
+                "    \"status\": {\n" +
+                "      \"WorkModel\": \"1\",\n" +
+                "      \"Value\": \"0.04 %\"\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";*/
+       /* Object obj = Class.forName("com.xiaoshu.admin.service.impl.FarmDataServiceImpl").newInstance();
+        Class c=Class.forName("com.xiaoshu.admin.service.impl.FarmDataServiceImpl");
+        Object test = c.newInstance();
+        Method method = c.getMethod("saveParseJsonData", null);
+        method.invoke(test, null);*/
+//        FarmDataService farmDataService=new FarmDataServiceImpl();
         FarmDataFromJson farmDataFromJson = JsonParseUtil.parseFarmData(jsonData);
+//        FarmDataFromJson farmDataFromJson = JsonParseUtil.parseFarmData(json);
         FarmData farmData = JsonParseUtil.parseFarmDataFromJson(farmDataFromJson);
-        farmData.setTime(new Date());
-        Integer flag=farmDataService.saveParseJsonData(farmData);
-        serialPort.close();
-        System.out.println("串口已连接,数据传输已完成");
+
+        try {
+            farmDataService.saveParseJsonData(farmData);
+        } catch (Exception e) {
+            System.out.println("数据保存错误!");
+            e.printStackTrace();
+        }
+//        serialPort.close();
+        System.out.println("数据格式正确,保存成功!");
     }
 
     @Override
     public void run() {
         init();
 //        sendMsg();
-        String jsonData="";
+        String jsonData=new String();
         jsonData=readComm();
-        if (StringUtils.isNotBlank(jsonData)){//有数据传输
+       /* if (StringUtils.isNotBlank(jsonData)){//有数据传输
             try{
                 parseJsonDataAndSave(jsonData);
             }catch (Exception e){
@@ -712,6 +821,6 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
 
         }else{
             System.out.println("串口已连接,没有数据传输");
-        }
+        }*/
     }
 }

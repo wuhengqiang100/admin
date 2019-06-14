@@ -14,7 +14,7 @@ public class timingPortRead {
 //                    System.out.println("Hello !!");
                     // ------- ends here
                     try {
-                        Thread.sleep(timeInterval);
+                        Thread.sleep(timeInterval);//睡眠1s
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
