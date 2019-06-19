@@ -20,21 +20,39 @@ layui.config({
             data: "",
             success: function (res) {
                 if (res.success) {
-                    var index = layer.alert(res.message, {
+
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+                    } else {
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+                        $(".portlistener").css("color", "#009688");
+                    }
+                   
+                   /* var index = layer.alert(res.message, {
                         skin: 'layui-layer-molv' //样式类名
                         , closeBtn: 1,
                         btn: ['确定']
                     }, function () {
                         layer.close(index);
-                    });
-                } else {
+                    });*/
+
+                }/* else {
                     if (res.imageColor) {
                         $(".portlistener").css("color", "#ff5722");
                     } else {
                         $(".portlistener").css("color", "#009688");
                     }
                     return true;
-                }
+                }*/
                 return true;
             }
         });
@@ -48,22 +66,38 @@ layui.config({
             data: "",
             success: function (res) {
                 if (res.success) {
-                    var index = layer.alert(res.message, {
-                        skin: 'layui-layer-molv' //样式类名
-                        , closeBtn: 1,
-                        btn: ['确定']
-                    }, function () {
-                        layer.close(index);
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+                    } else {
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+                        $(".portlistener").css("color", "#009688");
+                    }
 
-                    });
-                } else {
+                    /* var index = layer.alert(res.message, {
+                         skin: 'layui-layer-molv' //样式类名
+                         , closeBtn: 1,
+                         btn: ['确定']
+                     }, function () {
+                         layer.close(index);
+
+                     });*/
+                }/* else {
                     if (res.imageColor) {
                         $(".portlistener").css("color", "#ff5722");
                     } else {
                         $(".portlistener").css("color", "#009688");
                     }
                     return true;
-                }
+                }*/
                 return true;
             }
         });

@@ -293,12 +293,15 @@
             data: "",
             success: function (res) {
                 if (res.success) {
-                    if (res.imageColor) {
+                    if(res.firstClick){
+                        $(".portlistener").click();
+                    }
+                  /*  if (res.imageColor) {
                         $(".portlistener").css("color", "#ff5722");
                     } else {
                         $(".portlistener").css("color", "#009688");
-                    }
-                    if (res.sensorError != null) {
+                    }*/
+                    if (res.sensorError) {
                         var index = layer.alert(res.message, {
                             skin: 'layui-layer-molv' //样式类名
                             , closeBtn: 1,
@@ -308,23 +311,23 @@
                             location.href = "/index";
 
                         });
-                    } else {
+                    }/* else {
                         layer.tips(res.message, '.portlistener', {
                             time: 4000,
                             tips: [1, '#3595CC'],
 //                        time: 4000
                         });
-                    }
-
+                    }*/
+                    return false;
                 } else {
-                    if (res.imageColor) {
+                   /* if (res.imageColor) {
                         $(".portlistener").css("color", "#ff5722");
                     } else {
                         $(".portlistener").css("color", "#009688");
-                    }
-                    return true;
+                    }*/
+                    return false;
                 }
-                return true;
+                return false;
             }
         });
     }

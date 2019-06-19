@@ -65,21 +65,73 @@ public class PortListenerController implements Runnable, SerialPortEventListener
     @ResponseBody
     public ResponseEntity first() {
         ResponseEntity responseEntity = new ResponseEntity();
+        String resultAlert="";
+//        runPortListener();
         if (ListPort.listPorts()){
             if (ListPort.listCommPorts()){
+//                Thread thread=new Thread(new PortListenerController());
+//                thread.start();
 //                SerialPortTest1 serialPortTest1=new SerialPortTest1();
                 init();
-                readComm();
+                try {
+                    while(true){
+                        resultAlert=readComm();
+                        if (false==ListPort.listPorts()&& false==ListPort.listCommPorts()){
+                            resultAlert="串口已拔出！";
+                            closeSerialPort();
+                            break;
+                        }
+                        if (resultAlert!=null){
+                            closeSerialPort();
+                            break;
+                        }
+
+                    }
+                    responseEntity.setSuccess(true);
+                    responseEntity.setAny("imageColor",true);
+                    responseEntity.setMessage(resultAlert);
+                    return responseEntity;
+//                    return ResponseEntity.success(resultAlert);//串口已拔出信息
+                } catch (Exception e) {
+                    responseEntity.setSuccess(true);
+                    responseEntity.setAny("imageColor",false);
+                    responseEntity.setMessage(resultAlert);
+                    return responseEntity;
+//                    return ResponseEntity.success(resultAlert);//串口已拔出信息
+                }
 //                serialPortTest1.run();
 //                Thread thread=new Thread(new SerialPortTest1());
 //                thread.start();
             }else{
-                return ResponseEntity.success("没有可用端口！");
+                responseEntity.setSuccess(true);
+                responseEntity.setAny("imageColor",false);
+                responseEntity.setMessage(resultAlert);
+                return responseEntity;
+//                return ResponseEntity.success("没有可用端口！");
 //                System.out.println("没有可用端口!");
             }
         }else{
-            return ResponseEntity.success("没有可用端口！");
+            responseEntity.setSuccess(true);
+            responseEntity.setAny("imageColor",false);
+            responseEntity.setMessage("没有可用端口！");
+            return responseEntity;
+//            return ResponseEntity.success("没有可用端口！");
 //            System.out.println("没有可用端口!");
+        }
+    }
+
+    public ResponseEntity  runPortListener(){
+        ResponseEntity responseEntity = new ResponseEntity();
+        if (ListPort.listPorts()){
+            if (ListPort.listCommPorts()){
+
+                Thread thread=new Thread(new PortListenerController());
+                thread.start();
+            }else{
+                return ResponseEntity.success("没有可用端口！");
+            }
+        }else{
+            return ResponseEntity.success("没有可用端口！");
         }
         return responseEntity;
     }
@@ -101,7 +153,7 @@ public class PortListenerController implements Runnable, SerialPortEventListener
 
             } finally {
                 System.out.println("接收的内容：" + test + new Date());
-                test="{\n" +
+               /* test="{\n" +
                         "  \"Net\": {\n" +
                         "    \"NetID\": \"1\",\n" +
                         "    \"IDnode\": \"2\",\n" +
@@ -110,25 +162,25 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                         "  \"LightSensor\": {\n" +
                         "    \"status\": {\n" +
                         "      \"WorkModel\": \"1\",\n" +
-                        "      \"Value\": \"6.38 lx\"\n" +
+                        "      \"Value\": \"6.38\"\n" +
                         "    }\n" +
                         "  },\n" +
                         "  \"Soiltempature\": {\n" +
                         "    \"status\": {\n" +
                         "      \"WorkModel\": \"1\",\n" +
-                        "      \"Value\": \"25.54 ��\"\n" +
+                        "      \"Value\": \"25.54\"\n" +
                         "    }\n" +
                         "  },\n" +
                         "  \"Soilmoisture\": {\n" +
                         "    \"status\": {\n" +
                         "      \"WorkModel\": \"1\",\n" +
-                        "      \"Value\": \"0.04 %\"\n" +
+                        "      \"Value\": \"0.04\"\n" +
                         "    }\n" +
                         "  }\n" +
-                        "}";
+                        "}";*/
                 if (StringUtils.isNotBlank(test)){//有数据传输
                     try{
-                        String json="{\n" +
+                       /* String json="{\n" +
                                 "  \"Net\": {\n" +
                                 "    \"NetID\": \"1\",\n" +
                                 "    \"IDnode\": \"2\",\n" +
@@ -137,40 +189,42 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                                 "  \"LightSensor\": {\n" +
                                 "    \"status\": {\n" +
                                 "      \"WorkModel\": \"1\",\n" +
-                                "      \"Value\": \"6.38 lx\"\n" +
+                                "      \"Value\": \"6.38\"\n" +
                                 "    }\n" +
                                 "  },\n" +
                                 "  \"Soiltempature\": {\n" +
                                 "    \"status\": {\n" +
                                 "      \"WorkModel\": \"1\",\n" +
-                                "      \"Value\": \"25.54 ��\"\n" +
+                                "      \"Value\": \"25.54\"\n" +
                                 "    }\n" +
                                 "  },\n" +
                                 "  \"Soilmoisture\": {\n" +
                                 "    \"status\": {\n" +
                                 "      \"WorkModel\": \"1\",\n" +
-                                "      \"Value\": \"0.04 %\"\n" +
+                                "      \"Value\": \"0.04\"\n" +
                                 "    }\n" +
                                 "  }\n" +
-                                "}";
-                        parseJsonDataAndSave(json);
+                                "}";*/
+                        parseJsonDataAndSave(test);
 //                        parseJsonDataAndSave(test);
                     }catch (Exception e){
-                        System.out.println("不是标准字符串");
+                        return "不是标准字符串！";
+//                        System.out.println("不是标准字符串");
                     }finally{
 //                        serialPort.close();
                     }
 
                 }else{
-                    System.out.println("串口已连接,没有数据传输");
+                    return "串口已连接,没有数据传输！";
+//                    System.out.println("串口已连接,没有数据传输");
                 }
             }
-//            System.out.println(test + " ");
-            closeSerialPort();
+            System.out.println(test + " ");
+//            closeSerialPort();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return test;
+        return null;
     }
 
     public void closeSerialPort() {
@@ -220,12 +274,13 @@ public class PortListenerController implements Runnable, SerialPortEventListener
 
         try {
             farmDataService.saveParseJsonData(farmData);
+            System.out.println("数据格式正确,保存成功!");
         } catch (Exception e) {
             System.out.println("数据保存错误!");
             e.printStackTrace();
         }
 //        serialPort.close();
-        System.out.println("数据格式正确,保存成功!");
+
     }
 
     @SysLog("电脑串口监控")
@@ -235,6 +290,10 @@ public class PortListenerController implements Runnable, SerialPortEventListener
         ResponseEntity responseEntity = new ResponseEntity();
         responseEntity.setAny("imageColor",false);
         responseEntity.setSuccess(false);
+        Boolean firstClick=false;
+        if (true==ListPort.listPorts()&& true==ListPort.listCommPorts()){
+            firstClick=true;
+        }
         List<Farm> farmList=farmService.getFarmByUserId(MySysUser.id());
         List<FarmData> farmDataListAll=new ArrayList<>();
         List<FarmData> farmDataList=new ArrayList<>();
@@ -250,7 +309,7 @@ public class PortListenerController implements Runnable, SerialPortEventListener
         message.setMessageType("系统报警");
         message.setTitle("传感器故障");
         if (null==farmDataListAll){
-            return ResponseEntity.failure("当前没有数据传输!");
+            return ResponseEntity.success("当前没有数据传输!");
         }else{
             for (FarmData farmData : farmDataListAll) {
                 StringBuffer contentStr=new StringBuffer("农田"+farmData.getFarmId()+","+farmData.getArea()+"区域的");
@@ -272,27 +331,32 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                     responseEntity.setAny("sensorError",true);
                     responseEntity.setMessage(errorFlag);
                     responseEntity.setSuccess(true);
+                    responseEntity.setAny("firstClick",firstClick);
                     return responseEntity;
                 }
 
             }
+
             for (FarmData fr:farmDataListAll){
                 if (0==fr.getAlertFlag()){
                     fr.setAlertFlag(1);
                     farmDataService.updateOnlyAlertFlag(fr);//只更新报警标志
                     responseEntity.setSuccess(true);
-                    responseEntity.setAny("imageColor",true);
-                    responseEntity.setMessage("传感器正在传输数据!");
+                    responseEntity.setAny("firstClick",firstClick);
+//                    responseEntity.setAny("imageColor",true);
+//                    responseEntity.setMessage("传感器正在传输数据!");
                     return responseEntity;
                 }else{
                     responseEntity.setSuccess(true);
-                    responseEntity.setAny("imageColor",true);
-                    responseEntity.setMessage("传感器已拔出!");
+                    responseEntity.setAny("firstClick",firstClick);
+                   /* responseEntity.setAny("imageColor",true);
+                    responseEntity.setMessage("传感器已拔出!");*/
                     return responseEntity;
                 }
 
             }
         }
+        responseEntity.setAny("firstClick",firstClick);
         return responseEntity;
     }
 
