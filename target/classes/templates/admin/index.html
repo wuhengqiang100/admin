@@ -279,10 +279,61 @@
 
 
 
-    //循环执行，每隔1秒钟执行一次 showalert（）
+    //循环执行，每隔3秒钟执行一次 showalert（）
     window.setInterval(function () {
-        portListener();
-    }, 3000);
+        portListener();//监听数据是否报警
+    }, 30000);
+    //循环执行，每隔60秒钟执行一次 showalert（）
+    window.setInterval(function () {
+        firstListener();//数据传输
+    }, 60000);
+
+    function firstListener(){
+        $.ajax({
+            type: "POST",
+            url: "farm/port/first",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: "",
+            success: function (res) {
+                if (res.success) {
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+                    } else {
+                        $(".portlistener").css("color", "#009688");
+                        layer.tips(res.message, '.portlistener', {
+                            time: 4000,
+                            tips: [1, '#3595CC'],
+//                        time: 4000
+                        });
+
+                    }
+
+                    /* var index = layer.alert(res.message, {
+                         skin: 'layui-layer-molv' //样式类名
+                         , closeBtn: 1,
+                         btn: ['确定']
+                     }, function () {
+                         layer.close(index);
+
+                     });*/
+                }/* else {
+                    if (res.imageColor) {
+                        $(".portlistener").css("color", "#ff5722");
+                    } else {
+                        $(".portlistener").css("color", "#009688");
+                    }
+                    return true;
+                }*/
+                return true;
+            }
+        });
+    }
 
     function portListener() {
         $.ajax({

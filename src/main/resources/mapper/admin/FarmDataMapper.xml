@@ -37,8 +37,11 @@
     <result column="id" property="id" />
     <result column="time" property="time" />
     <result column="temperature" property="temperature" />
+    <result column="sensor1_temperature_flag" property="sensor1_temperature_flag" />
     <result column="humidity" property="humidity" />
+    <result column="sensor1_humidity_flag" property="sensor1_humidity_flag" />
     <result column="illumination" property="illumination" />
+    <result column="sensor1_illumination_flag" property="sensor1_illumination_flag" />
     <result column="farm_id" property="farmId" />
     <result column="area" property="area" />
     <result column="alert_flag" property="alertFlag" />
@@ -71,7 +74,7 @@
   </update>
 
   <select id="getNotAlertFarmData" resultMap="FarmDataMap" resultType="java.lang.Integer">
-    SELECT
+     SELECT
     /*fa.id,*/
     fa.farm_id,
     fa.area,
@@ -79,8 +82,11 @@
     nt.id,
     nt.time,
     nt.temperature,
+    nt.sensor1_temperature_flag,
     nt.humidity,
+    nt.sensor1_humidity_flag,
     nt.illumination,
+    nt.sensor1_illumination_flag,
     nt.farm_id,
     nt.area,
     nt.alert_flag,
@@ -95,11 +101,10 @@
     LEFT JOIN
     nongtianmysqldata nt ON fa.area=nt.area AND fa.farm_id=nt.farm_id
     left join t_farm  tf 	on 	tf.id= fa.farm_id
-    <where>
+    where
       nt.alert_flag=0
       AND
       nt.farm_id=#{farmId}
-    </where>
     ORDER BY  nt.time ASC ;
   </select>
   <select id="getFarmAreaByFarmArea"  resultMap="FarmAreaDataMap">

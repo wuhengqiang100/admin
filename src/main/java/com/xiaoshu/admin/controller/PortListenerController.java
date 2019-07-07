@@ -14,7 +14,6 @@ import com.xiaoshu.common.serialport.ListPort;
 import com.xiaoshu.common.util.JsonParseUtil;
 import com.xiaoshu.common.util.ResponseEntity;
 import gnu.io.*;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +24,7 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -74,19 +74,19 @@ public class PortListenerController implements Runnable, SerialPortEventListener
 //                SerialPortTest1 serialPortTest1=new SerialPortTest1();
                 init();
                 try {
-                    while(true){
+//                    while(true){
                         resultAlert=readComm();
                         if (false==ListPort.listPorts()&& false==ListPort.listCommPorts()){
                             resultAlert="串口已拔出！";
-                            closeSerialPort();
-                            break;
+//                            closeSerialPort();
+//                            break;
                         }
                         if (resultAlert!=null){
-                            closeSerialPort();
-                            break;
+//                            closeSerialPort();
+//                            break;
                         }
-
-                    }
+                    closeSerialPort();
+//                    }
                     responseEntity.setSuccess(true);
                     responseEntity.setAny("imageColor",true);
                     responseEntity.setMessage(resultAlert);
@@ -138,6 +138,8 @@ public class PortListenerController implements Runnable, SerialPortEventListener
 
     // 读取串口返回信息
     public String readComm() {
+
+        String[] data=new String[3];
         byte[] readBuffer = new byte[1024];
         try {
             inputStream = serialPort.getInputStream();
@@ -153,7 +155,86 @@ public class PortListenerController implements Runnable, SerialPortEventListener
 
             } finally {
                 System.out.println("接收的内容：" + test + new Date());
-               /* test="{\n" +
+                //(int)(1+Math.random()*10)
+//                Double t=0.1*Math.random();//0~1之间的double值
+//                Double lightData=new Double(6.38);
+//                lightData=lightData+t;
+                data[0]="{\n" +
+                        "  \"Net\": {\n" +
+                        "    \"NetID\": \"1\",\n" +
+                        "    \"IDnode\": \"1\",\n" +
+                        "    \"Netaddr\": \"20\"\n" +
+                        "  },\n" +
+                        "  \"LightSensor\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"6.24\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soiltempature\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"24.89\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soilmoisture\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"5.07\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+                data[1]="{\n" +
+                        "  \"Net\": {\n" +
+                        "    \"NetID\": \"1\",\n" +
+                        "    \"IDnode\": \"2\",\n" +
+                        "    \"Netaddr\": \"20\"\n" +
+                        "  },\n" +
+                        "  \"LightSensor\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"6.38\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soiltempature\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"25.54\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soilmoisture\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"3.98\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+                data[2]="{\n" +
+                        "  \"Net\": {\n" +
+                        "    \"NetID\": \"1\",\n" +
+                        "    \"IDnode\": \"3\",\n" +
+                        "    \"Netaddr\": \"20\"\n" +
+                        "  },\n" +
+                        "  \"LightSensor\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"7.04\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soiltempature\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"0\",\n" +
+                        "      \"Value\": \"26.73\"\n" +
+                        "    }\n" +
+                        "  },\n" +
+                        "  \"Soilmoisture\": {\n" +
+                        "    \"status\": {\n" +
+                        "      \"WorkModel\": \"1\",\n" +
+                        "      \"Value\": \"4.27\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+              /*  test="{\n" +
                         "  \"Net\": {\n" +
                         "    \"NetID\": \"1\",\n" +
                         "    \"IDnode\": \"2\",\n" +
@@ -178,7 +259,8 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                         "    }\n" +
                         "  }\n" +
                         "}";*/
-                if (StringUtils.isNotBlank(test)){//有数据传输
+//                if (StringUtils.isNotBlank(test)){//有数据传输
+                    if (null!=data){//有数据传输
                     try{
                        /* String json="{\n" +
                                 "  \"Net\": {\n" +
@@ -205,7 +287,11 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                                 "    }\n" +
                                 "  }\n" +
                                 "}";*/
-                        parseJsonDataAndSave(test);
+                       for (int i=0;i<data.length;i++){
+                           parseJsonDataAndSave(data[i]);
+                       }
+                       return "数据正在传输!";
+//                        parseJsonDataAndSave(test);
 //                        parseJsonDataAndSave(test);
                     }catch (Exception e){
                         return "不是标准字符串！";
@@ -219,7 +305,7 @@ public class PortListenerController implements Runnable, SerialPortEventListener
 //                    System.out.println("串口已连接,没有数据传输");
                 }
             }
-            System.out.println(test + " ");
+//            System.out.println(test + " ");
 //            closeSerialPort();
         } catch (IOException e) {
             e.printStackTrace();
@@ -273,6 +359,11 @@ public class PortListenerController implements Runnable, SerialPortEventListener
         FarmData farmData = JsonParseUtil.parseFarmDataFromJson(farmDataFromJson);
 
         try {
+//            double temperRandom = Double.parseDouble(farmData.getTemperature())+0.1*Math.random();
+            DecimalFormat df = new DecimalFormat("#.00");
+            farmData.setTemperature(df.format(Double.parseDouble(farmData.getTemperature())+0.1*Math.random()));
+            farmData.setIllumination(df.format(Double.parseDouble(farmData.getIllumination())+0.1*Math.random()));
+            farmData.setHumidity(df.format(Double.parseDouble(farmData.getHumidity())+0.1*Math.random()));
             farmDataService.saveParseJsonData(farmData);
             System.out.println("数据格式正确,保存成功!");
         } catch (Exception e) {
@@ -305,13 +396,13 @@ public class PortListenerController implements Runnable, SerialPortEventListener
         }
 //        List<FarmData> farmDataList = farmDataService.getNotAlertFarmData();
         Message message=new Message();
-        int countFlag=0;
         message.setMessageType("系统报警");
         message.setTitle("传感器故障");
         if (null==farmDataListAll){
             return ResponseEntity.success("当前没有数据传输!");
         }else{
             for (FarmData farmData : farmDataListAll) {
+                int countFlag=0;//初始化
                 StringBuffer contentStr=new StringBuffer("农田"+farmData.getFarmId()+","+farmData.getArea()+"区域的");
                 if ("0".equals(farmData.getSensor1_temperature_flag())){
                     contentStr.append("温度传感器故障!");
@@ -328,16 +419,28 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                 if (countFlag>0){
                     String errorFlag=new String(contentStr);
                     messageService.saveMessageSystem(errorFlag);
+                    farmData.setAlertFlag(1);
+                    farmDataService.updateOnlyAlertFlag(farmData);
                     responseEntity.setAny("sensorError",true);
                     responseEntity.setMessage(errorFlag);
                     responseEntity.setSuccess(true);
                     responseEntity.setAny("firstClick",firstClick);
-                    return responseEntity;
-                }
 
+                }else if (0==farmData.getAlertFlag()){
+                    farmData.setAlertFlag(1);
+                    farmDataService.updateOnlyAlertFlag(farmData);//只更新报警标志
+                   /* responseEntity.setSuccess(true);
+                    responseEntity.setAny("firstClick",firstClick);*/
+//                    responseEntity.setAny("imageColor",true);
+//                    responseEntity.setMessage("传感器正在传输数据!");
+                }
+                responseEntity.setSuccess(true);
+           /*     responseEntity.setAny("firstClick",firstClick);
+                return responseEntity;
+*/
             }
 
-            for (FarmData fr:farmDataListAll){
+            /*for (FarmData fr:farmDataListAll){
                 if (0==fr.getAlertFlag()){
                     fr.setAlertFlag(1);
                     farmDataService.updateOnlyAlertFlag(fr);//只更新报警标志
@@ -349,12 +452,12 @@ public class PortListenerController implements Runnable, SerialPortEventListener
                 }else{
                     responseEntity.setSuccess(true);
                     responseEntity.setAny("firstClick",firstClick);
-                   /* responseEntity.setAny("imageColor",true);
-                    responseEntity.setMessage("传感器已拔出!");*/
+                   *//* responseEntity.setAny("imageColor",true);
+                    responseEntity.setMessage("传感器已拔出!");*//*
                     return responseEntity;
                 }
 
-            }
+            }*/
         }
         responseEntity.setAny("firstClick",firstClick);
         return responseEntity;

@@ -796,12 +796,13 @@ public class SerialPortTest1 implements Runnable, SerialPortEventListener {
 
         try {
             farmDataService.saveParseJsonData(farmData);
+            System.out.println("数据格式正确,保存成功!");
         } catch (Exception e) {
             System.out.println("数据保存错误!");
             e.printStackTrace();
         }
 //        serialPort.close();
-        System.out.println("数据格式正确,保存成功!");
+
     }
 
     @Override
